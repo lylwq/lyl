@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Header</title>
+<style>
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+body, button, input, select, textarea { font:12px/1.5em Arial, Tahoma, \5b8b\4f53; color:#111; }
+button, input, select, textarea, h1, h2, h3, h4, h5, h6 { font-size:100%; }
+h3 { font-size:14px; font-family:\5b8b\4f53; }
+button, input, select, textarea, label, img { vertical-align:middle; }
+ul, ol { list-style:none; }
+a { text-decoration:none; color:#000; vertical-align:baseline; }
+a:hover { text-decoration:underline; color:#F60; }
+table { border-collapse:collapse; border-spacing:0; }
+/*公有*/
+.g-c-f:after { content:""; clear:both; display:table; }
+.g-c-f { zoom:1; }
+.g-c-r { color:#F00; }
+.g-c-o { color:#F60; }
+.g-c-b { color:#2575B8; }
+.g-d-n { display:none; }
+.g-d-b { display:block; }
+.g-f-l { float:left; }
+.g-f-r { float:right; }
+.g-ta-r { text-align:right }
+/*灰按钮*/
+.g-b-g { display:inline-block; background:url(../css/head.png) 0 -688px; color:#F60; font-weight:bold; padding-left:10px; cursor:pointer; vertical-align:middle; text-align:center; }
+.g-b-g:hover { text-decoration:none; }
+.g-b-g i { display:inline-block; height:21px; line-height:1.8em; *line-height:1.9em;
+overflow:hidden; background:url(../css/head.png) right -688px; font-style:normal; padding-right:10px; }
+/*红按钮*/
+.g-b-r { display:inline-block; background:url(../css/head.png) 0 -709px; color:#FFF; font-weight:bold; padding-left:10px; cursor:pointer; vertical-align:middle; text-align:center; }
+.g-b-r:hover { text-decoration:none; }
+.g-b-r i { display:inline-block; height:27px; line-height:2.2em; *line-height:2.3em;
+overflow:hidden; background:url(../css/head.png) right -709px; font-style:normal; padding-right:10px; }
+/*红按钮14*/
+.g-b-r14 { display:inline-block; background:url(../css/head.png) 0 -736px; color:#FFF; font-weight:bold; padding-left:10px; cursor:pointer; vertical-align:middle; text-align:center; }
+.g-b-r14:hover { text-decoration:none; }
+.g-b-r14 i { display:inline-block; height:31px; line-height:2.6em; *line-height:2.7em;
+overflow:hidden; background:url(../css/head.png) right -736px; font-style:normal; font-weight:bold; padding-right:10px; }
+/*包裹*/
+.top .nav, .wrap { width:960px; margin:0 auto; }
+/*头部*/
+.top, .top .nav, .top .nav span, .top .nav .select .a, .head .tags li, .head .tags li a, .head .tags .cur, .head .tags .cur a, .head .form, .head .form .left, .head .form .right, #search_select, #search_submit, .head .menu, .head .menu li, .head .menu .cur a, .head .menu .cur span { background-image:url(../css/head.png); }
+/*导航*/
+.top .nav { height:24px; line-height:1.9em; line-height:2em\9; *line-height:1.9em;
+margin-bottom:10px; }
+.top .nav .left { float:left; }
+.top .nav .right { float:right; }
+.top .nav .left span { padding-left:12px; background-position:-101px -28px; *background-position:-101px -30px;
+background-repeat:no-repeat; }
+.top .nav .left .eng { *background-position:-101px -28px;
+}
+.top .nav .right span { padding-right:12px; background-position:right -28px; *background-position:right -30px;
+background-repeat:no-repeat; }
+.top .nav .right .eng { *background-position:right -28px;
+}
+.top .nav span.n { padding:0; background-image:none; }
+.top .nav span.select { position:relative; z-index:5; *background-position:right -24px;
+zoom:1; }
+.top .nav .select .a { padding:2px 14px 2px 6px; *padding:5px 14px 2px 6px;
+background-position:right -487px; background-repeat:no-repeat; }
+.top .nav .select .a:hover { padding:2px 13px 2px 5px; *padding:4px 13px 1px 5px;
+background-color:#FFF; border:#CCC solid 1px; border-bottom:none; position:relative; z-index:15; }
+.top .nav .select ul { position:absolute; top:16px; *top:20px;
+left:0; z-index:10; background-color:#FFF; border:#CCC solid 1px; padding:5px 10px; width:100px; }
+.top .nav .select ul li { white-space:nowrap; }
+/*登录*/
+.head .login { position:relative; z-index:1; }
+.head .login img { border:none; }
+.head .login .left { float:left; position:relative; z-index:10; }
+.head .login .right { float:right; text-align:right; }
+.head .login .right a { margin-left:10px; }
+.head .login .right a i { width:52px; }
+.head .login .cart { color:#2575B8; padding-left:20px; background:url(../css/head.png) -95px -553px; position:absolute; top:30px; right:0; z-index:10; }
+/*搜索选择*/
+.head .tags { padding-left:268px; position:relative; z-index:1; margin-top:-15px; }
+.head .tags li { background-position:0 -106px; float:left; margin-right:6px; cursor:pointer; }
+.head .tags li a { background-position:right -135px; display:block; min-width:64px; _width:64px; padding:0 10px; height:29px; line-height:2.1em; font-size:14px; text-align:center; text-decoration:none; white-space:nowrap; margin-right:-4px; position:relative; }
+.head .tags .cur { background-position:0 -48px; }
+.head .tags .cur a { background-position:right -77px; color:#FFF; font-weight:bold; }
+/*搜索表单*/
+.head .form { background-position:-108px -204px; padding-left:4px; position:relative; z-index:0; top:-2px; margin-bottom:8px; }
+.head .form .left { background-position:0 -164px; float:left; width:952px; height:35px; padding-top:5px; }
+.head .form .right { background-position:0 -204px; float:right; width:4px; height:40px; }
+/*搜索控件*/
+#search_keywords, #search_select, #search_isexact, #search_label, #search_submit { margin:0 5px; }
+#search_keywords, #search_select { border-color:#87000A #DADADA #DADADA #87000A; border-style:solid; border-width:1px; padding-left:4px; line-height:1em; }
+#search_keywords { margin-left:186px; width:430px; height:23px; line-height:1.8em\9; font-size:14px; color:#7F7F7F; }
+#search_select { background-color:#fff; background-position:right -505px; width:112px; height:25px; line-height:2em\9; *line-height:1.8em;
+text-align:left; cursor:pointer; display:none; }
+#search_isexact { width:13px; height:13px; }
+#search_label { color:#fff; margin-left:0; padding-top:1px; _padding-top:2px; _zoom:1; }
+#search_submit { background-position:0 -767px; height:29px; width:75px; border:none; }
+/*菜单*/
+.head .menu { height:30px; line-height:2.2em; line-height:2.3em\9; *line-height:2.2em;
+font-size:14px; font-weight:bold; background-position:0 -314px; overflow:hidden; margin-bottom:10px; }
+.head .menu li { float:left; padding-left:26px; background-position:0 -404px; }
+.head .menu .cur span { background-position:right -460px; background-repeat:no-repeat; display:block; }
+.head .menu .cur a { background-position:0 -434px; background-repeat:no-repeat; padding:0 16px; display:block; margin:4px 1px 0 0; line-height:2em; color:#DD0112; }
+.head .menu .f { background-position:0 -344px; background-repeat:no-repeat; padding-left:14px; }
+.head .menu .l { background-position:right -374px; background-repeat:no-repeat; padding-left:0; padding-right:14px; float:right; font-weight:normal; text-align:right; }
+dl { margin-bottom:10px; }
+dl dt { height:27px; line-height:2.2em; overflow:hidden; }
+dl dt h3 { padding-left:10px; }
+dl .more { float:right; color:#2575B8; margin-right:10px; *display:inline;
+*line-height:2.3em;
+}
+.box-g { border:#CCC solid 1px; }
+.box-g dt { background:url(../css/head.png) 0 -580px; }
+.box-g dt .cur { font-weight:bold; height:27px; background:url(../css/head.png) 0 -634px; border-left:#ccc solid 1px; border-right:#ccc solid 1px; }
+.box-o { border:#e9c795 solid 1px; }
+.box-o dt { background:url(../css/head.png) 0 -607px; }
+.box-o dt .cur { font-weight:bold; height:27px; background:url(../css/head.png) 0 -661px; border-left:#e9c795 solid 1px; border-right:#e9c795 solid 1px; }
+.box-tag dt h3 { display:inline-block; padding:0 20px; margin-left:-1px; font-weight:normal; }
+.box-tag dt h3 { *display:inline;
+}
+.w676 { width:676px; }
+.w308 { width:308px; }
+.list1 .title { background:#f3f3f3 }
+.list1 .part { background:#EEF3F9 }
+.list1 li { height:2em; line-height:2em; overflow:hidden; padding:0 5px; }
+.list1 li span { display:inline-block; margin:0 5px; height:2em; overflow:hidden; }
+.list1 li .c1 { width:90px; }
+.list1 li .c1 a { font-weight:bold; }
+.list1 li .c2 { width:24px; }
+.list1 li .c3 { width:150px; }
+
+
+.list2 { padding:5px 10px; }
+.list2 li { line-height:1.8em; height:1.8em; overflow:hidden; }
+.list2 li span { float:right; padding-left:10px; color:#808080 }
+.list3 { padding:10px 10px 0; }
+.list3 img { float:left; margin-right:10px; width:77px; height:55px; border:#CCCCCC solid 1px; padding:1px; }
+.list4 { padding:10px 10px 0; }
+.list4 img { float:left; margin-right:10px; width:77px; height:55px; border:#CCCCCC solid 1px; padding:1px; }
+.list7 { padding:5px 10px; }
+.list7 li { float:left; width:97px; text-align:center; }
+.list7 li img { border:#CCCCCC solid 1px; padding:1px; width:88px; height:66px; }
+.list7 li p { height: 24px; line-height: 2em; overflow: hidden; }
+.list8 { padding:5px 10px; }
+.list8 li { font-size:14px; line-height:1.8em; height:1.8em; overflow:hidden; }
+.list8 li .t { margin-right:8px; }
+.list9 { padding:5px 10px; }
+.list9 li { line-height:1.8em; height:1.8em; overflow:hidden; }
+.list9 li .p { float:left; width:82px; overflow:hidden; padding-right:8px; }
+.list9 li .d { float:right; padding-left:10px; color:#808080 }
+.foot { text-align:center; line-height:2em; border-top:#B9080A solid 2px; padding:10px 0; }
+.foot a, .foot span { margin:0 5px; }
+.foot span a { margin:0; }
+.service { background: url(http://www.hqewcss.com/images/index/toolbg.gif); border: 1px solid #EBB26F; height: 52px; overflow: hidden; padding:0 5px; }
+.service .ico { height: 52px; width:228px; }
+.service .ico a { display:inline-block; height: 20px; line-height:20px; width:52px; margin:3px; padding-left:18px; background:url(../css/head.png) 0 -816px; }
+</style>
+
+<!--[if IE 6]>
+<style>
+.head .tags li a { width:64px; }
+#search_label { padding-top:2px; zoom:1; }
+</style>
+<![endif]-->
+
+<!--[if lte IE 7]>
+<style>
+.top .nav { line-height:1.9em; }
+.top .nav .left span { background-position:-101px -30px; }
+.top .nav .left .eng { background-position:-101px -28px; }
+.top .nav .right span { background-position:right -30px; }
+.top .nav .right .eng { background-position:right -28px; }
+.top .nav span.select { background-position:right -24px; zoom:1; }
+.top .nav .select .a { padding:5px 14px 2px 6px; }
+.top .nav .select .a:hover { padding:4px 13px 1px 5px; }
+.top .nav .select ul { top:20px; }
+#search_keywords { line-height:1.8em }
+#search_select { line-height:1.8em; }
+.head .menu { line-height:2.2em; }
+</style>
+<![endif]-->
+
+<!--[if IE 8]>
+<style>
+.top .nav { line-height:2em; }
+#search_keywords { line-height:1.8em }
+#search_select { line-height:2em; }
+.head .menu { line-height:2.3em; }
+</style>
+<![endif]-->
+</head>
+
+<body>
+<div class="top">
+    <ul class="nav g-c-f">
+        <li class="left"> <span class="n">电子产业链 全程电子商务平台</span><span class="eng"><a target="_blank" title="华强LED网" href="http://led.hqew.com/" class="g-c-r">华强LED网</a></span><span><a target="_blank" title="华强手机制造网" href="http://shouji.hqew.com/" class="g-c-r">华强手机制造网</a></span><span><a target="_blank" title="华强电子交易所(PartInChina.com)" href="http://www.PartInChina.com/" class="g-c-r">华强电子交易所</a></span><span><a href="http://www.hqew.net/" title="外贸通" target="_blank" class="g-c-r">外贸通</a></span> </li>
+        <li class="right" id="nav_select"><span class="select"><a class="a" target="_blank" href="http://ibs.hqew.com/Web/Hqen/Index.aspx">进入互联商务系统</a>
+            <ul class="g-d-n">
+                <li><a target="_blank" href="http://ibs.hqew.com/ibs/Stock/UploadEntry.aspx">上传IC库存</a></li>
+                <li><a target="_blank" href="http://ibs.hqew.com/ibs/bidding/bidindex.aspx">参与竞价排名</a></li>
+                <li><a target="_blank" href="http://ibs.hqew.com/Web/Hqen/sell/icmanage.aspx">发布求购信息</a></li>
+                <li><a target="_blank" href="http://ibs.hqew.com/Web/Hqen/Appraise/AppraiseAdmin.aspx">查看客户评价</a></li>
+                <li><a target="_blank" href="http://ibs.hqew.com/IBS/Shop/index.aspx">修改企业网站</a></li>
+                <li><a target="_blank" href="http://ibs.hqew.com/IBS/Electronic/ManageElectronic.aspx">发布元器件</a></li>
+                <li><a target="_blank" href="http://ibs.hqew.com/IBS/Promotion/PostedList.aspx">发布推介信息</a></li>
+                <li><a target="_blank" href="http://ibs.hqew.com/Web/Hqen/RFQ/ReceivedInquiry.aspx">管理询报价</a></li>
+                <li><a target="_blank" href="http://ibs.hqew.com/Web/Hqen/MessageCenter/MessageIndex.aspx">查看客户留言</a></li>
+                <li><a target="_blank" href="http://ibs.hqew.com/IBS/CompanyInfo/MemberModify.aspx">修改注册信息</a></li>
+            </ul>
+            </span><span class="select"><a class="a" target="_blank" href="/about/service.html">产品服务</a>
+            <ul class="g-d-n">
+                <li><a target="_blank" href="/about/service.html">会员套餐</a></li>
+                <li><a target="_blank" href="/bussiness/honestyeasy.html">诚易通</a></li>
+                <li><a target="_blank" href="/about/service_16.html">600条</a></li>
+                <li><a target="_blank" href="/buyer/bidding/index.html">竞价排名</a></li>
+                <li><a target="_blank" href="/about/service_03.html">ISCP现货认证</a></li>
+                <li><a target="_blank" href="/about/service_18.html">BCP品牌认证</a></li>
+                <li><a target="_blank" href="/about/service_19.html">中国芯</a></li>
+                <li><a target="_blank" href="/about/service_04.html">委托交易</a></li>
+                <li><a target="_blank" href="/about/service_05.html">洽洽</a></li>
+                <li><a target="_blank" href="/about/service_06.html">酷管家</a></li>
+                <li><a target="_blank" href="/about/service_12.html">旺铺</a></li>
+                <li><a target="_blank" href="/about/service_17.html">推介竞标</a></li>
+                <li><a target="_blank" href="/about/service_09.html">推广服务</a></li>
+                <li><a target="_blank" href="/about/service_10.html">在线交易</a></li>
+                <li><a target="_blank" href="/bussiness/Guarantee.html">诚信保证服务</a></li>
+                <li><a target="_blank" href="/about/service_11.html">手机华强电子网</a></li>
+                <li><a target="_blank" href="/about/service_13.html">华强手机制造网</a></li>
+                <li><a target="_blank" href="/about/service_15.html">超级买家</a></li>
+            </ul>
+            </span><span><a href="/Help/Default.html">帮助中心</a></span><span><a target="_blank" href="http://122.11.55.148/gate/big5/www.hqew.com">繁体</a></span><span class="eng n"><a target="_blank" href="http://www.hqew.net/">English</a></span> </li>
+    </ul>
+</div>
+<div class="wrap">
+    <div class="head">
+        <ul class="login g-c-f">
+            <li class="right"><span>[ 当前4268位会员在线 ]</span><a target="_blank" href="#" class="g-b-g"><i>登录</i></a><a target="_blank" href="#" class="g-b-g"><i>免费注册</i></a><br />
+                <a title="进入我的购物车" href="/mall/cart.aspx" class="cart">购物车</a></li>
+            <li class="left"><a title="华强电子网(www.hqew.com)" href="/"><img src="http://www.hqewcss.com/images/head/logo.jpg"></a></li>
+        </ul>
+        <ul class="tags g-c-f" id="search_tags">
+            <li class="cur"><a>IC/元器件</a></li>
+            <li><a>非IC</a></li>
+            <li><a>在线商城</a></li>
+            <li><a>求购信息</a></li>
+            <li><a>技术资料</a></li>
+        </ul>
+        <ul class="form g-c-f">
+            <li class="left">
+                <input type="text" value="请输入一个电子元器件型号..." id="search_keywords" />
+                <input type="checkbox" id="search_isexact" />
+                <label for="search_isexact" id="search_label">精确</label>
+                <input type="button" value="IC/二三极管" id="search_select" />
+                <input type="button" value="" id="search_submit" />
+            </li>
+            <li class="right"></li>
+        </ul>
+        <ul class="menu g-c-f">
+            <li class="f" id="head1_link1"><span><a href="/">首页</a></li>
+            <li class="cur" id="head1_link2"><span><a href="/buyer/">供应信息</a></li>
+            <li id="head1_link10"><span><a href="/chinachips/">中国芯</a></li>
+            <li id="head1_link3"><span><a href="/seller/">求购信息</a></li>
+            <li id="head1_link9"><span><a href="/bussiness/">诚信交易</a></li>
+            <li id="head1_link5"><span><a href="/tech/">技术资料</a></li>
+            <li id="head1_link6"><span><a href="/job/">求职招聘</a></li>
+            <li id="head1_link7"><span><a href="/info/">商情资讯</a></li>
+            <li id="head1_link8"><span><a target="_blank" href="http://bbs.hqew.com">商友社区</a></li>
+            <li class="l">客服热线：400-887-3118</li>
+        </ul>
+    </div>
+    <dl class="box-o w308">
+        <dt><a class="more" href="#">进入竞价排名专栏</a>
+            <h3>今日竞价</h3>
+        </dt>
+        <dd>
+            <div class="list1">
+                <ul>
+                    <li class="title"><span class="c1">关键词</span><span class="c2">参与</span><span class="c3">当前排名第一位</span></li>
+                </ul>
+                <div id="test1">
+                    <ul>
+                        <li><span class="c1"><a class="g-c-b" target="_blank" href="/buyer/bidding_LM393.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl00_UiLink">LM393</a></span><span class="c2">26</span><span class="c3"><a title="点击查看 深圳市美科电子商行 简介" target="_blank" href="http://mkdz3d003.hqew.com/">深圳市美科电子商行</a></span></li>
+                        <li><span class="c1"><a target="_blank" href="/buyer/bidding_78L05.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl01_UiLink">78L05</a></span><span class="c2">26</span><span class="c3"><a title="点击查看 深圳市联通电子经营部 简介" target="_blank" href="http://liantongdz.hqew.com/">深圳市联通电子经营部</a></span></li>
+                        <li><span class="c1"><a target="_blank" href="/buyer/bidding_78M05.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl02_UiLink">78M05</a></span><span class="c2">25</span><span class="c3"><a title="点击查看 深圳市福田区新亚洲二期德诚电子商行 简介" target="_blank" href="http://dcdz-ic.hqew.com/">深圳市福田区新亚洲二期德诚电子商行</a></span></li>
+                        <li><span class="c1"><a target="_blank" href="/buyer/bidding_LM358.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl03_UiLink">LM358</a></span><span class="c2">24</span><span class="c3"><a title="点击查看 深圳市世纪天创电子经营部 简介" target="_blank" href="http://tc.hqew.com/">深圳市世纪天创电子经营部</a></span></li>
+                        <li><span class="c1"><a target="_blank" href="/buyer/bidding_MB6S.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl04_UiLink">MB6S</a></span><span class="c2">24</span><span class="c3"><a title="点击查看 深圳市科展电子商行 简介" target="_blank" href="http://kezhan88.hqew.com/">深圳市科展电子商行</a></span></li>
+                        <li><span class="c1"><a target="_blank" href="/buyer/bidding_MC34063.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl05_UiLink">MC34063</a></span><span class="c2">23</span><span class="c3"><a title="点击查看 深圳市新通科电子有限公司华强销售部 简介" target="_blank" href="http://hongyudz.hqew.com/">深圳市新通科电子有限公司华强销售部</a></span></li>
+                        <li><span class="c1"><a target="_blank" href="/buyer/bidding_AT24C02.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl06_UiLink">AT24C02</a></span><span class="c2">21</span><span class="c3"><a title="点击查看 深圳市信隆电子商行 简介" target="_blank" href="http://yongchengdz.hqew.com/">深圳市信隆电子商行</a></span></li>
+                        <li><span class="c1"><a target="_blank" href="/buyer/bidding_LM324.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl07_UiLink">LM324</a></span><span class="c2">21</span><span class="c3"><a title="点击查看 深圳市腾盛电子经营部 简介" target="_blank" href="http://tselec.hqew.com/">深圳市腾盛电子经营部</a></span></li>
+                        <li><span class="c1"><a target="_blank" href="/buyer/bidding_TL431.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl08_UiLink">TL431</a></span><span class="c2">21</span><span class="c3"><a title="点击查看 深圳市联通电子经营部 简介" target="_blank" href="http://liantongdz.hqew.com/">深圳市联通电子经营部</a></span></li>
+                        <li><span class="c1"><a target="_blank" href="/buyer/bidding_6N137.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl09_UiLink">6N137</a></span><span class="c2">20</span><span class="c3"><a title="点击查看 深圳市联易达电子商行 简介" target="_blank" href="http://qiangda88.hqew.com/">深圳市联易达电子商行</a></span></li>
+                    </ul>
+                </div>
+            </div>
+        </dd>
+    </dl>
+
+    <dl class="box-o box-tag w308">
+        <dt>
+            <h3>商友社区</h3>
+            <h3 class="cur">媒体动态</h3>
+        </dt>
+        <dd>
+            <div class="list3 g-c-f"><a title="PC诞生30周年纪念：PC时代是否接近尾声" target="_blank" href="/info-197974.html"><img src="http://img.hqew.com/file/CMSImages/2011/08/1659109_201108111046531Kdd0.thumb.jpg"></a>
+                <h4><a title="PC诞生30周年纪念：PC时代是否接近尾声" target="_blank" href="/info-197974.html">PC诞生30周年纪念：PC时代是否</a></h4>
+                <p>IBM工程师马克·迪安（Mark Dean）曾参与研发第一台IBM PC，他今天发表文章说：PC时代基本</p>
+            </div>
+            <div class="list2">
+                <ul>
+                    <li><span title="发布日期：2011-08-16">08-16</span><a title="沈阳华强缤纷盛夏豪礼大派送" href="http://bbs.hqew.com/viewthread.php?tid=127421" target="_blank">沈阳华强缤纷盛夏豪礼大派送</a></li>
+                    <li><span title="发布日期：2011-08-15">08-15</span><a title="上周电子元器件IC厂商新推10大热门新品（8月8日-8月11日）" href="http://bbs.hqew.com/viewthread.php?tid=125961" target="_blank">上周电子元器件IC厂商新推10大热门新品（8月8日-8月11日）</a></li>
+                    <li><span title="发布日期：2011-07-26">07-26</span><a title="IC上传常见问题" href="http://bbs.hqew.com/viewthread.php?tid=90561" target="_blank">IC上传常见问题</a></li>
+                    <li><span title="发布日期：2011-07-19">07-19</span><a title="从工程师到项目经理的转变" href="http://bbs.hqew.com/viewthread.php?tid=89327" target="_blank">从工程师到项目经理的转变</a></li>
+                    <li><span title="发布日期：2011-07-19">07-19</span><a title="NEC公司在中国安装新的自动指纹识别系统" href="http://bbs.hqew.com/viewthread.php?tid=89322" target="_blank">NEC公司在中国安装新的自动指纹识别系统</a></li>
+                    <li><span title="发布日期：2011-07-12">07-12</span><a title="2km(千米)调频发射机电路" href="http://bbs.hqew.com/viewthread.php?tid=88046" target="_blank">2km(千米)调频发射机电路</a></li>
+                    <li><span title="发布日期：2011-06-15">06-15</span><a title="超声波移动物体检测装置的工作原理" href="http://bbs.hqew.com/viewthread.php?tid=79790" target="_blank">超声波移动物体检测装置的工作原理</a></li>
+                    <li><span title="发布日期：2011-06-15">06-15</span><a title="ST推出符合航天电子系统质量要求的功率产品" href="http://bbs.hqew.com/viewthread.php?tid=79761" target="_blank">ST推出符合航天电子系统质量要求的功率产品</a></li>
+                    <li><span title="发布日期：2011-05-17">05-17</span><a title="场效应管常识" href="http://bbs.hqew.com/viewthread.php?tid=75551" target="_blank">场效应管常识</a></li>
+                    <li><span title="发布日期：2011-05-04">05-04</span><a title="2011照明灯饰几大主流产品的发展趋势分析" href="http://bbs.hqew.com/viewthread.php?tid=72944" target="_blank">2011照明灯饰几大主流产品的发展趋势分析</a></li>
+                    <li><span title="发布日期：2011-04-28">04-28</span><a title="销售激励故事之命运掌握在手中" href="http://bbs.hqew.com/viewthread.php?tid=72367" target="_blank">销售激励故事之命运掌握在手中</a></li>
+                    <li><span title="发布日期：2011-04-26">04-26</span><a title="2011的恰恰有个地方可以改进一下不？" href="http://bbs.hqew.com/viewthread.php?tid=71879" target="_blank">2011的恰恰有个地方可以改进一下不？</a></li>
+                    <li><span title="发布日期：2011-04-22">04-22</span><a title="华强网现货认证问题" href="http://bbs.hqew.com/viewthread.php?tid=70062" target="_blank">华强网现货认证问题</a></li>
+                </ul>
+            </div>
+        </dd>
+    </dl>
+    <div class="service"> <a class="g-b-r14 g-f-r" id="icmanage"><i>发布求购</i></a>
+        <div class="ico"><a target="_blank" title="竞价排名" href="/buyer/bidding/index.html">竞价排名</a><a target="_blank" title="ISCP认证" href="/about/service_03.html">ISCP认证</a><a target="_blank" title="酷管家" href="/topic/Stock2010/StockZT.html">酷管家</a><a target="_blank" title="会员套餐" href="/about/service.html">会员套餐</a><a target="_blank" title="诚易通" href="/bussiness/honestyeasy.html">诚易通</a><a target="_blank" title="洽洽" href="/about/service_05.html">洽洽</a></div>
+    </div>
+    <div class="killer">
+        <div class="list4 g-c-f">
+            <h3><a title="点击查看 深圳市福田区鑫洪电子商行 简介" target="_blank" href="http://xinhongic.hqew.com/">深圳市福田区鑫洪电子商行</a></h3>
+            <a title="深圳市福田区鑫洪电子商行" target="_blank" href="http://xinhongic.hqew.com/"><img alt="深圳市福田区鑫洪电子商行" src="http://img.hqew.com/File/Images/330000-339999/331275/Common/201171610141737546_Abbr.jpg" class="logo"></a>
+            <ul>
+                <li>型号：<a target="_blank" title="进入商城购买 TLP701" href="/mall/shopview-bc815f69-1d06-4f99-b21c-468e7b4e4dac.html">TLP701</a></li>
+                <li>报价：<span class="col_r">4.00-6.00</span></li>
+                <li>购买：<a target="_blank" title="进入商城购买" href="/mall/shopview-bc815f69-1d06-4f99-b21c-468e7b4e4dac.html"></a></li>
+            </ul>
+        </div>
+        <ul class="list5">
+            <li><a target="_blank" title="进入商城购买 MAX232CSE+T" href="/mall/shopview-d2ea325c-2acd-4de9-bb8c-b405ab858896.html">MAX232CS</a> <a title="点击查看 深圳新丰源电子商行 简介" target="_blank" href="http://xfy-max.hqew.com/">深圳新丰源电子商行</a></li>
+            <li><a target="_blank" title="进入商城购买 MSP430F149IPM" href="/mall/shopview-0e6855f1-d0ec-4cf8-94c8-463c8712f98e.html">MSP430F1</a> <a title="点击查看 深圳全芯动力电子科技有限公司 简介" target="_blank" href="http://onlyhuqiang.hqew.com/">深圳全芯动力电子科技有限公司</a></li>
+            <li><a target="_blank" title="进入商城购买 IRFR18N15D" href="/mall/shopview-888d10f2-a88a-46c8-b72b-47f7a945a6db.html">IRFR18N1</a> <a title="点击查看 香港盈泰电子有限公司 简介" target="_blank" href="http://yingtai.hqew.com/">香港盈泰电子有限公司</a></li>
+            <li><a target="_blank" title="进入商城购买 13003/0.83/1.18" href="/mall/shopview-9495e8c7-7895-494e-9b72-080f37bf3181.html">13003/0.</a> <a title="点击查看 深圳市福田区晶鑫微电子销售部 简介" target="_blank" href="http://szjxwdzxsb.hqew.com/">深圳市福田区晶鑫微电子销售部</a></li>
+        </ul>
+        <p>哪些型号最<span class="g-c-r">火爆</span>，哪些商家最<span class="g-c-r">给力</span>？ <a href="http://bbs.hqew.com/viewthread.php?tid=52968&amp;extra=page%3D1" target="_blank" title="点击查看 秒杀规则">了解更多</a></p>
+        <p><span>每天<b>10:00</b>准时推荐！</span> <a class="g-b-r" href="/bussiness/grab.html" target="_blank"><i>立即参与</i></a></p>
+    </div>
+    <div class="list2">
+        <ul>
+            <li><span class="time">46秒钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应超音频感应退火设备、超音频感应退火机RJYS" target="_blank" href="http://www.hqew.com/freeshop_535850.html">供应超音频感应退火设备、超音</a></li>
+            <li><span class="time">1分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应T-201DT-201D不锈钢焊剂" target="_blank" href="http://tony.hqew.com/ec/ecview_89450.html">供应T-201DT-201D不锈钢焊剂</a></li>
+            <li><span class="time">1分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应乌鲁木齐珠宝展柜 乌鲁木齐LED珠宝灯条价格" target="_blank" href="http://www.hqew.com/freeshop_535341.html">供应乌鲁木齐珠宝展柜 乌鲁木</a></li>
+            <li><span class="time">1分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="0608PB" target="_blank" href="http://zhaosheng.hqew.com/ec/ecview_12178916.html">0608PB</a></li>
+            <li><span class="time">3分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应42寸广告机" target="_blank" href="http://www.hqew.com/freeshop_533933.html">供应42寸广告机</a></li>
+            <li><span class="time">4分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应334K贴片电容器，电阻器，电感器，电位器" target="_blank" href="http://ghddz.hqew.com/ec/ecview_2092838.html">供应334K贴片电容器，电阻器，</a></li>
+            <li><span class="time">5分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应MKP-X2金属化聚丙烯膜抗干扰电容" target="_blank" href="http://szswdz.hqew.com/ec/ecview_2245109.html">供应MKP-X2金属化聚丙烯膜抗干</a></li>
+            <li><span class="time">7分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="CBB电容" target="_blank" href="http://ch-rf.hqew.com/ec/ecview_644395.html">CBB电容</a></li>
+            <li><span class="time">9分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应DCG51系列隔爆型防爆灯DCG51系列隔爆型防爆灯" target="_blank" href="http://www.hqew.com/freeshop_507628.html">供应DCG51系列隔爆型防爆灯DCG</a></li>
+            <li><span class="time">9分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应3528红光" target="_blank" href="http://www.hqew.com/freeshop_397165.html">供应3528红光</a></li>
+            <li><span class="time">10分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应15度LED透镜、LED透镜" target="_blank" href="http://www.hqew.com/freeshop_484398.html">供应15度LED透镜、LED透镜</a></li>
+            <li><span class="time">10分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应9*3W  3*3W  LED灯条LED珠宝专用照明" target="_blank" href="http://www.hqew.com/freeshop_497546.html">供应9*3W  3*3W  LED灯条LED珠</a></li>
+            <li><span class="time">17分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="接受管" target="_blank" href="http://chunri.hqew.com/ec/ecview_12054670.html">接受管</a></li>
+            <li><span class="time">20分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应Led 室外全彩显示屏" target="_blank" href="http://www.hqew.com/freeshop_500260.html">供应Led 室外全彩显示屏</a></li>
+            <li><span class="time">22分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应新款LED-5050贴片轮廓灯新款LED-5050贴片轮廓灯/LED轮廓灯" target="_blank" href="http://www.hqew.com/freeshop_411210.html">供应新款LED-5050贴片轮廓灯新</a></li>
+            <li><span class="time">24分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应TCSCS1C106MBARTantalum Capacitor" target="_blank" href="http://dktech1907.hqew.com/ec/ecview_1978944.html">供应TCSCS1C106MBARTantalum C</a></li>
+            <li><span class="time">30分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="IC" target="_blank" href="http://pansilicon.hqew.com/ec/ecview_3868410.html">IC</a></li>
+            <li><span class="time">35分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应LED台灯" target="_blank" href="http://www.hqew.com/freeshop_488660.html">供应LED台灯</a></li>
+            <li><span class="time">48分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应LED应急电源面板灯" target="_blank" href="http://www.hqew.com/freeshop_501568.html">供应LED应急电源面板灯</a></li>
+            <li><span class="time">48分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应压力桶，点胶阀，" target="_blank" href="http://www.hqew.com/freeshop_535266.html">供应压力桶，点胶阀，</a></li>
+            <li><span class="time">51分钟前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应深圳LED显示屏" target="_blank" href="http://www.hqew.com/freeshop_501082.html">供应深圳LED显示屏</a></li>
+            <li><span class="time">1小时前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应科环导热硅胶片" target="_blank" href="http://www.hqew.com/freeshop_535769.html">供应科环导热硅胶片</a></li>
+            <li><span class="time">2小时前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应LED球泡灯" target="_blank" href="http://www.hqew.com/freeshop_535772.html">供应LED球泡灯</a></li>
+            <li><span class="time">2小时前</span>[<a target="_blank" href="/buyer/">供应</a>]<a title="供应4401AS、3622BS、3121AS" target="_blank" href="http://xdkled.hqew.com/ec/ecview_2463154.html">供应4401AS、3622BS、3121AS</a></li>
+        </ul>
+    </div>
+    <div class="list7 g-c-f">
+        <ul>
+            <li><a title="新华荣电子商行" target="_blank" href="/buyer/promotion56033.html"><img src="http://img.hqew.com/File/Images/100000-109999/106943/Promotion/20101124180658321RY1VQ9_Abbr.JPG"></a>
+                <p><a title="新华荣电子商行" target="_blank" href="/buyer/promotion56033.html">新华荣电子商行</a></p>
+            </li>
+            <li><a title="字库集成电路" target="_blank" href="/buyer/promotion64112.html"><img src="http://img.hqew.com/File/Images/230000-239999/234299/Promotion/20100919153956436NS03YW_Abbr.JPG"></a>
+                <p><a title="字库集成电路" target="_blank" href="/buyer/promotion64112.html">字库集成电路</a></p>
+            </li>
+            <li><a title="贴片晶振滤波配套" target="_blank" href="/buyer/promotion59805.html"><img src="http://img.hqew.com/File/Images/120000-129999/121909/Promotion/2010042212243251626IEKT_Abbr.JPG"></a>
+                <p><a title="贴片晶振滤波配套" target="_blank" href="/buyer/promotion59805.html">贴片晶振滤波配套</a></p>
+            </li>
+            <li><a title="大洲 保险丝" target="_blank" href="/buyer/promotion79512.html"><img src="http://img.hqew.com/File/Images/0-9999/697/Promotion/2011070117404126844TQVO_Abbr.JPG"></a>
+                <p><a title="大洲 保险丝" target="_blank" href="/buyer/promotion79512.html">大洲 保险丝</a></p>
+            </li>
+            <li><a title="源兴洋科技主营：TI  MARVELL  BROADCOM系列 自己原装现货库存" target="_blank" href="/buyer/promotion82466.html"><img src="http://img.hqew.com/File/Images/60000-69999/64697/Promotion/20110729110339573NCPIXQ_Abbr.JPG"></a>
+                <p><a title="源兴洋科技主营：TI  MARVELL  BROADCOM系列 自己原装现货库存" target="_blank" href="/buyer/promotion82466.html">源兴洋科技主营：TI</a></p>
+            </li>
+        </ul>
+    </div>
+    <br clear="all" />
+    <div> <a class="" title="点击查看供应信息" target="_blank" href="/buyer">IC/二三极管</a><span>(9817万)</span>
+        <form target="_blank" method="get" id="IcSearchForm" action="">
+            <input type="text" title="请输入搜索的型号" name="SearchKeyword" id="IcSearchKeyword" maxlength="100">
+            <input type="submit" title="点击搜索" value="搜索">
+        </form>
+        <div class="index">索引：<a title="A" target="_blank" href="/iclist/a/1.html">A</a><a title="B" target="_blank" href="/iclist/b/1.html">B</a><a title="C" target="_blank" href="/iclist/c/1.html">C</a><a title="D" target="_blank" href="/iclist/d/1.html">D</a><a title="E" target="_blank" href="/iclist/e/1.html">E</a><a title="F" target="_blank" href="/iclist/f/1.html">F</a><a title="G" target="_blank" href="/iclist/g/1.html">G</a><a title="H" target="_blank" href="/iclist/h/1.html">H</a><a title="I" target="_blank" href="/iclist/i/1.html">I</a><a title="J" target="_blank" href="/iclist/j/1.html">J</a><a title="K" target="_blank" href="/iclist/k/1.html">K</a><a title="L" target="_blank" href="/iclist/l/1.html">L</a><a title="M" target="_blank" href="/iclist/m/1.html">M</a><a title="N" target="_blank" href="/iclist/n/1.html">N</a><a title="O" target="_blank" href="/iclist/o/1.html">O</a><a title="P" target="_blank" href="/iclist/p/1.html">P</a><a title="Q" target="_blank" href="/iclist/q/1.html">Q</a><a title="R" target="_blank" href="/iclist/r/1.html">R</a><a title="S" target="_blank" href="/iclist/s/1.html">S</a><a title="T" target="_blank" href="/iclist/t/1.html">T</a><a title="U" target="_blank" href="/iclist/u/1.html">U</a><a title="V" target="_blank" href="/iclist/v/1.html">V</a><a title="W" target="_blank" href="/iclist/w/1.html">W</a><a title="X" target="_blank" href="/iclist/x/1.html">X</a><a title="Y" target="_blank" href="/iclist/y/1.html">Y</a><a title="Z" target="_blank" href="/iclist/x/1.html">Z</a><a class="hide">&nbsp;</a><a class="hide">&nbsp;</a><a title="0" target="_blank" href="/iclist/0/1.html">0</a><a title="1" target="_blank" href="/iclist/1/1.html">1</a><a title="2" target="_blank" href="/iclist/2/1.html">2</a><a title="3" target="_blank" href="/iclist/3/1.html">3</a><a title="4" target="_blank" href="/iclist/4/1.html">4</a><a title="5" target="_blank" href="/iclist/5/1.html">5</a><a title="6" target="_blank" href="/iclist/6/1.html">6</a><a title="7" target="_blank" href="/iclist/7/1.html">7</a><a title="8" target="_blank" href="/iclist/8/1.html">8</a><a title="9" target="_blank" href="/iclist/9/1.html">9</a></div>
+    </div>
+    <div><a title="电力半导体器件" target="_blank" href="/tech/dlbdt/20001017.html">电力半导体器件</a><span>(292400)</span>
+        <p><a target="_blank" href="/tech/dlbdt/200010170004.html">IGBT模块</a><a target="_blank" href="/tech/dlbdt/200010170005.html">晶闸管智能模块</a><a target="_blank" href="/tech/dlbdt/200010170003.html">GTR模块</a><a target="_blank" class="more" title="点击查看更多电力半导体器件分类" href="/tech/dlbdt/20001017.html">更多...</a></p>
+    </div>
+    <div class="list8">
+        <ul>
+            <li><a target="_blank" title="知识问答" href="http://bbs.hqew.com/forumdisplay.php?fid=36" class="t">[知识问答]</a><a target="_blank" title="沈阳华强缤纷盛夏豪礼大派送" href="http://bbs.hqew.com/viewthread.php?tid=127421">沈阳华强缤纷盛夏豪礼大派送</a></li>
+            <li><a target="_blank" title="电子元器件热门排行榜" href="http://bbs.hqew.com/forumdisplay.php?fid=89" class="t">[电子元器件热..]</a><a target="_blank" title="上周电子元器件IC厂商新推10大热门新品（8月8日-8月11日）" href="http://bbs.hqew.com/viewthread.php?tid=125961">上周电子元器件IC厂商新推10大热门新品（8月8日</a></li>
+            <li><a target="_blank" title="华强培训室" href="http://bbs.hqew.com/forumdisplay.php?fid=22" class="t">[华强培训室]</a><a target="_blank" title="IC上传常见问题" href="http://bbs.hqew.com/viewthread.php?tid=90561">IC上传常见问题</a></li>
+            <li><a target="_blank" title="经验交流" href="http://bbs.hqew.com/forumdisplay.php?fid=4" class="t">[经验交流]</a><a target="_blank" title="从工程师到项目经理的转变" href="http://bbs.hqew.com/viewthread.php?tid=89327">从工程师到项目经理的转变</a></li>
+            <li><a target="_blank" title="业界新闻" href="http://bbs.hqew.com/forumdisplay.php?fid=35" class="t">[业界新闻]</a><a target="_blank" title="NEC公司在中国安装新的自动指纹识别系统" href="http://bbs.hqew.com/viewthread.php?tid=89322">NEC公司在中国安装新的自动指纹识别系统</a></li>
+            <li><a target="_blank" title="电路图纸" href="http://bbs.hqew.com/forumdisplay.php?fid=49" class="t">[电路图纸]</a><a target="_blank" title="2km(千米)调频发射机电路" href="http://bbs.hqew.com/viewthread.php?tid=88046">2km(千米)调频发射机电路</a></li>
+            <li><a target="_blank" title="电路图纸" href="http://bbs.hqew.com/forumdisplay.php?fid=49" class="t">[电路图纸]</a><a target="_blank" title="超声波移动物体检测装置的工作原理" href="http://bbs.hqew.com/viewthread.php?tid=79790">超声波移动物体检测装置的工作原理</a></li>
+            <li><a target="_blank" title="业界新闻" href="http://bbs.hqew.com/forumdisplay.php?fid=35" class="t">[业界新闻]</a><a target="_blank" title="ST推出符合航天电子系统质量要求的功率产品" href="http://bbs.hqew.com/viewthread.php?tid=79761">ST推出符合航天电子系统质量要求的功率产品</a></li>
+            <li><a target="_blank" title="场效应管" href="http://bbs.hqew.com/forumdisplay.php?fid=80" class="t">[场效应管]</a><a target="_blank" title="场效应管常识" href="http://bbs.hqew.com/viewthread.php?tid=75551">场效应管常识</a></li>
+            <li><a target="_blank" title="业界新闻" href="http://bbs.hqew.com/forumdisplay.php?fid=35" class="t">[业界新闻]</a><a target="_blank" title="2011照明灯饰几大主流产品的发展趋势分析" href="http://bbs.hqew.com/viewthread.php?tid=72944">2011照明灯饰几大主流产品的发展趋势分析</a></li>
+            <li><a target="_blank" title="经验交流" href="http://bbs.hqew.com/forumdisplay.php?fid=4" class="t">[经验交流]</a><a target="_blank" title="销售激励故事之命运掌握在手中" href="http://bbs.hqew.com/viewthread.php?tid=72367">销售激励故事之命运掌握在手中</a></li>
+            <li><a target="_blank" title="在线客服" href="http://bbs.hqew.com/forumdisplay.php?fid=21" class="t">[在线客服]</a><a target="_blank" title="2011的恰恰有个地方可以改进一下不？" href="http://bbs.hqew.com/viewthread.php?tid=71879">2011的恰恰有个地方可以改进一下不？</a></li>
+            <li><a target="_blank" title="在线客服" href="http://bbs.hqew.com/forumdisplay.php?fid=21" class="t">[在线客服]</a><a target="_blank" title="华强网现货认证问题" href="http://bbs.hqew.com/viewthread.php?tid=70062">华强网现货认证问题</a></li>
+        </ul>
+    </div>
+    <div class="list9">
+        <ul>
+            <li><span class="d">08-18</span><span class="p"><a title="点击查看 高新聘请国内外IC采购 职位介绍" target="_blank" href="/job/view142427.html">高新聘请国内外IC采购</a></span><a title="点击查看 金宇电子（香港）有限公司 所有招聘职位" target="_blank" href="/job/company201515.html">金宇电子（香港）有限公司</a></li>
+            <li><span class="d">08-18</span><span class="p"><a title="点击查看 采购工程师 职位介绍" target="_blank" href="/job/view70540.html">采购工程师</a></span><a title="点击查看 深圳市长城达电子科技有限公司 所有招聘职位" target="_blank" href="/job/company292099.html">深圳市长城达电子科技有限公司</a></li>
+            <li><span class="d">08-18</span><span class="p"><a title="点击查看 内存销售工程师 职位介绍" target="_blank" href="/job/view119789.html">内存销售工程师</a></span><a title="点击查看 深圳市贝乐天成科技有限公司 所有招聘职位" target="_blank" href="/job/company22693.html">深圳市贝乐天成科技有限公司</a></li>
+            <li><span class="d">08-18</span><span class="p"><a title="点击查看 国内业务 月薪+提成+社保 职位介绍" target="_blank" href="/job/view91559.html">国内业务 月薪+提成+社保</a></span><a title="点击查看 深圳市金柏亿联科技有限公司 所有招聘职位" target="_blank" href="/job/company305267.html">深圳市金柏亿联科技有限公司</a></li>
+            <li><span class="d">08-18</span><span class="p"><a title="点击查看 业务精英 职位介绍" target="_blank" href="/job/view142253.html">业务精英</a></span><a title="点击查看 深圳市科圳威电子有限公司 所有招聘职位" target="_blank" href="/job/company357492.html">深圳市科圳威电子有限公司</a></li>
+            <li><span class="d">08-18</span><span class="p"><a title="点击查看 聘：国内贸易 职位介绍" target="_blank" href="/job/view138341.html">聘：国内贸易</a></span><a title="点击查看 深圳市特胜康电子有限公司 所有招聘职位" target="_blank" href="/job/company270668.html">深圳市特胜康电子有限公司</a></li>
+            <li><span class="d">08-18</span><span class="p"><a title="点击查看 网络销售业务 职位介绍" target="_blank" href="/job/view132789.html">网络销售业务</a></span><a title="点击查看 深圳市泉光半导体有限公司 所有招聘职位" target="_blank" href="/job/company483490.html">深圳市泉光半导体有限公司</a></li>
+            <li><span class="d">08-18</span><span class="p"><a title="点击查看 外贸助理 职位介绍" target="_blank" href="/job/view138305.html">外贸助理</a></span><a title="点击查看 深圳市津利帝科技有限公司 所有招聘职位" target="_blank" href="/job/company398935.html">深圳市津利帝科技有限公司</a></li>
+            <li><span class="d">08-18</span><span class="p"><a title="点击查看 外贸业务员 职位介绍" target="_blank" href="/job/view98165.html">外贸业务员</a></span><a title="点击查看 深圳市广盛电子有限公司 所有招聘职位" target="_blank" href="/job/company124367.html">深圳市广盛电子有限公司</a></li>
+        </ul>
+    </div>
+    <div class="foot">
+        <p><a href="/about/index.html" target="_blank">关于华强电子网</a>-<a href="/about/contact.html" target="_blank">联系我们</a>-<a target="_blank" href="/Help/Default.html">帮助中心</a>-<a href="/about/service.html" target="_blank">服务介绍</a>-<a href="/sitemap/sitemap.html" target="_blank">网站导航</a>-<a href="/about/us_06.html" target="_blank">服务条款</a>-<a href="/about/us_05.html" target="_blank">法律声明</a>-<a href="/about/link.html" target="_blank">合作伙伴</a></p>
+        <p><a target="_blank" href="/">华强电子网</a>-<a target="_blank" href="http://122.11.55.148/gate/big5/www.hqew.com">繁体</a>-<a target="_blank" href="http://www.hqew.net/">English</a>|<a target="_blank" href="http://led.hqew.com/">华强LED网</a>|<a target="_blank" href="http://shouji.hqew.com/">华强手机制造网</a>|<a title="华强电子交易所(PartInChina.com)" target="_blank" href="http://www.partinchina.com/">华强电子交易所</a>|<a target="_blank" href="http://www.hqew.net/">外贸通</a>|<a target="_blank" href="http://www.hcsindex.com/">华强北<b>·</b>中国电子市场价格指数</a>|<a target="_blank" href="http://www.hqbuy.com/">华强商城</a>|<a target="_blank" href="http://www.hqelab.com/">华强电子检测中心</a>|<a target="_blank" href="http://www.elecfans.com/">电子发烧友</a></p>
+        <p><span>华强电子网版权所有 2002-2011</span><span>经营许可证：<a href="/about/us_04.html" target="_blank">粤B2-20090028</a></span><span>软件企业认证：<a href="/about/us_03.html" target="_blank">深R-2008-0255</a></span></p>
+    </div>
+</div>
+</body>
+<script>
+//取ID
+function _$(){return document.getElementById(arguments[0]);}
+//设置calss
+function _setClass(e,c){
+	e.className=c;
+}
+//判断calss
+function _hasClass(e,c){
+	return e.className.match(new RegExp('(\\s|^)'+c+'(\\s|$)'));
+}
+//添加calss
+function _addClass(e,c){
+	if (!_hasClass(e,c)){
+		e.className += ' ' + c;
+	}
+}
+//删除calss
+function _removeClass(e,c){
+	if (_hasClass(e,c)){
+		e.className=e.className.replace(new RegExp('(\\s|^)'+c+'(\\s|$)'),' ');
+	}
+}
+//替换calss
+function _replaceClass(e,c,n){
+	if (_hasClass(e,c)){
+		e.className=e.className.replace(new RegExp('(\\s|^)'+c+'(\\s|$)'),' '+n);
+	}
+}
+//搜索选择
+
+var tags=_$('search_tags').getElementsByTagName('LI');
+if(tags){
+for(var i=0; i<tags.length; i++){
+	tags[i].onclick=function(i){
+		return function(){
+			for(var j=0; j<tags.length; j++){
+				_removeClass(tags[j],'cur');
+			}
+			_addClass(this,'cur');
+		
+			if(i==3||i==4){
+				_$('search_keywords').style.width='360px';
+				_$('search_isexact').style.display='none';
+				_$('search_label').style.display='none';
+				_$('search_select').style.display='inline';
+			}
+			else{
+				_$('search_keywords').style.width='430px';
+				_$('search_isexact').style.display='inline';
+				_$('search_label').style.display='inline';
+				_$('search_select').style.display='none';
+			}
+		}
+	}(i);
+}
+}
+var nav=_$('nav_select').getElementsByTagName('span');
+if(nav){
+for(var i=0; i<nav.length; i++){
+	if(nav[i].className=='select'){
+	nav[i].onmouseover=function(){
+		this.getElementsByTagName('ul')[0].className='g-d-b';
+	};
+	nav[i].onmouseout=function(){
+		this.getElementsByTagName('ul')[0].className='g-d-n';
+	};
+}
+}
+}
+
+function next(o) {
+	do {
+		o = o.nextSibling
+	} while (o.nodeType !== 1);
+	return o
+}
+
+</script>
+</html>

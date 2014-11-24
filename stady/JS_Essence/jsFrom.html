@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>模拟jq写js框架</title>
+
+</head>
+
+<body>
+<input id="myInput"  type="text" value="Hello world!" size="50" />
+<input id="otherInput"  type="text" size="50" />
+<script type="text/javascript">
+//我们在这里模拟一下在这之前如果加载了其它框架的情形, 这个时候window.$不为空.
+window.$ = { whoAmI: function(){ console.log('This function result is from other js lib.');} };
+(function(){ // 创建最外层匿名函数.
+window._$ = window.$;//将别的框架定义的$暂存.
+//给Shaka加上$ 的别名.
+var Shaka = window.Shaka = window.$ = function(selector) { return new Shaka.fn.init(selector); };
+Shaka.fn = Shaka.prototype = { 
+	init: function(selector) { if(selector) this.selector = selector; return this; },
+	val: function(newValue) { 
+	//start val function body
+		if(!(this.selector && this.selector.indexOf('#') == 0 && this.selector.length != 1))
+			return; //简单地判断传入值非法, 最好使用正则
+		var id = this.selector.substring(1);
+		var obj = document.getElementById(id);
+		if(obj)//如果对象存在
+		{
+			if(newValue == undefined)
+				return obj.value;//获取目标对象的值.
+			obj.value = newValue;// 将目标对象的value属性设置为newValue.
+				return this; //为了使方法可以连续调用, 返回当前实例。
+		}
+	//end val function body
+	}
+};
+
+Shaka.fn.init.prototype = Shaka.fn;
+})();
+//扩展新的方法.
+(function($){ 
+	//console.log(obj.fn);
+	$.noConflict = function(){
+		window.$ = window._$;//把$还给在开始处取得的引用.
+	};
+})(Shaka);
+//如果没有引入其它的框架，可以这么写
+//console.log('object old value is '+$('#myInput').val());
+//console.log($('#myInput').val('I am 3 years now!').val());
+//强制使用完整名称.
+Shaka.noConflict();
+console.log('object old value is '+Shaka('#myInput').val());
+console.log(Shaka('#myInput').val('I am 5 years old now!').val());
+//Shaka('#otherInput').val('这里的值是使用Shaka(\'#otherInput\').val()方法来写入的哦');
+//或者可以这样写也行，仍然使用$, 把Shaka作为匿名函数的参数$传进去。
+(function($){
+	//又可以用$了, 哈哈
+	$('#otherInput').val('这里的值是使用Shaka(\'#otherInput\').val()方法来写入的哦');
+})(Shaka);
+//现在仍然可以使用$调用其它框架的方法.
+$.whoAmI();
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{
+"resources":
+	[
+		{"name":"bgImage","type":"image","url":"assets/bg.jpg"},
+		{"name":"man","type":"image","url":"assets/man.png"},
+		{"name":"man_txt","type":"image","url":"assets/man_txt.png"},
+		{"name":"tips","type":"image","url":"assets/tips.png"},
+		{"name":"title","type":"image","url":"assets/title.png"},
+		{"name":"women","type":"image","url":"assets/women.png"},
+		{"name":"women_txt","type":"image","url":"assets/women_txt.png"},
+		{"name":"bgResultMan","type":"image","url":"assets/bg_result_man.png"},
+		{"name":"bgResultWomen","type":"image","url":"assets/bg_result_women.png"},
+		{"name":"btnShare","type":"image","url":"assets/btn_share.png"},
+		{"name":"btnAgain","type":"image","url":"assets/btn_again.png"},
+		{"name":"btnLottery","type":"image","url":"assets/btn_lottery.png"},
+		{"name":"bgGame","type":"image","url":"assets/bg_game.png"},
+		{"name":"bgGame1","type":"image","url":"assets/bg_game_1.png"},
+		{"name":"bgGame2","type":"image","url":"assets/bg_game_2.png"},
+		{"name":"bgGame3","type":"image","url":"assets/bg_game_3.png"},
+		{"name":"sptMan1","type":"image","url":"assets/spt_man1.png"},
+		{"name":"sptMan2","type":"image","url":"assets/spt_man2.png"},
+		{"name":"sptWomen1","type":"image","url":"assets/spt_women1.png"},
+		{"name":"sptWomen2","type":"image","url":"assets/spt_women2.png"},
+		{"name":"errorPic","type":"image","url":"assets/error.png"},
+		{"name":"progressRemain","type":"image","url":"assets/progress_remain.png"},
+		{"name":"progressPast","type":"image","url":"assets/progress_past.png"},
+		{"name":"progressBorder","type":"image","url":"assets/progress_border.png"},
+		{"name":"bgPW1","type":"image","url":"assets/bg_w_p1.png"},
+		{"name":"bgPW2","type":"image","url":"assets/bg_w_p2.png"},
+		{"name":"bgPW3","type":"image","url":"assets/bg_w_p3.png"},
+		{"name":"bgPW4","type":"image","url":"assets/bg_w_p4.png"},
+		{"name":"bgPM1","type":"image","url":"assets/bg_m_p1.png"},
+		{"name":"bgPM2","type":"image","url":"assets/bg_m_p2.png"},
+		{"name":"bgPM3","type":"image","url":"assets/bg_m_p3.png"},
+		{"name":"bgPM4","type":"image","url":"assets/bg_m_p4.png"},
+		{"name":"arrow","type":"image","url":"assets/arrow.png"},
+		{"name":"tipsResult","type":"image","url":"assets/tips_result.png"},
+		{"name":"bgShare","type":"image","url":"assets/bg_l.png"},
+
+        {"url": "sound/error.mp3","type": "sound","name": "sdError"},
+        {"url": "sound/right.mp3","type": "sound","name": "sdRight"},
+
+        {"name":"description","type":"json","url":"config/description.json"}
+	],
+
+"groups":
+	[
+        {"name":"preload","keys":"description,bgImage,man,man_txt,tips,title,women,women_txt,bgResultMan,bgResultWomen,btnAgain,btnShare,btnLottery,bgGame,bgGame1,bgGame2,bgGame3,sptMan1,sptMan2,sptWomen1,sptWomen2,errorPic,progressRemain,progressPast,progressBorder,bgPW1,bgPW2,bgPW3,bgPW4,bgPM1,bgPM2,bgPM3,bgPM4,arrow,sdError,sdRight,tipsResult,wxico,bgShare"}
+
+	]
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<style type="text/css">
+.con{position: relative;width: 1200px;height: 800px;margin: 0 auto;}	
+.con span{opacity: 0;position: absolute;width: 200px;height: 200px;}
+.animate1{top:0;left:550px;background-color: #c00;}
+.animate2{right:0;top:150px;background-color: #0c0;}
+.animate3{bottom:0;left:550px;background-color: #00c;}
+.animate4{left:0;top:150px;background-color: #000;}
+
+.animate1{-webkit-animation:oanimate1 3s ease both;}
+.animate2{-webkit-animation:oanimate2 3s ease both;}
+.animate3{-webkit-animation:oanimate3 3s ease both;}
+.animate4{-webkit-animation:oanimate4 3s ease both;}
+
+
+@-webkit-keyframes oanimate1{
+	0%{opacity:1;-webkit-transform: translate(0,100px);}
+	75%{opacity:1;-webkit-transform: translate(0,100px);}
+	100%{opacity:0;-webkit-transform: translate(0,0);}
+}
+@-webkit-keyframes oanimate2{
+	0%{opacity:1;-webkit-transform: translate(-100px,0);}
+	50%{opacity:1;-webkit-transform: translate(-100px,0);}
+	75%{opacity:0;-webkit-transform: translate(0,0);}
+	100%{opacity:0;-webkit-transform: translate(0,0);}
+}
+@-webkit-keyframes oanimate3{
+	0%{opacity:1;-webkit-transform: translate(0,-100px);}
+	25%{opacity:1;-webkit-transform: translate(0,-100px);}
+	50%{opacity:0;-webkit-transform: translate(0,0);}
+	100%{opacity:0;-webkit-transform: translate(0,0);}
+}
+@-webkit-keyframes oanimate4{
+	0%{opacity:1;-webkit-transform: translate(100px,0);}
+	25%{opacity:0;-webkit-transform: translate(0,0);}
+	100%{opacity:0;-webkit-transform: translate(0,0);}
+}
+.animate .animate1{-webkit-animation:animate1 3s ease both;}
+.animate .animate2{-webkit-animation:animate2 3s ease both;}
+.animate .animate3{-webkit-animation:animate3 3s ease both;}
+.animate .animate4{-webkit-animation:animate4 3s ease both;}
+@-webkit-keyframes animate1{
+	0%{opacity:0;-webkit-transform: translate(0,0);}
+	25%{opacity:1;-webkit-transform: translate(0,100px);}
+	100%{opacity:1;-webkit-transform: translate(0,100px);}
+}
+@-webkit-keyframes animate2{
+	0%{opacity:0;-webkit-transform: translate(0,0);}
+	25%{opacity:0;-webkit-transform: translate(0,0);}
+	50%{opacity:1;-webkit-transform: translate(-100px,0);}
+	100%{opacity:1;-webkit-transform: translate(-100px,0);}
+}
+@-webkit-keyframes animate3{
+	0%{opacity:0;-webkit-transform: translate(0,0);}
+	50%{opacity:0;-webkit-transform: translate(0,0);}
+	75%{opacity:1;-webkit-transform: translate(0,-100px);}
+	100%{opacity:1;-webkit-transform: translate(0,-100px);}
+}
+@-webkit-keyframes animate4{
+	0%{opacity:0;-webkit-transform: translate(0,0);}
+	75%{opacity:0;-webkit-transform: translate(0,0);}
+	100%{opacity:1;-webkit-transform: translate(100px,0);}
+}
+</style>
+
+</head>
+
+<body>
+
+
+<div class="con animate" id="con">
+	<span class="animate1"></span>
+	<span class="animate2"></span>
+	<span class="animate3"></span>
+	<span class="animate4"></span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="../css/drag.css"/>
+<script type="text/javascript" src="../js/jq_1.6.js"></script>
+<script type="text/javascript">
+
+jQuery.fn.extend({
+	L_drag:function(options){
+		
+					console.log(options);
+		var systypes = options.data || {},//获取数据源集合
+		    containId = options.containId || "container";
+			
+		var _drag = $('#drag'),//拖拽元素容器
+			_wrap = '<div class="tms_wrap"><p class="tmsw_p"></p></div>',
+			cX,//鼠标相对与所点击元素左上角的坐标
+			cY,
+			onStop = function(con){//将所拖元素的值放入容器
+				var _systype = "systype",_sysvalue = "sysvalue",
+					_stypes = systypes,
+					this_stype = con.attr(_systype),//当前所处的容器的systype
+					stype = _drag.children().attr(_systype),//拖动的systype
+					svalue = _drag.children().attr(_sysvalue);
+				if(_stypes[stype].higher === this_stype){//当拖动标签的上级等于所处容器的systype时(满足相容条件)tmsw_del
+					var temp = $(_wrap).append(_stypes[stype][svalue]),
+					temp_c = temp.find("p.tmsw_p").append(_stypes[stype].oper);
+					temp.mouseover(function(){
+						temp_c.show();
+					}).mouseout(function(){
+						temp_c.hide();
+					});
+					temp_c.find("#tmsw_del").click(function(){
+						if(confirm("确定要删除该布局及内部所有元素吗？")){
+							temp.remove();
+						}
+					});
+					con.append(temp);
+				}
+				else{
+					alert("不满足相容条件");
+				}
+			};
+		
+		this.live("mousedown",function(event){
+			var offset = $(this).offset(),
+				dom = document;
+				cX = event.clientX - offset.left,
+				cY = event.clientY - offset.top;
+			_drag.html(this.cloneNode(true)).css({"left":event.clientX-cX,"top":event.clientY-cY}).show();
+			
+			$(dom).bind("mousemove.domMouseover",function move(event){//
+						   
+				window.getSelection ? window.getSelection().removeAllRanges() : dom.selection.empty();//取消拖拽时产生的选中文本
+				_drag.css({"left":event.clientX-cX,"top":event.clientY-cY});	
+				
+			}).mouseup(function(event){
+			console.log(containId);
+				var _con = $('#'+containId).find("div").andSelf(),
+					i = _con.length;
+				for(;i;i-=1){
+					var ele = _con[i-1],
+						_off = ele.getBoundingClientRect(),//获得所有容器的尺寸及坐标
+						_w = ele.offsetWidth,
+						_h = ele.offsetHeight,
+						_pb = parseInt(ele.currentStyle?(ele.currentStyle["paddingBottom"]):(getComputedStyle(ele,null)["paddingBottom"])),
+						_x = _off.left,
+						_y = _off.top,
+						_ex = event.clientX,
+						_ey = event.clientY;
+						
+					if(_ex>_x&&_ex<_x+_w && _ey>_y&&_ey<_y+_h+_pb){//当鼠标释放时,停在某个容器内则执行onStop函数
+						onStop($(ele));
+						break;
+					}
+				}
+				
+				if(_drag[0].releaseCapture){_drag[0].releaseCapture();}
+				_drag.css({"left":"-100px","top":"-100px"}).hide();
+				$(dom).unbind("mousemove.domMouseover").unbind("mouseup");//取消绑定mousemove事件的move句柄
+			});
+			
+			if(this.setCapture){_drag[0].setCapture()}	
+			else{event.preventDefault();}			
+			
+		});
+	}
+});
+$(function(){
+	
+	var systypes =  {//systypes = ["container","layout","box","asm"],
+			layout:{
+				higher:"container",//所属上级
+				oper:'<span id="tmsw_del">删除</span>',
+				l100:'<div class="wrap"><div class="w100p lo" systype="layout"></div></div>',
+				l960:'<div class="wrap"><div class="w960 lo" systype="layout"></div></div>',
+				l250_700:'<div class="wrap"><div class="w250 lo" systype="layout"></div><div class="w700 ml10 lo" systype="layout"></div></div>',
+				l345_345_250:'<div class="wrap"><div class="w345 lo" systype="layout"></div><div class="w345 ml10 lo" systype="layout"></div><div class="w250 ml10 lo" systype="layout"></div></div>',
+				l250_345_345:'<div class="wrap"><div class="w250 lo" systype="layout"></div><div class="w345 ml10 lo" systype="layout"></div><div class="w345 ml10 lo" systype="layout"></div></div>',
+				l700_250:'<div class="wrap"><div class="w700 lo" systype="layout"></div><div class="w250 ml10 lo" systype="layout"></div></div>'
+			},
+			box:{
+				higher:"layout",
+				oper:'<span id="tmsw_del">删除</span>',
+				box1:'<dl class="box-o"><dt><a class="more" href="#">进入竞价排名专栏</a><h3>今日竞价</h3></dt><dd><div class="list1"><ul><li class="title"><span class="c1">关键词</span><span class="c2">参与</span><span class="c3">当前排名第一位</span></li></ul><div id="test1"><ul><li><span class="c1"><a class="g-c-b" target="_blank" href="/buyer/bidding_LM393.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl00_UiLink">LM393</a></span><span class="c2">26</span><span class="c3"><a title="点击查看 深圳市美科电子商行 简介" target="_blank" href="http://mkdz3d003.hqew.com/">深圳市美科电子商行</a></span></li><li><span class="c1"><a target="_blank" href="/buyer/bidding_78L05.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl01_UiLink">78L05</a></span><span class="c2">26</span><span class="c3"><a title="点击查看 深圳市联通电子经营部 简介" target="_blank" href="http://liantongdz.hqew.com/">深圳市联通电子经营部</a></span></li><li><span class="c1"><a target="_blank" href="/buyer/bidding_78M05.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl02_UiLink">78M05</a></span><span class="c2">25</span><span class="c3"><a title="点击查看 深圳市福田区新亚洲二期德诚电子商行 简介" target="_blank" href="http://dcdz-ic.hqew.com/">深圳市福田区新亚洲二期德诚电子商行</a></span></li><li><span class="c1"><a target="_blank" href="/buyer/bidding_LM358.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl03_UiLink">LM358</a></span><span class="c2">24</span><span class="c3"><a title="点击查看 深圳市世纪天创电子经营部 简介" target="_blank" href="http://tc.hqew.com/">深圳市世纪天创电子经营部</a></span></li><li><span class="c1"><a target="_blank" href="/buyer/bidding_MB6S.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl04_UiLink">MB6S</a></span><span class="c2">24</span><span class="c3"><a title="点击查看 深圳市科展电子商行 简介" target="_blank" href="http://kezhan88.hqew.com/">深圳市科展电子商行</a></span></li><li><span class="c1"><a target="_blank" href="/buyer/bidding_MC34063.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl05_UiLink">MC34063</a></span><span class="c2">23</span><span class="c3"><a title="点击查看 深圳市新通科电子有限公司华强销售部 简介" target="_blank" href="http://hongyudz.hqew.com/">深圳市新通科电子有限公司华强销售部</a></span></li><li><span class="c1"><a target="_blank" href="/buyer/bidding_AT24C02.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl06_UiLink">AT24C02</a></span><span class="c2">21</span><span class="c3"><a title="点击查看 深圳市信隆电子商行 简介" target="_blank" href="http://yongchengdz.hqew.com/">深圳市信隆电子商行</a></span></li><li><span class="c1"><a target="_blank" href="/buyer/bidding_LM324.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl07_UiLink">LM324</a></span><span class="c2">21</span><span class="c3"><a title="点击查看 深圳市腾盛电子经营部 简介" target="_blank" href="http://tselec.hqew.com/">深圳市腾盛电子经营部</a></span></li><li><span class="c1"><a target="_blank" href="/buyer/bidding_TL431.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl08_UiLink">TL431</a></span><span class="c2">21</span><span class="c3"><a title="点击查看 深圳市联通电子经营部 简介" target="_blank" href="http://liantongdz.hqew.com/">深圳市联通电子经营部</a></span></li><li><span class="c1"><a target="_blank" href="/buyer/bidding_6N137.html" title="点击查看该关键词竞价信息" id="HomeBidding1_rptBidding_ctl09_UiLink">6N137</a></span><span class="c2">20</span><span class="c3"><a title="点击查看 深圳市联易达电子商行 简介" target="_blank" href="http://qiangda88.hqew.com/">深圳市联易达电子商行</a></span></li></ul></div></div></dd></dl>'
+			}
+		};
+	
+	$('#tool .l_item').L_drag({data:systypes});
+	
+	
+});
+
+</script>
+</head>
+
+<body>
+	<div class="drag" id="drag"></div>
+	<div class="w">
+        <div class="tool" id="tool">
+            <div class="">
+                <p class="t_tit">选择布局</p>
+                <div>
+                	<span class="l_item" systype="layout" sysvalue="l100" title="拖拽到模版"><img src="../images/layout_03.jpg" width="57" height="55" /></span>
+                    <span class="l_item" systype="layout" sysvalue="l250_700" title="拖拽到模版"><img src="../images/layout_05.jpg" width="57" height="55" /></span>
+                    <span class="l_item" systype="layout" sysvalue="l345_345_250" title="拖拽到模版"><img src="../images/layout_07.jpg" width="57" height="55" /></span>
+                    <span class="l_item" systype="layout" sysvalue="l250_345_345" title="拖拽到模版"><img src="../images/layout_09.jpg" width="57" height="55" /></span>
+                    <span class="l_item" systype="layout" sysvalue="l700_250" title="拖拽到模版"><img src="../images/layout_11.jpg" width="57" height="55" /></span>
+                    <span class="l_item" systype="layout" sysvalue="l960" title="拖拽到模版"><img src="../images/layout_13.jpg" width="57" height="55" /></span>
+                	<span class="l_item" systype="layout" sysvalue="l960" title="拖拽到模版"><img src="../images/layout_21.jpg" width="57" height="55" /></span>
+                </div>
+            </div>
+            <div class="">
+                <p class="t_tit">选择盒模型</p>
+                
+                <div>
+                	<span class="l_item" systype="box" sysvalue="box1" title="拖拽到模版"><img src="../images/box1.jpg" width="57" height="55" /></span>
+                	
+                </div>
+            </div>
+        </div>
+        
+        <div class="container" id="container" systype="container">
+        	
+            
+        </div>
+        
+        
+    </div>
+</body>
+</html>

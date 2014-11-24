@@ -1,0 +1,147 @@
+/*reset*/
+html { _overflow-y:scroll; }
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+body, button, input, select, textarea { font:12px/1.5em Arial, Tahoma; color:#111; }
+button, input, select, textarea, h1, h2, h3, h4, h5, h6 { font-size:100%; }
+button, input, select, textarea, label, img { vertical-align:middle; }
+ul, ol { list-style:none; }
+a { text-decoration:none; color:#2575b8; vertical-align:baseline; }
+a:hover { text-decoration:underline; color:#9b221a; }
+table { border-collapse:collapse; border-spacing:0; }
+label { _padding-top:3px; _zoom:1; }
+button, input, select, textarea, label { margin-right:5px; }
+hr { border:none; border-top:1px #ccc solid; }
+/*input*/
+.g-btn { height:25px; line-height:22px; padding:0 5px; _padding:0; }
+.g-txt { height:23px; border:#7f9db9 solid 1px; padding:0 3px; }
+
+.g-lo { min-width:100px; min-height:20px; }
+
+/*box*/
+.g-box { }
+.g-box .bar { padding:0 14px; background:url(/images/bg.png) 0 -289px; margin-top:10px; }
+.g-box .bar a { border: 1px solid #ccc; border-bottom: none; display: inline-block; height:26px; line-height:26px; overflow:hidden; padding:0 20px; margin-right:3px; background:url(/images/bg.png) 0 -80px; cursor:pointer; }
+.g-box .bar a.cur { background-position:0 -110px; font-weight:bold; }
+.g-box .con { padding:10px; min-height:50px; _height:50px; }
+/*搜索*/
+.g-search { border:#B2C2CD solid 1px; background:#D8E3EB; padding:10px; margin-bottom:10px; }
+.g-search div { display:inline-block; white-space:nowrap; }
+.g-search div { *display:inline;
+}
+.g-search .br { display:block; height:5px; overflow:hidden; }
+/*表格*/
+.g-list { margin-bottom:10px; }
+.g-list table, .g-form { width:100%; }
+.g-list tr.over { background:#FFF6D0; }
+.g-list th, .g-list td, .g-form th, .g-form td { line-height:21px; padding:5px; }
+.g-list th { background:#D8E3EB; text-align:left; white-space:nowrap; }
+.g-form th { background:#f8f8f8; text-align:right; }
+/*底部*/
+.g-bottom { background:#F6F7F8; border:#ccc solid 1px; padding:5px 10px; margin-bottom:10px; }
+/*翻页*/
+.g-page { float:right; line-height:22px; }
+.g-page span { margin-left:10px; }
+.g-page a { padding:0 7px; float:left; height:22px; display:inline; margin-right:2px; background:#fff; border:#ccc solid 1px; color:#9B221A; text-decoration:none; }
+.g-page a.cur { background:#9B221A; border:#9B221A solid 1px; color:#fff; }
+/*弹出层*/
+.g-popup { border:#ccc solid 1px; background:#F4F4F4; width:400px; margin:50px auto; }
+.g-popup .bar { height:29px; line-height:29px; overflow:hidden; background:url(/images/bg.png) 0 -40px; color:#404040; font-weight:bold; padding:0 10px; }
+.g-popup .bar a { height:14px; width:14px; overflow:hidden; background:url(/images/bg.png) -40px -220px; float:right; margin-top:8px; }
+.g-popup .con { min-height:50px; border:#ccc solid 1px; margin:0 4px 4px; background:#fff; padding:20px; line-height:24px; }
+.g-popup .con .foot { padding-top:20px; }
+/*404*/
+.g-err { background:#FFF8CF; border:#FFC36C solid 1px; padding:20px; }
+.g-img { border: 1px solid #CCCCCC; padding: 1px; }
+/*弹层*/
+.g-swin { margin:10px; }
+.g-f-r { float:right; }
+.g-f-l { float:left; }
+.g-cf:after { clear: both; content: ""; display: table; }
+.g-cf { zoom:1; }
+.g-dn { display:none; }
+.g-db { display:block; }
+.g-di { display:inline; }
+/*背景色*/
+.g-bc-f0 { background-color:#f0f0f0; }
+/*字体红色*/
+.g-c-r { color:#F00; }
+/*字体灰色*/
+.g-c-g { color:#808080; }
+/*字体宋体*/
+.g-ff-s { font-family:宋体; }
+/*字体加粗*/
+.g-fw-b { font-weight:bold; }
+/*字体大小*/
+.g-fz-12 { font-size:12px; }
+/*行高2倍*/
+.g-lh-2 { line-height:2em; }
+/*外边距*/
+.g-m-10 { margin:10px; }
+.g-mtb-10 { margin-top:10px; margin-bottom:10px; }
+.g-mlr-10 { margin-left:10px; margin-right:10px; }
+.g-mt-10 { margin-top:10px; }
+.g-mb-10 { margin-bottom:10px; }
+.g-ml-10 { margin-left:10px; }
+.g-mr-10 { margin-right:10px; }
+/*内边距*/
+.g-p-10 { padding:10px; }
+.g-ptb-10 { padding-top:10px; padding-bottom:10px; }
+.g-plr-10 { padding-left:10px; padding-right:10px; }
+.g-pt-10 { padding-top:10px; }
+.g-pb-10 { padding-bottom:10px; }
+.g-pl-10 { padding-left:10px; }
+.g-pr-10 { padding-right:10px; }
+/*居右、中、左*/
+.g-ta-r { text-align:right; }
+.g-ta-c { text-align:center; }
+.g-ta-l { text-align:left; }
+/*缩进2个字符*/
+.g-ti-2 { text-indent:2em; }
+/*不换行*/
+.g-ws-w { white-space:nowrap; }
+
+/* 新版诚信图标 */
+.g-ico-ncx0,.g-ico-ncx15,.g-ico-ncx14,.g-ico-ncx13,.g-ico-ncx12,.g-ico-ncx11,.g-ico-ncx25,.g-ico-ncx24,.g-ico-ncx23,.g-ico-ncx22,.g-ico-ncx21,.g-ico-ncx35,.g-ico-ncx34,.g-ico-ncx33,.g-ico-ncx32,.g-ico-ncx31,.g-ico-ncx45,.g-ico-ncx44,.g-ico-ncx43,.g-ico-ncx42,.g-ico-ncx41{background-image:url(/images/HonestyIcon.png);background-repeat:no-repeat;height:16px;display:block;line-height:16px;text-indent:-9999px; width:36px; margin-top:3px;}
+.g-ico-ncx15{background-position:-36px -104px;}
+.g-ico-ncx14{background-position:-36px -78px;}
+.g-ico-ncx13{background-position:-36px -52px;}
+.g-ico-ncx12{background-position:-36px -26px;}
+.g-ico-ncx11{background-position:-36px 0px;}
+.g-ico-ncx25{background-position:-36px -234px;}
+.g-ico-ncx24{background-position:-36px -208px;}
+.g-ico-ncx23{background-position:-36px -182px;}
+.g-ico-ncx22{background-position:-36px -156px;}
+.g-ico-ncx21{background-position:-36px -130px;}
+.g-ico-ncx35{background-position:-36px -364px;}
+.g-ico-ncx34{background-position:-36px -338px;}
+.g-ico-ncx33{background-position:-36px -312px;}
+.g-ico-ncx32{background-position:-36px -286px;}
+.g-ico-ncx31{background-position:-36px -260px;}
+.g-ico-ncx45{background-position:-36px -494px;}
+.g-ico-ncx44{background-position:-36px -468px;}
+.g-ico-ncx43{background-position:-36px -442px;}
+.g-ico-ncx42{background-position:-36px -416px;}
+.g-ico-ncx41{background-position:-36px -390px;}
+.g-ico-ncx0{background-position:-36px -520px;}
+
+.g-ico-ncx115,.g-ico-ncx114,.g-ico-ncx113,.g-ico-ncx112,.g-ico-ncx111,.g-ico-ncx125,.g-ico-ncx124,.g-ico-ncx123,.g-ico-ncx122,.g-ico-ncx121,.g-ico-ncx135,.g-ico-ncx134,.g-ico-ncx133,.g-ico-ncx132,.g-ico-ncx131,.g-ico-ncx145,.g-ico-ncx144,.g-ico-ncx143,.g-ico-ncx142,.g-ico-ncx141{background-image:url(/images/HonestyIcon.png);background-repeat:no-repeat;height:16px;display:block;line-height:16px;text-indent:-9999px; width:18px; margin-top:3px;}
+.g-ico-ncx115{background-position:0px -104px;}
+.g-ico-ncx114{background-position:0px -78px;}
+.g-ico-ncx113{background-position:0px -52px;}
+.g-ico-ncx112{background-position:0px -26px;}
+.g-ico-ncx111{background-position:0px 0px;}
+.g-ico-ncx125{background-position:0px -234px;}
+.g-ico-ncx124{background-position:0px -208px;}
+.g-ico-ncx123{background-position:0px -182px;}
+.g-ico-ncx122{background-position:0px -156px;}
+.g-ico-ncx121{background-position:0px -130px;}
+.g-ico-ncx135{background-position:0px -364px;}
+.g-ico-ncx134{background-position:0px -338px;}
+.g-ico-ncx133{background-position:0px -312px;}
+.g-ico-ncx132{background-position:0px -286px;}
+.g-ico-ncx131{background-position:0px -260px;}
+.g-ico-ncx145{background-position:0px -494px;}
+.g-ico-ncx144{background-position:0px -468px;}
+.g-ico-ncx143{background-position:0px -442px;}
+.g-ico-ncx142{background-position:0px -416px;}
+.g-ico-ncx141{background-position:0px -390px;}

@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="/hqew/com/base.css"/>
+<style>
+.sthead {background-color: #5A5A5A;height:32px;line-height:32px;color:#fff}
+.stbody {overflow:hidden;}
+.stbody li{height:42px;line-height:21px;}
+.sthead li,.stbody li {float:left;padding-left:10px;}
+
+</style>
+
+<script type="text/javascript">
+String.prototype.Trim = function() {
+    return this.replace(/(^\s*)|(\s*$)/g, "");
+}
+
+function IsSpecialString(reg,str) {
+    var regex = reg;
+    if (regex.test(str)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
+function sample_Search() {
+    var pModel = document.getElementById("sPModel").value.Trim();
+    var sIsExactSearch = document.getElementById("sIsExactSearch").checked ? 1 : 0;
+    var pProductor = document.getElementById("sProductor").value.Trim();
+    var pProductDate = document.getElementById("sProductDate").value.Trim();
+    var pPackage = document.getElementById("sPackage").value.Trim();
+
+    var SpecialRegex = /[<>&%*\\]/;
+    var FilterRegex = /[\/_.]$/;
+    if (IsSpecialString(SpecialRegex, pModel) || IsSpecialString(SpecialRegex, sIsExactSearch) || IsSpecialString(SpecialRegex, pProductor) || IsSpecialString(SpecialRegex, pProductDate) || IsSpecialString(SpecialRegex, pPackage)) {
+        alert("您输入的内容包含非法字符\"<\"、\">\"、\"%\"、\"&\"、\"*\"、\"\\\"");
+        return;
+    }
+    if (pModel != "") {
+        if (pModel.length < 2) {
+            alert("型号不能少于两个字符！");
+            return;
+        }
+    }
+    else {
+        alert("请输入您要找的产品型号！");
+        return;
+    }
+
+    if (IsSpecialString(FilterRegex, pModel)) {
+        pModel = pModel.substring(0, pModel.length - 1);
+    }
+
+    if (IsSpecialString(FilterRegex, pPackage)) {
+        pPackage = pPackage.substring(0, pPackage.length - 1);
+    }
+
+    if (IsSpecialString(FilterRegex, pProductor)) {
+        pProductor = pProductor.substring(0, pProductor.length - 1);
+    }
+
+    if (IsSpecialString(FilterRegex, pProductDate)) {
+        pProductDate = pProductDate.substring(0, pProductDate.length - 1);
+    }
+    
+    location.href = "/buyer/sample_" + encodeURIComponent(pProductor) + "_" + encodeURIComponent(pProductDate) + "_" + encodeURIComponent(pPackage) + "_" + encodeURIComponent(sIsExactSearch) + "_p1_" + encodeURIComponent(pModel) + ".html";
+}
+
+
+function enter(event) {
+	var e = event || window.event;
+    if (e.keyCode == 13) {
+        sample_Search();
+    }
+}
+
+</script>
+</head>
+
+<body>
+
+
+
+
+
+<div class="g-w-990 g-mlr-a">
+	
+    <!--样片搜索表单-->
+    <div class="g-box-g g-bc-f7 g-p-10 g-mb-10">
+    	<b class="g-fw-b">样片搜索：</b>
+        型号<input type="text" value="" class="g-ipt g-w-100 g-mr-5" size="17" maxlength="30" id="sPModel" name="sPModel" onkeydown="enter(event);" />
+        <input type="checkbox" id="sIsExactSearch" name="icjq" />精确&nbsp;
+        厂商<input type="text" class="g-ipt g-w-60 g-mr-5" size="6" id="sProductor" name="sProductor" onkeydown="enter(event);" />
+        批号<input type="text" class="g-ipt g-w-60 g-mr-5" size="6" id="sProductDate" name="sProductDate" onkeydown="enter(event);" />
+        封装<input type="text" class="g-ipt g-w-60 g-mr-5"  size="6" id="sPackage" name="sPackage" onkeydown="enter(event);" />
+        <a href="javascript:;" onclick="sample_Search()" class="g-btn-12"><em>搜索</em><b></b></a>
+    </div>
+    
+    
+    <!--样片搜索列表-->
+    <div class="g-mb-10">
+    <ul class="sthead">
+        <li class="g-w-160">型号</li>
+        <li class="g-w-90">厂商</li>
+        <li class="g-w-90">批号</li>
+        <li class="g-w-90">封装</li>
+        <li class="g-w-320">供应商</li>
+        <li class="g-w-90">所在城市</li>
+        <li class="g-w-50 g-ta-r">联系方式</li>
+    </ul>      
+    <tms_bind id="repeaterMain">
+    
+    <ul class='stbody <%#(Container.ItemIndex % 2)>0?"g-bc-f7":""%>'>
+        <li class="g-w-160">{#0,型号,OV07725-V28#}</li>
+        <li class="g-w-90">{#1,厂商,OV#}</li>
+        <li class="g-w-90">{#2,批号,1023#}</li>
+        <li class="g-w-90">{#3,封装,BGACSP#}</li>
+        <li class="g-w-320">
+        	<a href="{#4,供应商href,http://wellspring.hqew.com/#}" class="g-ws-w" title="{#5,供应商title,深圳市福田区卓越科讯电子经营部#}">{#6,供应商text,深圳市福田区卓越科讯电子经营部#}</a>
+            <p>
+            	<a href="/topic/provider2010/result.html" class="g-ico-pro3 {#7,最佳/潜力/优质供应商是否隐藏,#}" title="{#8,最佳/潜力/优质供应商title,2010最具潜力分销企业#}"></a>
+                <a href="/Service/iscp.html" title="ISCP现货会员" class="g-ico-iscp {#9,iscp是否隐藏,#}"></a>
+                <a href="{#10,诚信通会员href,http://www.hqew.com/Service/iscp.html#}" class="g-ico-honestyeasy {#11,诚信通是否隐藏,#}" title="诚易通会员"></a>
+            </p>
+        </li>
+        <li class="g-w-90">{#12,所在城市,深圳市#}</li>
+        <li class="g-w-50 g-ta-r"><a href="{#13,联系方式href,http://wellspring.hqew.com/contact.html#}">查看</a></li>
+    </ul>
+    
+    </tms_bind>
+    </div>
+    
+
+
+</div>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>函数的调用</title>
+<script type="text/javascript" src="com/base.js"></script>
+<script type="text/javascript">
+/*调用函数的四种模式：方法调用，函数调用，构造函数调用，apply调用*/
+var myObject={
+	value:1,
+	increment:function(inc){
+		this.value+= typeof inc ==='number' ? inc:1;
+	},
+	getValue:function(){
+		return this.value;
+	}
+}
+//方法调用
+myObject.increment();
+console.log("方法调用输出:"+myObject.getValue());
+
+myObject.double=function(){
+	var that = this;
+	var helper = function(){
+		//这里的this指向全局对象（window）
+		//that.value = add(that.value,that.value);
+		return function(){
+			this.value = add(that.value,that.value);
+		}
+	}();
+	function add(a,b){
+		return a + b;
+	}
+	//return helper();//函数调用
+}
+myObject.double();
+console.log("函数调用:"+myObject.getValue());
+
+//构造函数调用
+var Quo = function(string){
+	this.status = string;
+}
+Quo.prototype.getStatus = function(){
+	return this.status;
+}
+var myQuo = new Quo("confused");//构造函数调用
+console.log("构造函数调用:"+myQuo.getStatus());
+
+//apply调用
+var statusObject = {
+	status:'a-ok'
+}
+var status=myQuo.getStatus.apply(statusObject);
+console.log("apply调用:"+status);
+
+
+var arry = [1,2,3,10,45,85,2];
+var sum = function(){
+	var res=0;
+	for(var i=0;i<arguments.length;i+=1){
+		res+=arguments[i];
+	}
+	return res;
+}
+console.log("函数调用:"+sum(arry));//函数调用:01,2,3,10,45,85,2
+console.log("apply调用:"+sum.apply(null,arry));//apply调用:148
+
+
+</script>
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

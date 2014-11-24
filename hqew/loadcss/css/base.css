@@ -1,0 +1,32 @@
+﻿@charset "utf-8";
+body{font-size:12px;line-height:1.4;background-color:#f4f4f4;font-family:Tahoma,'宋体',Verdana, Geneva;color:#333}
+body,dl,dd,h1,h2,h3,p,form{margin:0;}ul{margin:0; padding:0;}h1,h2,h3{font-weight:normal;font-size:12px;}
+ul,li{list-style-type:none}img,input{border:0}b{font-weight:normal}
+a:link,a:visited{text-decoration:none;color:#555}
+a:hover,a:active{text-decoration:underline;color:#ff9c00}
+.b{font-weight:bold!important;}.fw_n{font-weight:normal!important}
+.l{float:left;_display:inline;}.r{float:right;_display:inline;}.clear{clear:both}
+.w{width:970px;margin-left:auto;margin-right:auto;clear:both}
+/*color*/
+.white{color:#fff!important}.gray_2{color:#a2a2a2!important}.gray{color:#666!important}.gray3{color:#333!important}.orange_2{color:#f4a86e}.orange{color:#ff6600!important}.orange2{color:#DA5600!important}.rose{color:#d61455!important}.purple{color:#8460b1!important;}.blue{color:#569ec4!important}.green2{color:#487a0b!important}.brown_2{color:#9f7b00!important}.brown{color:#c77a00!important}.brown2{color:#bd590d!important}
+.bgyw_3{background-color:#ffef8d}.bgyw1{background-color:#fae661}.bggr_3{background-color:#eaf0e4}.bggr_4{background-color:#f0f8c5}.bgbl_3{background-color:#eaf1f4}.bgbl{background-color:#569ec4}.bgg_7{background-color:#f7f7f7}.bgg_1{background-color:#e9e9e9}.bgg{background-color:#c4c4c4!important}.bgo_3{background-color:#ffecd1}.bgwt{background-color:#fff}
+/*common*/
+.td_u{text-decoration:underline!important}.td_n{text-decoration:none!important}
+.disn{display:none!important}.disb{display:block}.disib{display:inline-block}
+.pos_a{position:absolute}.pos_r{position:relative}
+.of_h{overflow:hidden}.of_hn{overflow:hidden;white-space:nowrap}
+.hr10{font-size:0;line-height:0;clear:both;height:10px}
+.tac{text-align:center}.tar{text-align:right}
+.td1e{text-indent:1em}.td2e{text-indent:2em}
+.f24{font-size:24px}.f20{font-size:20px}.f16{font-size:16px}.f14{font-size:14px}.f12{font-size:12px}.f10{font-size:10px}.f0{font-size:0}.fm_yh{font-family:"微软雅黑"}
+
+.lh{line-height:1.6}.lh20p{line-height:20px}.lh22p{line-height:22px}.lh28p{line-height:28px}.lh30p{line-height:30px}.lh32p{line-height:32px}
+.pdtb8{padding:8px 0}.pdlr10{padding:0 10px}.pd10{padding:10px}.pdt10{padding-top:10px}.pdt20{padding-top:20px}.pdb5{padding-bottom:5px}.pdb10{padding-bottom:10px}.pdl5{padding-left:5px}.pdl10{padding-left:10px}.pdr15{padding-right:15px}
+.mc{margin-left:auto;margin-right:auto}.mg8{margin:8px}.mglr5{margin-left:5px;margin-right:5px}.mglr10{margin-left:10px;margin-right:10px}.mglr15{margin-left:15px;margin-right:15px}.mgl5{margin-left:5px}.mgl10{margin-left:10px}.mgl15{margin-left:15px}.mgl40{margin-left:40px}.mgl75{margin-left:75px}.mgl100{margin-left:100px}.mgr5{margin-right:5px}.mgr10{margin-right:10px}.mgr20{margin-right:20px}.mgr70{margin-right:70px}.mgt5{margin-top:5px;}.mgt10{margin-top:10px;}.mgt15{margin-top:15px;}.mgb10{margin-bottom:10px;}.mgtb10{margin:10px 0;}
+/*border*/
+.b1g{border-width:1px}.b5g{border-width:5px}.bb1dg,.bb1g,.bb1dhg{border-width:0 0 1px}.br1g{border-width:0 1px 0 0;}
+.b1g,.bb1g,.b5g,.br1g{border-style:solid}.bb1dg{border-style:dotted}.bb1dhg{border-style:dashed}
+.b1g,.bb1dg,.bb1g,.b5g,.br1g,.bb1dhg{border-color:#d9d9d9}
+
+.wc{width:960px;margin-left:auto;margin-right:auto}.w960{width:960px}.w710{width:710px}.w680{width:680px}.w690{width:690px}.w380{width:380px}.w320{width:320px}.w280{width:280px}.w228{width:228px}.w220{width:220px}.w110{width:110px}.w100{width:100px}.w80{width:80px}
+.hp1{height:1%}.hp100{height:100%}.h20{height:20px}.h90{height:90px}.h160{height:160px}

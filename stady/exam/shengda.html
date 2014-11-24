@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+题目是这样的：
+1）实现自适应位置的footer，黑色。页面内容较少时，footer需要紧贴浏览器底部
+2）解决IE6下的页面滚动条与其他浏览器不一致的问题
+
+下面是我的解决方案
+复制代码运行代码编辑代码
+
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <style type="text/css">
+    * {
+            padding: 0;
+            margin: 0;
+    }
+    html {
+            _overflow: auto;
+    }
+    body {
+            _width: expression(this.parentNode.clientWidth);
+    }
+    html,
+    body {
+            height: 100%;
+    }
+    .section {
+            min-height: 100%;
+            _height: 100%;
+    }
+    .footer {
+            height: 60px;
+            background: #000;
+            margin-top: -60px;
+            color: #FFF;
+    }
+    </style>
+    </head>
+
+    <body>
+    <div class="section">
+            <p>asdkjla</p>
+            <p>asdkjla</p>
+            <p>asdkjla</p>
+    </div>
+    <div class="footer">我这里是footer</div>
+    </body>
+    </html>
+</body>
+</html>

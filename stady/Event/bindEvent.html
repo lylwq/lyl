@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script type="" src="/js/common/jq.js"></script>
+<script type="">
+$(function(){
+
+    var Class = function(parent){
+        var klass = function(){
+            this.init.apply(this,arguments);
+        }
+        if(parent){
+            var subclass = function(){}
+            subclass.prototype = parent.prototype;
+            klass.prototype = new subclass;
+        }
+        klass.prototype.init = function(){}
+        klass.fn = klass.prototype;
+        klass.fn.parent = klass;
+
+        klass.extend = function(obj){
+            var extended = obj.extended;
+            for(var i in obj){
+                klass[i] = obj[i];
+            }
+            if(extended){
+                extended(klass);
+            }
+        }
+        klass.include = function(obj){
+            var included = obj.included;
+            for(var i in obj){
+                klass.fn[i] = obj[i];
+            }
+            if(included){
+                included(klass);
+            }
+        }
+
+        klass.proxy = function(func , t){
+            var self = this;
+            return (function(){
+                return func.apply(t || self,arguments);
+            });
+        }
+
+        klass.fn.proxy = klass.proxy;
+
+        return klass;
+    };
+
+    var Button = new Class;
+    Button.include({
+        init : function(elem){
+            this.elem = $(elem);
+            this.elem.click(this.proxy(this.click , this.elem));
+        },
+        click : function(){
+            console.log(this);
+        }
+    });
+    var btn = new Button;
+    btn.init("#cl");
+
+    var elem = document.getElementById("cl"),
+            fun = function(e){
+                console.log(e);
+                elem.removeEventListener("click",fun,false);
+            };
+    elem.addEventListener("click",fun,false);
+});
+</script>
+</head>
+
+<body>
+<a href="javascript:;" id="cl">asdf</a>
+</body>
+</html>

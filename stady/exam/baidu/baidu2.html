@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+CSS:
+1、列举W3C推荐的属性标签，说一下p标签和img标签的特点。
+答案就略了，做前端都懂的！
+
+2、实现左侧规定宽200，右侧自适应宽度的布局
+思想是左侧进行绝对定位，右侧设置一个margin-left:200px;即可，答案多种！
+
+3、如何让img标签在div里上下居中
+思想是正负margin抵消法来实现
+
+JS:
+
+1、真假判断
+复制代码运行代码编辑代码
+
+    var aLinks=document.getElementsByTagName('a');
+    for(i=0;i<aLinks.length;i++)
+    {
+    ...
+    }
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+
+修改后：
+复制代码运行代码编辑代码
+
+    var aLinks=document.getElementsByTagName('a');
+    for(var i=0,l= aLinks.length;i<l;i++)
+    {
+    ...
+    }
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+
+4、参照上题，给a添加事件，要求点击弹出提示相应的index值
+
+(1)、第一种方法（加索引）
+复制代码运行代码编辑代码
+
+    var aLinks=document.getElementsByTagName('a');
+    for(var i=0,l= aLinks.length;i<l;i++)
+    {
+        aLinks[i].Index=I;
+        aLinks[i].onclick=function(){alert(this.Index)};
+    }
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+
+（2）、第二种方法（闭包）
+复制代码运行代码编辑代码
+
+    var aLinks=document.getElementsByTagName('a');
+    for(var i=0,l= aLinks.length;i<l;i++)
+    {
+        aLinks[i].onclick=(function(a){
+        return function(){alert(a);}
+        })(i);
+    }
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+
+最后附加题：
+HTML&&CSS
+1、列举hack的技巧
+2、列举常见的兼容性问题以及解决方法
+3、说一下你清除浮动的常用方法，zoom的实现原理
+4、用户上传图片，没有刷新过程显示图片的功能【ajax】
+
+大家自己做一下或搜索一下答案吧～
+</body>
+</html>

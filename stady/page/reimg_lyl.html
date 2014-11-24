@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style>
+body{padding:0; margin:0; font-size:12px; background:#eeeeee; color:#333333; font-family:'宋体',Verdana, Geneva, sans-serif;}
+ul,li,form,h1,h2,h3,h4,h5,h6,p,a{padding:0; margin:0; list-style-type:none;}
+i,cite{font-style:normal;}
+a{color:#34538b; text-decoration:none;}a:hover{color:#F30; }
+img,a{border:0;}
+
+.lyl_image_list img{ border:1px solid #ddd; padding:3px;}
+</style>
+
+<script type="text/javascript" src="../js/jquery-1.2.6.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#small').click(function(){
+		$('.lyl img').each(function(){
+			replayimg($(this),"s256","s128");
+		});		
+	});	
+	$('#big').click(function(){
+		$('.lyl img').each(function(){
+			replayimg($(this),"s128","s256");
+		});		
+	});	
+	function replayimg(elm,sold,snew){
+		elm.attr('src',elm.attr('src').replace(sold,snew));
+	}		   
+});
+</script>
+</head>
+
+<body>
+<a href="#" id="small">小图</a> <a href="#" id="big">大图</a>
+<div class="lyl mt20 mb20">
+    <a href="#zhangxinxu" class="lyl_image_list">
+        <img class="lyl_image" src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg" />
+    </a>
+    <a href="#zhangxinxu" class="lyl_image_list">
+        <img class="lyl_image" src="http://image.zhangxinxu.com/image/study/s/s128/mm2.jpg" />
+    </a>
+    <a href="#zhangxinxu" class="lyl_image_list">
+        <img class="lyl_image" src="http://image.zhangxinxu.com/image/study/s/s128/mm3.jpg" />
+    </a>
+    <a href="#zhangxinxu" class="lyl_image_list">
+        <img class="lyl_image" src="http://image.zhangxinxu.com/image/study/s/s128/mm4.jpg" />
+    </a>
+    <a href="#zhangxinxu" class="lyl_image_list">
+        <img class="lyl_image" src="http://image.zhangxinxu.com/image/study/s/s128/mm5.jpg" />
+    </a>
+    <a href="#zhangxinxu" class="lyl_image_list">
+        <img class="lyl_image" src="http://image.zhangxinxu.com/image/study/s/s128/mm6.jpg" />
+    </a>
+</div>
+</body>
+</html>

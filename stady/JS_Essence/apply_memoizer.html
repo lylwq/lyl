@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>套用、记忆函数</title>
+
+<script type="text/javascript">
+window.onload=function(){
+	var myObject = function(node){//递归调用自身，使背景色渐变
+		var le = 1;
+		var f = function(){
+			var hex=le.toString(16);
+			node.style.backgroundColor="#ffff"+hex+hex;
+			if(le<15){
+				le+=1;
+				setTimeout(f,100);
+			}
+		}
+		setTimeout(f,100);
+	}
+	myObject(document.getElementById("test"));
+	
+	var addHandlers=function(node){//闭包绑定a标签点击事件
+		for(var i=0;i<node.length;i+=1){
+			node[i].onclick=function(i){
+				return function(e){
+					alert(i);//返回绑定时的值
+				}
+			}(i);
+		}
+	}
+	addHandlers(document.getElementsByTagName("a"));
+}
+
+/*
+记忆 是函数可以用对象去记住先前操作的结果，从而避免无谓的运算。
+*/
+var fibonacci = function(){
+	var memo = [0,1],i=0;
+	
+	return function(n){
+		i+=1;
+		var result = memo[n];
+		if(typeof result!=="number"){//每次计算首先获取记忆数组上的值进行判断
+			console.log(i);
+			result = arguments.callee(n-1)+arguments.callee(n-2);
+			memo[n]=result;//将结果保存到记忆数组中
+		}
+		//若直接用下面这种形式，不进行记忆，将调用函数400多次，反之只需要20几次
+		//result = arguments.callee(n-1)+arguments.callee(n-2);
+		console.log(i);
+		return result;
+	};
+}();
+/*for(var i=0;i<11;i+=1){
+	console.log(i+":"+fibonacci(i));
+}*/
+
+var memoizer = function(memo , fund){
+	var shell = function(n){
+		var result = memo[n];
+		if(typeof result!== "number"){
+			result=fund(shell,n);
+			memo[n]=result;
+		}
+		return result;
+	};
+	return shell;
+};
+
+var fib = memoizer([0,1],function(shell,n){
+	return shell(n-1) + shell(n-2);
+});
+console.log("斐波那契数列："+fib(10));
+/*
+套用可以将函数与传递给它的参数相结合，从而去产生一个新的函数
+*/
+Function.prototype.curry=function(){
+	var slice=Array.prototype.slice,
+	args=slice.apply(arguments),
+	that=this;
+	//console.log(args);
+	return function(){
+		//console.log(args.concat(slice.apply(arguments)));
+		//通过对参数列表的组合，从而返回新的函数
+		return that.apply(null,args.concat(slice.apply(arguments)));
+	}
+};
+
+var add=function(a,b){
+	//console.log(a+" "+b);
+	return a+b;
+}
+var add1=add.curry(1);
+console.log(add1(6));
+</script>
+</head>
+<body>
+
+
+
+<div id="test" style="width:200px;height:201px;background-color:#f00;position:relative; vertical-align:middle; text-align:center;">
+    <img src="002.jpg" width="100" height="168">
+</div>
+
+<a href="#">点击1</a><br>
+<a href="#">点击2</a><br>
+<a href="#">点击3</a><br>
+<a href="#">点击5</a><br>
+<a href="#">点击4</a><br>
+<a href="#">点击6</a><br>
+<a href="#">点击7</a><br>
+
+
+ 
+
+</body>
+
+</html>

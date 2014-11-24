@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="description" content="jQuery之replace字符串替换实现大小图片切换" />
+<meta name="description" content="张鑫旭web前端学习之css，jQuery学习实例页面" />
+<meta name="keywords" content="张鑫旭,鑫空间-鑫生活,博客,web前端,css,jQuery,特效,大小图片切换,js插件,demo页面,学习," />
+<meta name="author" content="张鑫旭,zhangxixnu" />
+<title>jQuery之replace字符串替换实现大小图片切换</title>
+<link rel="shortcut icon" href="http://www.zhangxinxu.com/zxx_ico.png" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" />
+<style type="text/css">
+#choose{padding:0.5em 1.5em; border-bottom:1px solid #dddddd;}
+.btn{display:inline-block; padding:4px 9px; color:#666666; text-decoration:none;}
+.btn:hover,.on{padding:3px 8px; border:1px solid #73818C; color:#3E6173; -moz-border-radius:2px; -webkit-border-radius:2px;}
+.on,.on:hover{background:#f4f4f4; color:#333333; cursor:default;}
+.v_line{font-size:1.3em; vertical-align:top; margin:0 5px;}
+.zxx_image_list{display:inline-block; width:1.2em; margin-top:20px; text-align:center; font-size:128px; vertical-align:middle;}
+.zxx_image_list img.zxx_image{padding:3px; border:1px solid #828da1; background:white; vertical-align:middle; position:relative;}
+.zxx_image_list:hover,.zxx_image_list:hover .zxx_image{border-color:#ff3300;}
+
+
+.lyl{display:inline-block; font-size:128px; width:1.2em;}
+.lyl:hover img{border-color:#ff3300;}
+.lyl img{ width:1em; height:0.75em;border:1px solid #ccc; margin:5px;}
+</style>
+<script type="text/javascript" src="../js/jquery-1.2.6.pack.js"></script>
+</head>
+
+<body>
+<a class="lyl" href="#">
+<img class="" src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg" />
+</a>
+<a class="lyl" href="#">
+<img class="" src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg" />
+</a>
+<div class="zxx_out_box">
+    <div class="zxx_in_box">
+        <div class="zxx_header">
+            <a href="http://www.zhangxinxu.com/">
+                <img class="l" src="http://www.zhangxinxu.com/wordpress/wp-content/themes/default/images/index_logo.gif" />
+            </a>
+            <span class="zxx_author_time">by zhangxinxu 2009-08-30 21:43</span>
+        </div>
+        <h3 class="zxx_title">jQuery之replace字符串替换实现大小图片切换</h3>
+        <div id="choose">
+            <a href="javascript:void(null);" class="btn on" id="small_pic">小图</a>
+            <span class="v_line">|</span>
+            <a href="javascript:void(null);" class="btn" id="big_pic">大图</a>
+        </div>
+        <div class="zxx_main_con mt20 mb20">
+            <a href="#zhangxinxu" class="zxx_image_list">
+                <img class="zxx_image" src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg" />
+            </a>
+            <a href="#zhangxinxu" class="zxx_image_list">
+                <img class="zxx_image" src="http://image.zhangxinxu.com/image/study/s/s128/mm2.jpg" />
+            </a>
+            <a href="#zhangxinxu" class="zxx_image_list">
+                <img class="zxx_image" src="http://image.zhangxinxu.com/image/study/s/s128/mm3.jpg" />
+            </a>
+            <a href="#zhangxinxu" class="zxx_image_list">
+                <img class="zxx_image" src="http://image.zhangxinxu.com/image/study/s/s128/mm4.jpg" />
+            </a>
+            <a href="#zhangxinxu" class="zxx_image_list">
+                <img class="zxx_image" src="http://image.zhangxinxu.com/image/study/s/s128/mm5.jpg" />
+            </a>
+            <a href="#zhangxinxu" class="zxx_image_list">
+                <img class="zxx_image" src="http://image.zhangxinxu.com/image/study/s/s128/mm6.jpg" />
+            </a>
+        </div>
+        <div class="zxx_footer">
+            &copy;<a href="http://www.zhangxinxu.com/">张鑫旭-鑫空间-鑫生活</a>
+            |
+            <a href="http://www.zhangxinxu.com/wordpress/?p=90">该篇相关文章</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//给图片高宽转换为以em单位
+		$(".zxx_image").each(function(){
+			var emW=$(this).width()/128+"em";
+			var emH=$(this).height()/128+"em";
+			$(this).css("width",emW);
+			$(this).css("height",emH)
+		});
+		function srcChg(a,b){
+			$(".zxx_image").each(function(){
+				var new_src=$(this).attr("src").replace(a,b); //字符串替换，更改图片路径
+				//alert(new_src);
+				$(this).attr("src",new_src);
+			});
+		}
+		$("#small_pic").click(function(){
+			if($(this).hasClass("on")) return;
+			else{
+				$("#big_pic").removeClass("on");
+				$(this).addClass("on");
+				$(".zxx_image_list").css("font-size","128px");
+				srcChg("s256","s128");
+				return false; //使单击后IE6下图片正常加载
+			}
+		});
+		$("#big_pic").click(function(){
+			if($(this).hasClass("on")) return;
+			else{
+				$("#small_pic").removeClass("on");
+				$(this).addClass("on");
+				$(".zxx_image_list").css("font-size","256px");
+				srcChg("s128","s256");
+				return false;
+			}							 
+		});
+	});
+</script>
+</body>
+</html>

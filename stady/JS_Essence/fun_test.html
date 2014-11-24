@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>类方法调用</title>
+<script type="text/javascript">
+
+var main = function(){
+    this.run = function(){
+        this.fly();//此处若直接调用fly();会报错.
+		/*
+		个人理解:在方法内部调用函数是,会在方法的作用域链中进行查找,不会对原型链进行查找.
+		若要调用原型中的方法,只能通过this
+		*/
+        console.log("run",this);
+        var inner = function(){
+            console.log("inner",this);
+        }
+        inner();
+    };
+    this.fly = function(){
+        console.log("flyi",main.prototype);
+    }
+	return true;
+};
+main.prototype.fly = function(){
+    console.log("fly",this);
+};
+
+var m = new main;
+console.log(m);
+m.run();
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

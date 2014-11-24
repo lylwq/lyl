@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>单击文字或图片内容放大显示效果插件</title>
+<link rel="stylesheet" type="text/css" href="../../com/l_re.css"/>
+<style type="text/css">
+.page{width:980px;margin:20px auto;}
+.p_left,.p_right{width:50%;}
+.p_left a{font-size:120px;margin-right:100px;}
+.p_left img{padding:3px; border:1px solid #ddd;}
+
+.p_up,.pu_l,.pu_r,.p_mid,.pm_con,.p_bot,.pb_l,.pb_r{background:url(../images/Projection/zxx_round_shade.gif) no-repeat;}
+.projection{ position:absolute;font-size:0;width:1px; height:1px;display:none;}
+.p_up,.p_bot{margin:0 15px;height:15px;background-repeat:repeat-x; position:relative;}
+.p_up{background-position:0 -40px}
+.pu_l,.pu_r,.pb_l,.pb_r{width:15px;height:15px; position:absolute;}
+.pu_l,.pb_l{margin-left:-15px;left:0;}
+.pu_r,.pb_r{margin-right:-15px;background-position:right 0;right:0;}
+.p_mid{ background-position:0 -1520px;}
+.pm_con{background-position:right -60px; padding:0 10px;}
+.pm_con img{width:100%}
+.p_bot{background-position:0 bottom}
+.pb_l{background-position:0 -25px}
+.pb_r{background-position:-25px -25px}
+
+.test{width:200px; height:200px; background-color:#60F;}
+</style>
+<script type="text/javascript" src="../../com/jcore.js"></script>
+<script type="text/javascript">
+$(function(){	
+		   
+	$('.p_left img').L_showPic({container:$('#projection')});	
+	
+});
+
+
+;(function(){
+	$.L_Pic=function(ele,options){
+		ele.click(function(){
+			$.L_Pic.makeImg($(this),options.container);
+		});
+		
+	};
+	$.extend($.L_Pic,{
+		makeImg:function(ele,container){//获得图片
+			$.L_Pic.initImg(container);
+			var img=new Image();
+			img.src=ele.attr('bt');
+			if(container.is(":visible"))$.L_Pic.hideImg(container);
+			if(img.complete){				
+				$.L_Pic.showImg(container,ele,img.width,img.height);
+			}else{
+				img.onload=function(){
+				$.L_Pic.showImg(container,ele,img.width,img.height);
+				}
+			}
+		},
+		initImg:function(con){//初始化图片
+			con.css({"width":1,"height":1,"display":"none"});
+		},
+		showImg:function(con,ele,temp_w,temp_h){//显示图片		
+		
+			var width=window.innerWidth || (window.document.documentElement.clientWidth || window.document.body.clientWidth);
+			var height=window.innerHeight || (window.document.documentElement.clientHeight || window.document.body.clientHeight);
+			var x=window.pageXOffset || (window.document.documentElement.scrollLeft || window.document.body.scrollLeft);
+			var y=window.pageYOffset || (window.document.documentElement.scrollTop || window.document.body.scrollTop);
+			var window_size = {'width':width, 'height':height, 'x':x, 'y':y}
+			var d = window_size;			
+			var newTop = Math.max((d.height/2) - (temp_h/2) + y, 0);
+			var newLeft = (d.width/2) - (temp_w/2);	
+			
+			con.css({"top":ele.offset().top,"left":ele.offset().left})
+			con.find('img').attr('src',ele.attr('bt')).end().animate({
+				width:temp_w,
+				height:temp_h,
+			    opacity : "show",
+				top:newTop,
+				left:newLeft
+			},500);
+		},
+		hideImg:function(con){//隐藏图片
+			con.animate({
+				width:1,
+				height:1,
+			    opacity:"hide"
+			},500);
+		}
+	});
+	$.fn.extend({
+		L_showPic:function(options){
+			$.L_Pic(this,options);
+		}
+	});
+})(jQuery);
+</script>
+</head>
+
+<body>
+
+<div class="page">
+	<div class="p_left l">
+    	<a href="#"><img src="../images/Projection/mm1.jpg" bt="../images/Projection/dmm1.jpg" width="128" height="96" /></a>
+        <a href="#"><img src="../images/Projection/mm2.jpg" bt="../images/Projection/dmm2.jpg" width="96" height="128" /></a>
+        <a href="#"><img src="../images/Projection/mm3.jpg" bt="../images/Projection/dmm3.jpg" width="128" height="96" /></a>
+        <a href="#"><img src="../images/Projection/mm4.jpg" bt="../images/Projection/dmm4.jpg" width="128" height="86" /></a>
+    </div>
+    
+	<div class="p_right l">adsf</div>
+    <p class="cl"></p>
+    
+</div>
+<div class="projection" id="projection">
+    <div class="p_up">
+        <span class="pu_r"></span>   
+        <span class="pu_l"></span>         
+    </div>
+    <div class="p_mid">
+        <div class="pm_con" id="pm_com"><img id="pmc_img" src="../images/Projection/dmm1.jpg"/></div>
+    </div>
+    <div class="p_bot">
+        <span class="pb_r"></span>
+        <span class="pb_l"></span>
+    </div>
+</div>
+
+</body>
+</html>

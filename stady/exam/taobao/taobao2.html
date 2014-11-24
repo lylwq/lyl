@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>淘宝UED招聘题（前端开发部分含参考答案和面试官评语）</title>
+</head>
+
+<body>
+
+题目1：JavaScript方面小贤是一条可爱的小狗(Dog)，它的叫声很好听(wow)，每次看到主人的时候就会乖乖叫一声(yelp)。从这段描述可以得到以下对象：
+
+复制代码运行代码编辑代码
+
+    function Dog() {
+           this.wow = function() {
+                   alert(’Wow’);
+          }
+           this.yelp = function() {
+                  this.wow();
+           }
+    }
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+小芒和小贤一样，原来也是一条可爱的小狗，可是突然有一天疯了(MadDog)，一看到人就会每隔半秒叫一声(wow)地不停叫唤(yelp)。请根据描述，按示例的形式用代码来实现（提示关键字: 继承，原型，setInterval）。
+
+参考答案
+复制代码运行代码编辑代码
+
+    function MadDog() {
+        this.yelp = function() {
+              var self = this;
+              setInterval(function() {
+                    self.wow();
+              }, 500);
+          }
+    }
+    MadDog.prototype = new Dog();
+    //for test
+    var dog = new Dog();
+    dog.yelp();
+    var madDog = new MadDog();
+    madDog.yelp();
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+
+    淘宝招聘官评语：
+    以上是较为规范的一个解法，我们希望通过此题，检查应聘者对JS的语言基础及的面向对象开发的理解程度。其中的难点在于闭包的应用。
+
+
+题目2：CSS方面使用纯CSS实现未知尺寸的图片(但高宽都小于200px)在200px的正方形容器中水平和垂直居中。
+
+参考答案：
+
+复制代码运行代码编辑代码
+
+<!--     <!DOCTYPE html public "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="Keywords" content="简单的XHTML页面" />
+    <meta name="Description" content="这是一个简单的XHTML页面" />
+    <title>简单的XHTML页面</title>
+    </head>
+    <body>
+    <style type="text/css">
+    .box {
+    display: table-cell;
+    vertical-align:middle;
+    width:200px;
+    height:200px;
+    text-align:center;
+    /* hack for ie */
+    *display: block;
+    *font-size: 175px;
+    /* end */
+    border: 5px solid red;
+    }
+    .box img {
+    vertical-align:middle;
+    }
+    </style>
+    <div class="box">
+    <img src="http://justinyoung.cnblogs.com/images/cnblogs_com/justinyoung/2007/tb_m.PNG"  alt="" />
+    </div>
+    </body>
+    </html> -->
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+
+    淘宝招聘官评语：
+
+        很遗憾，这个解法用到了css hack。我们也不理解为什么设置font-size可以让IE显示垂直居中的效果。根据我们的计算，高度/字体大小的比值为1.14左右时IE可实现垂直居中。
+        当然还有很多其他的实现方案，但需要引入额外的标签。对于流量超大的淘宝网而言，我们经过权衡，倾向于在此问题上合理的使用hack。
+
+
+题目3：XHMTL方面在不使用 border 样式的情况下，画出一条一px高的横线，在不同浏览器的Quirksmode和CSSCompat模式下都保持同一效果。
+
+参考答案：
+
+复制代码运行代码编辑代码
+
+<!--     <!DOCTYPE html public "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="Keywords" content="简单的XHTML页面" />
+    <meta name="Description" content="这是一个简单的XHTML页面" />
+    <title>简单的XHTML页面</title>
+    </head>
+    <body>
+         <div style="height:1px;overflow:hidden;background:#000"></div>
+    </body>
+    </html> -->
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+
+    淘宝招聘官评语：
+    此题要点是要求在浏览器的 QuirksMode 和 CSSCompat 模式下效果一致。解法有很多，以上是我们认为的最为合理的一种。
+
+
+题目4：JavaScript方面请给Array本地对象增加一个原型方法，它的用途是删除数组条目中重复的条目(可能有多个)，返回值是一个包含被删除的重复条目的新数组。
+
+参考答案：
+复制代码运行代码编辑代码
+
+    Array.prototype.distinct = function() {
+      var ret = [];
+      for (var i = 0; i < this.length; i++) {
+      for (var j = i+1; j < this.length;) {
+      if (this[i] === this[j]) {
+      ret.push(this.splice(j, 1)[0]);
+      } else {
+      j++;
+      }
+    }
+    }
+    return ret;
+    }
+    //for test
+    alert(['a','b','c','d','b','a','e'].distinct());
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+
+    淘宝招聘官评语：
+    这是最为普通的解法。在数组元素数量不高的情况下，它的性能是可以接受的。相信一定有不少朋友有更好的解法，请告诉我们。 
+
+
+题外话：
+从taobao的这次的考题来看，对web前台职位的技能要求，已经很明显——web标准设计。从4道题目来看，考结构的占了一题，考表现的占了一题，考行为的占了两题。从这个比重来看，JavaScript的重要性，不言而喻。但是恰恰现在很多的学习web标准设计的朋友，都一头扎进css的研究当中，甚至误以为css就是web标准设计的全部。这点还是比较值得思考的。
+
+提到JavaScript，很多做前台的都比较恐惧。美工、页面都可以做到很漂亮，但是就是JavaScript的基础比较差。我想这个也是比较值得反思的点。页面的配色、风格、图片等设计应该属于美工的事情，而后面两层（以三层架构为例）又是程序员的事情，所以，如果将自己定位为一个“Frontend Software Engineer”的时候，我们到底应该学习和掌握一些什么。我想淘宝的这个份试卷，还是比较有指导意义的。（当然，如果能力和精力比较好的话，全能是最好的。）
+
+
+当然，我的意思也不是说，作为FSE（Frontend Software Engineer），只要掌握这三个方面就可以了。其实还需要一些其他的相关知识，例如SEO（搜索引擎优化）、UE（用户体验）等方面，甚至软件设计模式等方面也需要一定的能力，才能建设出好的（强壮、易维护、易扩展）网站。对待知识，我认为：第一：要广，只要和自己的职业定位相关的，都要有一定的了解。第二：要深，对自己凭着吃饭的技能一定要深入。掌握一些别人没有掌握的知识和能力，才能更好地体现自己的价值。
+</body>
+</html>

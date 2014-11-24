@@ -1,0 +1,390 @@
+﻿<!--热门供应-->
+<div class="g-box-g">
+    <div class="bar g-box-t">
+        <h2 class="cur tab_hot">
+            <a id="tab_hot_dw" href="javascript:;" title="下翻"></a>
+            <a id="tab_hot_up" href="javascript:;" title="上翻"></a>
+            热门供应/求购
+        </h2>
+        <h2>海外采购<tms_bind id="abroad_count"><span class="g-fz-12 g-c-99 g-fw-n">({#0,IC,988082#})</span></tms_bind></h2>
+        <tms_bind id="ic_count"><span class="g-f-r g-mr-10" i="{#0,IC,988082#}" e="{#1,IC,988082#}">IC：<i class="g-fs-n g-fw-b"><%# Math.Round(decimal.Parse(Eval("[0]").ToString())/10000,2) %></i>万条&nbsp;元器件：<i class="g-fs-n g-fw-b"><%# Math.Round(decimal.Parse(Eval("[1]").ToString())/10000,2) %></i>万条</span></tms_bind>
+    </div>
+    <div class="con">
+        <div>
+            <div class="g-mtb-10" id="bs">
+                <div class="g-list-txt g-f-l g-mlr-5">
+                    <ul>
+                        <tms_bind ID="buyer">
+                            <li><span class="g-pl-10 g-c-99 g-f-r">{#0,时间,46秒钟前#}</span><span class="g-f-l g-ff-s g-mr-5">[<a target="_blank" href="{#1,分类链接,/buyer/#}" title="{#2,分类title,供应#}">{#3,分类,供应#}</a>]</span><span class="g-w-200 g-f-l"><a target="_blank" href="{#4,标题链接,http://www.hqew.com/freeshop_535850.html#}" title="{#5,标题title,供应超音频感应退火设备、超音频感应退火机RJYS#}">{#6,标题,供应超音频感应退火设备#}</a></span></li>
+                        </tms_bind>
+                    </ul>
+                </div>
+                <div class="g-list-txt g-f-l g-mlr-5">
+                    <ul>
+                        <tms_bind ID="seller">
+                            <li><span class="g-pl-10 g-c-99 g-f-r">{#0,时间,10分钟前#}</span><span class="g-f-l g-ff-s g-mr-5">[{#1,分类,求购#}]</span><span class="g-w-200 g-f-l"><a target="_blank" href="{#2,标题链接,http://www.hqew.com/freeshop_535850.html#}" title="{#3,标题title,137*152*88086长期收工厂库存I#}">{#4,标题,137*152*88086长期收工厂库存I#}</a></span></li>
+                        </tms_bind>
+                    </ul>
+                </div>
+            </div>
+            <div class="g-cf g-bt-ee g-bb-ee mlr15">
+                <tms_bind ID="pic">
+                    <div class="g-list-mix g-f-l g-bb-n pic g-p-r <%#(Container.ItemIndex)==0?"mr30":"mr0"%>"><i class="g-ico-tuan"></i><i></i> <a target="_blank" href="{#0,图片链接,http://www.partinchina.com/topic/group_==QU1TMTExNy0zLjM=.html#}" title="{#1,图片title,AMS1117-3.3#}"><img alt="{#2,图片alt,AMS1117-3.3#}" src="{#3,图片路径,http://www.partinchina.com/file/Group/Product/201111021157533643N8NM5_M.gif#}" /></a>
+                        <ul>
+                            <li><a target="_blank" class="g-c-b g-fw-b" href="{#4,型号链接,http://www.partinchina.com/topic/group_==QU1TMTExNy0zLjM=.html#}" title="{#5,型号title,AMS1117-3.3#}">{#6,型号,AMS1117-3.3#}</a></li>
+                            <li>团购价：￥{#7,团购价,0.42#}(已购买{#8,团购价,17800#}件)</a></li>
+                        </ul>
+                        <a class="g-btn-12" href="{#9,型号链接,http://www.partinchina.com/topic/group_==QU1TMTExNy0zLjM=.html#}"><em>加入团购</em><b></b></a> </div>
+                </tms_bind>
+            </div>
+        </div>
+        <div class="g-d-n">
+            <div class="g-mtb-10 g-cf" id="abroad">
+                <ul class="g-list-txt">
+                    <tms_bind ID="abroad">
+                        <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b class="g-c-c0">{#0,时间,7#}</b>days ONLY</span><b class="g-mr-5 {#1,国家ico,css_us country-flag#}"></b><a target="_blank" href="{#2,标题链接,http://www.hqew.net/buying-leads/KFG2G16Q2M$2dDEB80$2b_7054254.html#}" title="{#3,标题title,CS493264-CL#}">{#4,标题,CS493264-CL#}</a></li>
+                    </tms_bind>
+                </ul>
+            </div>
+            <div class="g-bb-ee g-lh-22 g-pb-10 mlr15">华强电子网推出外贸通平台，<b>3000</b>个活跃海外采购商，每天只需投入<b>15.5</b>元&nbsp;&nbsp;<a target="_blank" class="g-c-b" title="立即申请" href="http://www.hqew.net/register.html">立即申请&gt;&gt;</a> </div>
+        </div>
+        
+        <div class="g-list-img" id="pro" style="display:block">
+            <ul class="g-cf">
+                <tms_bind ID="promotion">
+                    <li <%#(Container.ItemIndex==0||Container.ItemIndex%5!=0)?"":"class='pro_last'"%>><a target="_blank" href="{#0,图片链接,/buyer/promotion56033.html#}" title="{#1,图片title,新华荣电子商行#}"><img alt="{#2,图片alt,新华荣电子商行#}" src="{#3,图片路径,http://img.hqew.com/File/Images/100000-109999/106943/Promotion/20101124180658321RY1VQ9_Abbr.JPG#}" /></a>
+                        <p class="g-ta-c"><a target="_blank" href="{#4,标题链接,/buyer/promotion56033.html#}" title="{#5,标题title,新华荣电子商行#}">{#6,标题,新华荣电子商行#}</a></p>
+                    </li>
+                </tms_bind>
+            </ul>
+        </div>
+    </div>
+    
+</div>
+
+<!--今日竞价-->
+<Script runat="server">
+    public string GetLeftTime()
+    {
+        int ret = 0;
+        DateTime today = DateTime.Now;
+        DateTime dtaPos = DateTime.Parse(today.Year.ToString() + "-" + today.Month.ToString() + "-" + today.Day.ToString() + " 15:00:00");
+        if (dtaPos >= today)
+        {
+            TimeSpan timeSpan = dtaPos - today;
+            ret = (int)(timeSpan.TotalSeconds);
+        }
+        return ret.ToString();
+    }
+</Script>
+<div class="g-list-cols">
+    <ul class="g-bc-f3 g-c-66 g-h-25 g-lh-25">
+        <li class="g-w-90">关键词</li>
+        <li class="g-w-24 g-ws-w">参与</li>
+        <li>当前排名第一位</li>
+    </ul>
+    <div class="g-mtb-5" id="bid">
+        <tms_bind ID="Repeater1">
+            <ul class="g-h-22 g-lh-22">
+                <li class="g-w-90 g-fw-b"><a target="_blank" class="g-c-b" href="{#0,关键词链接,/buyer/bidding_LM393.html#}" title="{#1,关键词,LM393#}">{#2,关键词,LM393#}</a></li>
+                <li class="g-w-24">{#3,参与,26#}</li>
+                <li class="g-w-150"><a target="_blank" href="{#4,排名链接,http://mkdz3d003.hqew.com/l#}" title="{#5,排名title,深圳市美科电子商行#}">{#6,排名,深圳市美科电子商行#}</a></li>
+            </ul>
+        </tms_bind>
+    </div>
+</div>
+<div class="g-p-10 g-cf" id="biddingTimer" value="<%=GetLeftTime()%>"> </div>
+
+
+<!--火爆推荐-->
+<div>
+    <tms_bind ID="rec1">
+        <div class="g-list-mix g-cf"> <a target="_blank" href="{#0,图片链接,http://xinhongic.hqew.com/#}" title="{#1,图片title,深圳市福田区鑫洪电子商行#}"><img alt="{#2,图片alt,深圳市福田区鑫洪电子商行#}" src="{#3,图片路径,http://img.hqew.com/File/Images/330000-339999/331275/Common/201171610141737546_Abbr.jpg#} " onerror="this.src='/images/common/no_pic.gif'" /></a>
+            <h4><a target="_blank" class="g-c-b" href="{#4,公司链接,http://xinhongic.hqew.com/#}" title="{#5,公司title,深圳市福田区鑫洪电子商行#}">{#6,公司,深圳市福田区鑫洪电子商行#}</a></h4>
+            <ul class="g-c-66">
+                <li>型号： <a target="_blank" class="g-c-b" href="{#7,型号链接,/mall/shopview-bc815f69-1d06-4f99-b21c-468e7b4e4dac.html#}" title="{#8,型号title,TLP701#}">{#9,型号,TLP701#}</a></li>
+                <li>报价： <span class="g-c-r">{#10,报价,4.00-6.00#}</span><a target="_blank" class="g-ico-mall g-ml-10" href="{#11,购买链接,/mall/shopview-bc815f69-1d06-4f99-b21c-468e7b4e4dac.html#}" title="进入商城购买"></a></li>
+            </ul>
+        </div>
+    </tms_bind>
+    <div class="g-list-txt rec">
+        <ul>
+            <tms_bind ID="rec2">
+                <li><em class="g-w-90 g-f-l g-fs-n g-fw-b g-mr-10"><a target="_blank" class="g-c-b" href="{#0,型号链接,/mall/shopview-d2ea325c-2acd-4de9-bb8c-b405ab858896.html#}" title="{#1,型号title,MAX232CSET123#}">{#2,型号,MAX232CSET123#}</a></em><a target="_blank" href="{#3,公司链接,http://xfy-max.hqew.com/#}" title="{#4,公司title, 深圳新丰源电子商行#}">{#5,公司title, 深圳新丰源电子商行#}</a></li>
+            </tms_bind>
+        </ul>
+    </div>
+    <div class="g-p-10 g-cf g-lh-22"> <a class="g-btn-12 g-f-r" href="/bussiness/grab.html" target="_blank"><em>立即参与</em><b></b></a>
+        <p><span class="g-c-g">每天 <b class="g-fz-15 g-c-c0">10:00</b> 准时推荐！</span></p>
+    </div>
+</div>
+<div class="g-d-n">
+    <tms_bind ID="honesty">
+        <div class="g-list-mix g-cf g-bb-n <%#(Container.ItemIndex)==0?"":"g-bt-ee"%>"> <a target="_blank" href="{#0,图片链接,http://xinhongic.hqew.com/#}" title="{#1,图片title,深圳市福田区鑫洪电子商行#}"><img alt="{#2,图片alt,深圳市福田区鑫洪电子商行#}" src="{#3,图片路径,http://img.hqew.com/File/Images/330000-339999/331275/Common/201171610141737546_Abbr.jpg#} " onerror="this.src='/images/common/no_pic.gif'" /></a>
+            <h4><a target="_blank" class="g-c-b" href="{#4,公司链接,http://xinhongic.hqew.com/#}" title="{#5,公司title,深圳市福田区鑫洪电子商行#}">{#6,公司,深圳市福田区鑫洪电子商行#}</a></h4>
+            <ul class="g-c-66">
+                <li>等级：<a target="_blank" class="{#7,等级图标,g-ico-honesty1#}" href="{#8,等级链接,/bussiness/honesty_8405025.html#}" title="{#9,等级title,诚信积分：6#}"></a></li>
+                <li>主营：
+                    <tms_bind ID="honesty_pro"><a class="g-c-b" target="_blank" href="{#0,主营链接,/ic/1117M3.html#}" title="{#1,主营title,1117M3#}">{#2,主营,1117M3#}</a></tms_bind>
+                </li>
+                <li>电话：{#10,电话,86-0755-83797732#}</li>
+            </ul>
+        </div>
+    </tms_bind>
+    <div class="g-p-10 g-cf g-lh-22"> <a class="g-btn-12 g-f-r" target="_blank" href="/bussiness/honestyeasy.html"><em>了解诚易通</em><b></b></a>
+        <p><a class="g-c-33" title="选择诚易通，交易更轻松！" href="/bussiness/honestyeasy.html" target="_blank">选择诚易通，交易更轻松！</a></p>
+    </div>
+</div>
+
+
+<!--供应信息分类-->
+<div class="ec g-pt-10 g-pb-5 g-p-r">
+<!--<div class="g-notice cap"><a title="专区推广位大放送" class="g-c-c0" target="_blank" href="/EcChannel/AdPosition.html">专区推广位大放送！</a><s></s></div>-->
+
+    <ul class="g-cf">
+        <li class="g-fz-14 g-fw-b g-pl-5 g-ml-10">电子元器件</li>
+        <li class="g-f-l g-pr-10 g-pl-5 w309">
+            <form id="ic_search_form" onsubmit="return false"><div class="g-c-99"><strong><a target="_blank" class="g-c-b g-fz-14" title="点击查看供应信息" href="/buyer">IC/二三极管</a></strong>(9817万) <input type="text" title="请输入搜索的型号" class="g-ipt g-w-100"  id="ic_search_kw" maxlength="100"> <a class="g-btn-12" title="点击搜索" id="ic_search_btn"><em>搜索</em><b></b></a> </div></form>
+            <table><tr><td nowrap="nowrap" valign="top">索引：</td><td class="index"><a title="A" target="_blank" href="/iclist/a/1.html">A</a><a title="B" target="_blank" href="/iclist/b/1.html">B</a><a title="C" target="_blank" href="/iclist/c/1.html">C</a><a title="D" target="_blank" href="/iclist/d/1.html">D</a><a title="E" target="_blank" href="/iclist/e/1.html">E</a><a title="F" target="_blank" href="/iclist/f/1.html">F</a><a title="G" target="_blank" href="/iclist/g/1.html">G</a><a title="H" target="_blank" href="/iclist/h/1.html">H</a><a title="I" target="_blank" href="/iclist/i/1.html">I</a><a title="J" target="_blank" href="/iclist/j/1.html">J</a><a title="K" target="_blank" href="/iclist/k/1.html">K</a><a title="L" target="_blank" href="/iclist/l/1.html">L</a><a title="g-bi-n" target="_blank" href="/iclist/m/1.html">M</a><a title="N" target="_blank" href="/iclist/n/1.html">N</a><a title="O" target="_blank" href="/iclist/o/1.html">O</a><a title="P" target="_blank" href="/iclist/p/1.html">P</a><a title="Q" target="_blank" href="/iclist/q/1.html">Q</a><a title="R" target="_blank" href="/iclist/r/1.html">R</a><a title="S" target="_blank" href="/iclist/s/1.html">S</a><br /><a title="T" target="_blank" href="/iclist/sort/1.html">T</a><a title="U" target="_blank" href="/iclist/u/1.html">U</a><a title="V" target="_blank" href="/iclist/v/1.html">V</a><a title="W" target="_blank" href="/iclist/w/1.html">W</a><a title="X" target="_blank" href="/iclist/x/1.html">X</a><a title="Y" target="_blank" href="/iclist/y/1.html">Y</a><a title="Z" target="_blank" href="/iclist/x/1.html">Z</a><a title="0" target="_blank" href="/iclist/0/1.html">0</a><a title="1" target="_blank" href="/iclist/1/1.html">1</a><a title="2" target="_blank" href="/iclist/2/1.html">2</a><a title="3" target="_blank" href="/iclist/3/1.html">3</a><a title="4" target="_blank" href="/iclist/4/1.html">4</a><a title="5" target="_blank" href="/iclist/5/1.html">5</a><a title="6" target="_blank" href="/iclist/6/1.html">6</a><a title="7" target="_blank" href="/iclist/7/1.html">7</a><a title="8" target="_blank" href="/iclist/8/1.html">8</a><a title="9" target="_blank" href="/iclist/9/1.html">9</a></td></tr></table>
+        </li>
+        <tms_bind ID="ec1">
+            <li class="g-f-l g-pr-10 g-pl-5 w309">
+                <p class="g-c-66"><strong><a target="_blank" class="g-c-b g-fz-14" href="{#0,href,/tech/dr/20001006.html#}" title="查看更多{#1,title,电容器#}">{#2,text,电容器#}</a></strong>({#3,nums,1036782#})</p>
+                <div class="pro g-cf g-mt-5">
+                    <tms_bind ID="ec1_pro"><a target="_blank" href="{#0,href,/tech/dr/200010060016.html#}" title="{#1,title,铝电解电容#}">{#2,text,铝电解电容#}</a></tms_bind></div>
+            </li>
+        </tms_bind>
+        <tms_bind ID="ec">
+            <li class="g-f-l g-pr-10 g-pl-5 w309 <%#(Container.ItemIndex==16||Container.ItemIndex==17)?"ec_last":""%>">
+                <p class="g-c-66"><strong><a target="_blank" class="g-c-b g-fz-14" href="{#0,href,/tech/dr/20001006.html#}" title="查看更多{#1,title,电容器#}">{#2,text,电容器#}</a></strong>({#3,nums,1036782#})</p>
+                <div class="pro g-cf">
+                    <tms_bind ID="ec_pro"><a target="_blank" href="{#0,href,/tech/dr/200010060016.html#}" title="{#1,title,铝电解电容#}">{#2,text,铝电解电容#}</a></tms_bind></div>
+            </li>
+        </tms_bind>
+    </ul>
+    <ul class="g-cf g-mt-5 g-pt-10 g-bt-ed">
+    	<li class="g-fz-14 g-fw-b g-pt-5 g-pl-5 g-ml-10">配件辅料及周边设备</li>
+        <tms_bind ID="other">
+            <li class="g-f-l g-pr-10 g-pl-5 w309 <%#(Container.ItemIndex==12||Container.ItemIndex==13)?"ec_last":""%>">
+                <p class="g-c-66"><strong><a target="_blank" class="g-c-b g-fz-14" href="{#0,href,/tech/dpj/30001034.html#}" title="查看更多{#1,title,单片机、电路板#}">{#2,text,单片机、电路板#}</a></strong>({#3,nums,133702#})</p>
+                <div class="pro g-cf">
+                    <tms_bind ID="other_pro"><a target="_blank" href="{#0,href,/tech/dpj/300010340002.html#}" title="{#1,title,电路板生产#}">{#2,text,电路板生产#}</a></tms_bind></div>
+            </li>
+        </tms_bind>
+    </ul>
+</div>
+
+
+<!--中国制造-->
+<div>
+    <div class="g-mtb-5 g-o-h h190" id="chinachips">
+        <tms_bind ID="Repeater1">
+            <div class="g-list-mix g-cf"> <a target="_blank" href="{#0,图片链接,/info-197974.html#}" title="{#1,图片title,PC诞生30周年纪念：PC时代是否接近尾声#}"><img alt="{#2,图片alt,PC诞生30周年纪念：PC时代是否接近尾声#}" src="{#3,图片路径,http://img.hqew.com/file/CMSImages/2011/08/1659109_201108111046531Kdd0.thumb.JPG#}" /></a>
+                <h4><a target="_blank" class="g-c-b" href="{#4,标题链接,/info-197974.html#}" title="{#5,标题title,PC诞生30周年纪念：PC时代是否接近尾声#}">{#6,标题,PC诞生30周年纪念：PC时代是否接近尾声#}</a></h4>
+                <p class="g-c-g">{#7,摘要,IBM工程师马克·迪安（Mark Dean）曾参与研发第一台IBM PC，他今天发表文章说：PC时#}</p>
+            </div>
+        </tms_bind>
+    </div>
+    <p class="g-plr-10 g-pt-5 g-pb-10 g-ta-c"><a target="_blank" class="g-btn-12" href="/chinachips/service_index.html"><em>展示中国制造品牌风采</em><b></b></a></p>
+</div>
+<div class="g-img-com-sma g-mtb-5 g-d-n g-o-h h230" id="provider">
+    <ul>
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro1" title="2011年十大品牌企业"></a>
+<a href="http://yuejing.hqew.com/" target="_blank" rel="nofollow"  title="广东省粤晶高科股份有限公司">
+            <img src="http://www.hqewimg.com/images/index/2011provide/logo_1_01.gif" /></a> <a href="http://yuejing.hqew.com/"
+                target="_blank" rel="nofollow" title="点击查看该公司简介">广东省粤晶高科股份有限公司</a> </li>
+
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro1" title="2011年十大品牌企业"></a>
+    <a href="http://www.tianwang.hqew.com/" target="_blank" rel="nofollow" title="深圳市天旺科技开发有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_1_02.gif" /></a> <a href="http://www.tianwang.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市天旺科技开发有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro1" title="2011年十大品牌企业"></a>
+    <a href="http://szkexin.hqew.com/" target="_blank" rel="nofollow" title="广东科信实业有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_1_03.gif" /></a> <a href="http://szkexin.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">广东科信实业有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro1" title="2011年十大品牌企业"></a>
+    <a href="http://meilong.hqew.com/" target="_blank" rel="nofollow" title="深圳市美隆电子有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_1_04.gif" /></a> <a href="http://meilong.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市美隆电子有限公司</a> </li>                            
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro1" title="2011年十大品牌企业"></a>
+    <a href="http://www.hqew.com/freeshop_325573.html" target="_blank" rel="nofollow" title="广州索尔半导体有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_1_05.gif" /></a> <a href="http://www.hqew.com/freeshop_325573.html"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">广州索尔半导体有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro1" title="2011年十大品牌企业"></a>
+    <a href="http://maxim.hqew.com/" target="_blank" rel="nofollow" title="香港宏图伟业集团有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_1_06.gif" /></a> <a href="http://maxim.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">香港宏图伟业集团有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro1" title="2011年十大品牌企业"></a>
+    <a href="http://faststar.hqew.com/" target="_blank" rel="nofollow" title="深圳市快星半导体电子有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_1_07.gif" /></a> <a href="http://faststar.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市快星半导体电子有限公司</a>
+        </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro1" title="2011年十大品牌企业"></a>
+    <a href="http://szpfs.hqew.com/" target="_blank" rel="nofollow" title="深圳市平盛电子有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_1_08.gif" /></a> <a href="http://szpfs.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市平盛电子有限公司</a>
+        </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro1" title="2011年十大品牌企业"></a>
+    <a href="http://philipsic.hqew.com/" target="_blank" rel="nofollow" title="深圳市天玖隆科技有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_1_09.gif" /></a> <a href="http://philipsic.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市天玖隆科技有限公司</a>
+        </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro1" title="2011年十大品牌企业"></a>
+    <a href="http://ytl-ic.hqew.com/" target="_blank" rel="nofollow" title="深圳市英特翎电子有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_1_10.gif" /></a> <a href="http://ytl-ic.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市英特翎电子有限公司</a> </li>
+    </ul>
+    
+    <ul>
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+<a href="http://szjc.hqew.com/" target="_blank" rel="nofollow" title="深圳市金城微零件有限公司">
+            <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_01.gif" /></a> <a href="http://szjc.hqew.com/"
+                target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市金城微零件有限公司</a> </li>
+
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://hcwy.hqew.com/" target="_blank" rel="nofollow" title="北京恒成伟业电子有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_02.gif" /></a> <a href="http://hcwy.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">北京恒成伟业电子有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://ic.hqew.com/" target="_blank" rel="nofollow" title="深圳市潮光科技有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_03.gif" /></a> <a href="http://ic.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市潮光科技有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://guiyu.hqew.com/" target="_blank" rel="nofollow" title="深圳市硅宇电子有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_04.gif" /></a> <a href="http://guiyu.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市硅宇电子有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://ample.hqew.com/" target="_blank" rel="nofollow" title="深圳市安普达迅电子有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_05.gif" /></a> <a href="http://ample.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市安普达迅电子有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://jingge-ic.hqew.com/" target="_blank" rel="nofollow" title="上海京格电子有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_06.gif" /></a> <a href="http://jingge-ic.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">上海京格电子有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://gangrui.hqew.com/" target="_blank" rel="nofollow" title="深圳市港瑞电子有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_07.gif" /></a> <a href="http://gangrui.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市港瑞电子有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://mengsheng8.hqew.com/" target="_blank" rel="nofollow" title="深圳市萌盛微电子有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_08.gif" /></a> <a href="http://mengsheng8.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市萌盛微电子有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://syf-mos.hqew.com/" target="_blank" rel="nofollow" title="深圳市松源丰电子有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_09.gif" /></a> <a href="http://syf-mos.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市松源丰电子有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://zehua.hqew.com/" target="_blank" rel="nofollow" title="深圳市华联盛科技有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_10.gif" /></a> <a href="http://zehua.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市华联盛科技有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://sth-ic.hqew.com/" target="_blank" rel="nofollow" title="深圳市中意法电子科技有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_11.gif" /></a> <a href="http://sth-ic.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市中意法电子科技有限公司</a>
+        </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://hs-dz.hqew.com/" target="_blank" rel="nofollow" title="鸿盛电子（香港）贸易公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_12.gif" /></a> <a href="http://hs-dz.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">鸿盛电子（香港）贸易公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://hjxdz.hqew.com/" target="_blank" rel="nofollow" title="深圳市恒嘉信电子科技有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_13.gif" /></a> <a href="http://hjxdz.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市恒嘉信电子科技有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://soba.hqew.com/" target="_blank" rel="nofollow" title="深圳市矽源科技有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_14.gif" /></a> <a href="http://soba.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市矽源科技有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://kimwood.hqew.com/" target="_blank" rel="nofollow" title="金宇电子香港有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_15.gif" /></a> <a href="http://kimwood.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">金宇电子香港有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://dn.hqew.com/" target="_blank" rel="nofollow" title="深圳市动能世纪科技有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_16.gif" /></a> <a href="http://dn.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市动能世纪科技有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://jy1001.hqew.com/" target="_blank" rel="nofollow" title="深圳成德广营科技有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_17.gif" /></a> <a href="http://jy1001.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳成德广营科技有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://chip.hqew.com/" target="_blank" rel="nofollow" title="深圳市宏芯微科技有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_18.gif" /></a> <a href="http://chip.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市宏芯微科技有限公司</a> </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://yrd-ic.hqew.com/" target="_blank" rel="nofollow" title="深圳市外昂电子有限公司（英锐达电子）">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_19.gif" /></a> <a href="http://yrd-ic.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳外昂电子有限公司(英锐达)</a>
+        </li>
+    
+        <li><a href="/topic/provider2011/result.html" target="_blank" rel="nofollow" class="g-ico-pro3" title="2011优质供应商"></a>
+    <a href="http://cxda.hqew.com/" target="_blank" rel="nofollow" title="深圳市创新达电子科技有限公司">
+                <img src="http://www.hqewimg.com/images/index/2011provide/logo_2_20.gif" /></a> <a href="http://cxda.hqew.com/"
+                    target="_blank" rel="nofollow" title="点击查看该公司简介">深圳市创新达电子科技有限公司</a>
+        </li>  
+    </ul>
+</div>
+
+
+<!--半导体-->
+<div class="g-pb-5 g-mt-5 g-mlr-5">
+    <div class="g-list-mix g-img-peo-sma g-cf"> <a target="_blank" title="在线预约" href="http://www.csau.com/topic/order.html#a"><img src="http://www.hqew.com/images/index/zj1.jpg" alt="陶显芳"></a>
+        <h4><a target="_blank" class="g-c-b" title="在线预约" href="http://www.csau.com/topic/order.html#a">陶显芳</a><span class="g-c-66 g-fw-n">(秘书长)</span></h4>
+        <p class="g-c-66">电子技术领域资深专家</p>
+    </div>
+    <div class="g-list-mix g-img-peo-sma g-cf"> <a target="_blank" title="在线预约" href="http://www.csau.com/topic/order.html#b"><img src="http://www.hqew.com/images/index/zj2.jpg" alt="周斌"></a>
+        <h4><a target="_blank" class="g-c-b" title="在线预约" href="http://www.csau.com/topic/order.html#b">周斌</a><span class="g-c-66 g-fw-n">(资深专家)</span></h4>
+        <p class="g-c-66">IC设计代工和供应链服务资深专家</p>
+    </div>
+    <div class="g-list-mix g-img-peo-sma g-cf"> <a target="_blank" title="在线预约" href="http://www.csau.com/topic/order.html#c"><img src="http://www.hqew.com/images/index/zj3.jpg" alt="潘九堂"></a>
+        <h4><a target="_blank" class="g-c-b" title="在线预约" href="http://www.csau.com/topic/order.html#c">潘九堂</a><span class="g-c-66 g-fw-n">(副秘书长)</span></h4>
+        <p class="g-c-66">半导体和电子市场资深专家</p>
+    </div>
+</div>
+<ul class="g-list-txt g-list-dot csau">
+    <tms_bind ID="Repeater1">
+        <li><a target="_blank" href="{#0,href,http://bbs.csau.com/forum.php?mod=viewthread&amp;tid=755#}" title="{#1,title,中国经济高速增长之谜（一）#}">{#2,text,中国经济高速增长之谜（一）#}</a></li>
+    </tms_bind>
+</ul>
+<p class="g-ta-c g-lh-25 g-h-25 g-pb-10"><a class="g-btn-12" target="_blank" title="在线预约" href="http://www.csau.com/topic/order.html"><em>在线预约</em><b></b></a></p>
+
+
+<!--价格指数-->
+<p class="g-cf g-plr-10 g-con-t"><a class="g-fw-b g-c-66" title="点击访问华强北电子市场价格指数网站" target="_blank" href="http://www.hcsindex.com/">周走势</a><a class="g-c-99" title="点击访问华强北电子市场价格指数网站" target="_blank" href="http://www.hcsindex.com/">月走势</a><a class="g-c-99" title="点击访问华强北电子市场价格指数网站" target="_blank" href="http://www.hcsindex.com/">季走势</a><a class="g-bi-n g-c-99" title="点击访问华强北电子市场价格指数网站" target="_blank" href="http://www.hcsindex.com/">年走势</a></p>
+    <div> <a target="_blank" href="http://www.hcsindex.com"><img alt="华强北电子市场价格指数周走势" src="http://img.hqew.com/file/hcsindex/HqewIndex/chart1.JPG" border="0" /></a> <a class="g-d-n" target="_blank" href="http://www.hcsindex.com"><img alt="华强北电子市场价格指数月走势" src="http://img.hqew.com/file/hcsindex/HqewIndex/chart2.JPG" border="0" /></a> <a class="g-d-n" target="_blank" href="http://www.hcsindex.com"><img alt="华强北电子市场价格指数季走势" src="http://img.hqew.com/file/hcsindex/HqewIndex/chart3.JPG" border="0" /></a> <a class="g-d-n" target="_blank" href="http://www.hcsindex.com"><img alt="华强北电子市场价格指数年走势" src="http://img.hqew.com/file/hcsindex/HqewIndex/chart4.JPG" border="0" /></a> </div>
+
+
+
+
+
+
+
+
+
+
+
+

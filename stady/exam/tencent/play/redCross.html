@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>redCross</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<style type="text/css">
+.cl,.row{*zoom:1}
+.cl:after,.row:after{content:'';display:block;clear:both;height:0}
+.row{margin-bottom: 100px;position: relative;}
+.row div{background-color: #e34a4a;}
+
+.cro-1-1,.cro-1-2{float: left;}
+.cro-1-1{width: 150px;height: 50px;margin-top:50px;}
+.cro-1-2{width: 50px;height: 150px;margin-left:-100px;}
+
+.cro-2,.cro-2:after{float: left;}
+.cro-2{width: 150px;height: 50px;margin-top: 50px;}
+.cro-2:after{background-color: #e34a4a;content: '';display: block;width: 50px;height: 150px;margin-left:50px;margin-top: -50px;}
+
+.cro-3 {width: 50px;height: 50px;background: #e34a4a;margin-top: 50px;
+	box-shadow:50px -50px 0 #e34a4a,50px 0 0 #e34a4a,100px 0 0 #e34a4a,50px 50px 0 #e34a4a;
+}
+
+.cro-4{width: 150px;height: 150px;background-image:linear-gradient(0deg,#fff 33%,#e34a4a 33%,#e34a4a 66%,#fff 66%)}
+.cro-4:after{content:'';width: 150px;height: 150px;display: block;background-image:linear-gradient(90deg,transparent 33%,#e34a4a 33%,#e34a4a 66%,transparent 66%)}
+
+</style>
+</head>
+
+<body>
+    
+<div class="row">
+	<span class="cl">1.两元素浮动+margin</span>
+	<div class="cro-1-1"></div>
+	<div class="cro-1-2"></div>
+</div>
+
+<div class="row">
+	<span class="cl">2.元素+:after|:before浮动+margin</span>
+	<div class="cro-2"></div>
+</div>
+
+<div class="row">
+	<span class="cl">3.元素box-shadow</span>
+	<div class="cro-3"></div>
+</div>
+
+<div class="row">
+	<span class="cl">4.元素+:after|:before linear-gradient</span>
+	<div class="cro-4"></div>
+</div>
+
+</body>
+</html>

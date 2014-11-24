@@ -1,0 +1,166 @@
+
+<%@ Import Namespace="System.Collections.Generic" %>
+<%@ Import Namespace="System.Linq" %>
+<%@ Import Namespace="System.Xml.Linq" %>
+<%@ Import Namespace="System.Xml" %>
+<%@ Import Namespace="System.Text" %>
+<%@ Import Namespace="System" %>
+<%@ Import Namespace="Hqew.Model" %>
+<%@ Import Namespace="Hqew.Model.DBModel" %>
+<%@ Import Namespace="Hqew.Model.User" %>
+<%@ Import Namespace="Hqew.Utility" %>
+<%@ Import Namespace="Hqew.DMSFrame.WebLib" %>
+<%@ Import Namespace="Hqew.DMSFrame.Parameter" %>
+<%@ Import Namespace="Hqew.DMSFrame.Entry" %>
+
+<script runat="server">
+
+    protected string productStr="";
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        CreateMenu();
+        CreateProductDic();
+    }
+
+    protected void CreateMenu()
+    {
+        DataHandler dataHandler = new DataHandler(this.Request, this.Session);
+       this.tabhqm.Attributes["style"]="background:url('"+Hqew.Utility.UtilityHandler.GetHqmOnlineIcoUrl(12949, "fb62f4b8-63e5-4735-8fb4-3da152933d81", 1, 81, 1)+"') no-repeat 0 -4px transparent;";
+        UserInfo userInfo = new UserInfo();                
+        
+        DMSParam param = new DMSParam();
+        param.AssemblyName = "Hqew.BLL.Dll";
+        param.ClassName = "Hqew.BLL.IBS.IbsProductBLL";
+        param.MethodName = "GetIbsProductListByUser";
+        param.Param = userInfo;        
+        param.SessionInfo = this.SessionInfo;
+        IResult result = ExecuteBLL.Execute(param);
+
+        if (result.Complete == DMSComplete.Succeed)
+        {
+            if (result.Result != null)
+            {
+                StringBuilder productStr = new StringBuilder();
+                List<IbsProduct> productList = (List<IbsProduct>)result.Result;
+                productStr.Append("<div class='g-cf gm-menu' id='g-menu'>");
+                productStr.Append("<a href='/AllProduct.aspx' title='所有功能' id='g-menu-all' class='gm-a-fix g-f-r'><span class='g-menu-sygn'></span></a>");
+                productStr.Append("<a href='/index.aspx' title='首页' id='g-menu-main' class='gm-a-fix'><span class='g-menu-main'></span></a>");
+                for (int i = 0; i < productList.Count && i < 9; i++)
+                {
+                    productStr.AppendFormat("<a href='{0}' title='{1}' productid='{2}' class='gm-a'><span class='g-menu-{2}'></span></a>", productList[i].Path, productList[i].ProductName, productList[i].ProductID);
+                }
+                if (productList.Count > 9)
+                {
+                    productStr.Append("<a href='javascript:;' title='查看更多' class='g-menu-agd' id='g-menu-agd'></a>");
+                }
+                else
+                {
+                    productStr.Append("<a href='javascript:;' title='查看更多' class='g-menu-agd g-d-n' id='g-menu-agd'></a>");
+                }
+                productStr.Append("</div>");
+                productStr.Append("<div class='g-menu-more g-d-n' id='g-menu-more'>");
+                if (productList.Count > 9)
+                {
+                    
+                    for (int j = 9; j < productList.Count; j++)
+                    {
+                        productStr.AppendFormat("<a href='{0}' title='{1}' productid='{2}' class='g-menu-mi'>{1}</a>", productList[j].Path, productList[j].ProductName, productList[j].ProductID);
+                    }                    
+                }
+                productStr.AppendFormat("<a href='/AllProduct.aspx?isset=1' title='设置常用功能' class='g-menu-mi-fix' id='g-menu-mi-fix'>设置常用功能</a>");
+                productStr.Append("</div>");
+                
+                LMenu.Text = productStr.ToString();
+            }
+        }        
+    }
+    
+    /// <summary>
+    /// 创建产品键值
+    /// </summary>
+    protected void CreateProductDic()
+    {
+        DMSParam param = new DMSParam();
+        param.AssemblyName = "Hqew.BLL.Dll";
+        param.ClassName = "Hqew.BLL.IBS.IbsProductBLL";
+        param.MethodName = "GetProductList";
+        param.Param = new IbsProduct();        
+        IResult result = ExecuteBLL.Execute(param);
+
+        if (result.Complete == DMSComplete.Succeed)
+        {
+            if (result.Result != null)
+            {
+                List<IbsProduct> productList = (List<IbsProduct>)result.Result;
+                if (productList.Count > 0)
+                {                    
+		    productStr = "_ibs_ProDic = {";
+                    foreach (IbsProduct product in productList)
+                    {
+                        productStr+=string.Format("'{0}':'{1}',", product.ProductID, product.ProductName);
+                    }
+                    productStr = productStr.TrimEnd(',');
+                    productStr += "};";
+
+                    //Response.Write("<script type='text/javascript'>"+productStr+"</"+"script>");
+                }
+            }
+        }
+    }
+    
+</script>
+<div class="g-main"> 
+
+    <div class="g-head" id="g-head">
+        <div class="g-head-r g-cf">
+        	<div class="g-cf">
+            <p class="logininfo g-c-a0">欢迎您：<span id="lbTipsLinkMan"><%=this.Session["Nickname"]%></span><span class="g-plr-10">|</span><a class="g-c-a0" href="/Logout.aspx" title="退出">退出</a><span class="g-plr-10">|</span><a class="g-c-a0" href="http://ibs.hqew.com/web/hqen/index.aspx" title="返回旧版互联商务系统">返回旧版</a><span class="g-plr-10">|</span><a class="g-c-a0" href="http://www.hqew.com" title="返回华强电子网首页" target="_blank">华强电子网首页</a><span class="g-plr-10">|</span><a class="g-c-a0" href="http://www.hqew.com/Help/Default.html" title="查看帮助" target="_blank">帮助</a></p>
+            <div class="logoinfo g-cf"><a href="" title="华强电子网互联网商务系统2.0" class="logo g-f-l g-mr-10">互联网商务系统2.0</a>
+              <h1><%=this.Session["CompanyName"]%></h1>
+            </div>
+            </div>            
+            <asp:Literal ID="LMenu" runat="server">            
+            </asp:Literal>                        
+        </div>
+    </div>
+    
+    <div class="g-wp g-top g-o-v g-p-r">
+        <a id="forward" title="菜单前滚"></a>
+        <a id="rearward" title="菜单后滚"></a>
+        <ul class="g-ttab" id="g-tab">
+            <li class="cur"><a>首页</a><b title="关闭"></b></li>
+        </ul>
+        <div class="tabFloatRight">
+            <a id="conRefresh" href="javascript:;" title="刷新当前页"><b></b></a>
+            <a id="g-setfun" href="javascript:;" title="设置常用功能" style="margin-right: 0px;"><b id="b_setting"></b></a>
+            <a id="servicehqmOnline" title="洽洽在线客服"><b id="tabhqm" runat="server" ></b></a>
+<div id="div_quick_setting" class="quicksetting g-d-n">
+<dl><dt><strong>快速设置</strong></dt>
+<dd><input type="radio" id="rad_buyers" name="radsetting" onclick="menu_quicksetting(this)"><label for="rad_buyers">我是采购商</label></dd>
+<dd><input type="radio" id="rad_sellers" name="radsetting" onclick="menu_quicksetting(this)"><label for="rad_sellers">我是供应商</label></dd>
+</dl>
+<dl>
+<dt class="pdt"><strong>自定义设置</strong></dt>
+<dd class="cursorpointer" onclick="hide_quicksetting();">我要自定义设置</dd>
+</dl>
+</ul>
+</div>
+        </div>
+    </div> 
+    <div class="g-wp" id="g-wp">
+      <div class="g-body" id="g-body"><iframe width="100%" height="100%" frameborder="0" src="/index.aspx"></iframe></div>
+    </div>
+  
+  <div class="g-ft g-c-w g-ta-c g-o-h" id="g-ft">
+    <div class="c"> 华强电子网版权所有&nbsp;Copyright&copy;2002-2012&nbsp;&nbsp;&nbsp;&nbsp;经营许可证：粤B2-20090028&nbsp;&nbsp;&nbsp;&nbsp;服务热线：400-887-3118</div>
+    <b class="l"></b><b class="r"></b> </div>
+</div>
+<div id="g-tip-load" class="g-tip-load">页面加载中,请稍后...</div>
+<script type="text/javascript">
+<%= productStr %>
+if(document.location.toString().indexOf('hqew.com')>0)
+{
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9c14e7a660000edd280005fedf9fec5c' type='text/javascript'%3E%3C/script%3E"));
+}
+</script>

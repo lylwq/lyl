@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<script type="text/javascript" src="js/jcore.js"></script>
+<script type="text/javascript">
+(function($) {
+	$.fn.scrollLoading = function(options) {
+		var defaults = {
+			attr: "data-url"	
+		};
+		var params = $.extend({}, defaults, options || {});
+		params.cache = [];
+		$(this).each(function() {
+			var node = this.nodeName.toLowerCase(), url = $(this).attr(params["attr"]);
+			if (!url) { return; }
+			//重组
+			var data = {
+				obj: $(this),
+				tag: node,
+				url: url
+			};
+			params.cache.push(data);
+		});
+		
+		//动态显示数据
+		var loading = function() {
+			var st = $(window).scrollTop(), sth = st + $(window).height();			
+			$.each(params.cache, function(i, data) {
+				var o = data.obj, tag = data.tag, url = data.url;
+				if (o) {					
+					post = o.position().top; posb = post + o.height();
+					if ((post > st && post < sth) || (posb > st && posb < sth)) {
+						//在浏览器窗口内
+						if (tag === "img") {
+							//图片，改变h_src
+							o.attr("src", url);	
+						} else {
+							o.load(url);
+						}	
+						data.obj = null;		
+					}
+				}
+			});		
+			return false;	
+		};		
+		//事件触发
+		//加载完毕即执行
+		loading();
+		//滚动执行
+		$(window).bind("scroll", loading);
+	};
+})(jQuery);
+
+$(function(){
+	$("img").scrollLoading({attr:"h_src"});
+});
+</script>
+<style type="text/css">
+img{display:block; background:url(images/loading.gif) no-repeat center center;}
+</style>
+</head>
+
+<body>
+<div>
+<img src="images/pixel.gif" h_src="images/lazy/1.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/2.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/3.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/4.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/5.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/6.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/7.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/8.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/9.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/10.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/11.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/12.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/13.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/14.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/15.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/16.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/17.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/18.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/19.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/20.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/21.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/22.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/23.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/24.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/25.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/26.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/27.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/28.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/30.jpeg" width="180" height="180" />
+</div>
+<div style="display:none">
+<img src="images/pixel.gif" h_src="images/lazy/1.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/2.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/3.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/4.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/5.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/6.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/7.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/8.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/9.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/10.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/11.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/12.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/13.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/14.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/15.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/16.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/17.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/18.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/19.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/20.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/21.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/22.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/23.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/24.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/25.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/26.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/27.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/28.jpeg" width="180" height="180" />
+<img src="images/pixel.gif" h_src="images/lazy/30.jpeg" width="180" height="180" />
+</div>
+</body>
+</html>

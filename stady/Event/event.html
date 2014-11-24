@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Event</title>
+<style type="text/css">
+html{background-color:#fff}
+body{margin:20px;background-color:#FC9}
+#target,.t2 {
+	width:400px;
+	height:100px;
+	background:blue;
+}
+</style>
+
+<script type="text/javascript">
+
+var dom = {};
+Array.prototype.indexOf = function(el, index) {
+    var n = this.length >>> 0,
+    i = index == null ? 0: index < 0 ? Math.max(0, n + index) : index;
+    for (; i < n; i++)
+    if (i in this && this[i] === el) return i;
+    return - 1;
+
+};
+//http://msdn.microsoft.com/zh-cn/library/bb383786.aspx
+//移除 Array 对象中某个元素的第一个匹配项。
+Array.prototype.remove = function(item) {
+    var index = this.indexOf(item);
+    if (index !== -1) return this.removeAt(index);
+    return null;
+
+};
+//移除 Array 对象中指定位置的元素。
+Array.prototype.removeAt = function(index) {
+    return this.splice(index, 1)
+
+};
+dom.attachEvent = function(el, type, handler) {
+    // 在每个元素上设置一个Object类型的私定义属性events
+    if (!el.events) el.events = {};
+    // 这个对象有许多键为事件类型，值为函数数组的属性
+    var handlers = el.events[type];
+    if (!handlers) {
+        handlers = el.events[type] = [];
+        // 如果它原来就以onXXXX方式绑定了某事件，那么把它置为事件数组的第一个元素
+        if (el["on" + type]) {
+            handlers[0] = el["on" + type];
+
+        }
+
+    }
+    //添加回调函数
+    handlers.push(handler);
+    //以onXXXX方式绑定我们的处理函数
+    el["on" + type] = dom.handleEvent;
+
+};
+
+dom.detachEvent = function(el, type, handler) {
+    if (el.events && el.events[type]) {
+        el.events[type].remove(handler)
+
+    }
+
+}
+dom.handleEvent = function(event) {	
+    event = event || window.event;
+    event = dom.fixEvent(event);
+    event.currentTarget = this;
+    //修正currentTarget
+    var returnValue = true;
+    var handlers = this.events[event.type];
+    for (var i = 0, n = handlers.length; i < n; i++) {
+        if (handlers[i](event) === false) {
+            returnValue = false;
+
+        }
+
+    }
+    return returnValue;
+
+};
+var buttonMap = {
+    1: 1,
+    4: 2,
+    2: 3
+
+}
+dom.fixEvent = function(event) {
+    if (event["expando"]) {
+        return event;
+
+    }
+    var originalEvent = event
+    event = dom.Event(originalEvent);
+    for (var prop in originalEvent) {
+        if (typeof originalEvent[prop] !== "function") {
+            event[prop] = originalEvent[prop]
+
+        }
+
+    }
+    //如果不存在target属性，为它添加一个
+    if (!event.target) {
+        event.target = event.srcElement || document;
+
+    }
+    //如果事件源对象为文本节点，则置入其父元素
+    if (event.target.nodeType === 3) {
+        event.target = event.target.parentNode;
+
+    }
+    //如果不存在relatedTarget属性，为它添加一个
+    if (!event.relatedTarget && event.fromElement) {
+        event.relatedTarget = event.fromElement === event.target ? event.toElement: event.fromElement;
+
+    }
+
+    //如果不存在pageX/Y则结合clientX/Y做一双出来
+    if (event.pageX == null && event.clientX != null) {
+        var doc = document.documentElement,
+        body = document.body;
+        event.pageX = event.clientX + (doc && doc.scrollLeft || body && body.scrollLeft || 0) - (doc && doc.clientLeft || body && body.clientLeft || 0);
+        event.pageY = event.clientY + (doc && doc.scrollTop || body && body.scrollTop || 0) - (doc && doc.clientTop || body && body.clientTop || 0);
+
+    }
+
+    // 为键盘事件添加which事件
+    if (!event.which && ((event.charCode || event.charCode === 0) ? event.charCode: event.keyCode)) {
+        event.which = event.charCode || event.keyCode;
+
+    }
+    // Add metaKey to non-Mac browsers (use ctrl for PC's and Meta for Macs)
+    if (!event.metaKey && event.ctrlKey) {
+        event.metaKey = event.ctrlKey;
+
+    }
+
+    // 判定鼠标事件按下的是哪个键，1 === left; 2 === middle; 3 === right
+
+	if (!event.which && event.button !== undefined) {
+        event.which = buttonMap[event.button];
+    }
+    return event;
+
+}
+
+
+dom.oneObject = function(arr, val) {
+    var result = {},
+    value = val !== undefined ? val: 1;
+    for (var i = 0, n = arr.length; i < n; i++)
+    result[arr[i]] = value;
+    return result;
+
+};
+dom.mixin = function(result, source) {
+    if (arguments.length === 1) {
+        source = result;
+        result = dom;
+
+    }
+    if (result && source) {
+        for (var key in source)
+        source.hasOwnProperty(key) && (result[key] = source[key]);
+
+    }
+    if (arguments.length > 2) {
+        var others = [].slice.call(arguments, 2);
+        for (var i = 0, n = others.length; i < n; i++) {
+            result = arguments.callee(result, others[i]);
+			
+        }
+
+    }
+    return result;
+
+}
+
+var MouseEventOne = dom.oneObject(["click", "dblclick", "mousedown", 
+"mousemove", "mouseout", "mouseover", "mouseup"], "[object MouseEvent]");
+var HTMLEventOne = dom.oneObject(["abort", "blur", "change", "error", "focus", 
+"load", "reset", "resize", "scroll", "select", "submit", "unload"], "[object Event]");
+var KeyboardEventOne = dom.oneObject(["keyup", "keydown", "keypress", ], 
+"[object KeyboardEvent]");
+var EventMap = dom.mixin({},
+MouseEventOne, HTMLEventOne, KeyboardEventOne)
+
+ var fn = "prototype";
+dom.Event = function(src) {
+    if (!this.preventDefault) {
+        return new dom.Event[fn].init(src);
+    }
+
+};
+
+function returnFalse() {
+    return false;
+
+}
+function returnTrue() {
+    return true;
+
+}
+// http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
+dom.Event[fn] = {
+    init: function(src) {
+        //如果传入的是事件对象		
+        if (src && src.type) {
+            this.originalEvent = src;
+            this.type = src.type;
+            //如果传入的是事件类型
+
+        } else {
+            this.type = src;
+
+        }
+        this.timeStamp = new Date().valueOf();
+        this["expando"] = true;
+
+    },
+    //http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/events.html#Conformance
+    toString: function() {
+        return EventMap[this.type] || "[object Event]"
+
+    },
+    preventDefault: function() {
+        this.isDefaultPrevented = returnTrue;
+        var e = this.originalEvent;
+        if (!e) {
+            return;
+
+        }
+        // 如果存在preventDefault 那么就调用它
+        if (e.preventDefault) {
+            e.preventDefault();
+
+        }
+        // 如果存在returnValue 那么就将它设为false
+        e.returnValue = false;
+
+    },
+    stopPropagation: function() {
+        this.isPropagationStopped = returnTrue;
+        var e = this.originalEvent;
+        if (!e) {
+            return;
+
+        }
+        // 如果存在preventDefault 那么就调用它
+        if (e.stopPropagation) {
+            e.stopPropagation();
+
+        }
+        // 如果存在returnValue 那么就将它设为true
+        e.cancelBubble = true;
+
+    },
+    stopImmediatePropagation: function() {
+        this.isImmediatePropagationStopped = returnTrue;
+        this.stopPropagation();
+
+    },
+    isDefaultPrevented: returnFalse,
+    isPropagationStopped: returnFalse,
+    isImmediatePropagationStopped: returnFalse
+
+};
+dom.Event[fn].init[fn] = dom.Event[fn];
+
+var $ = function(id) {
+    return document.getElementById(id)
+
+}
+window.onload = function() {
+
+    var a = function(e) {
+
+        $("p").innerHTML = e.pageX + "  " + e.pageY
+
+    }
+    dom.attachEvent($("target"), "mousemove", a);
+    setTimeout(function() {
+        dom.detachEvent($("target"), "mousemove", a);
+
+    },
+    10 * 1000);
+    dom.attachEvent(document, "keyup", 
+    function(e) {
+        alert("你按下的是  " + String.fromCharCode(e.which) + "键")
+
+    });
+    dom.attachEvent(document, "keyup", 
+    function(e) {
+        alert("你按下的是  " + String.fromCharCode(e.which) + "键")
+
+    });
+
+}
+
+</script>
+</head>
+<body>
+<div id="target" ><div class="t2" id="t2" > </div> </div>
+
+<p id="p">显示鼠标位置</p>
+<h1>请按下键盘的键</h1>
+</body>
+</html>

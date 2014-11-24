@@ -1,0 +1,19 @@
+{
+	"manifest_version": 2,
+
+	"name": "btc Extension",
+	"description": "btc transaction helper",
+	"version": "1.0",
+
+	/*"permissions": [
+	"http://www.btctrade.com/"
+	],*/
+	"background" : {
+		"page" : "popup.html"
+	},
+	"page_action": {
+		"default_icon": "images/logo.png",
+		"default_title": "help me",
+		"page" : "popup.html"
+	}
+}

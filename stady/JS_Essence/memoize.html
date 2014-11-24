@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>记忆</title>
+<script type="text/javascript">
+function memoize (func, context) {
+    function memoizeArg (argPos) {
+        var cache = {};
+        return function () {
+            if (argPos == 0) {
+                if (!(arguments[argPos] in cache)) {
+                    cache[arguments[argPos]] = func.apply(context, arguments);
+                }
+                return cache[arguments[argPos]];
+            }
+            else {
+                if (!(arguments[argPos] in cache)) {
+                    cache[arguments[argPos]] = memoizeArg(argPos - 1);
+                }
+                return cache[arguments[argPos]].apply(this, arguments);
+            }
+        }
+    }
+    // JScript doesn't grok the arity property, but uses length instead
+    var arity = func.arity || func.length;
+    return memoizeArg(arity - 1);
+}
+
+function myObj () { };
+ 
+myObj.prototype = {
+ 
+    expensiveAjaxLookup: function (y, mo, d, h, mn, s) {
+        // OK.  No XHR.  Just pretend it does something on the server!
+        // Instead we're just going to construct a date string.  Lame, I know.
+        return this.prop + new Date(y || 0, mo || 0, d || 0, h || 0, mn || 0, s || 0);
+    },
+ 
+    // a public property to prove that "this" is really "this" in our memoized methods
+    prop: 'my date: '
+ 
+}
+
+var o = new myObj();
+o.memoizedLookup = memoize(o.expensiveAjaxLookup, o);
+// Note: 8 == September, not August in Javascript
+console.log(o.memoizedLookup(2009, 8, 17));
+console.log(o.memoizedLookup(2009, 8, 16));
+console.log(o.memoizedLookup(2009, 9, 16));
+console.log(o.memoizedLookup(2009, 8, 16));
+console.log(o.memoizedLookup(2009, 8, 21, 13, 26, 17));
+console.log(o.memoizedLookup(2009, 8, 21, 13, 26, 17));
+
+</script>
+
+<!--<script type="text/javascript">
+function test(){
+	var str = [];
+	for(var i=0;i<10000;i+=1){
+		str.push("aaaaa");
+	}
+	str.join("");
+	console.log(str);
+}
+
+function test2(){
+	var str = "";
+	for(var i=0;i<10000;i+=1){
+		str+="aaaaa";
+	}
+	
+	console.log(str);
+}
+
+(function(){
+	var a=window.a=function(){
+		return a.fn.init();
+	};
+	a.fn=a.prototype={
+		init:function(){
+			return this;
+		}
+	}
+})();
+function aa(){
+	this.b=function(){}
+}
+aa.prototype={
+	c:function(){},
+	d:function(){}
+}
+
+
+</script>-->
+</head>
+
+<body>
+
+<a href="#" onclick="test()" id="tou">click</a>
+<a href="#" onclick="test2()" id="">click2</a>
+<input maxlength="10" />
+
+
+</body>
+</html>

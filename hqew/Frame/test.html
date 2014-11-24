@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+
+    
+<script type="text/javascript" src="jq_1.6.js"></script>
+<script type="text/javascript">
+var str = '<tms_bind id="repeart1">'+
+'<div class="g-bc-f0 g-lh-2 g-pl-10 g-pr-10">'+
+'<span class="g-f-r g-c-b">'+
+'<a class="g-c-b g-pr-10" href="{#0,标题,标题0#}" target="_blank" title="查看求购信息">{#1,标题,标题1#}</a>'+
+'|<a class="g-c-b g-fw-b g-pl-10" href="#" title="发布求购">发布求购</a>'+
+'</span>'+
+'<tms_bind id="repeart2">'+
+'	<a class="g-c-b" href="{#0,标题,标题3#}" target="_blank" title="查看供应信息">{#1,标题,标题4#}</a>'+
+'</tms_bind>'+
+'</div>'+
+'</tms_bind>';
+
+	var node = "<tms_bind",node_end = "</tms_bind>",start = 0,end = -1,
+		results = [],
+	    reg = /\{\#.+?\#\}/g;
+		
+		console.log(reg.exec(str));
+function opString(str,start){
+	
+	if(str.indexOf(node,start) > -1){	
+		str = opString(str,str.indexOf(node,start) + node.length);
+	}
+	
+	end = str.indexOf(node_end,start);
+	var _temp = str.slice(start,end);
+	results.push(_temp);
+	str = str.replace(_temp,"");
+	return str;
+	
+}
+//opString(str,start);
+
+	//console.log(results[2]);
+</script>
+</head>
+
+<body>
+	
+	
+</body>
+</html>

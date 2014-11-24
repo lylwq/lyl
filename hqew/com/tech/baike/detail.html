@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>IC百科详情页</title>
+<link rel="stylesheet" type="text/css" href="/hqew/com/base.css"/>
+<script type="text/javascript" src="/hqew/com/tech/baike/jquert.min.js"></script>
+<script type="text/javascript" src="/hqew/com/tech/baike/icdetail.js"></script>
+
+<script type="text/javascript">
+	function postToWb(){
+	var _t = encodeURI(document.title);
+	var _url = encodeURIComponent(document.location);
+	var _appkey = encodeURI("dd7b732c0a814061b1bdf539ef8d66a6");//你从腾讯获得的appkey
+	var _pic = encodeURI('');//（例如：var _pic='图片url1|图片url2|图片url3....）
+	var _site = '';//你的网站地址
+	var _u = 'http://v.t.qq.com/share/share.php?url='+_url+'&appkey='+_appkey+'&site='+_site+'&pic='+_pic+'&title='+_t;
+	window.open( _u,'', 'width=700, height=680, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, location=yes, resizable=no, status=no' );
+	}
+</script>
+<style type="text/css">
+
+/*详细信息*/
+.ic-imgs{position:absolute;right:3px;top:202px;}
+.ic-img{background-color:#E2E2E4; border:1px #E2E2E4 solid; border-bottom:1px #9F9F9F solid; border-right:1px #9F9F9F solid; height:15px; width:15px; margin-left:5px;display:inline-block;text-align:center}
+.ic-cd1{margin-left:272px;}
+.ic-daitis li{width:140px;padding-right:5px;float:left;}
+
+/*目录*/
+.ic-cata{line-height:30px;border:1px solid #cfcfcf;width:140px;padding:0 10px 0 5px;}
+.ic-cata-ul{border-top:1px dashed #cfcfcf;padding-left:10px;}
+.ic-cata-ul li{height:20px;line-height:20px;padding-left:15px;background:url(/images/tech/baike/ic-dot.gif) no-repeat 0 7px;}
+
+/*推荐供应商*/
+.ic-btbd{border-width:1px 0;border-style:dashed;border-color:#cfcfcf}
+
+/*代替型号*/
+.ic_dtof{height:48px;}
+
+/*生产厂商*/
+.ic_scof{height:110px;}
+
+/*特点*/
+.ic-btd-ee{border-top:1px dashed #eee;}
+
+/*推荐供应商*/
+.sthead {background-color: #5A5A5A;height:24px;line-height:24px;color:#fff}
+.stbody {line-height:21px;}
+.sthead li,.stbody li {float:left;padding-left:10px;overflow:hidden;}
+.ic-recom{height:22px;line-height:22px;border:1px solid #ddd4b2;background-color:#fff9d5;}
+</style>
+</head>
+
+<body>
+
+<div class="g-w-990 g-mlr-a">
+    <div class="g-cf">
+        <div class="g-w-730 g-f-l g-mh-20">
+        
+        	<div class="g-box-g">
+            	<div class="bar"><h2>IC百科详情页</h2></div>   
+                             
+                <div class="con">
+                	
+                   	  	<div class="g-pb-5 g-bb-ee g-lh-22 g-m-10"><!--型号标题-->
+                    		<tms_bind id="repeaterTitle">
+                        	<h2 class="g-f-l g-mr-10 g-fz-14">{#0,型号标题,LM358#}</h2>
+                        	<a title="订阅商机快递" class="g-ico-subs g-c-b" target="_blank" href="{#1,订阅href,#}">订阅</a>
+                    		</tms_bind>
+                            
+                      	</div><!--型号标题end-->
+                        
+                        <div class="g-mlr-10 g-mb-10 g-cf"><!--指数\关键词\代替型号内容-->                        	
+                        	<tms_bind id="repeaterICDetail">
+                            
+                            <div class="g-img-pro-big g-f-l g-mr-10 g-p-r">
+                                <a title="点击查看大图" onclick="ToBigImg()">
+                                <img src="{#0,ic大图,/images/common/nophoto.gif#}" onerror="this.src='/images/common/nophoto.gif';" id="img_big">
+                                </a>
+                                <!--<div class="ic-imgs">
+                                    <span class="ic-img" id="pic1" onmouseover="picMouse(1,1)" onmouseout="picMouse(0,1);">1</span>
+                                    <span class="ic-img" id="pic2" onmouseover="picMouse(1,2)" onmouseout="picMouse(0,2);">2</span>
+                                    <span class="ic-img" id="pic3" onmouseover="picMouse(1,3)" onmouseout="picMouse(0,3);">3</span>
+                                </div>-->
+                                <p class ="g-ta-c g-mtb-10"><a title="上传更好的图片" onclick="fun_newOpen('/tech/detail/edit_{#1,上传图片方法参数,LM358#}.html#request_pic',750,345);" href="javascript:;">上传更好的图片</a></p>
+                            </div>
+                            
+                            <div class="ic-cd1">
+                                <h4 class="g-fz-14 g-pb-10 g-bb-ee">
+                                    <a target="_blank" class="g-c-b g-fz-12 g-fw-n g-f-r" href="{#2,查看加个趋势href,http://www.hcsindex.com/PriceBroadcast/detail.aspx?id=88052#}">查看价格趋势</a>
+                                    华强北指数：<span class="g-c-c0">{#3,华强北指数价格,0.17#}元</span>
+                                </h4>
+                                
+                                <p class="g-ptb-10 g-bb-ee">
+                                	<span class="g-ico-bidding g-c-c0 g-mr-10">今日竞价行情</span>
+                                    <span class="g-pl-10 g-mr-10">最高价：{#4,行情最高价,12.4#}(元)</span>
+                                    <span class="g-pl-10 g-mr-10">商家数：{#5,商家数,21#}</span>
+                                    <a href="http://www.hqew.com/buyer/bidding.html?SearchKeyword={#6,查看详情href参数,LM358#}&BiddingType=1" class="g-c-b" title="查看详情">详情</a>
+                                </p>
+                                
+                                <dl class="g-mtb-10 g-bb-ee g-lh-18 g-pb-5">
+                                	<dt class="g-fz-14 g-fw-b">关键词：</dt>
+                                    <dd>{#7,关键词,WiMAX和无线基础设备,变电站控制,SOIC,运放类型:单电源双重运算放大器放大器数目:2引脚数:8共模抑制比：70dB(典型值)共模输入电#}</dd>
+                                </dl>
+                                
+                                <p class="g-fz-14 g-fw-b g-mb-5"><a href="#tidai" class="g-c-b g-f-r g-fz-12 g-fw-n">更多</a>替代型号：</p>
+                                <ul class="ic-daitis g-bb-ee g-lh-18 g-pb-5 g-cf g-o-h">                                	
+                       			  <tms_bind id="repeaterICDetailSub">
+                                	<li><a target="_blank" href="http://www.hqew.com/tech/detail/{#0,替代型号href型号参数,BA10358#}.html" title="{#1,替代型号title,BA10358#}" class="g-b-c">{#2,替代型号text,BA10358#}</a></li>                                    </tms_bind>
+                          </ul>
+                                
+                                <div class ="g-mt-10">
+                                    <a href="javascript:;" onclick="postToWb()">
+                                        <img src="http://v.t.qq.com/share/images/s/b24.png" class="tmblog">
+                                    </a> 
+                                    本页地址：<input type="text" value="" id="address" name="address" class="g-ipt g-w-180" />
+                                    <a href="javascript:;" onclick="copy()" class="g-btn-12"><em>复制</em><b></b></a>
+                            	</div>
+                            </div>
+                            
+                        </tms_bind>
+                        </div><!--指数\关键词\代替型号内容end-->                        
+                        
+                        <!--目录-->
+                        <div class="g-mlr-10 g-mb-10">
+                        <div class="ic-cata" id="catalog_hide">
+                            <a href="javascript:;" onclick="catalog_show('0');" title="显示目录" class="g-c-b g-f-r">显示</a>
+                            <span class="g-fz-14">目录</span>
+                        </div>
+                        
+                        <div class="ic-cata g-d-n" id="catalog_show">
+                            <a href="javascript:;" onclick="catalog_show('1')" title="显示目录" class="g-c-b g-f-r">隐藏</a>
+                            <span class="g-fz-14">目录</span>
+                            <ul class="ic-cata-ul g-ptb-5">
+                                <li><a class="g-c-b" href="#tedian">特点描述</a></li>
+                                <li><a class="g-c-b" href="#ziliao">PDF资料</a></li>
+                                <li><a class="g-c-b" href="#tidai">替代型号</a></li>
+                                <li><a class="g-c-b" href="#lingyu">应用领域</a></li>
+                                <li><a class="g-c-b" href="#changshang">生产厂商</a></li>
+                                <li><a class="g-c-b" href="#fengzhuang">封装类型</a></li>
+                                <li><a class="g-c-b" href="#dealerDiv">推荐供应商</a></li>
+                            </ul>
+                        </div>
+                        </div>
+                      	<!--目录end-->                        
+                        
+                        <div class="g-mlr-10 g-mb-10" id="tedian">
+                      	<tms_bind id="repeaterICFeature">
+                        <!--特点-->
+                          <p class="g-mtb-10 g-cf g-ptb-5">
+                              <a onclick="fun_newOpen('/tech/detail/edit_{#0,型号,LM358#}.html#mtrait',750,405);" class="g-ico-edit g-c-b g-f-r" href="javascript:;">编辑本段</a>
+                              <span class="g-fz-14 g-fw-b">{#1,型号,LM358#} 特点</span>
+                          </p>
+                          <div class="g-lh-22 g-cf">
+                            <div class="g-pb-10">{#2,型号描述,LM358，工作电压为3V～32V，是一种贴片式式器件，采用SOIC封装方式。#}</div>
+                            <div class="g-f-l g-w-340">
+                              运放类型:{#3,运放类型,单电源双重运算放大器#}<br />
+                              放大器数目:{#4,放大器数目,2#}<br />
+                              引脚数:{#5,引脚数,8#}<br />
+                              共模抑制比：{#6,共模抑制比,70dB(典型值)#}<br />
+                              共模输入电压：{#7,共模输入电压,0~VCC?1.5V#}<br />
+                              器件标号:{#8,器件标号,358#}<br />
+                            </div>
+                            <div class="g-f-l g-w-340 g-ml-10">
+                              工作电压:{#9,工作电压,3V～32V#}<br />
+                              输入补偿电压 :{#10,输入补偿电压,7mV（最大），2.0mV(典型值)#}<br />
+                              封装类型:{#11,封装类型,SOIC#}<br />
+                              焊接方式:{#12,焊接方式,贴片式#}<br />
+                              工作温度范围:{#13,工作温度范围,0&deg;C to +70&deg;#}<br />
+                            </div>
+                          </div>
+                          <p class="g-ptb-10 g-mt-10 g-ta-r g-bb-ee ic-btd-ee"><span>以上信息由华强电子网提供,仅供参考！</span></p>                        
+                        </tms_bind>
+                        </div><!--特点end-->
+                        
+                      	<div class="g-mlr-10 g-mb-10" id="ziliao">
+                        <tms_bind id="repeaterZiLiaoMain"><!--资料-->
+                        	<p class="g-mtb-10 g-cf g-ptb-5">
+                            	<a onclick="fun_newOpen('/tech/detail/edit_{#0,型号标题,LM358#}.html#mpdf',750,405);" class="g-ico-edit g-c-b g-f-r" href="javascript:;">添加PDF</a>
+                            	<span class="g-fz-14 g-fw-b">{#1,型号标题,LM358#} 资料</span>
+                            </p>
+                            <div class="g-list-cols g-box-g g-bb-n">
+                                <ul class="g-bc-ff g-bb-cf">
+                                    <li class="g-w-180">型号</li>
+                                    <li class="g-w-320">简要描述</li>
+                                    <li class="g-w-90">厂商</li>
+                                    <li class="g-w-60">下载</li>
+                                </ul>
+                                <tms_bind ID="repeaterZiLiaoChil">
+                                <ul class="g-bb-cf">
+                                    <li class="g-w-180"><a href="/tech/pdf/view_{#0,型号GUID,dda2e7c9-d2a7-4449-bc07-0658d1aea242#}.html" title="{#1,型号title,IDT74FCT240ASO#}" class="g-c-b">{#2,型号text,IDT74FCT240ASO#}</a></li>
+                                    <li class="g-w-320">{#3,简要描述,LOW POWER DUAL OPERATIONAL AMPLIFIERS#}</li>
+                                    <li class="g-w-90">{#4,厂商,ST#}</li>
+                                    <li class="g-w-60"><a href="/tech/pdf/view_{#5,型号GUID,dda2e7c9-d2a7-4449-bc07-0658d1aea242#}.html" class="g-c-b g-ico-pdf">PDF</a></li>                                    
+                                </ul>
+                                </tms_bind>
+                            </div>
+                            <p class="g-ta-r"><a href="/tech/pdf_{#2,型号,LM358#}_search.html" class="g-ico-show">更多</a></p>                            
+                          	<div class="g-ptb-10 g-mb-10 g-ta-r g-bb-ee ic-btd-ee"><span>最后由"<a href="{#3,最后资料编辑企业网店href,http://www.hqew.com/freeshop_468870.html#}" class="g-c-b" title="进入企业网店">{#4,最后资料编辑企业名称,深圳楷轩电子有限公司#}</a>"编辑</span></div>
+                        </tms_bind>
+                        </div><!--资料end-->
+                        
+                        <div class="g-mlr-10 g-mb-10" id="tidai">
+                        <tms_bind id="repeaterTiDaiMain"><!--替代型号-->
+                        <p class="g-mtb-10 g-cf g-ptb-5">
+                            <a onclick="fun_newOpen('/tech/detail/edit_{#0,型号,LM358#}.html#mmodel',750,405);" class="g-ico-edit g-c-b g-f-r" href="javascript:;">修改/添加</a>
+                            <span class="g-fz-14 g-fw-b">{#1,型号,LM358#} 替代型号</span>
+                        </p>
+                        <div class="g-list-cols g-box-g g-bb-n">
+                            <ul class="g-bc-ff g-bb-cf">
+                                <li class="g-w-180">型号</li>
+                                <li class="g-w-470">描述</li>
+                            </ul>
+                            <tms_bind ID="repeaterTiDaiChil1">
+                            <ul class="g-bb-cf">
+                                <li class="g-w-180"><a href="/tech/detail/{#0,替代型号,LM358DR2G#}.html" class="g-c-b">{#1,替代型号,IDT74FCT240ASO#}</a></li>
+                                <li class="g-w-470">{#2,描述,DUAL OPERATIONAL AMPLIFIER#}</li>
+                            </ul>
+                            </tms_bind>
+                        </div>
+                        <ul class="g-ws-w g-cf g-pl-10 g-lh-24 g-o-h ic_dtof" id="ic_dtof">
+                        	<tms_bind ID="repeaterTiDaiChil2">
+                            <li class="g-f-l g-w-160 g-o-h g-mr-5"><a href="/tech/detail/{#0,替代型号,LM358DR2G#}.html" class="g-c-b">{#1,替代型号,IDT74FCT240ASO#}</a></li>
+                            </tms_bind>
+                        </ul>
+                        
+                        <p class="g-ta-r"><a href="javascript:;" class="g-ico-show" onclick="moreFun('ic_dtof','ic_dtof',this)">更多</a></p>
+                        <div class="g-ptb-10 g-mb-10 g-ta-r g-bb-ee ic-btd-ee"><span>最后由"<a href="{#2,最后资料编辑企业网店href,http://www.hqew.com/freeshop_468870.html#}" class="g-c-b" title="进入企业网店">{#3,最后资料编辑企业名称,深圳楷轩电子有限公司#}</a>"编辑</span></div>
+                        </tms_bind>
+                        </div><!--替代型号end-->
+                        
+                        <div class="g-mlr-10 g-mb-10" id="lingyu">
+                        <tms_bind id="repeaterYinYongMain"><!--应用领域-->
+                        	<p class="g-mtb-10 g-cf g-ptb-5">
+                            	<a onclick="fun_newOpen('/tech/detail/edit_{#0,型号,LM358#}.html#mapp',750,405);" class="g-ico-edit g-c-b g-f-r" href="javascript:;">修改/添加</a>
+                            	<span class="g-fz-14 g-fw-b">{#1,型号,LM358#} 应用领域</span>
+                            </p>
+                            <div class="g-list-cols g-box-g g-bb-n">
+                                <ul class="g-bc-ff g-bb-cf">
+                                    <li class="g-w-180">型号</li>
+                                    <li class="g-w-470">描述</li>
+                                </ul>
+                                <tms_bind id="repeaterYinYongChl1">
+                                <ul class="g-bb-cf">
+                                    <li class="g-w-180"><a href="#" class="g-c-b">{#0,应用列表型号,IDT74FCT240ASO#}</a></li>
+                                    <li class="g-w-470">{#1,应用列表描述,无线设备#}</li>
+                                </ul>
+                                </tms_bind>
+                            </div>
+                            <ul class="g-ws-w g-o-h g-cf g-pl-10 g-lh-24 ic_dtof" id="ic_yyof">                            	
+                                <tms_bind id="repeaterYinYongChl2">
+                            	<li class="g-f-l g-w-170">{#0,应用,WiMAX和无线基础设备#}</li>
+                                </tms_bind>
+                            </ul>
+                                    
+                        	<p class="g-ta-r"><a href="javascript:;" class="g-ico-show" onclick="moreFun('ic_yyof','ic_dtof',this)">更多</a></p>
+                          	<div class="g-ptb-10 g-mtb-10 g-ta-r g-bb-ee ic-btd-ee"><span>最后由"<a href="{#2,最后资料编辑企业网店href,http://www.hqew.com/freeshop_468870.html#}" class="g-c-b" title="进入企业网店">{#3,最后资料编辑企业名称,深圳楷轩电子有限公司#}</a>"编辑</span></div>
+                        </tms_bind>
+                        </div><!--应用领域end-->
+                        
+                        <div class="g-mlr-10 g-mb-10" id="changshang">
+                        <tms_bind id="repeaterShengChanMain"><!--生产厂商-->
+                        	<p class="g-mtb-10 g-cf g-ptb-5"><a onclick="fun_newOpen('/tech/detail/edit_{#0,型号,LM358#}.html#mmerch',750,405);" class="g-ico-edit g-c-b g-f-r" href="javascript:;">添加厂商</a>
+                            	<span class="g-fz-14 g-fw-b">{#1,型号,LM358#} 生产厂商</span>
+                            </p>
+                            
+                            <ul class="g-cf ic_scof g-o-h" id="ic_scof">
+                            	<tms_bind id="repeaterShengChanChl1">
+                            	<li class="g-mb-10 g-cf">
+                                	<a href="http://www.hqew.com/tech/productor/view_{#0,厂商id,602#}.html" class="g-f-l g-w-60 g-mr-10">{#1,厂商简称,ST#}</a>
+                                	<span class="g-f-l g-w-600">
+                                    {#2,厂商描述,意法半导体（ST）集团于1987年6月成立，是由意大利的SGS微电子公司和法国Thomson半导体公司合并而成。1998年5月，SGS-THOMSON Microelectronics将公司名称改为意法半导体有限公司。意法半导体是世界最大的半导体公司之一，公司销售收入在半导体工业五大高速增长市场之间分布均衡（...#}
+                                    </span>                    
+                                </li>
+                                </tms_bind>
+                            </ul>
+                            
+                            <p class="g-ta-r"><a href="javascript:;" class="g-ico-show" onclick="moreFun('ic_scof','ic_scof',this)">更多</a></p>
+                            <div class="g-ptb-10 g-mtb-10 g-ta-r g-bb-ee ic-btd-ee"><span>最后由"<a href="{#2,最后资料编辑企业网店href,http://www.hqew.com/freeshop_468870.html#}" class="g-c-b" title="进入企业网店">{#3,最后资料编辑企业名称,深圳楷轩电子有限公司#}</a>"编辑</span></div>
+                        </tms_bind>
+                        </div><!--生产厂商end-->
+                        
+                        <div class="g-mlr-10 g-mb-10" id="封装类型">
+          				<tms_bind id="repeaterFengZhuangMain"><!--封装类型-->
+                        	<p class="g-mtb-10 g-cf g-ptb-5">
+                            	<a onclick="fun_newOpen('/tech/detail/edit_{#0,型号,LM358#}.html#mmerch',750,405);" class="g-ico-edit g-c-b g-f-r" href="javascript:;">添加/修改</a>
+                            	<span class="g-fz-14 g-fw-b">{#1,型号,LM358#} 封装类型</span>
+                            </p>
+                            <ul class="g-cf ic_scof" id="ic_fzof">
+                            	<tms_bind id="repeaterFengZhuangChl">
+                            	<li class="g-mb-10 g-cf">
+                                	<a href="http://www.hqew.com/tech/productor/view_{#0,封装id,602#}.html" class="g-f-l g-w-60 g-mr-10">ST</a>
+                                	<span class="g-f-l g-w-600">{#1,封装描述,小型整合电路,SOP 的别称(见SOP)。国外有许多半导体厂家采用此名称。#}</span>                                </li>
+                                </tms_bind>
+                            </ul>
+                            <p class="g-ta-r"><a href="javascript:;" class="g-ico-show" onclick="moreFun('ic_fzof','ic_scof',this)">更多</a></p>
+                            <div class="g-ptb-10 g-mtb-10 g-ta-r g-bb-ee ic-btd-ee"><span>最后由"<a href="{#2,最后资料编辑企业网店href,http://www.hqew.com/freeshop_468870.html#}" class="g-c-b" title="进入企业网店">{#3,最后资料编辑企业名称,深圳楷轩电子有限公司#}</a>"编辑</span></div>
+                        </tms_bind>
+                        </div><!--封装类型end-->
+                        
+                        <div class="g-mlr-10 g-mb-10" id="dealerDiv"><!--推荐供应商-->
+                        	
+                            <tms_bind id="repeaterTuiJianMain">
+                        	<p class="g-fw-b ic-recom g-plr-5"><a href="http://www.hqew.com/ic/{#0,型号,LM358#}.html" class="g-f-r g-fw-n">更多</a>推荐供应商</p>
+                            <ul class="sthead">
+                                <li class="g-w-190">供应商</li>
+                                <li class="g-w-70">厂商</li>
+                                <li class="g-w-50">批号</li>
+                                <li class="g-w-50">数量</li>
+                                <li class="g-w-60">封装</li>
+                                <li class="g-w-90">交易说名</li>
+                                <li class="g-w-60">仓库</li>
+                                <li class="g-w-50 g-ta-r">询价</li>
+                            </ul>      
+                            <tms_bind id="repeaterTuiJianChl">
+                            
+                            <ul class='stbody <%#(Container.ItemIndex % 2)>0?"g-bc-f7":""%> g-cf g-ptb-5'>
+                                <li class="g-w-190">
+                                	<input type="checkbox" value="{#0,供应商GUID,c0a08345-4a02-4e9d-bdbd-a86cf619dbba#}" />
+                                    <a href="{#1,供应商网店href,http://wellspring.hqew.com/#}" class="g-c-b" title="{#2,供应商title,深圳市福田区卓越科讯电子经营部#}">{#3,供应商text,深圳市卓越科讯电子经营部#}</a>
+                              		<p class="g-ml-10 g-pl-10">
+                                        <a href="/topic/provider2010/result.html" class="g-ico-pro3 {#4,最佳/潜力/优质供应商是否隐藏,#}" title="{#5,最佳/潜力/优质供应商title,2010最具潜力分销企业#}"></a>
+                                        <a href="/Service/iscp.html" title="ISCP现货会员" class="g-ico-iscp {#6,iscp是否隐藏,#}"></a>
+                                        <a href="/bussiness/honesty_{#7,诚信通会员UserID,8713333#}.html" class="g-ico-honestyeasy {#8,诚信通是否隐藏,#}" title="诚易通会员"></a>
+                                    </p>
+                              	</li>
+                                <li class="g-w-70">{#9,厂商,TI#}</li>
+                                <li class="g-w-50">{#10,批号,10+#}</li>
+                                <li class="g-w-50">{#11,数量,600#}</li>
+                                <li class="g-w-60">{#12,封装,DIP-8#}</li>
+                                <li class="g-w-90">{#13,交易说名,绝对原装现货/更#}</li>
+                                <li class="g-w-60">{#14,仓库,深圳#}</li>
+                                <li class="g-w-50 g-ta-r">
+                               	  <a href="javascript:;" onclick="xunjia('{#15,GUID,5b21dc38-a098-44f7-aacf-41b5246824c1#}')" title="询价" class="g-ico-qq">询价</a>
+                              </li>
+                            </ul>
+                            
+                            </tms_bind>
+                            
+                            <form target="_blank" method="post" action="/buyer/inquires.html" id="StockGuidForm">                            
+                              <p class="g-ml-10 g-ptb-10 ic-btbd g-mtb-5">
+                              
+                                <input type="checkbox" title="选中/取消选中" onclick="selectAllNull(this)" class="qx">
+                                全选
+                                <input type="hidden" value="" name="hdnStockGuid" id="hdnStockGuid">
+                                <a href="javascript:;" onclick="SetStockGuid()" class="g-btn-12 g-ml-5"><em>批量询价</em><b></b></a>
+                                
+                              </p>
+                            </form>
+                            
+              				<p class="g-ptb-10 g-mtb-10">
+                                <span class="g-c-c0 g-ico-notice">还没有找到您要购买的库存？</span>
+                                <a href="javascript:;" onclick="g_ibs('/Web/Hqen/sell/icmanage.aspx')" class="g-c-b" id="putNow">立即发布</a>&nbsp; 
+                                您的求购意向，让华强电子网上的供应商主动与您联系！
+                                
+                                <a href="javascript:;" onclick="g_ibs('/Web/Hqen/sell/icmanage.aspx')" class="g-btn-14 g-fw-b"><em>发布求购</em><b></b></a>
+                            </p>
+                            </tms_bind>
+               		  </div><!--推荐供应商end-->
+                    
+                    
+                </div>             
+            </div>
+		</div>
+        
+        
+        <div class="g-w-250 g-f-l g-mh-20 g-ml-10">
+            <div class="g-box-g">
+                <div class="bar"><h2>IC百科详情页</h2></div>   
+                             
+                <div class="con">
+                	
+                    <div class="g-p-10 g-lh-22"><!--型号统计-->
+                    	<tms_bind id="repeater">
+                    	<p>浏览次数：{#0,浏览次数,11438#}次</p>
+                        <p>搜索次数：{#1,搜索次数,823#}</span>次</p>
+                        <p>编辑次数：{#2,编辑次数,36#}次&nbsp;<a href="/tech/edit_record_{#3,型号,LM358#}.html" class="g-c-b" target="_blank" title="查看编辑记录">编辑记录</a></p>
+                        <p>最新编辑者：<a href="http://www.hqew.com/freeshop_{#4,最新编辑者id,484059#}.html" target="_blank" title="{#5,最新编辑者title,华电子#}" class="g-c-b">{#6,最新编辑者text,华电子#}</a></p>
+                        </tms_bind>
+                    </div>
+                    
+                    
+                        
+                    <div class="g-list-cols"><!--热门IC问答-->
+                        <ul class="g-bc-ff">
+                            <li class="g-w-150">标题</li>
+                            <li class="g-w-40 g-ta-r">回答数</li>
+                        </ul>
+                        <tms_bind ID="repeater">
+                        <ul>
+                            <li class="g-w-150"><a href="/tech/ask/q_{#0,问答id,398#}.html" title="查看详情" class="g-c-b">{#1,问答标题,请问现在哪种LED灯会用到0.5W#}</a></li>
+                            <li class="g-w-40 g-ta-r">{#2,回答数,23#}</li>
+                        </ul>
+                        </tms_bind>
+                    </div>
+                    
+                    
+                    
+                </div> 
+                                   
+            </div>
+        </div>        
+        
+    </div>
+    
+    
+</div>    
+        
+</body>
+</html>

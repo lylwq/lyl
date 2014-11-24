@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="base_.css"/>
+<style type="text/css">
+.menulist{ }
+.menulist div{ font-size:14px; font-weight:bold;}
+.menulist .mt{ margin-top:10px;}
+.menulist a{outline:none;blr:expression(this.onFocus=this.blur());}
+.menulist a{display:inline-block; width: 81px;height: 69px; padding-top:8px; text-align:center;margin-bottom:10px;}
+.menulist a:hover{}
+.menulist a.menu-no{display:inline-block; width: 81px;height: 69px; padding-top:8px; text-align:center;}
+.menulist a.menu-no:hover{background: url(/images/allproduct/menu_bg.gif) no-repeat ;}
+.menu-cur{background: url(/images/allproduct/menu_bg.gif) no-repeat;}
+.menulist a b{ position:relative;}
+.menulist .add,.del{ position:absolute; right:0px; top:0px;background: url(/images/allproduct/menu_add.gif) no-repeat ; display:inline-block; width: 24px;height:24px; }
+.menulist .add{background-position:0px 0px;}
+.menulist .del{background-position:0px -24px;background:none;}
+
+.menu-1,.menu-2,.menu-3,.menu-4,.menu-5,.menu-6,.menu-7,.menu-8,.menu-9,.menu-10,
+.menu-11,.menu-12,.menu-13,.menu-14,.menu-15,.menu-16,.menu-17,.menu-18,.menu-19,.menu-20
+,.menu-21,.menu-22,.menu-23,.menu-24,.menu-25,.menu-26{ background: url(/images/allproduct/menu-ico2.gif) no-repeat ; display:inline-block; width: 60px;height: 60px;}
+.menu-1{ background-position:0px 0px;}
+.menu-8{ background-position:0px -60px;}
+.menu-2{ background-position:0px -120px;}
+.menu-7{ background-position:0px -180px;}
+.menu-9{ background-position:0px -240px;}
+
+.menu-17{ background-position:0px -300px;}
+.menu-3{ background-position:0px -360px;}
+.menu-4{ background-position:0px -420px;}
+.menu-5{ background-position:0px -480px;}
+.menu-102{ background-position:0px -540px;}
+
+.menu-10{ background-position:0px -600px;}
+.menu-11{ background-position:0px -660px;}
+.menu-12{ background-position:0px -720px;}
+.menu-13{ background-position:0px -780px;}
+.menu-6{ background-position:0px -840px;}
+
+.menu-14{ background-position:0px -900px;}
+.menu-103{ background-position:0px -960px;}
+.menu-24{ background-position:0px -1020px;}
+.menu-18{ background-position:0px -1080px;}
+.menu-19{ background-position:0px -1140px;}
+
+.menu-20{ background-position:0px -1200px;}
+.menu-21{ background-position:0px -1260px;}
+.menu-16{ background-position:0px -1320px;}
+.menu-15{ background-position:0px -1380px;} 
+.menu-25{ background-position:0px -1440px;} 
+.menu-23{ background-position:0px -1500px;}
+
+.menu-22{ background-position:0px -1560px;}
+.menu-26{ background-position:0px -1620px;}
+ 
+
+</style>
+<script type="text/javascript" src="/js/common/jq.js"></script>
+<script type="text/javascript" src="com.js"></script>
+<script type="text/javascript">
+
+function getUrlParam(name){
+var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+
+var r = window.location.search.substr(1).match(reg);
+if (r!=null)
+{return decodeURIComponent(r[2]);}
+else
+{return ""; }
+} 
+
+$(document).ready(function() {
+	$("#divSave").css("display",(getUrlParam("isset")=="1"?"":"none"));	
+	if(getUrlParam("isset")=="1"){
+		$("#menulist a").click(function(){
+			AddProduct(this.getAttribute("productid"),this);
+		});
+	}
+});
+
+function AddProduct(productID,obj){//添加常用功能
+	
+    var products=$("#hdnProductIDs").val(),
+		winp = window.parent,
+		obj = $(obj);
+    if(products.indexOf(","+productID+",")<0)
+    {
+        products=products+productID+",";
+        $("#hdnProductIDs").val(products);
+		obj.unbind("click").find("em").attr("class","del");
+		if(winp.addMenuItem){						
+			winp.addMenuItem(obj);
+		}
+    }
+}
+
+function DelProduct(productID,obj){//删除菜单
+    var products=$("#hdnProductIDs").val();
+	obj = $(obj);
+	if(obj.length==0){obj = $("#menulist a").filter("[productid="+productID+"]")}
+    if(products.indexOf(","+productID+",")>=0)
+    {
+        products=products.replace(","+productID+",",",");
+        $("#hdnProductIDs").val(products);
+		obj.click(function(){
+			AddProduct(productID,this);
+		}).find("em").attr("class","add");
+		return true;
+    }
+	return false;
+}
+
+function cancleSet(){
+	if(window.parent.cancleMenuSet){
+		window.parent.cancleMenuSet()	
+	}
+}
+
+function SaveSet()
+{
+    var productList=new Array();
+    var productIDs=$("#hdnProductIDs").val().split(',');
+    for(var i=0;i<productIDs.length;i++)
+    {        
+        if(productIDs[i]=="")
+            continue;
+        var product={};
+        product.ProductID=parseInt(productIDs[i],10);
+        productList.push(product);        
+    }
+    
+    function InitParam(param){
+        param.ProductList=productList;
+        return param;
+    }
+    var PostParam = {
+        ClassName: "Hqew.BLL.IBS.IbsProductBLL",
+        MethodName: "SaveMyProduct",
+        ParamModelName: "Hqew.Model.IBS.IbsUserProductParam",        
+        onResponse: SaveSetComplete,
+        onRequest: InitParam
+    };
+    $.ajaxRequest(PostParam);
+}
+
+function SaveSetComplete(result)
+{
+    alert('设置成功！');
+	if(window.parent.saveMenuSet){
+		window.parent.saveMenuSet();
+	}
+}
+</script>
+</head>
+<style type="text/css">
+
+
+</style>
+<body>
+
+<!--<div class="g_tip_wrap" id="g_tip_wrap"><span class="g_tip_con"><span class="g_tip_l"></span><span class="gtc-a" id="g_tip_con">很抱歉，保存失败！</span><span class="g_tip_r"></span></span></div>-->
+
+<div class="g-con" id="g-con">
+  <div class="g-splitlf" id="divSave">
+    <div class="g-splitlf-l"></div>
+    <div class="g-splitlf-r"><a href="javascript:;" title="" class="g-btn" recid="1887" rec="" id="" onclick="SaveSet();"><em id="" title="" class="">保存</em><b></b></a>
+ <a href="javascript:;" onclick="cancleSet()" title="" class="g-btn" recid="1887" rec="" id=""><em id="" title="" class="">取消</em><b></b></a>
+ </div>
+  </div>
+  <div id="menulist" class="menulist">
+    <div style="padding-bottom:5px;">我的供应</div>
+    <a title="竞价排名" productid="1" class="" path="/bidding/bidindex.aspx" href="javascript:;"><b class="menu-1"><em class="del"></em></b></a>
+    <a title="IC上传" productid="2" class="" path="/Stock/StockImport.aspx" href="javascript:;"><b class="menu-2"><em class="del"></em></b></a>
+    <a title="元器件管理" productid="7" class="" path="/Electronic/ManageElectronic.aspx" href="javascript:;"><b class="menu-7"><em class="del"></em></b></a>
+    <a title="IC管理" productid="8" class="" path="/Stock/Manager.aspx" href="javascript:;"><b class="menu-8"><em class="del"></em></b></a>
+    <a title="元器件上传" productid="9" class="" path="/Electronic/StockUpload.aspx" href="javascript:;"><b class="menu-9"><em class="del"></em></b></a>
+    <a title="华强LED网" productid="22" class="" path="/Led/ManageElectronic.aspx" href="javascript:;"><b class="menu-22"><em class="del"></em></b></a>
+    <a title="安防专区" productid="23" class="" path="/Security/ElectronicManage.aspx" href="javascript:;"><b class="menu-23"><em class="del"></em></b></a>
+
+    <div style="padding-bottom:5px;">我的采购</div>
+    <a title="求购信息" productid="3" class="" path="/MaterielRequest/icmanage.aspx" href="javascript:;"><b class="menu-3"><em class="del"></em></b></a>
+	<a title="询价管理" productid="5" class="" path="/RFQ/ReceivedQuotations.aspx" href="javascript:;"><b class="menu-5"><em class="del"></em></b></a>
+
+    <div style="padding-bottom:5px;">客户服务</div>
+    <a title="预付款" productid="6" class="" path="/Finance/FinanceInfo.aspx " href="javascript:;"><b class="menu-6"><em class="del"></em></b></a>
+    <a title="用户设置" productid="10" class="" path="/CompanyInfo/MemberModify.aspx" href="javascript:;"><b class="menu-10"><em class="del"></em></b></a>
+    <a title="企业网站" productid="11" class="" path="/Shop/index.aspx" href="javascript:;" onclick=""><b class="menu-11"><em class="del"></em></b></a>
+    <a title="求职" productid="15" class="" path="/hr/Find.aspx" href="javascript:;"><b class="menu-15"><em class="del"></em></b></a>
+    <a title="招聘" productid="16" class="" path="/HR/FindResume.aspx" href="javascript:;" onclick=""><b class="menu-16"><em class="del"></em></b></a>
+    <a title="中国制造" productid="19" class="" path="/ChinaChips/prolist.aspx" href="javascript:;"><b class="menu-19"><em class="del"></em></b></a>
+    <a title="报价管理" productid="25" class="" path="/RFQ/ReceivedInquiry.aspx" href="javascript:;"><b class="menu-25"><em class="del"></em></b></a>
+    <a title="系统消息" productid="26" class="" path="/CompanyInfo/NoticeIndex.aspx" href="javascript:;"><b class="menu-26"><em class="del"></em></b></a>
+
+    <input type="hidden" value=",1,2,15,16,23,25," id="hdnProductIDs">
+  </div>
+</div>
+</body>
+</html>

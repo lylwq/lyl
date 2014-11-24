@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>test</title>
+
+<style type="text/css">
+html,body{height: 100%;width: 100%;}
+.fb-con{position: absolute;background: #000;opacity: .3;height: 100%;width: 100%;z-index: 2;top: 0;left: 0;}	
+.fb-c-area{position: absolute;height: 100px;width: 100px;top: 100px;left: 100px;background: #fff;opacity: 1;z-index: 3;}
+</style>
+</head>
+<body>
+
+<div style="background-color: #cfe;" id="div">asdf
+<a href="javascript:;" id="feedback">feedback</a>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+<p>我擦!一个一个元素往里画这么牛掰?</p>
+</div>
+<div class="fb-con">
+	<div class="fb-c-area"></div>
+
+</div>
+
+
+
+<script type="text/javascript" src="/js/common/jq.js"></script>
+<script type="text/javascript" src="html2canvas-0.4.js"></script>
+<script type="text/javascript">
+
+html2canvas(document.body,{onrendered : function(canvas){
+		console.log(canvas);
+		document.body.appendChild(canvas);
+	}
+});
+
+</script>
+
+</body>
+</html>

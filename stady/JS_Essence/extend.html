@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>继承-函数化</title>
+<script type="text/javascript" src="com/base.js"></script>
+<script type="text/javascript">
+
+var mammal = function(spec){
+	var that = {};
+	
+	that.get_name = function(){
+		return spec.name;
+	}
+	that.says = function(){
+		return spec.saying || "";
+	}
+	
+	return that;
+}
+var myMammal = mammal({name:'Herb'});
+var cat = function(spec){
+	spec.saying = spec.saying || 'meow';
+	var that = mammal(spec);
+	that.purr = function(n){
+		var i ,s = '';
+		for(i=0;i<n;i+=1){
+			if(s){
+				s += '-';
+			}
+			s +='r';
+		}
+		return s;
+	};
+	that.get_name = function(){
+		return that.says() + " " + spec.name + " "+that.says();
+	}
+	return that;
+}
+
+Object.method("superior",function(name){
+	var that = this,
+	method = that[name];
+	
+	//console.log(that[name]());
+	return that[name];
+	/*return function(){
+		return method.apply(that,arguments);
+	}*/
+});
+
+var myCat = cat({name:"Henrietta"});
+console.log(myCat.get_name());
+
+var coolcat = function(spec){
+	var that = cat(spec),
+	super_get_name = that.superior('get_name');
+	
+	that.get_name = function(n){
+		return 'like '+super_get_name()+' baby';
+	};
+	return that;
+}
+
+var myCoolCat = coolcat({name:'Bix'});
+console.log(myCoolCat.get_name());
+
+/*
+部件
+个人理解为从一套部件中组合出一个对象来,使对象拥有部件中定义的方法
+*/
+var eventUality = function(that){
+	var registry = {};
+	
+	that.fire = function(event){
+		var arry,
+			func,
+			handler,
+			i,
+			type = typeof event === 'string'?event:event.type;
+			
+		if(registry.hasOwnProperty(type)){
+			array = registry[type];
+			for ( i=0; i < array.length; i+=1) {
+				handler = array[i];
+				
+				func = handler.method;
+				if(typeof func === 'string'){
+					func = this[func];
+				}
+				func.apply(this,handler.parameters || [event]);
+			};
+		}
+		return this;
+	};
+	that.on = function(type,method,parameters){
+		var handler = {
+			method:method,
+			parameters:parameters
+		};
+		if(registry.hasOwnProperty(type)){
+		console.log(registry[type]);
+			registry[type].push(handler);
+		}else{
+			registry[type] = [handler];
+		}
+		return this;
+	};
+	return that;
+}
+/*eventUality(myCoolCat)
+myCoolCat.on("fuck",function(str){alert(str)},['fuck you']);
+myCoolCat.on("fuck",function(str){alert(str)},['fuck you now']);
+myCoolCat.fire('fuck');*/
+
+var ll=function(){
+	this.aadd=function(){
+		alert("ad");
+	}
+}
+
+ll.prototype.aadd = function(){
+	alert("ad2");
+}
+
+ll.aadd = function(){
+	alert("aadd");
+}
+ll.apply(myCoolCat);
+console.log(ll.aadd());
+</script>
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

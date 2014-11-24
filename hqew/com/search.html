@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="base.css"/>
+<link rel="stylesheet" type="text/css" href="common.css"/>
+<script type="text/javascript" src="swin.js"></script>
+<script type="text/javascript" src="HttpRequest.js"></script>
+<script type="text/javascript" src="ic_search.js"></script>
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+<div class="g-w-990 g-mlr-a">
+        <ul class="sthead">
+    <li class="g-w-60">
+      <select id="cexpiredays" class="g-w-60 g-mr-10" onchange="sellerIc_Search();">
+        <option value="0">时间</option>
+        <option value="1">1天内</option>
+        <option value="3">3天内</option>
+        <option value="7">1周内</option>
+        <option value="15">半个月内</option>
+        <option value="30">1个月内</option>
+        <option value="0">不限</option>
+      </select>
+    </li>
+    <li class="g-w-60">
+      <select class="g-w-60 g-mr-10" id="caddress" onchange="sellerIc_Search();">
+        <option value="0">地区</option>
+        <option value="210">深圳</option>
+        <option value="1">北京</option>
+        <option value="3">上海</option>
+        <option value="196">广州</option>
+        <option value="259">香港</option>
+        <option value="-210">深圳以外</option>
+      </select>
+    </li>
+    <li class="g-w-180">
+      <select class="g-w-100 g-mr-10" id="cbuss" onchange="sellerIc_Search();">
+        <option value="0">采购商</option>
+        <option value="1">终端采购</option>
+        <option value="2">贸易商采购</option>
+        <option value="3">收费会员采购</option>
+        <option value="0">所有</option>
+      </select>
+    </li>
+    <li class="g-w-120">型号</li>
+    <li class="g-w-50">采购量</li>
+    <li class="g-w-70">厂商</li>
+    <li class="g-w-50">批号</li>
+    <li class="g-w-50">封装</li>
+    <li class="g-w-100">说明</li>
+    <li class="g-w-70">交货期</li>
+    <li class="g-w-60">报价</li>
+  </ul>
+  
+  <tms_bind id="repeaterMain">
+  <ul class='stbody g-cf g-ptb-10 <%#(Container.ItemIndex % 2)>0?"g-bc-f7":""%>'>
+    <li class="g-w-60">{#0,时间,26分钟前#}</li>
+    <li class="g-w-60">{#1,地区,深圳市#}</li>
+    <li class="g-w-170 g-lh-18">
+      <p><span title="{#2,采购商title,深圳市永明电子商行#}">{#3,采购商text,深圳市永明电子商行#}</span><a title="超级买家" href="/about/service_15.html" class="{#4,超级买家样式,g-ico-sp#}" target="_blank"></a></p>
+      <p class="s-mt-30"><a href="/seller/company{#5,更多求购userid,13559#}.html" class="g-c-b" target="_blank" title="更多求购">[更多求购]</a><a href="javascript:;" isright="{#6,是否为登录,1 #}" islogin="{#12,是否为收费会员,1 #}" class="g-c-b g-ml-10 <%# (Eval("[6]").ToString()=="1"&&Eval("[12]").ToString()=="1")?"g-d-n":""%>" onclick="login(0);" title="查看联系方式">[查看联系方式]</a>
+      </p>
+      <div class="<%# Eval("[12]").ToString()=="0"?"g-d-n":""%>">
+          <p>联系人：{#7,联系人,李生#}</p>
+          <p>电话：{#8,电话,82228000#}</p>
+          <p>手机：{#9,手机,13131313131#}</p>
+          <p>邮件：{#10,邮件,1260268072@qq.com#}</p>
+          <p>地址：{#11,地址,福田区华强北华强电子世界1号楼2楼11B148 QQ:1260268072   1298652910#}</p>
+      </div>
+    </li>
+    <li class="g-cf">    
+    
+      <tms_bind id="repeaterChil">
+      <ul id="MR{#0,产品id,959253#}" class="stb_ul g-cf" onmouseover="onover(this);" onmouseout="onout(this,2);">
+        <li class="g-w-120">{#1,型号,MCP67MV-A2#}</li>
+        <li class="g-w-50">{#2,采购量,5000#}</li>
+        <li class="g-w-70">{#3,厂商,REALTEK#}</li>
+        <li class="g-w-50">{#4,批号,11#}</li>
+        <li class="g-w-50">{#5,封装,MSOP-10#}</li>
+        <li class="g-w-100">{#6,说明,要求全新原装#}</li>
+        <li class="g-w-70">{#7,交货期,2011-11-10#}</li>
+        <li class="g-w-60">
+        <a value="{#8,IsHQMOnline,2#}" href="javascript:HqmChat('{#9,userid,""#}','{#10,GUID,""#}'); " title="<%#Eval("[8]")=="1"?"恰恰在线，与该供应商洽谈":"恰恰不在线，与该供应商留言"%>" class="<%#Eval("[8]")=="1"?"g-ico-qq":"g-ico-qq-off"%>"></a>
+        <a href="javascript:;" guid="{#11,GUID,e83fde00-442f-4a1b-8553-6b2f4b70dd36#}" reqid="{#12,requestid,959253#}" cn="{#13,公司名称,深圳市永明电子商行#}" isr="{#14,isRight,1#}" isl="{#15,isLogin,1#}" onclick="<%# Eval("[15]").ToString()=="0"?("LoginAndQuote('"+Eval("[11]")+"','"+Eval("[12]")+"','"+Eval("[13]")+"','"+Eval("[14]")+"')"):("ShowQuoteTips('"+Eval("[11]")+"','"+Eval("[12]")+"','"+Eval("[13]")+"','"+Eval("[14]")+"')") %>" class="g-c-b" title="点击给对方报价">报价</a> 
+        </li>
+      </ul>
+      </tms_bind>
+      
+    </li>
+  </ul>
+  
+  
+  
+  </tms_bind>
+  
+  <!--登录弹出层-->
+  <div id="swin_login" class="g-d-n">
+        <div class="loginbox">
+            <div class="com">
+                <div class="rb">
+                    <div class="close">
+                        <a href="javascript:" onclick="Aclose();"><img alt="关闭" src="/images/seller/quoteClose.gif" /></a>
+                    </div>
+                    <div class="mp">
+                        <span style="display: none;">
+                            <br />
+                            <br />
+                            <center>
+                                <font style="font-size: 14px;">体验版暂不提供登录功能！</font></center>
+                        </span>
+                        <form id="loginForm" onsubmit="javascript:CheckLogin();return false;" action="javascript:;"
+                        method="get">
+                        <div style="height: 24px; font-weight: bold;">
+                            您还不是华强电子网会员？
+                        </div>
+                        <div>
+                            <input type="button" class="btn" onclick="register();" value="立即免费注册成为会员" />
+                        </div>
+                        <div class="sp">
+                        </div>
+                        <div class="tit">
+                            会员立即登录</div>
+                        <div class="msg" id="UilLoginning">
+                        </div>
+                        <div class="txts">
+                            <div>
+                                <div>
+                                    用户名：<input type="text" name="lUserName" id="lUserName" onfocus="textfocus(this);"
+                                        onblur="textblur(this);" class="lbtxt" /></div>
+                                <div class="d2">
+                                    <span>密&nbsp;&nbsp;&nbsp;码：</span><input name="lPassword" id="lPassword" onfocus="textfocus(this);"
+                                        onblur="textblur(this);" type="password" class="lbtxt" /></div>
+                            </div>
+                        </div>
+                        <div class="lg" id="UilBtndiv">
+                            <input type="image" id="lSubmit" title="登录" class="g_vm g_cp lbmr20" src="/images/seller/slgbtn.gif" />
+                            <a title="点击进行取回密码" target="_blank" href="/member/GetPasswordTel.aspx">忘记密码？</a>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--提示不是收费会员信息-->
+    <div id="swin_notice" class="g-d-n">
+        <div class="notice">
+            <div class="box">
+                <div class="title">
+                    <div class="t1">
+                        温馨提示</div>
+                    <div class="t2">
+                        <img alt="关闭" onclick="Aclose();" id ="notice_close"; class="g_cp" src="/images/seller/quoteClose.gif" /></div>
+                </div>
+                <div class="com">
+                    仅收费会员才能查看采购商联系方式和报价！
+                    <div>
+                        <a href="/about/service.html" id="notice_a"; onclick="Aclose();" target="_blank" class="g_vm g_cp lbmr20">
+                            <img src="/images/seller/kaitonghuiyuan.gif" /></a>
+                        <!--<a title="了解收费会员服务" href="#">了解收费会员服务</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--提示信息发送报价成功-->
+    <div id="swin_quoteResultTips" class="g-d-n">
+        <div class="quoteResult">
+            <div class="title">
+                <ul>
+                    <li class="col1">发送报价</li>
+                    <li class="col2">
+                        <img src="/images/seller/quoteClose.gif" title="点击关闭" alt="点击关闭" onclick="CloseQuoteResultTips(0)"
+                            class="g_vm" />&nbsp;</li>
+                </ul>
+            </div>
+            <div class="cont">
+                <div class="msg" id="UiQSendQuoteMsg">
+                    报价发送成功！</div>
+                <div class="btn">
+                    <img src="/images/seller/quoteCloseBtn.gif" title="关闭" alt="关闭" onclick="CloseQuoteResultTips(0)" />
+                    <img src="/images/seller/quoteCloseBtn2.gif" title="关闭并不再提示" alt="关闭并不再提示" onclick="CloseQuoteResultTips(1)" />
+                </div>
+                <div class="tips">
+                    注意：选择"关闭并不再提示"将不再提示发送成功，但仍会提示发送失败！</div>
+            </div>
+        </div>
+    </div>
+  	
+    <!--发送报价表格-->
+    <div id="tms_quoteTips" class="g-d-n">
+        <div class="quote">
+            <form action="javascript:;" onsubmit="javascript:SendQuote();return false;" method="post">
+            <div class="title">
+                <ul>
+                    <li class="col1">发送报价</li>
+                    <li class="col2">
+                        <img src="/images/seller/quoteClose.gif" title="点击关闭" alt="点击关闭" onclick="Aclose()"
+                            class="g_vm" /></li>
+                </ul>
+            </div>
+            <div class="list">
+                <ul class="head">
+                    <li class="col1">&nbsp;</li>
+                    <li class="col2">型号</li>
+                    <li class="col3">厂商</li>
+                    <li class="col4">批号</li>
+                    <li class="col5">封装</li>
+                    <li class="col6">数量</li>
+                    <li class="col7">说明</li>
+                    <li class="col8">价格</li>
+                </ul>
+                <ul class="request">
+                    <li class="col1" id="UiQCompanyName">&nbsp;</li>
+                    <li class="col2" id="UiQPModel"></li>
+                    <li class="col3" id="UiQPProductor"></li>
+                    <li class="col4" id="UiQPProductDate"></li>
+                    <li class="col5" id="UiQPPackage"></li>
+                    <li class="col6" id="UiQPQuantity"></li>
+                    <li class="col7" id="UiQPRemark"></li>
+                    <li class="col8"></li>
+                </ul>
+                <ul class="quote">
+                    <li class="col1">我的报价：</li>
+                    <li class="col2">
+                        <input type="text" id="fPModel" value="" maxlength="30" /><input type="hidden" id="fGuid"
+                            value="" /></li>
+                    <li class="col3">
+                        <input type="text" id="fPProductor" value="" maxlength="30" /></li>
+                    <li class="col4">
+                        <input type="text" id="fPProductDate" value="" maxlength="30" /></li>
+                    <li class="col5">
+                        <input type="text" id="fPPackage" value="" maxlength="30" /></li>
+                    <li class="col6">
+                        <input type="text" id="fPQuantity" value="" maxlength="6" /></li>
+                    <li class="col7">
+                        <input type="text" id="fPRemark" onfocus="ShowDiv(this)" value="" maxlength="30" /></li>
+                    <li class="col8">
+                        <input type="text" id="fQuotePrice" value="" maxlength="7" /></li>
+                </ul>
+                <div id="div_fPRemark" name="areaList" class="areaList" style="display: none;">
+                    <ul>
+                        <li class="li_head">以下为常用语：</li>
+                        <li style="border: 0" onclick="SelectArea('有现货，直接来电')" onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#efefef'"
+                            onmouseout="this.style.backgroundColor=c"><a href="javascript:;">有现货，直接来电</a></li>
+                        <li style="border: 0" onclick="SelectArea('有现货，可在线交易')" onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#efefef'"
+                            onmouseout="this.style.backgroundColor=c"><a href="javascript:;">有现货，可在线交易</a></li>
+                        <li style="border: 0" onclick="SelectArea('实价')" onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#efefef'"
+                            onmouseout="this.style.backgroundColor=c"><a href="javascript:;">实价</a></li>
+                        <li style="border: 0" onclick="SelectArea('含税价')" onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#efefef'"
+                            onmouseout="this.style.backgroundColor=c"><a href="javascript:;">含税价</a></li>
+                        <li style="border: 0" onclick="SelectArea('可提供样片')" onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#efefef'"
+                            onmouseout="this.style.backgroundColor=c"><a href="javascript:;">可提供样片</a></li>
+                        <li style="border: 0" onclick="SelectArea('全新原装')" onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#efefef'"
+                            onmouseout="this.style.backgroundColor=c"><a href="javascript:;">全新原装</a></li>
+                        <li style="border: 0" onclick="SelectArea('散新件')" onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#efefef'"
+                            onmouseout="this.style.backgroundColor=c"><a href="javascript:;">散新件</a></li>
+                        <li style="border: 0" onclick="SelectArea('翻新件')" onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#efefef'"
+                            onmouseout="this.style.backgroundColor=c"><a href="javascript:;">翻新件</a></li>
+                        <li style="border: 0" onclick="SelectArea('旧货')" onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#efefef'"
+                            onmouseout="this.style.backgroundColor=c"><a href="javascript:;">旧货</a></li>
+                        <li style="border: 0" onclick="SelectArea('替代品')" onmouseover="c=this.style.backgroundColor;this.style.backgroundColor='#efefef'"
+                            onmouseout="this.style.backgroundColor=c"><a href="javascript:;">替代品</a></li>
+                        
+                    </ul>
+                    <div class="clear">
+                    </div>
+                    <div style="float: right;">
+                        <a href="javascript:;" onclick="CloseDiv();" style="color: Red;">关闭</a></div>
+                </div>
+            </div>
+            <div class="bottom">
+                <!--<div class="remark">型号、数量、价格必填，数量必须为数字，但可以输入"K"，系统会将K转换为1000。</div>-->
+                <div class="btn">
+                    <input id="fSendBtn" type="image" src="/images/seller/quoteSubmit.gif" title="点击发送报价" />
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+  
+</div>
+</body>
+</html>

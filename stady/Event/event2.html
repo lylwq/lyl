@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+      #target{
+        width:400px;
+        height:100px;
+        background:blue;
+      }
+    </style>
+<script type="text/javascript">
+
+var dom = {};
+Array.prototype.indexOf = function(el, index) {
+    var n = this.length >>> 0,
+    i = index == null ? 0: index < 0 ? Math.max(0, n + index) : index;
+    for (; i < n; i++)
+    if (i in this && this[i] === el) return i;
+    return - 1;
+
+};
+//http://msdn.microsoft.com/zh-cn/library/bb383786.aspx
+//移除 Array 对象中某个元素的第一个匹配项。
+Array.prototype.remove = function(item) {
+    var index = this.indexOf(item);
+    if (index !== -1) return this.removeAt(index);
+    return null;
+
+};
+//移除 Array 对象中指定位置的元素。
+Array.prototype.removeAt = function(index) {
+    return this.splice(index, 1)
+
+};
+// dom.attachEvent($("target"), "mousemove", a);
+dom.attachEvent = function(el, type, handler) {
+    // 在每个元素上设置一个Object类型的私定义属性events
+    if (!el.events) el.events = {};
+    // 这个对象有许多键为事件类型，值为函数数组的属性
+    var handlers = el.events[type];
+    if (!handlers) {
+        handlers = el.events[type] = [];
+        // 如果它原来就以onXXXX方式绑定了某事件，那么把它置为事件数组的第一个元素
+        if (el["on" + type]) {
+            handlers[0] = el["on" + type];
+
+        }
+
+    }
+    //添加回调函数
+    handlers.push(handler)
+    //以onXXXX方式绑定我们的处理函数
+    el["on" + type] = dom.handleEvent;
+
+};
+
+dom.detachEvent = function(el, type, handler) {
+    if (el.events && el.events[type]) {
+        el.events[type].remove(handler)
+
+    }
+
+}
+dom.handleEvent = function(event) {
+	
+    var returnValue = true;
+    // grab the event object (IE uses a global event object)
+    event = event || fixEvent(((this.ownerDocument || this.document || this).parentWindow || window).event);
+    // get a reference to the hash table of event handlers
+    var handlers = this.events[event.type];
+    // execute each event handler
+    for (var i = 0, n = handlers.length; i < n; i++) {
+        if (handlers[i](event) === false) {
+            returnValue = false;
+
+        }
+
+    }
+    return returnValue;
+
+};
+function fixEvent(event) {
+	alert(event);
+    // add W3C standard event methods
+    event.preventDefault = fixEvent.preventDefault;
+    event.stopPropagation = fixEvent.stopPropagation;
+    return event;
+
+};
+fixEvent.preventDefault = function() {
+    this.returnValue = false;
+
+};
+fixEvent.stopPropagation = function() {
+    this.cancelBubble = true;
+
+};
+var $ = function(id) {
+    return document.getElementById(id)
+
+}
+window.onload = function() {
+    var a = function(e) {
+        $("p").innerHTML = e.clientX + "  " + e.clientY;
+    }
+    var b = function(e) {
+        $("p").innerHTML = e.clientY + "  " + e.clientX;
+    }
+	/*$("target").onmousemove=function(){
+        $("p").innerHTML = 1 + "  " + 2;
+	};*/
+    dom.attachEvent($("target"), "mousemove", a);
+    
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div id="target">
+
+    </div>
+    <p id="p"></p>
+</body>
+</html>

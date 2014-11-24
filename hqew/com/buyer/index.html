@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="/hqew/com/base.css"/>
+<script type="text/javascript" src="../js/base.js"></script>
+<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript">
+Q(function () { 
+	Q.js({ 
+		url: '../js/msclass.js', 
+		success: function () {
+			new Marquee("stocks", 0, 2, 668, 120, 20, 3000, 3000, 120); 
+			new Marquee("cap", 0, 2, 288, 230, 20, 3000, 3000, 230); 
+		} 
+	}); 
+}); 
+
+</script>
+<style type="text/css">
+/*今日竞价*/
+
+/*电子原器件搜索*/
+
+/*电子原器件分类*/
+.buy-stype a{background:url(/images/common/base.png) no-repeat right 2px;padding-right:20px;float:left}
+
+/*快速发布求购*/
+.buy-icmanaer{background:url(/images/common/buyer.gif) no-repeat;float:right;width:149px;height:44px;margin:0 150px 0 10px;}
+
+/*快速发布求购_右*/
+.buy-icmanaer_right{background:url(/images/common/buyer.gif) no-repeat;float:right;width:149px;height:44px;margin-left:10px;}
+</style>
+</head>
+
+<body>
+
+<div class="g-w-990 g-mlr-a">
+<div class="g-cf">
+    <div class="g-w-670 g-f-l g-mh-20">
+    
+    	<p class="g-mt-10">今日竞价</p>        
+        <!--今日竞价-->
+    	<div class="g-list-cols g-cf">
+        	<div class="g-cf g-bc-ff">
+                <ul class="g-f-l g-w-320">
+                    <li class="g-w-90">关键词</li>
+                    <li class="g-w-40">参与</li>
+                    <li>当前排名第一位</li>            
+                </ul>
+                
+                <ul class="g-f-l g-w-320">
+                    <li class="g-w-90">关键词</li>
+                    <li class="g-w-40">参与</li>
+                    <li>当前排名第一位</li>            
+                </ul>
+         	</div>
+            <tms_bind ID="RepeaterLeft">
+            <ul class="g-w-320 g-f-l">
+                <li class="g-w-90">
+                    <a target="_blank" class="g-c-b" href="{#0,关键词href,/buyer/bidding_LM393.html#}" title="{#1,关键词title,LM393#}">{#2,关键词text,LM393#}</a>
+                </li>
+                <li class="g-w-40">{#3,参与数量,26#}</li>
+                <li class="g-w-140">
+                	<a target="_blank" href="{#4,商家href,http://mkdz3d003.hqew.com#}" title="{#5,商家title,深圳市美科电子商行#}">
+                    {#6,商家text,深圳市美科电子商行#}
+                    </a>
+                </li>
+            </ul>
+            </tms_bind>
+            <tms_bind ID="RepeaterRight">
+            <ul class="g-w-320 g-f-l">
+                <li class="g-w-90">
+                    <a target="_blank" class="g-c-b" href="{#0,关键词href,/buyer/bidding_LM393.html#}" title="{#1,关键词title,LM393#}">{#2,关键词text,LM393#}</a>
+                </li>
+                <li class="g-w-40">{#3,参与数量,26#}</li>
+                <li class="g-w-140">
+                	<a target="_blank" href="{#4,商家href,http://mkdz3d003.hqew.com#}" title="{#5,商家title,深圳市美科电子商行#}">
+                    {#6,商家text,深圳市美科电子商行#}
+                    </a>
+                </li>
+            </ul>
+            </tms_bind>
+        </div>
+        
+        
+        <style>
+        .buy-stock{height:120px;overflow:hidden;font-family:"宋体";}
+        
+        </style>
+        <p class="g-mt-10">商城实时库存报价</p>        
+        <!--商城实时库存报价-->
+        <div class="g-list-cols">
+            <ul class="g-bc-ff">
+                <li class="g-w-140">型号</li>
+                <li class="g-w-70 g-ta-r">价格(元)</li>
+                <li class="g-w-60">库存</li>
+                <li class="g-w-50">所在地</li>
+                <li class="g-w-100">厂商</li>
+                <li class="g-w-80">批号</li>
+                <li class="g-w-80">封装</li>
+            </ul>
+            <div class="g-mtb-5 buy-stock" id="stocks">
+              <tms_bind ID="Repeater1">
+              <ul>
+                  <li class="g-w-140">
+                  	<a target="_blank" class="g-c-b" href="{#0,型号href,/mall/shopview-6f935e5c-86e1-4057-ae78-e36e6ca9dfd0.html#}" title="{#1,型号title,IDT74FCT240ASO#}">{#2,型号text,IDT74FCT240ASO#}</a>
+                  </li>
+                  <li class="g-w-70 g-c-r g-c-c0">{#3,价格,1.50-2.00#}</li>
+                  <li class="g-w-60">{#4,库存,2000#}</li>
+                  <li class="g-w-50">{#5,所在地,深圳#}</li>
+                  <li class="g-w-100">{#6,厂商,IDT#}</li>
+                  <li class="g-w-80">{#7,批号,00+#}</li>
+                  <li class="g-w-80">{#8,封装,00+#}</li>
+              </ul>
+              <ul>
+                  <li class="g-w-140">
+                  	<a target="_blank" class="g-c-b" href="{#0,型号href,/mall/shopview-6f935e5c-86e1-4057-ae78-e36e6ca9dfd0.html#}" title="{#1,型号title,IDT74FCT240ASO#}">{#2,型号text,IDT74FCT240ASO#}</a>
+                  </li>
+                  <li class="g-w-70 g-c-r g-c-c0">{#3,价格,1.50-2.00#}</li>
+                  <li class="g-w-60">{#4,库存,2000#}</li>
+                  <li class="g-w-50">{#5,所在地,深圳#}</li>
+                  <li class="g-w-100">{#6,厂商,IDT#}</li>
+                  <li class="g-w-80">{#7,批号,00+#}</li>
+                  <li class="g-w-80">{#8,封装,00+#}</li>
+              </ul>
+              <ul>
+                  <li class="g-w-140">
+                  	<a target="_blank" class="g-c-b" href="{#0,型号href,/mall/shopview-6f935e5c-86e1-4057-ae78-e36e6ca9dfd0.html#}" title="{#1,型号title,IDT74FCT240ASO#}">{#2,型号text,IDT74FCT240ASO#}</a>
+                  </li>
+                  <li class="g-w-70 g-c-r g-c-c0">{#3,价格,1.50-2.00#}</li>
+                  <li class="g-w-60">{#4,库存,2000#}</li>
+                  <li class="g-w-50">{#5,所在地,深圳#}</li>
+                  <li class="g-w-100">{#6,厂商,IDT#}</li>
+                  <li class="g-w-80">{#7,批号,00+#}</li>
+                  <li class="g-w-80">{#8,封装,00+#}</li>
+              </ul>
+              <ul>
+                  <li class="g-w-140">
+                  	<a target="_blank" class="g-c-b" href="{#0,型号href,/mall/shopview-6f935e5c-86e1-4057-ae78-e36e6ca9dfd0.html#}" title="{#1,型号title,IDT74FCT240ASO#}">{#2,型号text,IDT74FCT240ASO#}</a>
+                  </li>
+                  <li class="g-w-70 g-c-r g-c-c0">{#3,价格,1.50-2.00#}</li>
+                  <li class="g-w-60">{#4,库存,2000#}</li>
+                  <li class="g-w-50">{#5,所在地,深圳#}</li>
+                  <li class="g-w-100">{#6,厂商,IDT#}</li>
+                  <li class="g-w-80">{#7,批号,00+#}</li>
+                  <li class="g-w-80">{#8,封装,00+#}</li>
+              </ul>
+              <ul>
+                  <li class="g-w-140">
+                  	<a target="_blank" class="g-c-b" href="{#0,型号href,/mall/shopview-6f935e5c-86e1-4057-ae78-e36e6ca9dfd0.html#}" title="{#1,型号title,IDT74FCT240ASO#}">{#2,型号text,IDT74FCT240ASO#}</a>
+                  </li>
+                  <li class="g-w-70 g-c-r g-c-c0">{#3,价格,1.50-2.00#}</li>
+                  <li class="g-w-60">{#4,库存,2000#}</li>
+                  <li class="g-w-50">{#5,所在地,深圳#}</li>
+                  <li class="g-w-100">{#6,厂商,IDT#}</li>
+                  <li class="g-w-80">{#7,批号,00+#}</li>
+                  <li class="g-w-80">{#8,封装,00+#}</li>
+              </ul>
+              <ul>
+                  <li class="g-w-140">
+                  	<a target="_blank" class="g-c-b" href="{#0,型号href,/mall/shopview-6f935e5c-86e1-4057-ae78-e36e6ca9dfd0.html#}" title="{#1,型号title,IDT74FCT240ASO#}">{#2,型号text,IDT74FCT240ASO#}</a>
+                  </li>
+                  <li class="g-w-70 g-c-r g-c-c0">{#3,价格,1.50-2.00#}</li>
+                  <li class="g-w-60">{#4,库存,2000#}</li>
+                  <li class="g-w-50">{#5,所在地,深圳#}</li>
+                  <li class="g-w-100">{#6,厂商,IDT#}</li>
+                  <li class="g-w-80">{#7,批号,00+#}</li>
+                  <li class="g-w-80">{#8,封装,00+#}</li>
+              </ul>
+              </tms_bind>
+            </div>
+        </div>
+        
+        <p class="g-mt-10">最新样片</p>
+        <!--最新样片-->
+        <div class="g-list-cols">
+            <ul class="g-bc-ff">
+                <li class="g-w-150">型号</li>
+                <li class="g-w-80">厂商</li>
+                <li class="g-w-50">批号</li>
+                <li class="g-w-70">封装</li>
+                <li class="g-w-180">供应商</li>
+                <li class="g-w-60 g-ta-r">联系方式</li>
+            </ul>
+            <tms_bind ID="Repeater1">
+            <ul class='<%#(Container.ItemIndex % 2)>0?"":"g-bc-f7"%>'>
+                <li class="g-w-150 g-c-b">{#0,型号,IDT74FCT240ASO#}</li>
+                <li class="g-w-80">{#1,厂商,1.50-2.00#}</li>
+                <li class="g-w-50">{#2,批号,2000#}</li>
+                <li class="g-w-70">{#3,封装,LFCSP#}</li>
+                <li class="g-w-180"><a href="{#4,供应商href,http://www.hqew.com/#}" title="{#5,供应商title,供应商#}">{#6,供应商text,供应商#}</a></li>
+                <li class="g-w-60 g-ta-r"><a href="{#7,供应商联系方式href,http://20a415.hqew.com/contact.html#}" class="g-c-b" title="查看{#8,供应商联系方式title,供应商#}的联系方式">查看</a></li>
+            </ul>
+            </tms_bind>
+        </div>
+        
+        
+        <div class="g-box-g">
+        	<div class="bar">
+            	<h2 systype="layout">标题</h2>
+            </div>
+            <div class="con">
+            
+                <p class="g-mt-10">电子原器件搜索</p>
+                <!--电子原器件搜索-->
+                <div class="g-pt-10 g-plr-10 g-mb-10">
+                  <tms_bind id="repeater">
+                  <h4 class="g-fw-n g-c-99 g-mb-5">
+                  	<a href="/buyer/" target="_blank" title="点击查看供应信息" class="g-fz-14 g-fw-b g-c-b">IC/二三极管</a>({#0,搜索数量,98925626#})<input type="text" maxlength="100" id="IcSearchKeyword" name="SearchKeyword" size="14" title="请输入搜索的型号" class="g-ipt g-w-310 g-mlr-10">
+                    
+                    <a href="javascript:;" onclick="icsearch()" class="g-btn-12"><em>搜索</em><b></b></a>
+                  </h4>
+                  </tms_bind>
+                  <p><span>索引：</span><a href="/iclist/a/1.html" target="_blank" class="g-mr-5" title="A">A</a><a href="/iclist/b/1.html" target="_blank" class="g-mr-5" title="B">B</a><a href="/iclist/c/1.html" target="_blank" class="g-mr-5" title="C">C</a><a href="/iclist/d/1.html" target="_blank" class="g-mr-5" title="D">D</a><a href="/iclist/e/1.html" target="_blank" class="g-mr-5" title="E">E</a><a href="/iclist/f/1.html" target="_blank" class="g-mr-5" title="F">F</a><a href="/iclist/g/1.html" target="_blank" class="g-mr-5" title="G">G</a><a href="/iclist/h/1.html" target="_blank" class="g-mr-5" title="H">H</a><a href="/iclist/i/1.html" target="_blank" class="g-mr-5" title="I">I</a><a href="/iclist/j/1.html" target="_blank" class="g-mr-5" title="J">J</a><a href="/iclist/k/1.html" target="_blank" class="g-mr-5" title="K">K</a><a href="/iclist/l/1.html" target="_blank" class="g-mr-5" title="L">L</a><a href="/iclist/m/1.html" target="_blank" class="g-mr-5" title="M">M</a><a href="/iclist/n/1.html" target="_blank" class="g-mr-5" title="N">N</a><a href="/iclist/o/1.html" target="_blank" class="g-mr-5" title="O">O</a><a href="/iclist/p/1.html" target="_blank" class="g-mr-5" title="P">P</a><a href="/iclist/q/1.html" target="_blank" class="g-mr-5" title="Q">Q</a><a href="/iclist/r/1.html" target="_blank" class="g-mr-5" title="R">R</a><a href="/iclist/s/1.html" target="_blank" class="g-mr-5" title="S">S</a><a href="/iclist/sort/1.html" target="_blank" class="g-mr-5" title="T">T</a><a href="/iclist/u/1.html" target="_blank" class="g-mr-5" title="U">U</a><a href="/iclist/v/1.html" target="_blank" class="g-mr-5" title="V">V</a><a href="/iclist/w/1.html" target="_blank" class="g-mr-5" title="W">W</a><a href="/iclist/x/1.html" target="_blank" class="g-mr-5" title="X">X</a><a href="/iclist/y/1.html" target="_blank" class="g-mr-5" title="Y">Y</a><a href="/iclist/x/1.html" target="_blank" class="g-mr-5" title="Z">Z</a><span class="g-mlr-5">|</span><a href="/iclist/0/1.html" target="_blank" class="g-mr-5" title="0">0</a><a href="/iclist/1/1.html" target="_blank" class="g-mr-5" title="1">1</a><a href="/iclist/2/1.html" target="_blank" class="g-mr-5" title="2">2</a><a href="/iclist/3/1.html" target="_blank" class="g-mr-5" title="3">3</a><a href="/iclist/4/1.html" target="_blank" class="g-mr-5" title="4">4</a><a href="/iclist/5/1.html" target="_blank" class="g-mr-5" title="5">5</a><a href="/iclist/6/1.html" target="_blank" class="g-mr-5" title="6">6</a><a href="/iclist/7/1.html" target="_blank" class="g-mr-5" title="7">7</a><a href="/iclist/8/1.html" target="_blank" class="g-mr-5" title="8">8</a><a href="/iclist/9/1.html" target="_blank" class="g-mr-5" title="9">9</a></p>
+                </div>
+                
+                
+                <p class="g-mt-10">电子原器件分类</p>
+                <!--电子原器件分类-->
+                <div class="g-cf g-pt-10">
+                <ul class="g-ml-10 g-w-320 g-f-l">
+                    <tms_bind ID="RepeaterLeftMain">
+                        <li class="g-mb-10">
+                            <h4 class="g-fw-n g-c-99"><a target="_blank" class="g-fz-14 g-fw-b g-c-b" href="{#0,href,/tech/dr/20001006.html#}" title="{#1,分类title,电容器#}">{#2,分类text,电容器#}</a>({#3,分类nums,1036782#})</h4>
+                            <p class="buy-stype g-lh-22 g-cf">
+                            	<tms_bind ID="Repeater1LeftChil">
+                                <a target="_blank" href="{#0,href,/tech/dr/200010060016.html#}" title="{#1,title,铝电解电容#}">{#2,text,铝电解电容#}</a>
+                                </tms_bind>
+                            </p>
+                        </li>
+                    </tms_bind>
+                </ul>
+                
+                <ul class="g-ml-10 g-w-320 g-f-l">
+                    <tms_bind ID="RepeaterRightMain">
+                        <li class="g-mb-10">
+                            <h4 class="g-fw-n g-c-99"><a target="_blank" class="g-fz-14 g-fw-b g-c-b" href="{#0,href,/tech/dr/20001006.html#}" title="{#1,分类title,电容器#}">{#2,分类text,电容器#}</a>({#3,分类nums,1036782#})</h4>
+                            <p class="buy-stype g-lh-22 g-cf">
+                            	<tms_bind ID="Repeater1RightChil">
+                                <a target="_blank" href="{#0,href,/tech/dr/200010060016.html#}" title="{#1,title,铝电解电容#}">{#2,text,铝电解电容#}</a>
+                                </tms_bind>
+                            </p>
+                        </li>
+                    </tms_bind>
+                </ul>
+                </div>
+                
+                
+                
+                
+                <p class="g-mt-10">快速发布求购</p>
+                <!--快速发布求购-->
+                <div class="g-cf g-ptb-10 g-ta-r g-bc-ff g-fz-14 g-lh-24 g-mt-10">
+                	<a href="javascript:;" onclick="g_ibs('/Web/Hqen/sell/icmanage.aspx')" class="buy-icmanaer"></a>
+                    <p>没有你需要的分类信息吗?</p>
+                    <p><a href="javascript:;" onclick="g_ibs('/Web/Hqen/sell/icmanage.aspx');" class="g-c-b g-fw-b">发布求购信息</a>让供应商找你吧!</p>
+                </div>
+                
+                
+                
+            
+            </div>
+        </div>        
+        
+    </div>
+
+	
+    <div class="g-w-310 g-f-l g-ml-10 g-mh-20">
+    
+    
+    	<p class="g-mt-10">快速发布求购</p>
+        <!--快速发布求购-->
+        <div class="g-cf g-ptb-10 g-ta-r g-lh-24 g-mb-10">
+            <a href="javascript:;" onclick="g_ibs('/Web/Hqen/sell/icmanage.aspx')" class="buy-icmanaer_right"></a>
+            <p>发布求购信息,</p>
+            <p>让供应商主动上门找你!</p>
+        </div>
+        
+        
+
+        
+        <div class="g-box-g">
+        	<div class="bar">
+            	<h2 systype="layout">标题</h2>
+            </div>
+            <div class="con">
+            
+            
+            
+                <!--供应信息_电容展-->
+				<style>
+                .buy-cap{height:230px;overflow:hidden;font-family:"宋体";}
+				.buy-cap table{width:100%}
+                </style>
+                <div class="buy-cap g-mlr-10 g-mtb-5" id="cap">
+                    <ul>
+                        <tms_bind ID="Repeater1">
+                            <li class="g-ptb-5 g-lh-18 g-img-com-sma g-ws-w">
+                                <a class="g-f-l g-mr-10" target="_blank" href="{#0,公司href,/buyer/capacitance2/detail_204.html#}" title="{#1,公司名title,深圳市万泰伟业电子有限公司#}">
+                                    <img alt="{#2,图片alt公司名,深圳市万泰伟业电子有限公司#}" onerror="this.src='/images/common/nophoto.gif'" src="{#3,src,http://www.hqew.com/file/images/Anonymous/2011/0722/Other/20110722160011656FUKSL6_Abbr.JPG#}" />
+                                </a>
+                                <p class="g-w-190 g-o-h">
+                                    <a target="_blank" href="{#4,公司href,/buyer/capacitance2/detail_204.html#}" title="{#5,公司名title,深圳市万泰伟业电子有限公司#}">{#6,公司名text,深圳市万泰伟业电子有限公司#}</a>
+                                </p>
+                                <p>最新票数：{#7,票数,6063#}票</p>
+                            </li>
+                            <li class="g-ptb-5 g-lh-18 g-img-com-sma g-ws-w">
+                                <a class="g-f-l g-mr-10" target="_blank" href="{#0,公司href,/buyer/capacitance2/detail_204.html#}" title="{#1,公司名title,深圳市万泰伟业电子有限公司#}">
+                                    <img alt="{#2,图片alt公司名,深圳市万泰伟业电子有限公司#}" onerror="this.src='/images/common/nophoto.gif'" src="{#3,src,http://www.hqew.com/file/images/Anonymous/2011/0722/Other/20110722160011656FUKSL6_Abbr.JPG#}" />
+                                </a>
+                                <p class="g-w-190 g-o-h">
+                                    <a target="_blank" href="{#4,公司href,/buyer/capacitance2/detail_204.html#}" title="{#5,公司名title,深圳市万泰伟业电子有限公司#}">{#6,公司名text,深圳市万泰伟业电子有限公司#}</a>
+                                </p>
+                                <p>最新票数：{#7,票数,6063#}票</p>
+                            </li>
+                            <li class="g-ptb-5 g-lh-18 g-img-com-sma g-ws-w">
+                                <a class="g-f-l g-mr-10" target="_blank" href="{#0,公司href,/buyer/capacitance2/detail_204.html#}" title="{#1,公司名title,深圳市万泰伟业电子有限公司#}">
+                                    <img alt="{#2,图片alt公司名,深圳市万泰伟业电子有限公司#}" onerror="this.src='/images/common/nophoto.gif'" src="{#3,src,http://www.hqew.com/file/images/Anonymous/2011/0722/Other/20110722160011656FUKSL6_Abbr.JPG#}" />
+                                </a>
+                                <p class="g-w-190 g-o-h">
+                                    <a target="_blank" href="{#4,公司href,/buyer/capacitance2/detail_204.html#}" title="{#5,公司名title,深圳市万泰伟业电子有限公司#}">{#6,公司名text,深圳市万泰伟业电子有限公司#}</a>
+                                </p>
+                                <p>最新票数：{#7,票数,6063#}票</p>
+                            </li>
+                            <li class="g-ptb-5 g-lh-18 g-img-com-sma g-ws-w">
+                                <a class="g-f-l g-mr-10" target="_blank" href="{#0,公司href,/buyer/capacitance2/detail_204.html#}" title="{#1,公司名title,深圳市万泰伟业电子有限公司#}">
+                                    <img alt="{#2,图片alt公司名,深圳市万泰伟业电子有限公司#}" onerror="this.src='/images/common/nophoto.gif'" src="{#3,src,http://www.hqew.com/file/images/Anonymous/2011/0722/Other/20110722160011656FUKSL6_Abbr.JPG#}" />
+                                </a>
+                                <p class="g-w-190 g-o-h">
+                                    <a target="_blank" href="{#4,公司href,/buyer/capacitance2/detail_204.html#}" title="{#5,公司名title,深圳市万泰伟业电子有限公司#}">{#6,公司名text,深圳市万泰伟业电子有限公司#}</a>
+                                </p>
+                                <p>最新票数：{#7,票数,6063#}票</p>
+                            </li>
+                            <li class="g-ptb-5 g-lh-18 g-img-com-sma g-ws-w">
+                                <a class="g-f-l g-mr-10" target="_blank" href="{#0,公司href,/buyer/capacitance2/detail_204.html#}" title="{#1,公司名title,深圳市万泰伟业电子有限公司#}">
+                                    <img alt="{#2,图片alt公司名,深圳市万泰伟业电子有限公司#}" onerror="this.src='/images/common/nophoto.gif'" src="{#3,src,http://www.hqew.com/file/images/Anonymous/2011/0722/Other/20110722160011656FUKSL6_Abbr.JPG#}" />
+                                </a>
+                                <p class="g-w-190 g-o-h">
+                                    <a target="_blank" href="{#4,公司href,/buyer/capacitance2/detail_204.html#}" title="{#5,公司名title,深圳市万泰伟业电子有限公司#}">{#6,公司名text,深圳市万泰伟业电子有限公司#}</a>
+                                </p>
+                                <p>最新票数：{#7,票数,6063#}票</p>
+                            </li>
+                            <li class="g-ptb-5 g-lh-18 g-img-com-sma g-ws-w">
+                                <a class="g-f-l g-mr-10" target="_blank" href="{#0,公司href,/buyer/capacitance2/detail_204.html#}" title="{#1,公司名title,深圳市万泰伟业电子有限公司#}">
+                                    <img alt="{#2,图片alt公司名,深圳市万泰伟业电子有限公司#}" onerror="this.src='/images/common/nophoto.gif'" src="{#3,src,http://www.hqew.com/file/images/Anonymous/2011/0722/Other/20110722160011656FUKSL6_Abbr.JPG#}" />
+                                </a>
+                                <p class="g-w-190 g-o-h">
+                                    <a target="_blank" href="{#4,公司href,/buyer/capacitance2/detail_204.html#}" title="{#5,公司名title,深圳市万泰伟业电子有限公司#}">{#6,公司名text,深圳市万泰伟业电子有限公司#}</a>
+                                </p>
+                                <p>最新票数：{#7,票数,6063#}票</p>
+                            </li>
+                            <li class="g-ptb-5 g-lh-18 g-img-com-sma g-ws-w">
+                                <a class="g-f-l g-mr-10" target="_blank" href="{#0,公司href,/buyer/capacitance2/detail_204.html#}" title="{#1,公司名title,深圳市万泰伟业电子有限公司#}">
+                                    <img alt="{#2,图片alt公司名,深圳市万泰伟业电子有限公司#}" onerror="this.src='/images/common/nophoto.gif'" src="{#3,src,http://www.hqew.com/file/images/Anonymous/2011/0722/Other/20110722160011656FUKSL6_Abbr.JPG#}" />
+                                </a>
+                                <p class="g-w-190 g-o-h">
+                                    <a target="_blank" href="{#4,公司href,/buyer/capacitance2/detail_204.html#}" title="{#5,公司名title,深圳市万泰伟业电子有限公司#}">{#6,公司名text,深圳市万泰伟业电子有限公司#}</a>
+                                </p>
+                                <p>最新票数：{#7,票数,6063#}票</p>
+                            </li>
+                        </tms_bind>
+                    </ul>                        
+                </div>                
+                <p class="g-ta-c g-ptb-10 g-bt-ee g-mlr-10"><a href="/buyer/capacitance2/index.html" class="g-btn-12"><em>进入电容展</em><b></b></a></p>
+                
+                
+                
+                <!--供应信息_pdf-->
+        		<div class="g-p-10">                   
+                    <form id="Form1" target="_blank" method="get" action="javascript:;">
+                    <input type="text" id="PdfSearchKeyword" class="g-ipt g-w-170 g-mr-10" /><a href="javascript:;" onclick="SearchPdf()" class="g-btn-12"><em>搜索PDF资料</em><b></b></a>
+                    </form>
+                    
+                    <h4 class="g-mt-10">最新PDF</h4>
+                    <p>
+                    <tms_bind ID="Repeater1">
+                    	<a target="_blank" class="g-mr-10 g-c-b g-ws-w" href="{#0,href,/tech/view_87d62c5c-9c48-4258-a134-56025edeb74f.html#}" title="{#1,title,AM79C978A#}">{#2,text,AM79C978A#}</a>
+                    </tms_bind>
+                    </p>
+                </div>
+                    
+                
+				<style>
+                .buy-stock-rank{height:110px;overflow:hidden;font-family:"宋体";}
+                </style>
+                <!--库存数量排行-->
+                <div class="g-list-txt">
+                    <ul class="g-bc-ff">
+                        <li class="g-pl-10 g-f-r w50">库存条数</li>
+                        <li class="g-pl-10 g-f-r w50">诚信积分</li>
+                        <li class="g-pl-10 w50">商家名称</li>
+                    </ul>
+                    <div class="g-mtb-5 buy-stock-rank" id="top">
+                        <tms_bind ID="Repeater1">
+                        <ul>                         	
+                            <li class="g-pl-10 g-f-r g-ta-r g-w-50">{#0,nums,471#}</li>
+                            <li class="g-pl-10 g-f-r g-ta-r g-w-50">{#1,score,103#}</li>
+                            <li class="g-pl-10"><a target="_blank" href="{#2,href,http://qinyuan.hqew.com#}" title="{#3,title,深圳市沁源电子商行#}">{#4,text,深圳市沁源电子商行#}</a></li>
+                        </ul>
+                        </tms_bind>
+                    </div>
+                </div>
+                
+                    
+                    
+        
+        	</div>        
+    </div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

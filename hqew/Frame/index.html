@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>功能块</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<script type="text/javascript" src="base.js"></script>
+<script type="text/javascript">
+Q(function(){
+
+    Q('div.cls1').attr({
+        title: 'div.cls1_title',
+        value: 'div.cls1_value',
+        innerHTML: 'div.cls1_html'
+    });
+    Q('div.cls2').html('div.cls2_html');
+    Q('div.cls3').val('div.cls3_val');
+    Q('div.cls4').css('cls6');
+    Q('div.cls5').style({
+        color: 'red',
+        fontWeight: 'bold'
+    });
+    Q('div.cls6').style({
+        color: 'red',
+        fontWeight: 'bold'
+    });
+    Q('div.cls7').lchild().siblings().val('siblings');
+    Q('div').eq(10).childs().parent().fchild().next().parent().lchild().prev().html('div.eq(10).childs().parent().fchild().next().parent().lchild().prev()');
+    Q('input').click(function () {
+        alert(this.value)
+    });
+    Q.Ajax({
+        t: 'json',
+        m: 'get',
+        p: '',
+        u: '/ajax/json.asp',
+        a: false,
+        c: function (d) {
+            Q('#a').val(d.json)
+        }
+    });
+    Q.Js({
+        u: '/ajax/script.js',
+        c: function () {
+            Q('#s').val(script.json)
+        }
+    });
+    /*
+      2011-07-25更新 Evans
+      支持节点,字符串标签,纯字符,Q对象集合
+    */
+    Q("body").prepend(Q("#p1").clone());
+});
+    
+</script>
+</head>
+
+<body>
+	
+    <p id="p1">我是p1~</p>
+    <div class="cls1">
+        div.cls1</div>
+    <div class="cls1">
+        div.cls1</div>
+    <span class="cls1">span.cls1</span> - <span class="cls1">span.cls1</span>
+    <div class="cls2">
+        div.cls2</div>
+    <div class="cls2">
+        div.cls2</div>
+    <span class="cls2">span.cls2</span> - <span class="cls2">span.cls2</span>
+    <div class="cls3">
+        div.cls3</div>
+    <div class="cls3">
+        div.cls3</div>
+    <span class="cls3">span.cls3</span> - <span class="cls3">span.cls3</span>
+    <div class="cls4">
+        div.cls4.0</div>
+    <div class="cls4">
+        div.cls4.1</div>
+    <span class="cls4">span.cls4</span> - <span class="cls4">span.cls4</span>
+    <div class="cls5">
+        div.cls5</div>
+    <div class="cls5">
+        div.cls5</div>
+    <span class="cls5">span.cls5</span> - <span class="cls5">span.cls5</span>
+    <div class="cls7">
+        <span>div.cls1.span0</span> - <span>div.cls1.span1</span> - <span>div.cls1.span2</span></div>
+    <input type="button" class="b" value="b1" />
+    <input type="button" class="b" value="b2" />
+    <input type="button" class="b" value="b3" />
+    <br />
+    <textarea id="a" rows="8" cols="60"></textarea><br />
+    <textarea id="s" rows="8" cols="60"></textarea>
+</body>
+</html>

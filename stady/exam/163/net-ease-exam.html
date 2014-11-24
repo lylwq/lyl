@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网易面试题</title>
+<style type="text/css">
+* { margin:0; padding:0}
+ul,ol { list-style:none;}
+a { text-decoration:none;}
+body { font:62.5% Arial, Helvetica, sans-serif; text-align:center;}
+#wrapper { width:760px; text-align:left; font-size:12px; margin:0 auto; padding:5px 0;}
+#wrapper > #bot { position:relative; top:10px;}
+
+#top-left { width:441px; float:left; padding:12px 15px;}
+#top-center { width:27px; height:185px; float:left; background:url(163sprits.gif) 0 -380px no-repeat;} 
+#wrapper #top-right { width:252px; float:left;  background:#fafafa; overflow:hidden; height:472px;}
+#top-left,#top-right { height:449px; border:1px solid #ccc; }
+#bot { clear:left;} 
+
+.description { height:21px; line-height:21px; border-bottom:1px dotted #000; color:#565656}
+.description span { display:block; background:#0d5aac; color:#fff; float:left; padding:0px 10px; margin-right:15px}
+
+.title { padding:15px 0;}
+.title h1 a{ font-size:16px; line-height:180%; color:#000;}
+.title p { line-height:200%; color:#1f3a87;}
+
+.news li { height:25px; line-height:25px; padding-left:10px; background:url(163sprits.gif) -10px -591px no-repeat;}
+.news a { font-size:14px; color:#000;}
+.news span { margin-left:15px; color:#1f3a87;}
+
+.vote {  border:1px solid #ccc; padding:5px;}
+.vote ul { background:#ecf3f9; padding:5px 10px;}
+.vote ul li { height:25px; line-height:25px; margin-top:4px;}
+.vote ul li a{ color:#1f3a87}
+.vote ul li .vote-name { height:20px; line-height:20px; float:left; padding:0 3px; border:1px solid #ccc; color:#6e6e6e; background:#fff; margin-right:5px;}
+.vote ul li span { padding-left:5px;}
+.vote ul li span a { color:#f00;}
+.under-line { border-bottom:1px dotted #ccc;}
+
+#top-left h2 { font-size:12px; font-weight:normal; margin-top:15px; padding-left:5px; border-bottom:1px dotted #000; padding-bottom:5px;}
+#top-left h2 .cub { float:left; width:7px; height:7px; float:left; border:1px solid #ccc; background:#f00; overflow:hidden; position:relative; top:3px; left:-2px;}
+
+.photo-nav .right-arrow { background:url(163sprits.gif) -8px -259px no-repeat;}
+.photo-nav .left-arrow { background:url(163sprits.gif) -8px -240px no-repeat;}
+.photo-nav .choice1 { background:url(163sprits.gif) -5px -353px no-repeat;}
+.photo-nav .choice2 { background:url(163sprits.gif) -5px -26px no-repeat;}
+.photo-nav .choice3 { background:url(163sprits.gif) -5px -50px no-repeat;}
+h2.photo-nav{ position:relative; }
+.left-arrow,.choice1,.choice2,.choice3,.right-arrow { float:left; width:15px; margin-right:3px; text-indent:-9999px;}
+.photo-nav span.nav { position:absolute; top:-3px; left:80px;}
+.nav span { cursor:pointer;}
+.images li {  margin:10px; float:left;}
+.images .photo1,.images .photo2,.images .photo3{ display:block; width:118px; height:74px; border:1px solid #ccc; margin-bottom:5px;}
+.images .photo1 { background:url(163sprits-images.jpg) -130px -533px no-repeat;}
+.images .photo2 { background:url(163sprits-images.jpg) -130px -609px no-repeat;}
+.images .photo3 { background:url(163sprits-images.jpg) -130px -685px no-repeat;}
+
+#top-right h2 { height:24px; overflow:hidden; background:url(163sprits-images.jpg) -14px 0 no-repeat; text-indent:-9999px; margin-top:10px;}
+#top-right p { padding:10px 8px; text-indent:2em; line-height:180%; color:#66696b;}
+
+ul.ranks .hot-ranks,ul.ranks .creative-ranks { float:left; width:250px; border:1px solid #ededed; border-top:none;}
+.rank-title { padding-left:30px;}
+.rank-title h3.title { float:left; width:93px; border:1px solid #d9d9d9; padding:1px; background:#fff; font-weight:normal;}
+.rank-title h3.title1 a { background:#c90300; color:#fff;}
+.rank-title .title2 { margin-left:2px;}
+.rank-title .title a { display:block; height:16px; text-align:center;line-height:16px; font-size:12px; color:#1f3a87; background:#dde5f5;}
+.rank-title .ul-bot { height:3px; overflow:hidden; margin-left:-39px; background:url(163sprits-images.jpg) 0px -760px no-repeat; clear:left;}
+ul.rank li {height:23px; margin:0 8px; padding:0 10px; line-height:23px; border-bottom:1px solid #f1f1f1;  background:#fff;}
+ul.rank li { *margin-bottom:-3px;}
+ul.rank strong,ul.rank a,ul.rank span { float:left; display:inline; width:35px; }
+.ranks .rank a ,.ranks .rank .tech { width:130px;}
+.ranks .rank a { padding-left:20px; width:110px;}
+.tends,.hot,ul.rank strong { text-align:center;}
+
+ul.ranks {height:263px;}
+#content { height:263px; overflow:hidden;}
+
+.item1 { background:url(163sprits.gif) -4px 1px no-repeat;}
+.item2 { background:url(163sprits.gif) -4px -23px no-repeat;}
+.item3 { background:url(163sprits.gif) -4px -47px no-repeat;}
+.item4 { background:url(163sprits.gif) -4px -71px no-repeat;}
+.item5 { background:url(163sprits.gif) -4px -95px no-repeat;}
+.item6 { background:url(163sprits.gif) -4px -119px no-repeat;}
+.item7 { background:url(163sprits.gif) -4px -143px no-repeat;}
+.item8 { background:url(163sprits.gif) -4px -167px no-repeat;}
+.item9 { background:url(163sprits.gif) -4px -191px no-repeat;}
+.item10 { background:url(163sprits.gif) -4px -215px no-repeat;}
+span.tends { text-indent:-999px;}
+.tends1,.tends3,.tends4 { background:url(163sprits.gif) 2px -280px no-repeat;}
+.tends5,.tends6,.tends7 { background:url(163sprits.gif) 2px -300px no-repeat;}
+.tends2,.tends8,.tends9,.tends10 { background:url(163sprits.gif) 2px -325px no-repeat;}
+
+#top-right form { padding-left:25px;}
+#top-right .question{ color:#c90300; padding:0; margin-top:15px;}
+#top-right .question span { font-size:9px; color:#bfbebc;}
+
+#bot { border:1px solid #ccc; background:#eee; margin-right:5px; padding:10px; height:340px; margin-top:10px;}
+.bot-title,#bot-menu { padding:1px;}
+.bot-title { height:26px; background:#0d5aac;  border:1px solid #fff; overflow:hidden;}
+.bot-title li { float:left; margin-right:10px;height:26px; }
+.bot-title li a { float:left; width:73px; background:url(163sprits-images.jpg) -177px -783px no-repeat; height:19px; line-height:19px; text-align:center;color:#fff; position:relative; top:8px;}
+.bot-title li a:hover { background:url(163sprits-images.jpg) -178px -763px no-repeat; color:#000; }
+.bot-title .first a ,.bot-title .first a:hover{ width:8px; height:26px;color:#c90300; background:none;}
+.bot-title .first {  border:1px solid #fff; height:28px; position:relative; left:-2px; top:-2px; background:#c90300; margin-right:20px; }
+.bot-title .secound{ background:url(163sprits-images.jpg) -178px -763px no-repeat; color:#000; }
+
+.menu { border:1px solid #fff; margin-top:-1px; height:300px;}
+#bot-menu{ height:300px; overflow:hidden; width:728px; border:1px solid #ccc; background:#fff url(163sprits.gif) 0 -624px repeat-x;}
+#ul-content { position:absolute;}
+#ul-container { margin:10px; height:270px; overflow:hidden;  float:left; width:440px; position:relative;}
+.ul-content { padding-bottom:10px; height:270px; }
+p.words{ width:240px; line-height:180%;}
+.news-image p { margin-top:5px;}
+.ul-content .news-image { padding-left:15px; border-left:1px dotted #ccc;}
+.news-image { margin-left:250px; margin-top:-50px;}
+.ul-content h2 { font:20px "黑体", "宋体", "楷体_GB2312"; line-height:200%;}
+.ul-content ul { margin-top:10px; float:left; width:240px;}
+.ul-content ul li { height:20px; line-height:20px; background:url(163sprits.gif) -5px -569px no-repeat; padding-left:15px;}
+.zll { width:160px; height:209px; background:url(163sprits-images.jpg) -90px -322px no-repeat; border:1px solid #ccc; text-indent:-9999px;}
+
+#bot-menu .ad { float:right; width:250px; height:288px; background:url(163sprits-images.jpg) 0 -24px no-repeat; border:1px solid #ccc; margin-top:-2px; margin-right:-1px;}
+
+.clear { clear:both;}
+</style>
+<script type="text/javascript">
+<!--
+function show1(){
+	var node = document.getElementById("ranks");
+	node.style.marginTop = "0px";
+	
+	document.getElementById("bgred1").style.backgroundColor = "#c90300";
+	document.getElementById("bgred1").style.color = "#ffffff";
+	document.getElementById("bgred2").style.backgroundColor = "#dde5f5";
+	document.getElementById("bgred2").style.color = "#1f3a87";
+}
+function show2(){
+	var node = document.getElementById("ranks");
+	node.style.marginTop = "-265px";
+	
+	document.getElementById("bgred2").style.backgroundColor = "#c90300";
+	document.getElementById("bgred2").style.color = "#ffffff";
+	document.getElementById("bgred1").style.backgroundColor = "#dde5f5";
+	document.getElementById("bgred1").style.color = "#1f3a87";
+}
+function show(a) {
+	var nodeUl = document.getElementById("ul-content");
+	var ulHeight = -280;
+	if (a==1){
+		nodeUl.style.top = (a-1)*ulHeight + "px";
+	}
+	else if (a==2){
+		nodeUl.style.top = (a-1)*ulHeight + "px";
+	}
+	else if (a==3){
+		nodeUl.style.top = (a-1)*ulHeight + "px";
+	}
+	else if (a==4){
+		nodeUl.style.top = (a-1)*ulHeight + "px";
+	}
+}
+-->
+</script>
+</head>
+
+<body>
+<div id="wrapper">
+	<div id="top">
+    	<div id="top-left">
+        	<div class="description"><span>趋势【进入趋势频道】</span>世界每天都在改变，唯有看准趋势，才能掌握未来</div>
+            <div class="title">
+            	<h1><a href="#">中国未来能够取代美国科技霸主的地位吗? </a></h1>
+                <p>[《2006年度科学、技术和工业展望》的报告再次引起世界骚动 ]</p>
+            </div>
+            <ul class="news">
+				<li><a href="#">蓝光后年才能胜过HD DVD？</a><span>2006-2007全球光存储业报告</span></li>
+                <li><a href="#">中国网民日均上网时间年增56％</a><span> 将超过电视时间</span></li>
+                <li><a href="#">北京网民半年内上网消费两亿多 86.9％</a><span>通过网络获取信息</span></li>
+                <li><a href="#">诺基亚推出免费手机地图</a><span>将覆盖150多个国家</span></li>
+            </ul>
+            <div class="vote">
+            	<ul>
+                	<li class="under-line"><a href="#" class="vote-name">预言录</a><a href="#">迈克·林奇：计算机业将进入人机交互时代</a><span>赞同(<a href="#">68%</a>) 反对(<a href="#">32%</a>)</span></li>
+                    <li><a href="#" class="vote-name">思考题</a><a href="#">拍照手机未来能取代数码相机吗?</a><span>[已有<a href="#">29</a>个网友思考并留了言]</span></li>
+                </ul>
+            </div>
+            <h2 class="photo-nav">
+            	<span class="cub"></span>创意生活
+                <span class="nav">
+                    <span class="left-arrow">+</span>
+                    <span class="choice1">1</span>
+                    <span class="choice2">2</span>
+                    <span class="choice3">3</span>
+                    <span class="right-arrow">-</span>
+                </span>
+            </h2>
+            <ul class="images">
+				<li><a href="#" class="photo1"></a> <a href="#">多功能超便携键盘</a></li>
+                <li><a href="#" class="photo2"></a> <a href="#">时速225km的概念快艇</a></li>
+                <li><a href="#" class="photo3"></a> <a href="#">发明手机的女人</a></li>
+            </ul>
+        </div>
+        <div id="top-center">
+        </div>
+        <div id="top-right">
+        	<h2>科技风向标</h2>
+            <p>把握技术趋势发展，关注企业创新动态，用战略眼光照亮未来之路。</p>
+            <div class="rank-title">
+                <h3 class="title title1"><a href="#" onclick="show1()" id="bgred1">热门关注榜</a></h3>
+                <h3 class="title title2"><a href="#" onclick="show2()" id="bgred2">热门关注榜</a></h3>
+                <div class="ul-bot"></div>
+            </div>
+            <div id="content">
+                <ul class="ranks" id="ranks">
+                    <li class="hot-ranks">
+                        <ul class="rank">
+<li><strong class="tech">技术</strong><strong class="tends">趋势</strong><strong class="hot">热度</strong></li>
+<li><a href="#" class="item1">机器人</a><span class="tends tends1">ico</span><span class="hot">18℃</span></li>
+<li><a href="#" class="item2">生物识别</a><span class="tends tends2">ico</span><span class="hot">18℃</span></li>
+<li><a href="#" class="item3">3G</a><span class="tends tends3">ico</span><span class="hot">17℃</span></li>
+<li><a href="#" class="item4">数字娱乐</a><span class="tends tends4">ico</span><span class="hot">13℃</span></li>
+<li><a href="#" class="item5">数字家庭</a><span class="tends tends5">ico</span><span class="hot">13℃</span></li>
+<li><a href="#" class="item6">Web2.0</a><span class="tends tends6">ico</span><span class="hot">9℃</span></li>
+<li><a href="#" class="item7">3C融合</a><span class="tends tends7">ico</span><span class="hot">4℃</span></li>
+<li><a href="#" class="item8">IPTV</a><span class="tends tends8">ico</span><span class="hot">2℃</span></li>
+<li><a href="#" class="item9">VOIP</a><span class="tends tends9">ico</span><span class="hot">1℃</span></li>
+<li><a href="#" class="item10">RFID</a><span class="tends tends10">ico</span><span class="hot">0℃</span></li>
+                        </ul>
+                    </li>
+                    <li class="creative-ranks">
+                        <ul class="rank">
+    <li><strong class="tech">技术2</strong><strong class="tends">趋势</strong><strong class="hot">热度</strong></li>
+    <li><a href="#" class="item1">机器人2</a><span class="tends tends1">ico</span><span class="hot">18℃</span></li>
+    <li><a href="#" class="item2">生物识别2</a><span class="tends tends2">ico</span><span class="hot">18℃</span></li>
+    <li><a href="#" class="item3">3G2</a><span class="tends tends3">ico</span><span class="hot">17℃</span></li>
+    <li><a href="#" class="item4">数字娱乐2</a><span class="tends tends4">ico</span><span class="hot">13℃</span></li>
+    <li><a href="#" class="item5">数字家庭2</a><span class="tends tends5">ico</span><span class="hot">13℃</span></li>
+    <li><a href="#" class="item6">Web2.02</a><span class="tends tends6">ico</span><span class="hot">9℃</span></li>
+    <li><a href="#" class="item7">3C融合2</a><span class="tends tends7">ico</span><span class="hot">4℃</span></li>
+    <li><a href="#" class="item8">IPTV2</a><span class="tends tends8">ico</span><span class="hot">2℃</span></li>
+    <li><a href="#" class="item9">VOIP2</a><span class="tends tends9">ico</span><span class="hot">1℃</span></li>
+    <li><a href="#" class="item10">RFID2</a><span class="tends tends10">ico</span><span class="hot">0℃</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <p class="question">本周您最关注哪个技术的发展？<span>VOTE</span></p>
+            <form action="../Web Standard/product/get">
+            	<select name="vote" id="select">
+                	<option>机器人技术</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+                <input type="button" value="投票" /><input type="button" value="查看结果" />
+            </form>
+        </div>
+    </div>
+    <div id="bot">
+    	<ul class="bot-title">
+        			<li class="first"><a href="#">1</a></li>
+                	<li><a href="#" class="secound" onmouseover="show(1)">手机</a></li>
+                    <li><a href="#" onmouseover="show(2)">相机</a></li>
+                    <li><a href="#" onmouseover="show(3)">笔记本</a></li>
+                    <li><a href="#" onmouseover="show(4)">数字电视</a></li>
+        </ul>
+    	<div class="menu">
+    		<div id="bot-menu">
+            	<div id="ul-container">
+                	<div id="ul-content">
+                    	<div class="ul-content">
+                            <h2>1决战！诺基亚N93i对撼N93</h2>
+                            <p class="words">目前诺基亚唯一两款支持光学变焦手机孰强孰弱呢？看看这场“新老蔡司”的对决！</p>
+                            <ul>
+                                <li><a href="#">[专区] 网易手机苹果iPhone专区上线 </a></li>
+                                <li><a href="#">[新机] 平价电视 诺基亚N77亮相3GSM？ </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                            </ul>
+                            <div class="news-image">
+                                <div class="zll">zll</div>
+                                <p><a href="#">清纯美少女张娜拉SHOW手机</a></p>
+                            </div>
+                        </div>
+                    	<div class="ul-content">
+                            <h2>2决战！诺基亚1600对撼N1000^!^</h2>
+                            <p class="words">目前诺基亚唯一两款支持光学变焦手机孰强孰弱呢？看看这场“新老蔡司”的对决！</p>
+                            <ul>
+                                <li><a href="#">[专区] 网易手机苹果iPhone专区上线 </a></li>
+                                <li><a href="#">[新机] 平价电视 诺基亚N77亮相3GSM？ </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                            </ul>
+                            <div class="news-image">
+                                <div class="zll">zll</div>
+                                <p><a href="#">清纯美少女张娜拉SHOW手机</a></p>
+                            </div>
+                        </div>
+                    	<div class="ul-content">
+                            <h2>3决战！诺基亚nnnn对撼bbbb</h2>
+                            <p class="words">目前诺基亚唯一两款支持光学变焦手机孰强孰弱呢？看看这场“新老蔡司”的对决！</p>
+                            <ul>
+                                <li><a href="#">[专区] 网易手机苹果iPhone专区上线 </a></li>
+                                <li><a href="#">[新机] 平价电视 诺基亚N77亮相3GSM？ </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                            </ul>
+                            <div class="news-image">
+                                <div class="zll">zll</div>
+                                <p><a href="#">清纯美少女张娜拉SHOW手机</a></p>
+                            </div>
+                        </div>
+                    	<div class="ul-content">
+                            <h2>4决战！Moto N93i对撼N93</h2>
+                            <p class="words">目前诺基亚唯一两款支持光学变焦手机孰强孰弱呢？看看这场“新老蔡司”的对决！</p>
+                            <ul>
+                                <li><a href="#">[专区] 网易手机苹果iPhone专区上线 </a></li>
+                                <li><a href="#">[新机] 平价电视 诺基亚N77亮相3GSM？ </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                                <li><a href="#">[评测] 索爱超薄音乐W880 </a></li>
+                            </ul>
+                            <div class="news-image">
+                                <div class="zll">zll</div>
+                                <p><a href="#">清纯美少女张娜拉SHOW手机</a></p>
+                        	</div>
+                    	</div>
+                    </div>
+                </div>
+                <div class="ad">
+                </div>
+            </div>
+            
+        </div>
+        <div class="ad">
+        </div>
+  </div>
+</div>
+</body>
+</html>

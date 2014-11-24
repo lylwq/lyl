@@ -1,0 +1,21 @@
+{
+    "desc":"江湖规矩：只准秒杀同性\r30秒内秒杀{score}人以上可获取IUNI OS独家定制神秘礼物",
+    "showNum":9,
+    "gameTime":30,
+    "tweenDur":200,
+    "cellDelay":1500,
+    "rankScore1":50,
+    "rankScore2":70,
+    "rankScore3":85,
+    "rankScore4":90,
+    "playLimit":3,
+
+    "rankDesc":"你在30秒内成功让{score}个{sex}人变光棍，获封“{rankText}”",
+    "shareText":"点击右上角\r【分享朋友圈】\r和好友一决高下",
+    "resultAD":"IUNI OS，全宇宙最纯净简洁的ROM，分享赢IUNI U3手机！",
+    "limitDesc":"对不起，您的挑战机会已被奸人窃取，分享好友后获得无限挑战机会！",
+
+    "lotteryDesc1":"从即日起-11月11日，每天的抽送20位截图发送者，直接获得IUNI OS独家定制神秘@礼包一份\r由@IUNI_OS在11月12日公布最终全部中奖名单。\r\r参与办法：",
+
+    "lotteryDesc2":"1.分享至朋友圈\r2.关注“IUNI OS”公众号，并将朋友圈分享截图发送给“IUNI OS”公众号\r由@IUNI_OS在11月12日公布最终全部获奖名单"
+}

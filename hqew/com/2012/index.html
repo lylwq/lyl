@@ -1,0 +1,482 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="base.css"/>
+<link rel="stylesheet" type="text/css" href="country.css"/>
+</head>
+<style type="text/css">
+/*产品服务*/
+.service1 { padding-top:8px; padding-bottom:7px; }
+.service1 table { width:100%; table-layout:fixed; }
+.service2 { padding-top:9px; padding-bottom:8px; line-height:15px; }
+#icmanage { margin-top: 4px; }
+.service { height:107px;border:1px solid #edce84;}
+
+/*热门供应*/
+#bs{ height:110px; overflow:hidden; }
+#bs ul { width:324px; }
+#pro { margin-top:15px; margin-bottom:15px; height:99px; overflow:hidden;padding:0 14px;}
+#pro li { width: 90px;padding:0;margin-right:20px;}
+#pro li.pro_last{margin-right:0}
+#abroad{ height:176px; overflow:hidden; }
+#abroad li{ width:304px; }
+.tab_hot{width:193px;}
+#tab_hot_up,#tab_hot_dw{float:right;width:13px;height:13px;background:url(/images/common/base.png) no-repeat;padding:0;margin:8px 0 0 1px;}
+#tab_hot_up{background-position:0 -1470px;}#tab_hot_up:hover{background-position:-33px -1470px;}
+#tab_hot_dw{background-position:-17px -1470px;}#tab_hot_dw:hover{background-position:-49px -1470px;}
+.pic{ width:304px; margin-left:0; padding-bottom: 15px; }
+.mr30 { margin-right:30px; }
+.mr0 { margin-right:0; }
+.ml47 { margin-left:47px; }
+.ml0 { margin-left:0; }
+.mlr15 { margin-left:15px; margin-right:15px;}
+
+/*供应信息分类*/
+#ic_search_kw {  }
+.ec { }
+.ec table { line-height:16px; }
+.ec p { line-height:20px; height:20px; }
+.ec .index a { padding:1px 2px; word-wrap: break-word; word-break:break-all; }
+.ec .index a:hover{background-color:#cc0000;color:#fff;text-decoration:none;}
+.w294 { width: 294px; }
+.ec .cap { top:11px; left:435px; }
+.ec .pro { margin-bottom:13px; }
+.ec .pro a {float: left;line-height:20px;height:20px;overflow:hidden;margin-right:5px;white-space:nowrap;color:#666}
+.ec .pro span { line-height:19px \9; }
+:root .ec .pro span { line-height:16px \9; }
+
+</style>
+
+<script type="text/javascript" src="base.js"></script>
+<script type="text/javascript">
+Q(function () {
+	Q('.g-box-t h2').mouseover(function () {
+		var _this = Q(this),
+		i = _this.index();
+		_this.css('cur').siblings().css('cur', '').parent().next().children().eq(i).css('g-d-n', '').siblings().css('g-d-n')
+	}).parent().next().children().eq(0).nextAll().css('g-d-n'); /*con页签*/ 
+    Q.js({
+        url: 'msclass.js',
+        success: function () {
+            var mq_bs = new Marquee("bs", 0, 1, 668, 110, 20, 3000, 3000, 110),
+				mq_timer;
+				//new Marquee("pro", 0, 1, 640, 99, 20, 3000, 3000, 99);
+				new Marquee("abroad", 0, 1, 668, 176, 20, 3000, 3000, 176, "abroad");
+			Q("#bs").mouseover(function(){mq_bs.Stop()}).mouseout(function(){mq_bs.Start()});//移入列表,停止滚动
+			Q("#tab_hot_up").click(function(){//上一页
+				if(mq_timer){clearTimeout(mq_timer);mq_bs.Start();mq_bs.Run(1);}
+			});
+			Q("#tab_hot_dw").click(function(){//下一页
+				if(mq_timer){clearTimeout(mq_timer);mq_bs.Start();mq_bs.Run(0);}
+			});
+			Q("#tab_hot_up,#tab_hot_dw").mouseover(function(){//移入翻页,停止5秒再滚动
+				mq_bs.Stop();
+				mq_timer = setTimeout(function(){mq_bs.Start()},5000);
+			}).mouseout(function(){
+				clearTimeout(mq_timer);
+				mq_bs.Start();
+				mq_timer = null;
+			});
+			
+        }
+    });
+});
+</script>
+<body>
+
+<div class="g-w-990 g-mlr-a">
+
+<div class="g-mh-20 g-pb-10">
+adsf
+    <div class="g-cf">
+        <div class="g-w-220 g-f-l g-mh-20">
+            
+            	<!--橙色box-->
+                <div class="g-box-gg">
+                    <div class="bar"><a class="g-c-99 g-bi-n" recid="800" rec="" id="" href="/info/action-topic.html" title="" target="_blank">更多</a>
+                    	<h2 id="" title="">华强热点</h2>
+                    </div>
+                    <div class="con">
+                        <div class="g-list-txt g-mtb-5">
+                            <ul>                                
+                                <li>- <a title="2012中国电子产业发展研讨会" href="/info-208434.html" target="_blank">2012中国电子产业发展研讨会</a></li>
+                                <li>- <a title="2012年创新发展年会及颁奖礼" href="/info-205111.html" target="_blank">2012年创新发展年会及颁奖礼</a></li>
+                                <li>- <a title="供应商评选结果即将公布" href="/info-203506.html" target="_blank">供应商评选结果即将公布</a></li>
+                            </ul>
+                        </div>                    
+                        <div class="g-list-mix g-img-new-sma g-cf g-bt-ee g-bb-n g-ptb-10 topnews">
+                        	<a title="《电子元器件采购指南》即将出版" href="/info-203677.html" target="_blank"><img src="http://img.hqew.com/file/CMSImages/2011/12/1680023_201112021417441D6a3.thumb.jpg" alt="《电子元器件采购指南》即将出版"></a>
+                            <p><a title="《电子元器件采购指南》即将出版" href="/info-203677.html/" class="g-c-r" target="_blank">《电子元器件采购指南》即将出版</a></p> 
+                         </div>                    
+                    </div>
+                </div>
+                
+                <!--灰色box-->
+                <div class="g-box-g">
+                    <div class="bar"><a target="_blank" class="g-c-99 g-bi-n" recid="800" rec="" id="" href="/buyer/bidding/index.html" title="">竞价专栏</a>
+                        <h2 id="" title="">今日竞价</h2>
+                    </div>
+                    
+                    <div class="con">
+                        <div>
+                        	<span class="g-ico-bidding">今日竞价已结束，竞价时间为每天9:00-15:00</span>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+        
+        <div class="g-w-440 g-f-l g-mh-20 g-ml-10">
+            <div class="g-ad-440-189">
+            	
+                
+                
+            </div>
+		</div>
+
+        <div class="g-w-310 g-f-l g-mh-20 g-ml-10">
+<div class="g-ad-310-70"><div>
+  <ul class="aspic" id="g_AsImageG0109_pic">
+    <li class="current">
+      <a title="" href="http://www.hqew.com/topic/Bid2010/index.aspx" target="_blank">
+        
+      </a>
+    </li>
+    <li class="normal">
+      
+    </li>
+  </ul>
+  <div class="asbtn g_dn" id="g_AsImageG0109_btn">
+    <span class="current">1</span>
+    <span class="normal">2</span>
+  </div>
+</div></div>
+
+<!--产品服务-->
+<div class="g-bc-ff g-p-r service">
+    <div class="g-mlr-10 service1">
+        <table>
+            <tr>
+                <td><a class="g-ico-bidding" target="_blank" title="竞价排名" href="/buyer/bidding/index.html">竞价排名</a></td>
+                <td><a class="g-ico-iscp" target="_blank" title="ISCP认证" href="/about/service_03.html">ISCP认证</a></td>
+                <td><a class="g-ico-stockzt" target="_blank" title="酷管家" href="/topic/Stock2010/StockZT.html">酷管家</a></td>
+            </tr>
+            <tr>
+                <td><a class="g-ico-member" target="_blank" title="会员套餐" href="/about/index-service.html">会员套餐</a></td>
+                <td><a class="g-ico-honestyeasy" target="_blank" title="诚易通" href="/bussiness/honestyeasy.html">诚易通</a></td>
+                <td><a class="g-ico-qq" target="_blank" title="洽洽" href="/about/service_05.html">洽洽</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="g-mlr-10 g-ptb-5 g-bt-ed g-cf service2">
+    <a class="g-btn-12 g-f-r" id="icmanage" href="http://ibs.hqew.com/Web/Hqen/sell/icmanage.aspx" target="_blank"><em>发布紧急求购</em><b></b></a>
+	<tms_bind id="stocks">
+        <p class="g-c-66"><a class="g-ff-s g-c-66" href="/buyer" target="_blank">[供应]</a>今日更新库存：<span class="g-fw-b">{#0,库存,243708#}条</span></p>
+        <p class="g-c-66"><a class="g-ff-s g-c-66" href="/seller" target="_blank">[求购]</a>今日新增求购：<span class="g-fw-b">{#1,求购,4069#}条</span></p>
+	</tms_bind>
+    </div>
+</div>
+
+</div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+<div class="g-cf">
+    <div class="g-w-670 g-f-l g-mh-20">
+    
+    	<!--热门供应-->
+		<div class="g-box-g">
+            <div class="bar g-box-t">
+                <h2 class="cur tab_hot">
+                <a id="tab_hot_dw" href="javascript:;" title="下翻"></a>
+                <a id="tab_hot_up" href="javascript:;" title="上翻"></a>
+                热门供应/求购
+                </h2>
+                <h2 class="">海外采购<span class="g-fz-12 g-c-99 g-fw-n">(11161)</span></h2>
+                <span e="3892684" i="98971606" class="g-f-r g-mr-10 g-c-66">IC：<i class="g-fs-n g-fw-b">9897.16</i>万条&nbsp;元器件：<i class="g-fs-n g-fw-b">389.27</i>万条</span>
+            </div>
+            <div class="con">
+                <div class="">
+                    <div id="bs" class="g-mtb-10">
+                        <div class="g-list-txt g-f-l g-mlr-5">
+                            <ul>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">9分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a title="供应信息" href="/buyer/" target="_blank">供应</a>]</span><span class="g-w-200 g-f-l"><a title="供应深圳华海室内点阵LED全彩显示屏" href="http://www.hqew.sb/freeshop_http://www.hqew.sb/freeshop_501082.html.html" target="_blank">供应深圳华海室内点阵LED全彩显示屏</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">11分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a title="供应信息" href="/buyer/" target="_blank">供应</a>]</span><span class="g-w-200 g-f-l"><a title="供应3014贴片3014LED白色，暖白" href="http://www.hqew.sb/freeshop_http://www.hqew.sb/freeshop_544964.html.html" target="_blank">供应3014贴片3014LED白色，暖白</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">17分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a title="供应信息" href="/buyer/" target="_blank">供应</a>]</span><span class="g-w-200 g-f-l"><a title="供应TL-T8-60-144LEDS-9W-WLED日光灯" href="http://www.hqew.sb/freeshop_http://www.hqew.sb/freeshop_504095.html.html" target="_blank">供应TL-T8-60-144LEDS-9W-WLED日光灯</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">18分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a title="供应信息" href="/buyer/" target="_blank">供应</a>]</span><span class="g-w-200 g-f-l"><a title="供应独石电容" href="http://www.hqew.sb/freeshop_http://www.hqew.sb/freeshop_113494.html.html" target="_blank">供应独石电容</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">27分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a title="供应信息" href="/buyer/" target="_blank">供应</a>]</span><span class="g-w-200 g-f-l"><a title="供应LED太阳能路灯灯头" href="http://www.hqew.sb/freeshop_http://www.hqew.sb/freeshop_509386.html.html" target="_blank">供应LED太阳能路灯灯头</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">33分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a title="供应信息" href="/buyer/" target="_blank">供应</a>]</span><span class="g-w-200 g-f-l"><a title="供应K4M56323PG-HG75K4M56323PG-HG75" href="http://www.hqew.sb/freeshop_http://www.hqew.sb/freeshop_167601.html.html" target="_blank">供应K4M56323PG-HG75K4M56323PG-HG75</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">35分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a title="供应信息" href="/buyer/" target="_blank">供应</a>]</span><span class="g-w-200 g-f-l"><a title="供应六段光条数码管" href="http://www.hqew.sb/freeshop_http://www.hqew.sb/freeshop_415881.html.html" target="_blank">供应六段光条数码管</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">37分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a title="供应信息" href="/buyer/" target="_blank">供应</a>]</span><span class="g-w-200 g-f-l"><a title="供应BW-ABS-50-160C温控开关 9700系列BW-ABS-50-155c塑胶" href="http://www.hqew.sb/freeshop_http://www.hqew.sb/freeshop_90170.html.html" target="_blank">供应BW-ABS-50-160C温控开关 9700系列BW-ABS-50-155c塑胶</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">42分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a title="供应信息" href="/buyer/" target="_blank">供应</a>]</span><span class="g-w-200 g-f-l"><a title="供应工字电感" href="http://www.hqew.sb/freeshop_http://www.hqew.sb/freeshop_540942.html.html" target="_blank">供应工字电感</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">44分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a title="供应信息" href="/buyer/" target="_blank">供应</a>]</span><span class="g-w-200 g-f-l"><a title="供应P16户外全彩LED显示屏/模组" href="http://www.hqew.sb/freeshop_http://www.hqew.sb/freeshop_544262.html.html" target="_blank">供应P16户外全彩LED显示屏/模组</a></span></li>
+                                
+                            </ul>
+                        </div>
+                        <div class="g-list-txt g-f-l g-mlr-5">
+                            <ul>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">1分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a target="_blank" href="/seller">求购</a>]</span><span class="g-w-200 g-f-l"><a title="高价收购多普达A6288触摸屏,回收手控屏，高价收购多普达S1触摸屏,回收电容屏，高价收购HTC野火A510E触摸屏,回收手控屏" href="/seller/company505163.html" target="_blank">高价收购多普达A6288触摸屏,回收手控屏，高价收购多普达S1触摸屏,回收电容屏，高价收购HTC野火A510E触摸屏,回收手控屏</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">2分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a target="_blank" href="/seller">求购</a>]</span><span class="g-w-200 g-f-l"><a title="连接器库存Panasonic/Nais/HRS，收库存-连接器/板对板-FPC进口牌子，收购库存连接器，板对板、FPC手机配件" href="/seller/company292172.html" target="_blank">连接器库存Panasonic/Nais/HRS，收库存-连接器/板对板-FPC进口牌子，收购库存连接器，板对板、FPC手机配件</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">14分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a target="_blank" href="/seller">求购</a>]</span><span class="g-w-200 g-f-l"><a title="KLM4G2DEFD-A301" href="/seller/company406143.html" target="_blank">KLM4G2DEFD-A301</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">22分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a target="_blank" href="/seller">求购</a>]</span><span class="g-w-200 g-f-l"><a title="电子收购商（价高同行）陈先生，专业回收电子产品（价高同行）陈先生，电子收购厂家（价高同行）陈先生" href="/seller/company304946.html" target="_blank">电子收购商（价高同行）陈先生，专业回收电子产品（价高同行）陈先生，电子收购厂家（价高同行）陈先生</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">27分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a target="_blank" href="/seller">求购</a>]</span><span class="g-w-200 g-f-l"><a title="15915*446690求购电子库存IC" href="/seller/company297271.html" target="_blank">15915*446690求购电子库存IC</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">29分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a target="_blank" href="/seller">求购</a>]</span><span class="g-w-200 g-f-l"><a title="收购内存闪存网络电子元件IC" href="/seller/company299256.html" target="_blank">收购内存闪存网络电子元件IC</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">48分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a target="_blank" href="/seller">求购</a>]</span><span class="g-w-200 g-f-l"><a title="134*2867*2878长期求购库存IC,二三极管,内存,接收头,，134*2867*2878诚信收购IC,二三极管,内存.胆电容及手机，134*2867*2878高价现金收购IC,二三极管,内存,CPU,接收" href="/seller/company351804.html" target="_blank">134*2867*2878长期求购库存IC,二三极管,内存,接收头,，134*2867*2878诚信收购IC,二三极管,内存.胆电容及手机，134*2867*2878高价现金收购IC,二三极管,内存,CPU,接收</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">53分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a target="_blank" href="/seller">求购</a>]</span><span class="g-w-200 g-f-l"><a title="MSC  UM4901" href="/seller/company544968.html" target="_blank">MSC  UM4901</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">56分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a target="_blank" href="/seller">求购</a>]</span><span class="g-w-200 g-f-l"><a title="139*02924*685高价收购IC二三极管内存及手机屏字库蓝，137*152*88086长期收购厂家库存IC,二三极管，电容，晶，137*152*88086长期收工厂库存IC二三级管内存芯片等电" href="/seller/company291040.html" target="_blank">139*02924*685高价收购IC二三极管内存及手机屏字库蓝，137*152*88086长期收购厂家库存IC,二三极管，电容，晶，137*152*88086长期收工厂库存IC二三级管内存芯片等电</a></span></li>
+                                
+                                    <li><span class="g-pl-10 g-c-99 g-f-r">56分钟前</span><span class="g-f-l g-ff-s g-mr-5">[<a target="_blank" href="/seller">求购</a>]</span><span class="g-w-200 g-f-l"><a title="求购诚达康仪器 回收仪器 收购闲置仪器收购废弃仪器" href="/seller/company542170.html" target="_blank">求购诚达康仪器 回收仪器 收购闲置仪器收购废弃仪器</a></span></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="g-cf g-bt-ee g-bb-ee mlr15">
+                        
+                            <div class="g-list-mix g-f-l g-bb-n pic g-p-r mr30"><i class="g-ico-tuan"></i><i></i> <a title="yangx11111团购" href="http://www.partinchina.com/topic/group_yangx11111.html" target="_blank"><img src="http://www.partinchina.com/images/topic/group/ic_120.jpg" alt="yangx11111团购"></a>
+                                <ul>
+                                    <li><a title="yangx11111团购" href="http://www.partinchina.com/topic/group_yangx11111.html" class="g-c-b g-fw-b" target="_blank">yangx11111</a></li>
+                                    <li>团购价：￥0.10(已购买-8000件)</li>
+                                </ul>
+                                <a href="http://www.partinchina.com/topic/group_yangx11111.html" class="g-btn-12"><em>加入团购</em><b></b></a> </div>
+                        
+                            <div class="g-list-mix g-f-l g-bb-n pic g-p-r mr0"><i class="g-ico-tuan"></i><i></i> <a title="yangx11111团购" href="http://www.partinchina.com/topic/group_yangx11111.html" target="_blank"><img src="http://www.partinchina.com/images/topic/group/ic_120.jpg" alt="yangx11111团购"></a>
+                                <ul>
+                                    <li><a title="yangx11111团购" href="http://www.partinchina.com/topic/group_yangx11111.html" class="g-c-b g-fw-b" target="_blank">yangx11111</a></li>
+                                    <li>团购价：￥1.10(已购买2件)</li>
+                                </ul>
+                                <a href="http://www.partinchina.com/topic/group_yangx11111.html" class="g-btn-12"><em>加入团购</em><b></b></a> </div>
+                        
+                    </div>
+        		</div>
+                
+                <div class="g-d-n">
+                    <div id="abroad" class="g-mtb-10 g-cf">
+                        <ul class="g-list-txt">
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_jp country-flag"></b><a title="AT24C1024W10SU2.7" href="http://www.hqew.net/buying-leads/AT24C1024W10SU2$2e7_7053120.html" target="_blank">AT24C1024W10SU2.7</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_us country-flag"></b><a title="AX094B002A" href="http://www.hqew.net/buying-leads/AX094B002A_7053119.html" target="_blank">AX094B002A</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_sg country-flag"></b><a title="PC844" href="http://www.hqew.net/buying-leads/PC844_7053118.html" target="_blank">PC844</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_kr country-flag"></b><a title="MSM7731-03GAZ03A" href="http://www.hqew.net/buying-leads/MSM7731$2d03GAZ03A_7053113.html" target="_blank">MSM7731-03GAZ03A</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_ae country-flag"></b><a title="CY62128BLL-70ZAXI" href="http://www.hqew.net/buying-leads/CY62128BLL$2d70ZAXI_7053112.html" target="_blank">CY62128BLL-70ZAXI</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_tw country-flag"></b><a title="ML4803CS-2" href="http://www.hqew.net/buying-leads/ML4803CS$2d2_7053111.html" target="_blank">ML4803CS-2</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_us country-flag"></b><a title="UPD75P518GF-3B9" href="http://www.hqew.net/buying-leads/UPD75P518GF$2d3B9_7053110.html" target="_blank">UPD75P518GF-3B9</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_us country-flag"></b><a title="MMA7260Q" href="http://www.hqew.net/buying-leads/MMA7260Q_7053109.html" target="_blank">MMA7260Q</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_us country-flag"></b><a title="LP29871MM-5.0" href="http://www.hqew.net/buying-leads/LP29871MM$2d5$2e0_7053107.html" target="_blank">LP29871MM-5.0</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_kr country-flag"></b><a title="H2019NL" href="http://www.hqew.net/buying-leads/H2019NL_7053106.html" target="_blank">H2019NL</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_tw country-flag"></b><a title="23K256-I/ST" href="http://www.hqew.net/buying-leads/23K256$2dI$2fST_7053100.html" target="_blank">23K256-I/ST</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_de country-flag"></b><a title="PIC16C73B04SP" href="http://www.hqew.net/buying-leads/PIC16C73B04SP_7053099.html" target="_blank">PIC16C73B04SP</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_kr country-flag"></b><a title="PIC16F914-I/PT" href="http://www.hqew.net/buying-leads/PIC16F914$2dI$2fPT_7053087.html" target="_blank">PIC16F914-I/PT</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_uk country-flag"></b><a title="RC1218JK0733RL" href="http://www.hqew.net/buying-leads/RC1218JK0733RL_7053084.html" target="_blank">RC1218JK0733RL</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_au country-flag"></b><a title="MC7805BT" href="http://www.hqew.net/buying-leads/MC7805BT_7053070.html" target="_blank">MC7805BT</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_tr country-flag"></b><a title="E28F016SA70" href="http://www.hqew.net/buying-leads/E28F016SA70_7053063.html" target="_blank">E28F016SA70</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_kr country-flag"></b><a title="A24C16TMX8" href="http://www.hqew.net/buying-leads/A24C16TMX8_7053056.html" target="_blank">A24C16TMX8</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_ca country-flag"></b><a title="DS4E-ML2-DC24V" href="http://www.hqew.net/buying-leads/DS4E$2dML2$2dDC24V_7053053.html" target="_blank">DS4E-ML2-DC24V</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_kr country-flag"></b><a title="BC63B239A04-IQD-E4" href="http://www.hqew.net/buying-leads/BC63B239A04$2dIQD$2dE4_7053049.html" target="_blank">BC63B239A04-IQD-E4</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_us country-flag"></b><a title="46108-16-08PN" href="http://www.hqew.net/buying-leads/46108$2d16$2d08PN_7053046.html" target="_blank">46108-16-08PN</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_de country-flag"></b><a title="FZE1066" href="http://www.hqew.net/buying-leads/FZE1066_7053040.html" target="_blank">FZE1066</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_ir country-flag"></b><a title="RSS1/4W0R33GT/R" href="http://www.hqew.net/buying-leads/RSS1$2f4W0R33GT$2fR_7053037.html" target="_blank">RSS1/4W0R33GT/R</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_us country-flag"></b><a title="UZZ9001" href="http://www.hqew.net/buying-leads/UZZ9001_7053035.html" target="_blank">UZZ9001</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_ph country-flag"></b><a title="K4T1G164QE-HCF8" href="http://www.hqew.net/buying-leads/K4T1G164QE$2dHCF8_7053026.html" target="_blank">K4T1G164QE-HCF8</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_by country-flag"></b><a title="AN7105" href="http://www.hqew.net/buying-leads/AN7105_7053022.html" target="_blank">AN7105</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_fr country-flag"></b><a title="COFRCP5203F" href="http://www.hqew.net/buying-leads/COFRCP5203F_7053017.html" target="_blank">COFRCP5203F</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_us country-flag"></b><a title="MAX491EEPD" href="http://www.hqew.net/buying-leads/MAX491EEPD_7053015.html" target="_blank">MAX491EEPD</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_us country-flag"></b><a title="1984756" href="http://www.hqew.net/buying-leads/1984756_7053012.html" target="_blank">1984756</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_us country-flag"></b><a title="ER3VP" href="http://www.hqew.net/buying-leads/ER3VP_7053011.html" target="_blank">ER3VP</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_kr country-flag"></b><a title="FM3130G-TR" href="http://www.hqew.net/buying-leads/FM3130G$2dTR_7053007.html" target="_blank">FM3130G-TR</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_sg country-flag"></b><a title="AD532SD/883B" href="http://www.hqew.net/buying-leads/AD532SD$2f883B_7053001.html" target="_blank">AD532SD/883B</a></li>
+                            
+                                <li class="g-f-l g-plr-5"><span class="g-pl-10 g-c-99 g-f-r"><b>7</b>days ONLY</span><b class="g-mr-5 css_ch country-flag"></b><a title="MC10355 00" href="http://www.hqew.net/buying-leads/MC10355$2b00_7053000.html" target="_blank">MC10355 00</a></li>
+                            
+                        </ul>
+                    
+                    </div>
+            		<div class="g-bb-ee g-lh-22 g-pb-10 mlr15">
+                    华强电子网推出外贸通平台，<b>3000</b>个活跃海外采购商，每天只需投入<b>15.5</b>元&nbsp;&nbsp;<a href="http://www.hqew.net/register.html" title="立即申请" class="g-c-b" target="_blank">立即申请&gt;&gt;</a>
+                    </div>
+                </div> 
+                
+            <div id="pro" class="g-list-img" style="display:block">
+                <ul class="g-cf">
+                
+                    <li><a title="新华荣电子商行" href="/buyer/promotion56033.html" target="_blank"><img src="http://img.hqew.com/File/Images/100000-109999/106943/Promotion/20101124180658321RY1VQ9.JPG" alt="新华荣电子商行"></a>
+                        <p class="g-ta-c"><a title="新华荣电子商行" href="/buyer/promotion56033.html" target="_blank">新华荣电子商行</a></p>
+                    </li>
+                
+                    <li><a title="易龙泰 旺诠 三星" href="/buyer/promotion91035.html" target="_blank"><img src="http://img.hqew.com/File/Images/0-9999/582/Promotion/201109191747201530QAMJY.JPG" alt="易龙泰 旺诠 三星"></a>
+                        <p class="g-ta-c"><a title="易龙泰 旺诠 三星" href="/buyer/promotion91035.html" target="_blank">易龙泰 旺诠 三星</a></p>
+                    </li>
+                
+                    <li><a title="贴片晶振滤波配套" href="/buyer/promotion59805.html" target="_blank"><img src="http://img.hqew.com/File/Images/120000-129999/121909/Promotion/2010042212243251626IEKT.JPG" alt="贴片晶振滤波配套"></a>
+                        <p class="g-ta-c"><a title="贴片晶振滤波配套" href="/buyer/promotion59805.html" target="_blank">贴片晶振滤波配套</a></p>
+                    </li>
+                
+                    <li><a title="大洲 保险丝" href="/buyer/promotion79512.html" target="_blank"><img src="http://img.hqew.com/File/Images/0-9999/697/Promotion/2011070117404126844TQVO.JPG" alt="大洲 保险丝"></a>
+                        <p class="g-ta-c"><a title="大洲 保险丝" href="/buyer/promotion79512.html" target="_blank">大洲 保险丝</a></p>
+                    </li>
+                
+                    <li><a title="源兴洋科技主营：TI  MARVELL  BROADCOM系列 自己原装现货库存" href="/buyer/promotion82466.html" target="_blank"><img src="http://img.hqew.com/File/Images/60000-69999/64697/Promotion/20110729110339573NCPIXQ.JPG" alt="源兴洋科技主营：TI  MARVELL  BROADCOM系列 自己原装现货库存"></a>
+                        <p class="g-ta-c"><a title="源兴洋科技主营：TI  MARVELL  BROADCOM系列 自己原装现货库存" href="/buyer/promotion82466.html" target="_blank">源兴洋科技主营：TI  MARVELL  BROADCOM系列 自己原装现货库存</a></p>
+                    </li>
+                
+                    <li class="pro_last"><a title="海达丰   保险丝" href="/buyer/promotion66402.html" target="_blank"><img src="http://img.hqew.com/File/Images/130000-139999/131326/Promotion/20101122171551306XPEYQ6.JPG" alt="海达丰   保险丝"></a>
+                        <p class="g-ta-c"><a title="海达丰   保险丝" href="/buyer/promotion66402.html" target="_blank">海达丰   保险丝</a></p>
+                    </li>
+                
+                    <li><a title="全新现货库存IC" href="/buyer/promotion67210.html" target="_blank"><img src="http://img.hqew.com/File/Images/90000-99999/95318/Promotion/20110425102049342JXUKW0.JPG" alt="全新现货库存IC"></a>
+                        <p class="g-ta-c"><a title="全新现货库存IC" href="/buyer/promotion67210.html" target="_blank">全新现货库存IC</a></p>
+                    </li>
+                
+                    <li><a title="特价B 476A 350元/K" href="/buyer/promotion67559.html" target="_blank"><img src="http://img.hqew.com/File/Images/120000-129999/121692/Promotion/20101222141313944SIU24X.JPG" alt="特价B 476A 350元/K"></a>
+                        <p class="g-ta-c"><a title="特价B 476A 350元/K" href="/buyer/promotion67559.html" target="_blank">特价B 476A 350元/K</a></p>
+                    </li>
+                
+                    <li><a title="CH340T" href="/buyer/promotion53524.html" target="_blank"><img src="http://img.hqew.com/File/Images/280000-289999/280405/Promotion/20091120101842676V29T50.JPG" alt="CH340T"></a>
+                        <p class="g-ta-c"><a title="CH340T" href="/buyer/promotion53524.html" target="_blank">CH340T</a></p>
+                    </li>
+                
+                    <li><a title="瑞创电子 MAXIM 专业分销商" href="/buyer/promotion69917.html" target="_blank"><img src="http://img.hqew.com/File/Images/230000-239999/237926/Promotion/20110302134349503D1EUZ1.JPG" alt="瑞创电子 MAXIM 专业分销商"></a>
+                        <p class="g-ta-c"><a title="瑞创电子 MAXIM 专业分销商" href="/buyer/promotion69917.html" target="_blank">瑞创电子 MAXIM 专业分销商</a></p>
+                    </li>
+                
+                    <li><a title="瑞创电子 MAXIM 专业分销商" href="/buyer/promotion69917.html" target="_blank"><img src="http://img.hqew.com/File/Images/230000-239999/237926/Promotion/20110302134349503D1EUZ1.JPG" alt="瑞创电子 MAXIM 专业分销商"></a>
+                        <p class="g-ta-c"><a title="瑞创电子 MAXIM 专业分销商" href="/buyer/promotion69917.html" target="_blank">瑞创电子 MAXIM 专业分销商</a></p>
+                    </li>
+                
+                    <li class="pro_last"><a title="瑞创电子 MAXIM 专业分销商" href="/buyer/promotion69917.html" target="_blank"><img src="http://img.hqew.com/File/Images/230000-239999/237926/Promotion/20110302134349503D1EUZ1.JPG" alt="瑞创电子 MAXIM 专业分销商"></a>
+                        <p class="g-ta-c"><a title="瑞创电子 MAXIM 专业分销商" href="/buyer/promotion69917.html" target="_blank">瑞创电子 MAXIM 专业分销商</a></p>
+                    </li>
+                
+                </ul>
+            </div>    
+        	</div>
+        </div>
+        
+        
+        <!--供应信息分类-->
+        <div class="g-box-o">
+            <div class="bar">
+                <a id="" class="g-c-99 g-bi-n" rec="" recid="800" href="/buyer/" title="" target="_blank">更多</a>
+                <a id="" class="g-c-b" target="_blank" recid="804" rec="" href="/security/" title="">安防器材专区</a>
+                <a id="" class="g-c-b" target="_blank" recid="804" rec="" href="/tube/index.html" title="">电子管专区</a>
+                <a id="" class="g-c-b" target="_blank" recid="804" rec="" href="/inductance/index.html" title="">电感器专区</a>
+                <a id="" class="g-c-b" target="_blank" recid="804" rec="" href="/resistance/index.html" title="">电阻器专区</a>
+                <h2 id="" class="cur" title="">供应信息分类</h2>
+            </div>
+            
+            <div class="con">
+            	<div class="ec g-p-5 g-m-10 g-p-r">
+            <!--<div class="g-notice cap"><a title="专区推广位大放送" class="g-c-c0" target="_blank" href="/EcChannel/AdPosition.html">专区推广位大放送！</a><s></s></div>-->
+            
+                <ul class="g-cf">
+                    <li class="g-fz-14 g-fw-b g-mb-5">电子元器件</li>
+                    <li class="g-f-l g-mr-10 g-pr-10 w294">
+                        <form id="ic_search_form" onsubmit="return false"><div class="g-c-99"><strong><a target="_blank" class="g-c-b g-fz-14" title="点击查看供应信息" href="/buyer">IC/二三极管</a></strong>(9817万) <input type="text" title="请输入搜索的型号" class="g-ipt g-w-100"  id="ic_search_kw" maxlength="100"> <a class="g-btn-12" title="点击搜索" id="ic_search_btn"><em>搜索</em><b></b></a> </div></form>
+                        <table><tr><td nowrap="nowrap" valign="top">索引：</td><td class="index"><a title="A" target="_blank" href="/iclist/a/1.html">A</a><a title="B" target="_blank" href="/iclist/b/1.html">B</a><a title="C" target="_blank" href="/iclist/c/1.html">C</a><a title="D" target="_blank" href="/iclist/d/1.html">D</a><a title="E" target="_blank" href="/iclist/e/1.html">E</a><a title="F" target="_blank" href="/iclist/f/1.html">F</a><a title="G" target="_blank" href="/iclist/g/1.html">G</a><a title="H" target="_blank" href="/iclist/h/1.html">H</a><a title="I" target="_blank" href="/iclist/i/1.html">I</a><a title="J" target="_blank" href="/iclist/j/1.html">J</a><a title="K" target="_blank" href="/iclist/k/1.html">K</a><a title="L" target="_blank" href="/iclist/l/1.html">L</a><a title="g-bi-n" target="_blank" href="/iclist/m/1.html">M</a><a title="N" target="_blank" href="/iclist/n/1.html">N</a><a title="O" target="_blank" href="/iclist/o/1.html">O</a><a title="P" target="_blank" href="/iclist/p/1.html">P</a><a title="Q" target="_blank" href="/iclist/q/1.html">Q</a><a title="R" target="_blank" href="/iclist/r/1.html">R</a><a title="S" target="_blank" href="/iclist/s/1.html">S</a><br /><a title="T" target="_blank" href="/iclist/sort/1.html">T</a><a title="U" target="_blank" href="/iclist/u/1.html">U</a><a title="V" target="_blank" href="/iclist/v/1.html">V</a><a title="W" target="_blank" href="/iclist/w/1.html">W</a><a title="X" target="_blank" href="/iclist/x/1.html">X</a><a title="Y" target="_blank" href="/iclist/y/1.html">Y</a><a title="Z" target="_blank" href="/iclist/x/1.html">Z</a><a title="0" target="_blank" href="/iclist/0/1.html">0</a><a title="1" target="_blank" href="/iclist/1/1.html">1</a><a title="2" target="_blank" href="/iclist/2/1.html">2</a><a title="3" target="_blank" href="/iclist/3/1.html">3</a><a title="4" target="_blank" href="/iclist/4/1.html">4</a><a title="5" target="_blank" href="/iclist/5/1.html">5</a><a title="6" target="_blank" href="/iclist/6/1.html">6</a><a title="7" target="_blank" href="/iclist/7/1.html">7</a><a title="8" target="_blank" href="/iclist/8/1.html">8</a><a title="9" target="_blank" href="/iclist/9/1.html">9</a></td></tr></table>
+                    </li>
+                    <tms_bind ID="ec1">
+                        <li class="g-f-l g-mr-10 g-pr-10 w294">
+                            <p class="g-c-66"><strong><a target="_blank" class="g-c-b g-fz-14" href="{#0,href,/tech/dr/20001006.html#}" title="{#1,title,电容器#}">{#2,text,电容器#}</a></strong>({#3,nums,1036782#})</p>
+                            <div class="pro g-cf">
+                                <tms_bind ID="ec1_pro"><a target="_blank" href="{#0,href,/tech/dr/200010060016.html#}" title="{#1,title,铝电解电容#}">{#2,text,铝电解电容#}</a></tms_bind><span class="g-bi-n"><a target="_blank" href="{#4,href,/tech/dr/20001006.html#}" title="点击查看更多{#5,title,电容器#}分类">更多…</a></span></div>
+                        </li>
+                    </tms_bind>
+                    <tms_bind ID="ec">
+                        <li class="g-f-l g-mr-10 g-pr-10 w294">
+                            <p class="g-c-66"><strong><a target="_blank" class="g-c-b g-fz-14" href="{#0,href,/tech/dr/20001006.html#}" title="{#1,title,电容器#}">{#2,text,电容器#}</a></strong>({#3,nums,1036782#})</p>
+                            <div class="pro g-cf">
+                                <tms_bind ID="ec_pro"><a target="_blank" href="{#0,href,/tech/dr/200010060016.html#}" title="{#1,title,铝电解电容#}">{#2,text,铝电解电容#}</a></tms_bind><span class="g-bi-n"><a target="_blank" href="{#4,href,/tech/dr/20001006.html#}" title="点击查看更多{#5,title,电容器#}分类">更多…</a></span></div>
+                        </li>
+                    </tms_bind>
+                </ul>
+                <ul class="g-cf g-mt-10 g-pt-10 g-bt-ed">
+                    <li class="g-fz-14 g-fw-b g-mb-5">配件辅料及周边设备</li>
+                    <tms_bind ID="other">
+                        <li class="g-f-l g-mr-10 g-pr-10 w294">
+                            <p class="g-c-66"><strong><a target="_blank" class="g-c-b g-fz-14" href="{#0,href,/tech/dpj/30001034.html#}" title="{#1,title,单片机、电路板#}">{#2,text,单片机、电路板#}</a></strong>({#3,nums,133702#})</p>
+                            <div class="pro g-cf">
+                                <tms_bind ID="other_pro"><a target="_blank" href="{#0,href,/tech/dpj/300010340002.html#}" title="{#1,title,电路板生产#}">{#2,text,电路板生产#}</a></tms_bind><span class="g-bi-n"><a target="_blank" href="{#4,href,/tech/dpj/30001034.html#}" title="点击查看更多{#5,title,单片机、电路板#}分类">更多…</a></span></div>
+                        </li>
+                    </tms_bind>
+                </ul>
+            </div>
+            
+            
+                                
+                
+            </div>
+            
+        </div>
+         
+        
+         
+         
+    </div>
+        
+    </div>    
+</div>
+    
+    
+
+</div>
+
+</div>
+
+</body>
+</html>

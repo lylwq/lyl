@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="base.css"/>
+<link rel="stylesheet" type="text/css" href="common.css"/>
+<style type="text/css">
+.dta-mb-30{margin-bottom:30px;}
+.dta_imgs{text-align:justify;width:262px;text-justify:distribute;}
+.dta_jus_las{width:100%;display:inline-block;*display:inline;*zoom:1; height:0; font-size:0;}
+</style>
+
+<script type="text/javascript" src="swin.js"></script>
+<script type="text/javascript">
+	
+//弹出"付费会员"框
+function ShowNoticeTips() {
+    swin.height = "292";
+    swin.width = "314";
+    swin.el = "notice";
+    swin.show();
+}
+
+
+function Aclose()
+{
+     swin.close();
+}
+function picMouse(src) {
+	document.getElementById("PicNameBig").src=src;
+}	
+</script>
+</head>
+
+<body>
+
+<div class="g-w-990 g-mlr-a">
+    <div class="g-cf">
+        <div class="g-w-730 g-f-l g-mh-20">
+        
+        	<div class="g-box-g g-p-10 g-cf">
+            	<tms_bind id="repeaterMain">
+            	<p class="g-bb-ee g-ta-c g-fz-14 g-fw-b g-lh-24 g-pb-10 g-mt-5">
+                	{#0,商品标题,福州上景装修如何#}
+                </p>
+                <p class="g-mt-5 g-c-33 g-ta-c dta-mb-30">
+                	{#1,子标题,采购量：100  发布日期：2011-11-23 11:02:57#}
+                </p>
+                
+                <div class="g-f-l g-mr-10">
+                    <div class="g-img-pro-big">                        
+                        <img src="{#2,大图url,/images/common/nophoto.gif#}" id="PicNameBig" onerror="this.src='/images/common/nophoto.gif'" />
+                    </div>
+                    <div class="g-img-pro-sma g-mt-5 g-o-h dta_imgs">
+                        <img src="{#3,小图1url,/images/common/nophoto.gi f#}" onerror="this.src='/images/common/nophoto.gif'" onmouseover="picMouse(this.src)" />
+                        <img src="{#4,小图2url,/images/common/nophoto.gi f#}" onerror="this.src='/images/common/nophoto.gif'" onmouseover="picMouse(this.src)" />
+                        <img src="{#5,小图3url,/images/common/nophoto.gi f#}" onerror="this.src='/images/common/nophoto.gif'" onmouseover="picMouse(this.src)" />
+                        <img src="{#6,小图4url,/images/common/nophoto.gi f#}" onerror="this.src='/images/common/nophoto.gif'" onmouseover="picMouse(this.src)" />
+                        <img src="{#7,小图5url,/images/common/nophoto.gi f#}" onerror="this.src='/images/common/nophoto.gif'" onmouseover="picMouse(this.src)" />
+                        <p class="dta_jus_las"></p>
+                    </div>
+                </div>
+                <div class="g-o-h g-fz-14 g-lh-22">
+                	<pre>{#8,产品描述,目前在市场上的厨卫吊顶主要的材质为...#}</pre>                	
+                </div>
+                </tms_bind>
+            </div>            
+            <p class="g-ta-r g-mb-10">
+            	<a class="g-c-b" href="javascript:window.close();">关闭</a>
+                <span class="">|</span>
+                <a class="g-c-b" href="/seller/ec_search.html">查看更多求购信息</a>
+            </p>
+            
+        </div>
+        
+        
+        
+        <div class="g-w-250 g-f-l g-mh-20 g-ml-10">
+        	<div class="g-box-g"><div class="bar"><h2>订阅商机快递</h2></div>
+                <div class="con">
+                
+                
+                    <div class="g-p-10 g-lh-22">
+                    <tms_bind id="repeater">
+                    	<p class="g-fz-14 g-fw-b g-mb-10">{#0,公司名称,科盛达电子科技有限公司#}</p>
+                        <a href="javascript:" onclick="ShowNoticeTips()" class="g-c-b {#1,非付费会员显示, #}">&gt;&gt;查看联系方式</a>
+                        <ul class="{#2,非付费会员隐藏样式, #}">
+                          <li>联系人：{#3,联系人姓名,张友奎#}
+                          	<a href="javascript:;" onclick="HqmChat({#4,洽谈userid,'1234'#},{#5,洽谈userGUID,231412324#})" title="" class="g-ico-qt"></a>
+                          </li>
+                          <li>电话：{#6,电话,86-010-87691700#}</li>
+                          <li>手机：{#7,手机,1313131313#}</li>
+                          <li>邮箱：{#8,邮箱,gxf133811117003@163.com#}</li>
+                          <li>地址：{#9,地址,北京市北京丰台区北京市丰台区鹤凤营2号#}</li>
+                          <li>公司网址：{#10,公司网址,www.hqew.com#}</li>
+                        </ul>
+                        <p class="g-ta-c g-pt-10">
+                        <a href="/seller/company{#11,公司id,350971#}.html" target="_blank" title="查看详情！" class="g-btn-12"><em>查看此公司所有求购</em><b></b></a>
+                        </p>
+                    </tms_bind>
+                    </div>
+                    
+                    <div id="notice" class="g-d-n">
+                        <div class="notice">
+                            <div class="box">
+                                <div class="title">
+                                    <div class="t1">
+                                        温馨提示</div>
+                                    <div class="t2">
+                                        <img alt="关闭" onclick="Aclose();" id ="notice_close"; class="g_cp" src="/images/seller/quoteClose.gif" /></div>
+                                </div>
+                                <div class="com">
+                                    仅收费会员才能查看采购商联系方式和报价！
+                                    <div>
+                                        <a href="/about/service.html" id="notice_a"; onclick="Aclose();" target="_blank" class="g_vm g_cp lbmr20">
+                                            <img src="/images/seller/kaitonghuiyuan.gif" /></a>                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+</body>
+</html>

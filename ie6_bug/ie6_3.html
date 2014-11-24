@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<TITLE>关于3像素bug的延生</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<STYLE type=text/css>
+
+BODY {
+	FONT-SIZE: 12px
+}
+.a1 {
+	BACKGROUND: #333;
+	FLOAT: left;
+	WIDTH: 100px;
+	COLOR: #ffffff;
+	HEIGHT: 240px;
+}
+.a2 {
+margin-left:100px;/*使用float布局可以解决,删掉m-l*/
+border:1px solid #000;
+	width:200px;
+}
+.a2 #jing {
+	BACKGROUND: #00ccff;
+}
+.a2 #jing2 {
+	BACKGROUND: #ff9900;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<DIV class=a1>我是class=a1 <BR>
+  <BR>
+</DIV>
+<DIV class=a2>
+  <DIV id=jing>我是id=jing<BR>
+    这个问题存在于IE6里面。ie7，opera，ff都没问题。观察class=a2的div所设置的边框会发现，a2和a1之间是没有距离的。但是a2
+    里面元素（文本）会和a2之间产生类似padding-left:3px;的效果。利用以往的设置负值，也没办法消除第一个元素id=jing和a2的距离。更有意思的是当我设置了_margin-left:-3px;原本id=jing和a2
+    之间的3像素距离变成了2像素。但是及时我_margin-left 的负值设置得再大，不能完全消除</DIV>
+  <DIV id=jing2>我是id=jing2<BR>
+    当a1的高度大于id=jing这个元素的高度的时候，di=jing2
+    也会产生和a2之间类似padding-left：3px的间距。 当a1 小于或者等于id=jing的时候，id=jing2
+    就不会和a2之间有间距。<BR>
+    本来我只是想做一个左列固定，右列自动适应剩余宽度的布局。但是没想到发现了这个问题。求某位高手告诉我怎么解决。 </DIV>
+</DIV>
+</BODY>
+</HTML>

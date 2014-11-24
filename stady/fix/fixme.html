@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style>
+html{overflow-y:scroll;}
+body{padding:0;margin:0;font-size:12px;background:#fff;font-family:'宋体',Verdana Geneva,sans-serif;}
+ul,li,form,h1,h2,h3,h4,h5,h6,p,input,dl,dd,dt,a{padding:0;margin:0;list-style-type:none;}
+img{border:0}
+
+body{ white-space:pre;}
+.sidebar{background:url(images/sidebar.gif) no-repeat;}
+.sidebar{width:27px;height:93px;cursor:pointer;}
+.sidebar_{background-position:-43px 0;}
+
+.sidebar_content{width:256px;border:1px solid #a3d0e4;padding:5px;}
+</style>
+
+<script type="text/javascript">
+var L_sidebar=function(){
+	
+	
+}
+window.onload=function(){
+var sd=document.getElementById("sidebar");
+sd.onclick=function(){
+	alert(this.constructor);
+	this.className+=" sidebar_";
+	}
+
+}
+</script>
+</head>
+
+<body>
+<div id="sidebar" class="sidebar"></div>
+<div id="sidebar_content" class="sidebar_content"></div>
+<h2>对数的概念</h2>
+　　如果a^n=b，那么log(a)｛b｝=n。其中，a叫做“底数”，b叫做“真数”，n叫做“以a为底b的对数”。
+　　相应地，函数y=log(a)｛x｝叫做对数函数。对数函数的定义域是（0,+∞)。零和负数没有对数。底数a为常数，其取值范围是(0，1)∪(1,+∞)。
+<h2>编辑本段对数的性质及推导</h2>
+<h3>定义：</h3>
+　　若a^n=b(a>0且a≠1)
+　　则n=log(a)(b)
+<h3>基本性质：</h3>
+　　如果a>0,且a≠1，M>0,N>0,那么：
+　　1、a^log(a)(b)=b
+　　2、log(a)(a)=1
+　　3、log(a)(MN)=log(a)(M)+log(a)(N);
+　　4、log(a)(M÷N)=log(a)(M)-log(a)(N);
+	5、log(a)(M^n)=nlog(a)(M)
+　　6、log(a)[M^（1/n）]=log(a)(M)/n
+　　（注：下文^均为上标符号，例：a^1即为a）
+<h3>推导</h3>
+　　1、因为n=log(a)(b)，代入则a^n=b，即a^(log(a)(b))=b。
+　　2、因为a^b=a^b
+　　令t=a^b
+　　所以a^b=t，b=log(a)(t)=log(a)(a^b)
+　　令b=1，则1=log(a)(a)
+　　3、MN=M×N
+　　由基本性质1(换掉M和N)
+　　a^[log(a)(MN)] = a^[log(a)(M)]×a^[log(a)(N)] =(M)*(N)
+　　由指数的性质
+　　a^[log(a)(MN)] = a^{[log(a)(M)] + [log(a)(N)]}
+　　两种方法只是性质不同,采用方法依实际情况而定
+　　又因为指数函数是单调函数，所以
+　　log(a)(MN) = log(a)(M) + log(a)(N)
+　　4、与（3）类似处理
+　　MN=M÷N
+　　由基本性质1(换掉M和N)
+　　a^[log(a)(M÷N)] = a^[log(a)(M)]÷a^[log(a)(N)]
+　　由指数的性质
+　　a^[log(a)(M÷N)] = a^{[log(a)(M)] - [log(a)(N)]}
+　　又因为指数函数是单调函数，所以
+　　log(a)(M÷N) = log(a)(M) - log(a)(N)
+　　5、与（3）类似处理
+　　M^n=M^n
+　　由基本性质1(换掉M)
+　　a^[log(a)(M^n)] = {a^[log(a)(M)]}^n
+　　由指数的性质
+　　a^[log(a)(M^n)] = a^{[log(a)(M)]*n}
+　　又因为指数函数是单调函数，所以
+　　log(a)(M^n)=nlog(a)(M)
+　　基本性质4推广
+　　log(a^n)(b^m)=m/n*[log(a)(b)]
+　　推导如下：
+　　由换底公式（换底公式见下面）[lnx是log(e)(x)，e称作自然对数的底]
+　　log(a^n)(b^m)=ln(b^m)÷ln(a^n)
+　　换底公式的推导：
+　　设e^x=b^m,e^y=a^n
+　　则log(a^n)(b^m)=log(e^y)(e^x)=x/y
+　　x=ln(b^m),y=ln(a^n)
+　　得：log(a^n)(b^m)=ln(b^m)÷ln(a^n)
+　　由基本性质4可得
+　　log(a^n)(b^m) = [m×ln(b)]÷[n×ln(a)] = (m÷n)×{[ln(b)]÷[ln(a)]}
+　　再由换底公式
+　　log(a^n)(b^m)=m÷n×[log(a)(b)] --------------------------------------------（性质及推导 完）
+<h2>函数图象</h2>
+　　1.对数函数的图象都过(1,0)点.
+　　2.对于y=log(a)(n)函数,
+　　①,当0&lt;a&lt;1时,图象上函数显示为(0,+∞)单减.随着a 的增大,图象逐渐以(1,0)点为轴顺时针转动,但不超过X=1.
+　　②当a>1时,图象上显示函数为(0,+∞)单增,随着a的减小,图象逐渐以(1.0)点为轴逆时针转动,但不超过X=1.
+　　3.与其他函数与反函数之间图象关系相同,对数函数和指数函数的图象关于直线y=x对称.
+<h2>其他性质</h2>
+<h3>性质一：换底公式</h3>
+　　
+　　log(a)(N)=log(b)(N)÷log(b)(a)
+　　推导如下：
+　　N = a^[log(a)(N)]
+　　a = b^[log(b)(a)]
+　　综合两式可得
+　　N = {b^[log(b)(a)]}^[log(a)(N)] = b^{[log(a)(N)]*[log(b)(a)]}
+　　又因为N=b^[log(b)(N)]
+　　所以 b^[log(b)(N)] = b^{[log(a)(N)]*[log(b)(a)]}
+　　所以 log(b)(N) = [log(a)(N)]*[log(b)(a)] {这步不明白或有疑问看上面的}
+　　所以log(a)(N)=log(b)(N) / log(b)(a)
+<h3>公式二：log(a)(b)=1/log(b)(a)</h3>
+　　证明如下：
+　　由换底公式 log(a)(b)=log(b)(b)/log(b)(a) ----取以b为底的对数
+　　log(b)(b)=1 =1/log(b)(a) 还可变形得: log(a)(b)×log(b)(a)=1
+　　在实用上，常采用以10为底的对数，并将对数记号简写为lgb,称为常用对数，它适用于求十进制整数或小数的对数。例如lg10=1, lg100=lg10^2=2, lg4000=lg（10^3×4）=3+lg4,可见只要对某一范围的数编制出对数表，便可利用来计算其他十进制数的对数的近似值。在数学理论上一般都用以无理数e=2.7182818…… 为底的对数，并将记号 loge。简写为ln，称为自然对数，因为自然对数函数的导数表达式特别简洁，所以显出了它比其他对数在理论上的优越性。历史上，数学工作者们编制了多种不同精确度的常用对数表和自然对数表。但随着电子技术的发展，这些数表已逐渐被现代的电子计算工具所取代。
+
+
+</body>
+</html>

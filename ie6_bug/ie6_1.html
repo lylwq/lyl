@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>IE6中奇数宽高的BUG</title>
+<style type="text/css">
+*{ margin:0; padding:0;}
+#out {
+width: 601px;/*这里宽度为奇数，bug就出现了！！改成偶数就OK了*/
+height: 300px;
+position: relative;
+background:#FF0000;
+color:#FFF;
+}
+#inn {
+width: 200px;
+height: 250px;
+position: absolute;
+top: 0px;
+right: 0px;
+background:#000000;
+}
+
+
+</style>
+</head>
+
+<body>
+
+XML/HTML代码:
+<div id="out">
+<div id="inn">此处为内部绝对定位的 DIV</div>
+</div>
+
+</body>
+</html>

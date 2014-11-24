@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>test</title>
+<script src="zeptojs.js"></script>
+</head>
+<body>
+
+<a href="#" id="click1">click1</a><br>
+<a href="#" id="click2">click2</a>
+<div id="div" style="width:100px;height: 100px;background-color: #ccc;">asdf</div>
+
+<script>
+
+!function(){
+	var t1,t2;
+	$('#click1').mousedown(function () {
+	    t1 = Date.now();
+	    alert(1);
+	    //$('#click2').trigger("click");
+	});
+	/*$('#click1').click(function () {
+	    t2 = Date.now();
+	    alert(t2 - t1);
+	});*/
+
+}();
+
+</script>
+</body>
+</html>

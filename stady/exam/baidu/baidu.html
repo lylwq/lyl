@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+1、JS主要数据类型？（5分）
+答：主要的类型有 number、string、object 以及 Boolean 类型,其他两种类型为 null 和 undefined。
+
+2、img的alt和title的异同？（10分）
+答：title属性为设置该属性的元素提供建议性的信息。比如为链接添加描述性文字。
+为不能显示图像、窗体或applets的用户代理（UA），alt属性用来指定替换文字。使用alt属性是为了给那些不能看到你文档中图像的浏览者提供文字说明。
+
+3、CSS的JS调用？如font-family, -moz-border-radius 。（10分）
+答：fontFamily、MozBorderRadius
+
+4、CSS布局：两列，左边宽度自适应，右边宽度固定200px。 （15分）
+
+复制代码运行代码编辑代码
+
+        #box1{width:100%;height:600px;position:relative;}
+        #left1{margin-right:200px;border:1px solid red;height:100%;}
+        #right1{width:200px;height:100%;position:absolute;top:0px;right:0px;border:1px solid blue;}
+        <div id="box1">
+            <div id="left1"></div>
+            <div id="right1"></div>
+        </div>
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+
+5、js对象的深度克隆？（20分）
+复制代码运行代码编辑代码
+
+        Object.prototype.deepClone=function(){
+               function cloneObj(){}   
+               cloneObj.prototype=this;
+               var obj=new cloneObj();
+         for(var o in obj){
+                   if(typeof(obj[o])=="object")obj[o]=obj[o].deepClone();
+                   }    return obj;
+        }
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+
+6、动态打印时间，格式为yyyy-MM-dd hh:mm:ss? （15分）
+
+复制代码运行代码编辑代码
+
+        function printTime(){
+            var timer1=new Date();
+            var timer=timer1.toLocaleString();
+            timer=timer.replace(/[年月]/g,"-");
+            timer=timer.replace(/日/,"");
+            time.innerHTML=timer;
+        }setInterval("printTime()",1000);
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+
+7、如何提高网页运行性能？（20分）
+没写。
+
+8、linux下删除当前目录下扩展名为c的文件（如a.c，b.c）（5分）
+rm –r *.c
+find . -name “*.doc” -type f -exec cp {} /tmp/doc \;  找到当前目录（.）下扩展名为(doc)的文件并拷贝到指定目录【注意-type f 指普通文件，-exec ls-l{}列出文件，最后加上\】
+cp [options] source dest 复制
+
+9、flash as2.0和flash as3.0在面向对象方面的异同？（10分）
+答：面向对象方面，2.0像javascript，3.0像java。
+到了 AS 2.0, 面向对象被引入了，但它实质上是动态脚本语言，虽然已经有了类的概念和class关键字，但对象支持还是基于类似JavaScript的prototype机制——动态继承。
+3.0同时支持静态类型，即基于类的继承方式；以及动态类型，即基于prototype的继承方式。推荐用静态类型。
+
+10、Flash、Ajax各自的优缺点，在使用中如何取舍？（10分）
+
+1、Flash ajax对比
+Flash适合处理多媒体、矢量图形、访问机器；对CSS、处理文本上不足，不容易被搜索。
+Ajax对CSS、文本支持很好，支持搜索；多媒体、矢量图形、机器访问不足。
+共同点：与服务器的无刷新传递消息、用户离线和在线状态、操作DOM
+
+2、项目中遇到什么问题？如何解决？
+</body>
+</html>

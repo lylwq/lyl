@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>函数-模块</title>
+<script type="text/javascript" src="com/base.js"></script>
+<script type="text/javascript">
+/*
+模块是一个提供接口却隐藏状态与实现的函数或对象
+模块可用来实现js的单例模式，因为只有返回的特殊方法或者对象才能访问模块内的变量
+
+*/
+//寻找字符中的html字符代码并替换为对应的字符
+String.method('deentityify',function(){
+	var entity = {
+		quot:'"',
+		lt:'<',
+		gt:'>'
+	};
+	console.log(this);
+	//模块模式利用了函数作用域和闭包来创建绑定对象和私有成员的关联
+	return function(){
+	console.log(this);
+		return this.replace(/&([^&;]+);/g,function(a,b){
+			var r = entity[b];
+			return typeof r==='string'?r:a;
+		});
+	};
+	
+}());
+console.log("&quot;&gt;&lt;");
+console.log("&quot;&gt;&lt;".deentityify());
+/*
+通过method方法把deentityify方法以 模块模式 绑定给String对象
+deentityify方法接收的是一个被执行的匿名函数，该匿名函数返回一个匿名方法，
+所以deentityify方法实际上是指向返回的匿名方法，所以匿名方法内的this指向调用deentityify方法的String对象
+
+注：若deentityify接收的是没有被执行的匿名函数，则返回的是匿名函数本身，并没有被执行，
+所以没有返回值，若调用时是deentityify()();这种方式，相当于给String对象绑定了个匿名方法，
+执行了该方法会返回一个函数，而JS的设计错误导致 方法内定义的函数，
+没有办法及继承方法的this指针，函数内的this指针指向的是全局对象（window）
+而window没有replace方法，所以报错
+*/
+
+
+
+
+/*tt所接收的是一个被执行的匿名函数
+	匿名函数返回了一个函数t2
+	所以tt其实是函数t2
+	t2并没有定义参数，所以就算用tt(11)调用也没用
+	因为tt指向的t2函数并没有定义参数
+	又因为tt接收的是一个被执行的闭包函数	
+	所以返回的函数t2可以访问被创建时的上下文环境
+*/
+var tt = function(str){
+	var str = 2;
+	
+	return function t2(){
+		return str;
+	}
+}();
+
+console.log(tt(11));
+</script>
+</head>
+
+<body>
+
+
+</body>
+</html>

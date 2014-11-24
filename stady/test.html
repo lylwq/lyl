@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>无标题文档</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="css/base.css"/>
+<link rel="Bookmark" href="favicon.ico">
+<link href="google-code-prettify/src/prettify.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/jq_1.6.js"></script>
+<script type="text/javascript" src="google-code-prettify/src/prettify.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#tms_sel_bType").find("option").attr("selected","selected");
+	
+	$("#tms_sel_bType").change(function(){
+		alert($("#tms_sel_bType").find("option:selected").length);
+	});
+	prettyPrint();
+})
+
+
+//ie、FF、webkit对函数定义域的不同解析
+f = function() { return true; };
+g = function() { return false; };
+( function() {
+    if (g() && [] == ![]) {
+        f = function f() { return false; };
+        function g() { return true; };
+    }
+})();
+
+//alert(f());
+
+/*
+//蹦床函数,解决深度递归
+function bounce(ret) {
+    while (typeof ret === 'function') {
+        ret = ret();
+    }
+    return ret;
+}
+
+function isEven(number) {
+    if (number === 0) {
+        return true;
+    }
+    else {
+        return function() {
+            return isOdd(number - 1);
+        };
+    }
+}
+
+function isOdd(number) {
+    if (number === 0) {
+        return false;
+
+    }
+    else {
+        return function() {
+            return isEven(number - 1);
+
+        };
+
+    }
+
+}
+
+console.log(bounce(function() {return isEven(100000);})) 
+function isEven(number) {
+  if (number === 0) {
+      return true;
+  }
+  else {
+      return isOdd(number - 1);
+  }
+}
+
+function isOdd(number) {
+  if (number === 0) {
+      return false;
+  }
+  else {
+      return isEven(number - 1);
+  }
+}
+
+console.log(isEven(100000));*/  
+</script>
+
+<script type="text/javascript">
+Function.prototype.tail = function() {
+	var temp = [].slice.call(arguments,0).concat([].slice.call(this.arguments,this.length));
+  return this.apply( // 重新调用函数自身
+    this, // 以函数foo自身作为this Object
+    [].slice.call(arguments,0) // 取调用tail时的全部参数，转换为数组
+    .concat( // 数组连接
+      [].slice.call(this.arguments, // 取本次函数foo调用时的参数，由于tail()总在foo()中调用，因此实际是取最近一次foo()的实际参数
+        this.length)  // 按照foo()声明时的形式参数个数，截取foo()函数参数的尾部
+    )
+  );
+}
+function e_xor(a, b) {
+  if (arguments.length == arguments.callee.length) return !a != !b;
+  return (!a == !b ? arguments.callee.tail(b) : true);
+}
+
+
+Function.prototype.templeted = function(args) {
+  var buff = ['[', ,'][0]'];
+  buff[1] = this.toString().replace(/_([^_]*)_/g, function($0,$1) { return args[$1]||'_'});
+  return eval(buff.join(''));
+}
+function tailed() {
+  var f = _execute_;
+  if (_closed_(arguments, f)) return false;
+  if (f.apply(this, arguments)) return true;
+  return arguments.callee.apply(this, [].slice.call(arguments, f.length));
+}
+function less_one(args, f)  {
+  if (args.length < f.length+1) return true;
+}
+function xor(a) {
+  if (!arguments[1] != !a) return true;
+}
+e_xor = tailed.templeted({
+  closed: less_one,
+  execute: xor
+})
+
+//console.log(e_xor(1,1,0,1));
+</script>
+
+<script type="text/javascript">
+
+var obj = {
+	toString : function(){
+		return 1;
+	},
+	valueOf : function(){
+		return -1;
+	}
+};
+
+var ary = ["asdf",,"123"];
+alert(ary.unshift("ddd"));
+
+</script>
+</head>
+<body>
+
+
+<select id="tms_sel_bType" class="tms_set_ipt" onchange="" disabled="disabled">                            
+    <option value="0">请选择绑定类型</option>
+    <option value="1">自定义脚本</option>
+    <option value="2">请求组件数据</option>
+    <option value="3">新建Ajax请求</option>
+</select>
+<input id="inp" type="text" value="123" />
+<div id="t_div" style="width:300px;background-color:#FC9">
+<p>
+	<a target="con" href="http://manager.hqew.com/web/Manager/Admin/ChangeUserInfo.aspx" onclick="" class="aa">click</a>
+</p>
+<p>
+	<a href="#" class="aa">click</a>
+</p>
+<textarea id="text">
+	asdfasdf/r/n
+</textarea>
+</div>
+<pre class="prettyprint">
+f = function() { return true; };
+g = function() { return false; };
+( function() {
+    if (g() && [] == ![]) {
+        f = function f() { return false; };
+        function g() { return true; };
+    }
+})();
+
+</pre>
+</body>
+
+</html>

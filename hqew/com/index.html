@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="base.css"/>
+<link rel="stylesheet" type="text/css" href="country.css"/>
+<style type="text/css">
+/*求购信息分类*/
+.index-cate{line-height:28px;}
+.index-cate-type span{margin-right:20px;}
+.si_new{display:inline-block;width:45px;height:21px;background:url(/images/index/new.gif) no-repeat;}
+
+.isb_bg{background:url("/images/seller/sample_4.gif" ) repeat-x;}
+.isb_list{padding:10px 10px 20px 20px;}
+</style>
+</head>
+<body>
+<div class="g-cf">
+  <div class="g-w-730 g-f-l g-mh-20"> <span class="si_new g-ml-5"></span> 
+    
+    <!--其它元器件最新求购-->
+    <div class="g-list-cols">
+      <ul class="g-bc-ff g-c-99">
+        <li class="g-w-70">到期时间</li>
+        <li class="g-w-70">地区 </li>
+        <li class="g-w-150">采购标题</li>
+        <li class="g-w-150">型号</li>
+        <li class="g-w-70">品牌</li>
+        <li class="g-w-70">批号</li>
+        <li class="g-w-60">采购量</li>
+      </ul>
+      <div>
+        <tms_bind ID="Repeater1">
+          <ul class='<%#(Container.ItemIndex % 2)>0?"":"g-bc-f7"%>'>
+            <li class="g-w-70"><span class="g-c-c0">{#0,到期时间,7#}</span>days ONLY</li>
+            <li class="g-w-70"><span title="{#1,国家名称,中国#}" class="{#2,国旗css,css_ca country-flag#}" >&nbsp;</span></li>
+            <li class="g-w-150"><a target="_blank" class="g-c-b" href="{#3,采购标题href,http://shouji.hqew.com/seek/bom-740.html#}" title="{#4,采购标题title,KFG2G16Q2M-DEB80#}">{#5,采购标题text,KFG2G16Q2M-DEB80#}</a></li>
+            <li class="g-w-150" title="{#6,型号title,KFG2G16Q2M-DEB80#}">{#7,型号text,KFG2G16Q2M-DEB80#}</li>
+            <li class="g-w-70" title="{#8,品牌title,ROHM#}">{#9,品牌text,ROHM#}</li>
+            <li class="g-w-70" title="{#10,批号title,2008+#}">{#11,批号text,2008+#}</li>
+            <li class="g-w-60" title="{#12,采购量title,10000#}">{#13,采购量text,10000#}</li>
+          </ul>
+        </tms_bind>
+        <div class="g-bc-f7 g-lh-24 g-ptb-5 g-plr-10">华强电子网推出外贸通平台，<span class="g-fw-b">3000</span>个活跃海外采购商，每天只需投入<span class="g-fw-b">15.5</span>元&nbsp;&nbsp;<a class="g-btn-12" title="立即申请！" target="_blank" href="http://www.hqew.net/register.html"><em>立即申请</em><b></b></a></div>
+      </div>
+    </div>
+    其它元器件最新求购
+    <div class="g-list-cols">
+      <ul class="g-bc-ff g-c-99">
+        <li class="g-w-70">时间</li>
+        <li class="g-w-70">地区 </li>
+        <li class="g-w-180">采购商 </li>
+        <li class="g-w-200">采购标题 </li>
+        <li class="g-f-r">采购量</li>
+      </ul>
+      <div>
+        <tms_bind ID="Repeater1">
+          <ul class='<%#(Container.ItemIndex % 2)>0?"":"g-bc-f7"%>'>
+            <li class="g-w-70">{#0,title,35分钟前#}</li>
+            <li class="g-w-70">{#1,地区,深圳市#}</li>
+            <li class="g-w-180" title="{#2,采购商title,深圳市振中科技电子公司#}">{#3,采购商text,深圳市振中科技电子公司#}<a target="_blank" class="{#9,cls,g-ico-sp#}" href="/about/service_15.html" title=""></a></li>
+            <li class="g-w-200"><a target="_blank" class="g-c-b" href="{#4,采购标题href,http://shouji.hqew.com/seek/bom-740.html#}" title="{#5,采购标题title,圣安娜百家乐网站#}">{#6,采购标题text,圣安娜百家乐网站#}</a></li>
+            <li class="g-f-r" title="{#7,采购量title,10000#}">{#8,采购量text,10000#}</li>
+          </ul>
+        </tms_bind>
+      </div>
+    </div>
+    
+    <!--IC/二三极管最新求购-->
+    <div class="g-list-cols">
+      <ul class="g-bc-ff g-c-99">
+        <li class="g-w-70">时间</li>
+        <li class="g-w-70">地区 </li>
+        <li class="g-w-180">采购商 </li>
+        <li class="g-w-180">型号 </li>
+        <li class="g-w-70">采购量</li>
+        <li class="g-w-70">说明</li>
+      </ul>
+      <div>
+        <tms_bind ID="Repeater1">
+          <ul class='<%#(Container.ItemIndex % 2)>0?"":"g-bc-f7"%>'>
+            <li class="g-w-70">{#0,title,35分钟前#}</li>
+            <li class="g-w-70">{#1,地区,深圳市#}</li>
+            <li class="g-w-180" title="{#2,采购商title,深圳市振中科技电子公司#}">{#3,采购商text,深圳市振中科技电子公司#}<a target="_blank" class="{#11,cls,g-ico-sp#}" href="/about/service_15.html" title="超级买家"></a></li>
+            <li class="g-w-180"><a target="_blank" class="g-c-b" href="{#4,采购标题href,http://shouji.hqew.com/seek/bom-740.html#}" title="{#5,型号title,MCP67MV-A2#}">{#6,型号text,MCP67MV-A2#}</a></li>
+            <li class="g-w-70" title="{#7,采购量title,10000#}">{#8,采购量text,10000#}</li>
+            <li class="g-w-70" title="{#9,说明title,要求全新原装#}">{#10,说明text,要求全新原装#}</li>
+          </ul>
+        </tms_bind>
+      </div>
+    </div>
+    
+    <!--手机BOM采购-->
+    <div class="g-list-cols">
+      <ul class="g-bc-ff g-c-99">
+        <li class="g-w-70">时间</li>
+        <li class="g-w-70">地区 </li>
+        <li class="g-w-180">采购商 </li>
+        <li class="g-w-180">采购标题 </li>
+        <li class="g-w-70">采购量</li>
+        <li class="g-w-70">应用阶段</li>
+      </ul>
+      <div>
+        <tms_bind ID="Repeater1">
+          <ul class='<%#(Container.ItemIndex % 2)>0?"":"g-bc-f7"%>'>
+            <li class="g-w-70">{#0,title,35分钟前#}</li>
+            <li class="g-w-70">{#1,地区,深圳市#}</li>
+            <li class="g-w-180" title="{#2,采购商title,深圳市振中科技电子公司#}">{#3,采购商text,深圳市振中科技电子公司#}<a target="_blank" class="{#11,cls,g-ico-sp#}" href="/about/service_15.html" title="超级买家"></a></li>
+            <li class="g-w-180"><a target="_blank" class="g-c-b" href="{#4,采购标题href,http://shouji.hqew.com/seek/bom-740.html#}" title="{#5,采购标题title,圣安娜百家乐网站#}">{#6,采购标题text,圣安娜百家乐网站#}</a></li>
+            <li class="g-w-70" title="{#7,采购量title,10000#}">{#8,采购量text,10000#}</li>
+            <li class="g-w-70" title="{#9,应用阶段title,量产采购#}">{#10,应用阶段text,量产采购#}</li>
+          </ul>
+        </tms_bind>
+      </div>
+    </div>
+    
+    <!--最新样片需求-->
+    
+    <div class="g-list-cols">
+      <ul class="g-bc-ff g-c-99">
+        <li class="g-w-190">采购商 </li>
+        <li class="g-w-70">型号 </li>
+        <li class="g-w-50">厂商 </li>
+        <li class="g-w-50">批号 </li>
+        <li class="g-w-50">封装 </li>
+        <li class="g-w-50">申请数量 </li>
+        <li class="g-w-80">应用领域 </li>
+        <li class="g-f-r">地区</li>
+      </ul>
+      <div>
+        <tms_bind ID="Repeater1">
+          <ul>
+            <li class="g-f-r">{#15,text,深圳市#}</li>
+            <li class="g-w-190" title="{#0,title,深圳市金月电子商行#}">{#1,text,深圳市金月电子商行#}<a target="_blank" class="{#2,cls,g-ico-sp#}" href="/about/service_15.html" title="超级买家"></a></li>
+            <li class="g-w-70"><a target="_blank" class="g-c-b" href="{#3,href,/seller/sample_930ad9c3-0e2b-4667-96ef-ec6aeb894d05.html#}" title="{#4,title,78L05#}">{#5,text,78L05#}</a></li>
+            <li class="g-w-50" title="{#6,title,SGS#}">{#7,text,SGS#}</li>
+            <li class="g-w-50" title="{#8,title,FGF#}">{#9,text,FGF#}</li>
+            <li class="g-w-50" title="{#10,title,GHH#}">{#11,text,GHH#}</li>
+            <li class="g-w-50">{#12,text,10#}</li>
+            <li class="g-w-100" title="{#13,title,电流#}">{#14,text,电流#}</li>
+          </ul>
+        </tms_bind>
+      </div>
+    </div>
+    
+    <!-- 求购信息分类-->
+    <div class="index-cate g-plr-10 g-mb-10 g-bc-f3 g-box-g">
+      <p class="g-fw-b g-c-33 g-fz-14 g-f-l">求购信息分类：</p>
+      <div class="index-cate-type g-c-99">
+        <tms_bind ID="Repeater1"> <span class="g-ws-w"><a target="_blank" class="g-fw-b g-c-b" href="http://mobile.hqew.sb/seek/bom-m0-s0-pg1-k.html" title="更多手机BOM求购信息">手机BOM</a>({#0,手机BOMnums,121#})</span> <span class="g-ws-w"><a target="_blank" class="g-fw-b g-c-b" href="/seller/ic_search.html" title="更多IC/二三极管求购信息">IC/二三极管</a>({#1,IC/二三极管nums,121#})</span> <span class="g-ws-w"><a target="_blank" class="g-fw-b g-c-b" href="/seller/ec_search.html" title="更多其他电子元器件求购信息">其他电子元器件</a>({#2,其他电子元器件nums,121#})</span> <span class="g-ws-w"><a target="_blank" class="g-fw-b g-c-b" href="/seller/waste_search.html" title="更多库存呆料收购信息">库存呆料</a>({#3,库存呆料nums,121#})</span> <span class="g-ws-w"><a target="_blank" class="g-fw-b g-c-b" href="/seller/waste_search.html" title="更多库存呆料收购信息">海外采购</a>({#4,海外采购nums,121#})</span> </tms_bind>
+      </div>
+    </div>
+  </div>
+  
+  <div class="g-w-250 g-f-l g-mh-20 g-ml-10">
+  	<!--超级买家-->
+    <div class="g-box-g g-mb-10">
+      <p class="isb_bg g-p-10 g-ta-c"><img src="/images/seller/sample_3.gif" alt="超级买家" /></p>
+      <ul class="isb_list g-lh-22">
+        <li>1、求购信息置顶，获取<a title="超级买家" href="/about/service_15.html" class="g-ico-sp" target="_blank"></a>醒目标识 </li>
+        <li>2、1000万现货库存自动匹配 </li>
+        <li>3、现货认证供应商精准报价 </li>
+        <li>4、全方位人工增值服务<a href="" class="g-c-b g-ml-10">了解更多</a> </li>
+      </ul>
+    </div>
+    
+    <!--订阅商机-->
+    <div class="g-p-10 g-lh-22">
+      <ul>
+        <li>1、关注型号优质现货库存</li>
+        <li>2、元器件参考价格及行情趋势</li>
+        <li>3、行业研究报告</li>
+        <li>4、《指数快讯》电子期刊</li>
+      </ul>
+      <p class="g-ta-c g-pt-10">
+      <a class="g-btn-12" title="立即申请！" target="_blank" href="/bussiness/grab.html"><em>免费订阅</em><b></b></a>
+      </p>
+    </div>
+    
+    
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Gobang</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<style type="text/css">
+.container{text-align: center;}
+.board { border-collapse:collapse; border-spacing:0;margin:0 auto; }
+.board td{width: 25px;height: 25px;border: 1px solid #000;padding: 0;position: relative;}
+.piece{width: 21px;height: 21px;border: 1px dashed transparent;border-radius: 10px;position: absolute;top:-12px;left:-12px;}
+.piece_hl{top:-12px;left:12px;}
+.piece_vl{top:12px;left:-12px;}
+.piece_hvl{top:12px;left:12px;}
+.piece_act_w{border-color: #999;border-style: solid;background-color: #fff;}
+.piece_act_b{border-color: #000;border-style: solid;background-color: #000;}
+.piece:hover{border-color: #333;}
+.header{margin: 20px 0;text-align: center;}
+.h-i{margin: 0 20px;font-weight: normal;}
+.h-i-act{font-weight: bold;}
+.toolbar{text-align: center;}
+</style>
+
+</head>
+<body>
+<h2 class="header">
+	<span class="h-i" id="txtHdW">白方</span>
+	<span class="h-i" id="txtHdB">黑方</span>
+</h2>
+<div id="container" class="container">
+	
+</div>  
+
+<p class="toolbar">
+	<a href="javascript:;" id="btnReturn">重新开始</a>
+	<select id="selBoard">
+		<option selected="selected" value="html">html</option>
+		<option value="cavans">cavans</option>
+		<option value="svg">svg</option>
+	</select>
+</p>
+
+<script type="text/javascript">
+	
+var con = document.getElementById("container"),
+	txtHdW = document.getElementById("txtHdW"),
+	txtHdB = document.getElementById("txtHdB"),
+	btnReturn = document.getElementById("btnReturn"),
+	selBoard = document.getElementById("selBoard"),
+	stepBy = function( turn ){
+		( turn ? txtHdW : txtHdB ).setAttribute("class" , "h-i");
+		( turn ? txtHdB : txtHdW ).setAttribute("class" , "h-i h-i-act");
+	},
+
+	gobang = Gobang({
+		type : "html" , container : con,
+		initCallback : stepBy ,
+		stepCallback : stepBy ,
+		overCallback : function( turn ){
+			alert( (turn?"黑":"白") + "方胜" );
+		}
+	});
+
+gobang.board.init();
+
+//重新开始
+btnReturn.addEventListener("click" ,function(){
+	gobang.board.init();
+} , false );
+
+//选择不同棋盘
+selBoard.addEventListener("change" , function(){
+	gobang.changeBoard(this.value);
+
+});
+
+/*
+	class Gobang 五子棋
+	options:{
+		string type:棋盘类型
+		dom container:容器
+		function initCallback:初始回调
+		function stepCallback:每步回调
+		function overCallback:结束回调
+	}
+*/
+function Gobang( options ){
+
+	var type = options.type || "html",
+		container = options.container || document.body,
+		initCallback = options.initCallback,
+		stepCallback = options.stepCallback,
+		overCallback = options.overCallback,
+
+		//棋盘大小 , 是否结束
+		boardSize = 14 , isOver , chessboard , gobang = {};
+
+	chessboard = makeChessboard( type );
+
+	gobang.board = chessboard[type]();
+	gobang.changeBoard = changeBoard;
+
+	return gobang;
+
+	//制作棋盘
+	function makeChessboard( type ){
+		//棋盘对应表 , 轮到谁下:0表白棋
+		var map , turn = 0;
+
+		var baseBoard = function(){
+			//清理棋子
+			function init(){
+				turn = 0;
+				map = [];
+				isOver = 0;
+				for (var i = 0; i <= boardSize ; i++) {
+					map[i] = [];
+					map[i][boardSize] = undefined;
+				}
+				gobang.board.element && gobang.board.element.setAttribute("style","");
+				initCallback && initCallback( turn );
+			}
+
+			return {
+				init : init
+			}
+		};
+		//html棋盘
+		var htmlBoard = (function(){
+			var base = baseBoard() , board = document.createElement("table"), isInit;
+
+			return function(){					
+				return {
+					element : board ,
+					init : init
+				}
+			}
+			function init(){
+				base.init();
+				//已初始化
+				if( isInit ){
+					//重置棋子
+					var pies = container.querySelectorAll(".piece");
+					for (var i = pies.length - 1; i >= 0; i--) {
+						pies[i].setAttribute("class" , "piece");
+					};
+				}else{
+					makeBoard();
+					isInit = 1;
+				}				
+			}
+
+			//创建棋盘
+			function makeBoard(){
+				var dom = document,
+					con = container,
+					table = board , tr , td , a , strTr , strTd;
+					
+				table.setAttribute("class" , "board");
+				table.setAttribute("id" , "htmlBoard");
+				td = "<td>{a}</td>";
+				a = "<a href='javascript:;' class='piece' data='{data}'></a>";
+
+				for (var i = boardSize ; i > 0; i--) {
+					tr = dom.createElement("tr");
+					strTr = "";
+					for (var j = boardSize ; j > 0; j--) {
+						strTd = a.replace( "{data}", i + "_" + j );
+						if( j == 1 ){
+							strTd += a.replace( "{data}", i + "_" + (j-1) ).replace("piece","piece piece_hl");
+						}
+						if( i == 1){
+							strTd += a.replace( "{data}", (i-1) + "_" + j ).replace("piece","piece piece_vl");
+						}
+						if( j == 1 && i == 1 ){
+							strTd += a.replace( "{data}", (i-1) + "_" + (j-1) ).replace("piece","piece piece_hvl");
+						}
+						strTr += td.replace( "{a}" , strTd );
+					}
+					tr.innerHTML = strTr;
+					table.appendChild( tr );
+				}
+				con.appendChild( table );
+				con.addEventListener( "click" , function(e){
+					//不是棋子位
+					if( !e.target.getAttribute("data") || isOver ){return}
+
+					var target = e.target , _turn = turn,
+						data = target.getAttribute("data").split("_"),
+						mi = data[0], mj = data[1],
+						_map = map , attr = target.getAttribute("class");
+
+					//已下子
+					if( _map[mi][mj] !== undefined ){return}
+					target.setAttribute( "class" , attr + (_turn?" piece_act_b":" piece_act_w") );
+
+					//在对应表中下子
+					_map[mi][mj] = _turn;
+
+					//是否分出胜负
+					if( judge( _map , mi , mj , turn ) ){
+						return;
+					}
+					//修改轮手
+					turn = _turn ? 0 : 1;
+					stepCallback && stepCallback( turn );
+
+				} , false );
+			}
+
+		})();
+		//cavans棋盘
+		var cavansBoard = (function(){
+
+			return function(){					
+				return {
+					element : null ,
+					init : init
+				}
+			}
+		
+			function init(){
+				alert("cavans TODO");
+			}
+		})();
+		//svg棋盘
+		var svgBoard = (function(){
+
+			return function(){					
+				return {
+					element : null ,
+					init : init
+				}
+			}
+		
+			function init(){
+				alert("svg TODO");
+			}
+		})();
+
+		return {
+			html : htmlBoard,
+			cavans : cavansBoard,
+			svg : svgBoard
+		}
+	}
+
+	//切换棋盘
+	function changeBoard( type ){
+		gobang.board.element && (gobang.board.element.style.display = "none");
+		gobang.board = chessboard[type]();
+		gobang.board.init();
+	}
+
+	//胜负判定方法
+	function judge( map , i , j , turn ){
+		var result1 = 0 , result2 = 0 , result3 = 0 , result4 = 0 ,
+			min = Math.min(i,j) , max = Math.max(i,j),
+			i3 = i - min , j3 = j - min,
+			_boardSize = boardSize,
+			z = parseInt(i) + parseInt(j) , i4 = z > _boardSize ? _boardSize : z ,
+			j4 = z > _boardSize ? (z - _boardSize) : 0;
+
+		//循环判定各方向的连子
+		while( _boardSize >= 0 ){
+			if( result1 < 5 ){//横向
+				result1 = map[i][_boardSize] === turn ? (result1 + 1) : 0;
+			}
+			if( result2 < 5 ){//垂直
+				result2 = map[_boardSize][j] === turn ? (result2 + 1) : 0;
+			}
+			if( result3 < 5 && i3 <= boardSize && j3 <= boardSize ){//45
+				result3 = map[i3++][j3++] === turn ? (result3 + 1) : 0;
+			}
+			if( result4 < 5 && i4 >= 0 && j4 <= boardSize ){//135
+				result4 = map[i4--][j4++] === turn ? (result4 + 1) : 0;
+			}
+			_boardSize--;
+		}
+		if( result1 > 4 || result2 > 4 || result3 > 4 || result4 > 4){
+			overCallback && overCallback( turn );
+			isOver = true;
+			return true;
+		}
+		return false;
+	}
+
+}
+
+</script>
+</body>
+</html>

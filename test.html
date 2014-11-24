@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+
+<style type="text/css">
+	body,html,div.con{margin: 0;padding: 0;height:100%;width: 100%;}
+</style>
+
+</head>
+<body>
+
+<div id="con" class="con">aa</div>
+<script type="text/javascript" src="http://static.iuniimg.com/js/jquery-1.7.min.js"></script>
+<script type="text/javascript">
+
+var origY;
+$('body').bind('touchstart',function(e){
+	origY = e.originalEvent.changedTouches[0].clientY;
+}).bind('touchmove' , function(e){
+	
+	e.preventDefault();
+	setTimeout( function(){
+		if( e.originalEvent.changedTouches[0].clientY - origY < 0 ){
+			//下滑
+			console.log( 1 );
+		}else{//上推
+			console.log( 2 );
+		}
+		origY = e.originalEvent.changedTouches[0].clientY;
+	} , 300 );
+});
+
+</script>
+</body>
+</html>

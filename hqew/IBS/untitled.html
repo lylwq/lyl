@@ -1,0 +1,199 @@
+<%@ Import Namespace="System" %>
+<%@ Import Namespace="System.Collections" %>
+<%@ Import Namespace="System.Configuration" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Linq" %>
+<%@ Import Namespace="System.Web" %>
+<%@ Import Namespace="System.Web.Security" %>
+<%@ Import Namespace="System.Web.UI" %>
+<%@ Import Namespace="System.Web.UI.HtmlControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls" %>
+<%@ Import Namespace="System.Web.UI.WebControls.WebParts" %>
+<%@ Import Namespace="System.Xml.Linq" %>
+<%@ Import Namespace="Hqew.DMSFrame.Parameter" %>
+<%@ Import Namespace="Hqew.DMSFrame.Entry" %>
+<%@ Import Namespace="Hqew.DMSFrame.BLL" %>
+<%@ Import Namespace="Hqew.Model.RFQ" %>
+<%@ Import Namespace="Hqew.DMSFrame.WebLib" %>
+<Script runat="server">
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        base.Page_Load(sender, e);
+        //Response.Write(this.SessionInfo.UserID.ToString());
+
+    }
+   public static string GetDomainAboutHqew(string nodeName)
+    {
+        return Hqew.Utility.MethodStaticHandler.GetHqewDomainNode(nodeName);
+    }
+
+</Script>
+<tms_bind id="Repeater3">
+<table class="rfqlist" id="tablist" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <th>
+                                </th>
+                            </tr>
+                            <tr >
+                                <td class="rfqlist_tr" onmouseover="this.className='rfqlist_tr_m'" onmouseout="this.className='rfqlist_tr'">
+<tms_bind id="Repeater1"> 
+                                    <table class="list_t1" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td class="list_chk">
+                                                <input type="checkbox" name="cksInquiry" id="cksInquiry" value="{#0,ICInquiryQuoteID,20155565#}" onclick="ChekAllEx('SelectAllBox','cksInquiry','cksInquiry')" />
+                                            </td>
+                                            <td class="list_con" style="text-align: left;">
+                                                &nbsp;&nbsp;供应商： <span class="span_bold span_color">{#1,LocationName,深圳市源汉科技有限公司#}</span> <span
+                                                    class="span_bold span_color">{#2,LinkMan,张三#}</span> <span class="span_color">{#3,comUrl,...#}</span>
+                                                <span class="span_phone" title="{#4,Phone,18888888888#}">{#5,subPhone,075588888888#}</span> <span>{#6,Mobile,xxx#}</span> <span>{#7,Email,helloword@qq.com#}</span>
+                                                <span >
+                                                
+                                                    <img src="/{#8,scrUrl,image/1.jpg#}" onclick="HqmChat('{#9,HqmID,2001#}','{#10,UserGUID,20001006#}')"
+                                                        class="imgcenter" /><a href="javascript:;" onclick="HqmChat('{#9,HqmID,2001#}','{#10,UserGUID,20001006#}')">洽谈</a>                                                   
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+</tms_bind>
+<tms_bind id="Repeater2"> 
+                                    <table class="list_t2" cellpadding="0" cellspacing="0">
+                                        <tr class="li_tr1">
+                                            <td  class="width_1">
+                                                &nbsp;
+                                            </td>
+                                            <td   class="width_2">
+                                                型号
+                                            </td>
+                                            <td  class="width_3">
+                                                {#0,column1,zx2004#}
+                                            </td>
+                                            <td   class="width_4">
+                                                {#1,column2,zx2005#}
+                                            </td>
+                                            <td  class="width_5">
+                                                {#2,column3,zx2056#}
+                                            </td>
+                                            <td   class="width_6">
+                                                数量
+                                            </td>
+                                            <td   class="width_7">
+                                                报价
+                                            </td>
+                                            <td   class="width_8">
+                                                {#3,column4,客户询价#}
+                                            </td>
+                                            <td   class="width_9">
+                                                发出时间
+                                            </td>
+                                            <td  class="width_10">
+                                                操作
+                                            </td>
+                                        </tr>
+                                        <tr class="li_tr2">
+                                            <td >
+                                                {#4,RFQName1,123#}
+                                            </td>
+                                            <td >
+                                                <div  class="width_2">{#5,PModel,zx486#}</div>
+                                            </td>
+                                            <td >
+                                               <div  class="width_3">{#6,PProductor,sffsf5#}</div>
+                                            </td>
+                                            <td >
+                                                <div  class="width_4">{#7,PProductDate,2010-10-06#}</div>
+                                            </td>
+                                            <td >
+                                                <div  class="width_5">{#8,PPackage,示范法#}</div>
+                                            </td>
+                                            <td >
+                                                <div  class="width_6">{#9,PQuantity,示范法#}</div>
+                                            </td>
+                                            <td class="pricecolor">
+                                                  &nbsp;
+                                            </td>
+                                            <td >
+                                                <div  class="width_8">{#10,PRemark,示范法#}</div>
+                                            </td>
+                                            <td>
+                                                <div  class="width_9">{#11,PublishDate,示范法#}</div>
+                                            </td>
+                                            <td>
+                                                <a id="DelHref" href="javascript:void(0);" onclick="DeleteSingle('{#12,ICInquiryQuoteID,20155565#}')">
+                                                    删除</a>
+                                            </td>
+                                        </tr>
+                                        <tr class="{#13,ClassRow,g_dn#} li_tr2">
+                                            <td >
+                                                {#14,RFQName2,fsdfd#} 
+                                            </td>
+                                            <td >
+                                                <div   class="width_2">{#15,型号,fsdfd#} </div>
+                                            </td>
+                                            <td>
+                                                <div   class="width_3">{#16,ICPProductor,fsdfd#}</div>
+                                            </td>
+                                            <td >
+                                                <div   class="width_4">{#17,ICPProductDate,fsdfd#}</div>
+                                            </td>
+                                            <td >
+                                               <div   class="width_5">{#18,ICPPackage,fsdfd#}</div>
+                                            </td>
+                                            <td >
+                                               <div   class="width_6"> {#19,ICPQuantity,5000#}</div>
+                                            </td>
+                                            <td  class="pricecolor">
+                                                  &nbsp;
+                                            </td>
+                                            <td >
+                                               <div   class="width_8"> {#20,ICPRemark,5000#}</div>
+                                            </td>
+                                            <td >  &nbsp;
+                                            </td>
+                                            <td >
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                         <tr class="li_tr3">
+                                            <td >
+                                                {#21,RFQName3,我的报价#}
+                                            </td>
+                                            <td >
+                                                <div class="width_2">{#22,PModel1,5000#}</div>
+                                            </td>
+                                            <td>
+                                                <div class="width_3">{#23,PProductor1,5000#}</div>
+                                            </td>
+                                            <td >
+                                                <div class="width_4">{#24,PProductDate1,5000#}</div>
+                                            </td>
+                                            <td >
+                                               <div class="width_5"> {#25,PPackage1,5000#}</div>
+                                            </td>
+                                            <td >
+                                               <div class="width_6"> {#26,PQuantity1,5000#}</div>
+                                            </td>
+                                            <td  class="pricecolor">
+                                               <div class="width_7">{#27,QuotePrice1,5000#}</div>
+                                            </td>
+                                            <td >
+                                               <div class="width_8"> {#28,PRemark1,5000#}</div>
+                                            </td>
+                                            <td >
+                                               {#29,PDateTime,2011-12-15#}
+                                            </td>
+                                            <td >
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                         
+                                    </table>
+</tms_bind>
+
+                                </td>
+                            </tr>
+                        </table>
+        <input type="hidden" id="hqewMain" value="<%= Hqew.Utility.MethodStaticHandler.GetHqewDomainNode("HqewMainSite") %>" />
+        <div class="g_dn">
+            <input type="hidden" value="0" runat="server" id="hidUserid" /></div>
+</tms_bind>
+

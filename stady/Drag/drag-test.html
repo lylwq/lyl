@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Drag test</title>
+<style>
+.drag-con{width: 500px;height: 500px;border: 1px solid #000;position: relative;}
+.drag{width: 50px;height: 50px;background: #2ac;position: absolute;top:0;left:0;}
+</style>
+</head>
+<body>
+    
+<div class="drag-con" id="dragCon">
+	<div id="drag" class="drag"></div>
+</div>
+<input type="button" value="加载" id="load" />
+<script type="text/javascript">
+var result = "",m;
+	try{
+	    a.b.c();
+	}catch(e){
+	    if(e.fileName){//firefox
+	        result = e.fileName;
+	    }else if(e.sourceURL){//safari
+	        result = e.sourceURL;
+	    }else if(e.stacktrace){//opera9
+	        m = e.stacktrace.match(/\(\) in\s+(.*?\:\/\/\S+)/m);
+	        if (m && m[1])
+	            result =  m[1]
+	    }else if(e.stack){//chrome 4+
+	        m= e.stack.match(/\(([^)]+)\)/)
+	        if (m && m[1])
+	            result = m[1]
+	    }
+	}
+//console.log(result);
+var load = document.getElementById("load");
+load.onclick = function(){
+	var res = window.open("drag-test.html");
+	res.onload = function(){
+		alert(2);
+	}
+	
+}
+
+drag("drag","dragCon");
+
+function drag(elemId , dragCon){
+	var dom = document,
+		elem = dom.getElementById(elemId),
+		dragCon = dom.getElementById(dragCon),
+		movFun = function(event){
+			elem.style.top = event.clientY - elem.decY  + "px";
+			elem.style.left = event.clientX - elem.decX + "px";
+			//elem.style.webkitTransform = "translate3D("+(event.clientX - elem.decX)+"px,"+(event.clientY - elem.decY)+"px,0px)";
+		};
+
+	if(!elem || !dragCon){return};
+	bind(elem , "mousedown" , function(event){
+		console.log(event.offsetX);
+		elem.decX = event.layerX || event.offsetX,
+		elem.decY = event.layerY || event.offsetY;
+
+		bind(dragCon , "mousemove" , movFun);
+	});
+
+	bind(elem , "mouseup" , function(event){
+		unBind(dragCon , "mousemove" , movFun);
+	});
+
+}
+
+function bind( elem , type , func){
+	if ( elem.addEventListener ) {
+		elem.addEventListener( type, func, false );
+
+	} else if ( elem.attachEvent ) {
+		elem.attachEvent( "on" + type, func );
+	}
+}
+
+function unBind(elem , type , fun){
+	if ( elem.removeEventListener ) {
+		elem.removeEventListener(type , fun , false);
+
+	}else{
+		elem.detachEvent( "on" + type , fun);
+	}
+}
+</script>
+</body>
+</html>

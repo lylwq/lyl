@@ -1,0 +1,35 @@
+/*reset*/
+body, h1, h2, h3, p, dl, dt, dd, ul, ol, li, button, input, textarea, th, td{margin:0; padding:0;}
+body{font:12px Arial, Tahoma, Simsun; color:#333;}
+button, input, select, textarea, label{vertical-align:middle;}
+img{vertical-align:top; border:none;}
+ul, ol{list-style:none;}
+a{text-decoration:none; color:#555; vertical-align:baseline; cursor:pointer;}
+a:hover{text-decoration:underline; color:#cc0000;}
+table{border-collapse:collapse; border-spacing:0;}
+body{_height:100%; _background:url(about:blank) fixed;}
+
+/*清浮*/
+.g-cf:after{content:""; clear:both; display:table;}
+.g-cf{zoom:1;}
+/*浮动*/
+.g-f-l{float:left;_display:inline;}.g-f-r{float:right;_display:inline;}
+/*显示隐藏*/
+.g-d-n{display:none;}.g-d-b{display:block;}.g-d-i{display:inline;}.g-d-ib{display:inline-block;}.g-v-h{visibility:hidden;}
+/*字体宋体*/
+.g-ff-s{font-family:Simsun;}
+/*字体风格*/
+.g-fs-n{font-style:normal;}
+/*字体加粗*/
+.g-fw-b{font-weight:bold;}
+/*字体大小*/
+.g-fz-18{font-size:18px;}.g-fz-16{font-size:16px;}.g-fz-15{font-size:15px;}.g-fz-14{font-size:14px;}.g-fz-12{font-size:12px;}
+/*相对定位*/.g-p-r{position:relative;}
+/*居右、中、左*/
+.g-ta-r{text-align:right;}.g-ta-c{text-align:center;}.g-ta-l{text-align:left;}
+/*缩进2个字符*/
+.g-ti-2{text-indent:2em;}
+/*不换行*/
+.g-ws-w{white-space:nowrap;}
+/*强制换行*/
+.g-ww-bw{word-wrap: break-word; word-break: break-all;}

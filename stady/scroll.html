@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>DOMMouseScroll</title>
+<script src="../js/common/jq.js">jq.js</script>
+</head>
+
+<body>
+<div style="height:50px;overflow-y:hidden" id="ddd">
+<p>sdfsdafd</p>
+<p>sdfsdafd</p>
+<p>sdfsdafd</p>
+<p>sdfsdafd</p>
+<p>sdfsdafd</p>
+<p>sdfsdafd</p>
+<p>sdfsdafd</p>
+<p>sdfsdafd</p>
+<p>sdfsdafd</p>
+<p>sdfsdafd</p>
+</div>
+
+
+<script language="JavaScript" type="text/javascript">
+function handle(delta) {
+ if (delta < 0)
+ alert("向下滚动");
+ else
+ alert("向上滚动");
+}
+
+function wheel(event){
+ var delta = 0;
+ if (!event) /* For IE. */
+ event = window.event;
+ console.log(event);
+ if (event.wheelDelta) { /* IE或者Opera. */
+ delta = event.wheelDelta/120;
+
+ if (window.opera)
+ delta = -delta;
+ } else if (event.detail) {
+ delta = -event.detail/3;
+ }
+ /** 如果 增量不等于0则触发
+ * 主要功能为测试滚轮向上滚或者是向下
+ */
+// if (delta)
+ //handle(delta);
+}
+var dd = document.getElementById("ddd");
+/** 初始化 */
+if (window.addEventListener)
+ /** Mozilla的基于DOM的滚轮事件 **/
+ dd.addEventListener('DOMMouseScroll', wheel, false);
+/** IE/Opera. */
+dd.onmousewheel = wheel;
+</script>
+</body>
+</html>

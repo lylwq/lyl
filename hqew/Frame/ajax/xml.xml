@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bookstore> 　　
+    <book id="No1"> 　　
+        <title>An Introduction to XML</title>
+        <author>Chunbin</author>
+        <year>2010</year>
+        <price>98.0</price>
+    </book>
+    <book id="No2"> 　　
+        <title>The Performance of DataBase</title>
+        <author>John</author>
+        <year>1996</year>
+        <price>56.0</price>
+    </book>
+</bookstore>

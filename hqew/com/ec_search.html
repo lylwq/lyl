@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="base.css"/>
+<link rel="stylesheet" type="text/css" href="common.css"/>
+<script type="text/javascript">
+function getsellerIcparam(){
+    var eDays = document.getElementById("cexpiredays");
+    var ExpireDays = eDays[eDays.selectedIndex].value;
+    
+    var eCity = document.getElementById("caddress");
+    var CityID = eCity[eCity.selectedIndex].value;
+    
+    var keyword = icgetUrlParam("keyword");
+    var PageIndex = icgetUrlParam("PageIndex") == "" ? 1 : icgetUrlParam("PageIndex");
+
+    var liveDate = new Date();
+    liveDate.setTime(liveDate.getTime() + 30 * 1000);  //设置cookie过期时间
+
+    document.cookie = "CityID=" + CityID;
+    document.cookie = "ExpireDays=" + ExpireDays;
+    document.cookie = "UserType=0";
+    document.cookie = "path=/";
+    document.cookie = "expires=" + liveDate.toUTCString();
+    
+    return "/seller/ec_search_p1_" + CityID + ".html";
+    //return "/seller/ec_search.html?keyword="+keyword+"&PageIndex="+PageIndex+"&ExpireDays="+ExpireDays+"&CityID="+CityID;
+}
+
+function sellerEc_Search(){
+    window.location.href = getsellerIcparam();
+}
+function icgetUrlParam(name){   
+    var reg = new RegExp("(^|&)"+   name   +"=([^&]*)(&|$)"); 
+    var r = window.location.search.substr(1).match(reg); 
+    if (r!=null) 
+    {return decodeURIComponent(r[2]);}
+    else
+    {return ""; }
+}
+</script>
+<style type="text/css">
+
+.ecs_cate{border-color:#AFAFAF;border-width:0 1px 1px;border-style:solid;padding:10px 0 10px 130px;overflow:hidden;margin-top:-10px;margin-bottom:10px;}
+.ecs_cate li{width:165px;height:22px;line-height:22px;float:left;}
+.ecs_cate i{font-style:normal;color:#999;}
+
+</style>
+</head>
+
+<body>
+<div class="g-w-990 g-mlr-a">
+  <div class="ecs_cate g-cf">
+    <ul>
+      <tms_bind id="otherElec">
+      <li><a href="/seller/ec_search{#0,id,20001006#}.html" title="{#1,名称,电容器#}">{#2,名称,电容器#}</a><i>(1)</i></li>
+      </tms_bind>
+    </ul>
+  </div>
+  
+  <ul class="sthead">
+    <li class="g-w-60">
+      <select id="cexpiredays" class="g-w-60 g-mr-10" onchange="sellerEc_Search();">
+        <option value="0">时间</option>
+        <option value="1">1天内</option>
+        <option value="3">3天内</option>
+        <option value="7">1周内</option>
+        <option value="15">半个月内</option>
+        <option value="30">1个月内</option>
+        <option value="0">不限</option>
+      </select>
+    </li>
+    <li class="g-w-60">
+      <select class="g-w-60 g-mr-10" id="caddress" onchange="sellerEc_Search();">
+        <option value="0">地区</option>
+        <option value="210">深圳</option>
+        <option value="1">北京</option>
+        <option value="3">上海</option>
+        <option value="196">广州</option>
+        <option value="259">香港</option>
+        <option value="-210">深圳以外</option>
+      </select>
+    </li>
+    <li class="g-w-250">采购商</li>
+    <li class="g-w-360">求购信息</li>
+    <li class="g-w-50">采购量</li>
+    <li class="g-w-60">报价</li>
+  </ul>
+  <tms_bind id="repeaterMain">
+    <ul class='stbody g-ptb-10 <%#(Container.ItemIndex % 2)>0?"g-bc-f7":""%>'>
+      <li class="g-w-60">{#0,时间,26分钟前#}</li>
+      <li class="g-w-60">{#1,地区,深圳市#}</li>
+      <li class="g-w-250 g-lh-18">
+        <div class="g_fb">
+          <p><span class="g-fw-b" title="{#2,采购商title,深圳市永明电子商行#}">{#3,采购商text,深圳市永明电子商行#}</span><a title="超级买家" href="/about/service_15.html" class="{#4,超级买家样式,g-ico-sp#}" target="_blank"></a><a href="/seller/company{#5,更多求购userid,13559#}.html" class="g-c-b g-ws-w" target="_blank" title="更多求购">[更多求购]</a></p>
+        </div>
+        <div class="{#6,联系人信息是否隐藏样式,g-d-b#}">
+            <p>联系人：{#7,联系人,李生#}</p>
+            <p>电话：{#8,电话,82228000#}</p>
+            <p>手机：{#9,手机,13131313131#}</p>
+            <p>邮件：{#10,邮件,1260268072@qq.com#}</p>
+            <p>地址：{#11,地址,福田区华强北华强电子世界1号楼2楼11B148 QQ:1260268072   1298652910#}</p>
+        </div>
+      </li>
+      
+      <li class="g-w-360">
+        <p>
+        	<a href="/seller/waste{#12,产品id,959643#}.html" class="g-fz-14 g-c-b g-fw-b" title="{#13,产品名title,求购LED6寸筒灯外壳<#}" target="_blank">{#14,产品名,求购LED6寸筒灯外壳<#}</a>
+        </p>
+        <div class="g-mt-10 g-cf">
+        	<a href="/seller/waste{#15,产品id,959643#}.html" class="g-img-pro-sma g-f-l g-mr-10" title="{#16,产品名title,求购LED6寸筒灯外壳<#}" target="_blank"><img src="{#17,产品小图路径,/File/Images/1060000-1069999/1060634/MaterielRequest/20111122153447410NI6RBP.JPG#}" onerror="this.src='/images/common/nophoto.gif'" width="92" height="38" /></a>
+            
+            <p class="dcont">{#18,产品remark,LED6寸筒灯外壳，如下图所示，非生产外壳厂家勿拢#}</p>
+        </div>
+      </li>
+      <li class="g-w-50 g-fw-b g-fz-14">{#19,采购量,10000#}</li>
+      <li class="g-w-60"><a href="{#20,chatHref,javascript:;#}" title="{#21,是否在线title,对方在线，与对方洽谈#}" class="{#22,洽洽图标样式,g-ico-qq#}"></a></li>
+      
+    </ul>
+  </tms_bind>
+</div>
+</body>
+</html>

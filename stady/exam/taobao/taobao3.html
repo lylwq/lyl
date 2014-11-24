@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>淘宝面试题</title>
+</head>
+
+<body>
+
+1、根据下图编写一段XHTML
+
+<img src="3_1.jpg" width="220" height="137" />
+
+考点：前端工程师的语义化标签知识以及模块化HTML代码知识；
+我的答题：
+复制代码运行代码编辑代码
+
+<pre>    <div class="dialogPractise">
+    <h2>对话练习</h2>
+    <ul class="dialogPractise-bd">
+    <li>
+    <strong>小明</strong>
+    <span>我的淘宝店成立5周年啦欢迎光临哦！</span>
+    </li>
+    <li>
+    <strong>傅玉</strong>
+    <span>昨天销售300件米奇心情真爽！</span>
+    </li>
+    </ul>
+    <span class="dialogPractise-fo"></span>
+    </div>
+</pre>    
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+
+二、请简化下面的CSS代码：
+a)margin:0px;
+b)padding:10px 0 10px 0;
+c)border-width:1px;border-style:solid;border-color:#ff5500;
+考点：CSS的优化
+我的答题：
+复制代码运行代码编辑代码
+
+    margin:0;padding:10px 0;border:1px solid #ff5500;
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+哥只想到这样的简写方式，但是另外一名给我面试的前端工程师(大牛)说：还可以简写，但是哥能想到的就是这种简写方式，不知道各位如何看？
+
+三、请看以下代码，按照下面的要求回答
+复制代码运行代码编辑代码
+
+    if(window.addEventListener){
+           var fn = function (type,fn,useCapture){
+           el.addEventListener(type,fn,useCapture);
+            }
+    }
+    else if(window.attachEvent){
+            fn = function (type,fn){
+            el.attachEvent('on'+type,);
+            }
+    }
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+考点：对事件绑定的深入理解
+
+a)以上代码的作用
+b)以上代码的优点
+c)以上代码中的问题，如果你有更好的，请把它编写出来
+我的答题：
+a)以上代码主要是为HTML元素绑定一个事件，并且兼容IE和DOM标准下的浏览器
+b)以上代码的优点是做到的了事件绑定的兼容性
+c)以上代码中fn这个变量是在DOM标准下的浏览器中才会声明，在IE下它将是一个全局变量
+
+我的简单的编写：
+复制代码运行代码编辑代码
+
+    function bind(el, type, fn, useCapture){
+             if (window.addEventListener) {
+                      el.addEventListener(type, function(){
+                               fn.apply(el, arguments);//始终将this指向DOM
+                      }, useCapture);
+              }
+              else if (window.attachEvent) {
+                         el.attachEvent('on' + type, function(){
+                         fn.apply(el, arguments);//始终将this指向DOM
+                         });
+              }
+    }
+
+    var el = document.getElementById('demo');
+    var test = function(){
+            alert(this.nodeName);
+    }
+    bind(el, 'click', test);
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+注意代码中的注释部分。因为在符合DOM标准的浏览器中，addEventListener方法将把this指针指向绑定的函数，而IE中attachEvent方法将始终指向widow对象，为了将this指针始终指向当前绑定事件的DOM，我们必须要使用apply或者call方法来改变函数的作用域。
+
+三、请计算下面变量的值
+复制代码运行代码编辑代码
+
+    var a= (Math.PI++);
+    var b = (Math.PI++);
+    alert(a);
+    alert(b);
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+考点：对javascript中Math对象的深入理解
+我没有做出来这道题目，平时都没有怎么研究这个Math对象呢，因为数学很差。
+
+四、注释的代码是否可以实现？如不能实现，请修改
+复制代码运行代码编辑代码
+
+    function test(){
+             this.name = 'taobao';
+             this.waitMes = function (){
+             //隔5秒钟执行this.name
+             }
+    }
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+考点：javascript闭包
+我的答题：
+复制代码运行代码编辑代码
+
+    function test(){
+              this.name = 'taobao';
+              var waitMes = function (){
+              //每隔5秒钟执行this.name
+              setTimeout(function (){alert(self.name)},5000);
+               }
+             return waitMes;
+    }
+    var _test = test();
+    _test();
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+我很幸运的是：淘宝给我的笔试题目就这些，为什么就这些呢？最后我分析的结果是：我曾经在阿里软件工作过。
+接下来是问答啦（很精彩）：
+
+TaoBao UED：说说你做过的项目，以及在项目中遇见的问题
+Me：然后我就开始介绍我参与过的项目等等，并且说出了在阿里软件工作时，前端工程师和后端工程师在协作开发过程当中遇见的一些悲剧的问题
+
+TaoBao UED：使用的框架有哪些？以及各个框架之间的区别
+Me：prototype、jQuery、YUI2、YUI3，至于各个框架之间的区别见这里
+
+TaoBao UED：框架中的底层源码是否看过？
+Me：看过jquery的，YUI2看过一点，YUI3还没有看。
+
+TaoBao UED：使用YUI框架做过哪些事情？
+Me：使用YUI框架开发过一些widget、component
+
+TaoBao UED：喜欢加班吗？（莫非淘宝经常加班）
+Me：不喜欢，呵呵，但是没有办法，因为这是我的工作。曾经在阿里软件工作的时候，加班到凌晨2点，在阿里巴巴ICBU开发B2B安全风险项目时，睡在会议室过。
+
+TaoBao UED：你是怎样看待前端开发修bug？
+Me：一开始对修BUG有点烦燥，但是后来自己的心态逐渐调整过来，逐渐喜欢修BUG了，TaoBao清羽问：为什么呢？我说：因为我在修bug的同时可以发现一些新的知识，可以发现自己的不足，然后我会把这些我认为有技术含量的bug放进我的博客中与大家分享。对方笑笑。
+
+TaoBao UED：喜欢写博客吗？
+Me：喜欢，我有一个官方博客
+
+TaoBao UED：喜欢逛博客吗？
+Me：喜欢，TaoBao UED问：喜欢逛哪些博客？我说：国内知名互联网企业的UED或UCD博客，以及国外javascript大师的博客。
+
+TaoBao UED：说说你最近看一篇博客，是关于什么的？
+Me：我最近看的一篇是口啤网前端主管的一篇关于doctype文档类型的博客，感觉收获挺大的，他详细说明了doctype的触发方式以及几个模式。见这里
+
+TaoBao UED：什么是WEB标准？
+Me：妈妈咪呀，这么简单的问题，我居然只回答了一个：首先要语义化XHTML标签，因为当时，脑袋不知怎么的，突然空了，悲剧啊！维基百科对WEB标准的定义
+
+TaoBao UED：你有女朋友吗？
+Me：我听到这个问题后，心里在想：莫非…..?我实话说了，有女朋友。对方保持沉默
+
+TaoBao UED：什么是类？什么是实例？
+Me：类是静态的，对象是动态的，对象可以看作是运行中的类。类负责产生对象，可以将类当成生产对象的工厂（object factory）。实例是属于某个类的对象。类的每个实例均包含该类的所有属性和方法。例如：
+复制代码运行代码编辑代码
+
+    function class(){}//声明一个类，类名为class
+    class.prototype.newMethod = function (){}//类的一个方法
+    var b = new class();//实例化class类，b就是class类的一个对象，b拥有class类的属性和方法，而整个new的过程则叫做实例化
+
+复制代码运行代码编辑代码
+
+Powered by W3Cfuns.com
+还有一些问题，我都忘记了，至于问答面试，我就写到这里吧，后面是淘宝UED让我来提问我问了三个问题：
+
+1、淘宝UED有多少前端工程师？
+淘宝UED：差不多有50多位前端工程师。
+
+2、淘宝UED的流程是怎样的？
+淘宝UED：清已羽介绍过后，我觉得这些开发流程大同小异，差不多都是这样。
+
+3、淘宝的前端工程师平时都做些什么项目？
+悲剧啊，这个问题还没有来得及回答，另外一位给我面试的淘宝前端工程师就把淘宝的HR叫过来了，然后和HR聊一会，最后HR告诉我一周之内会通知我的。
+呵呵整个面试到此结束，共花了2个半小时，三天后接到了淘宝网电话。（但是因为之前工作合约中有特别的说明，所以最终没有去淘宝工作，哥非常遗憾）
+</body>
+</html>

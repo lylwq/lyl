@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<link rel="stylesheet" type="text/css" href="base.css"/>
+<link rel="stylesheet" type="text/css" href="common.css"/>
+<link rel="stylesheet" type="text/css" href="country.css"/>
+</head>
+
+<body>
+
+<div class="g-w-990 g-mlr-a">
+  <ul class="sthead">
+    <li class="g-w-100">到期时间</li>
+    <li class="g-w-130">地区</li>
+    <li class="g-w-220">采购标题</li>
+    <li class="g-w-150">型号</li>
+    <li class="g-w-100">品牌</li>
+    <li class="g-w-60">批号</li>
+    <li class="g-w-60">采购量</li>
+    <li class="g-w-50">报价</li>
+  </ul>
+  
+  <tms_bind id="repeaterMain">
+  <ul class='stbody g-ptb-10 <%#(Container.ItemIndex % 2)>0?"g-bc-f7":""%>'>
+    <li class="g-w-100 g-c-99"><span class="g-c-c0">{#0,时间,7#}</span>days ONLY</li>
+    <li class="g-w-130">
+        <span class="g-mr-5 {#1,国旗样式,css_us country-flag#}"></span>{#2,国家名称,United States#}
+    </li>
+    <li class="g-w-200 g-lh-18">
+        <p><a title="{#3,采购标题title,88PG8218A1-NAE2C000#}" href="{#4,海外求购url,http://www.hqew.net/buying-leads/5WG11138AA02_7054298.html#}" class="g-c-b g-fw-b" target="_blank">{#5,采购标题text,88PG8218A1-NAE2C000#}</a></p>
+        <p class="g-mt-10"><a href="{#6,更多求购url,http://www.hqew.net/buying-leads/5WG11138AA02_7054298.html#}" class="g-c-b" target="_blank" title="更多求购">[更多求购]</a><a href="{#7,查看联系方式url,http://www.hqew.net/buying-leads/5WG11138AA02_7054298.html#}" class="g-c-b g-ml-10" title="查看联系方式">[查看联系方式]</a>
+        </p>
+    </li>
+    <li>    
+    
+      <tms_bind id="repeaterChil">
+      <ul class="stb_ul">
+        <li class="g-w-160">{#0,型号,MCP67MV-A2#}</li>
+        <li class="g-w-100">{#1,品牌,REALTEK#}</li>
+        <li class="g-w-60">{#2,批号,11#}</li>
+        <li class="g-w-60">{#3,采购量,5000#}</li>
+      </ul>
+      </tms_bind>      
+    </li>
+    
+    <li class="g-w-50"><a href="{#4,报价url,http://www.hqew.net/buying-leads/5WG11138AA02_7054298.html#}" class="g-c-b" title="点击给对方报价">报价</a></li>
+  </ul>
+  </tms_bind>
+    
+</div>
+
+</body>
+</html>

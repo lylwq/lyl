@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script type="text/javascript">
+var ready = !+[1,] ? function(f){//这个是domready的方法,是在文档加载完毕(不包括图片那些)的时候触发
+		(function(){
+			try{
+				document.documentElement.doScroll('left');
+			} catch (error){
+				setTimeout(arguments.callee, 0);
+				return;
+			};
+			f();
+		})();
+	} : function(f){
+			document.addEventListener('DOMContentLoaded', f, false);
+	}
+	
+
+ready(function(){
+	
+	var _ifa = document.getElementById("iframe"),
+		_win;
+		
+	if (!+[1,]) {//IE
+		_ifa.onreadystatechange = function() {
+			if (_ifa.readyState == "complete") {					
+				adjustIframe(_ifa);			
+			}
+		}
+	} else {//FF,webkit
+		_ifa.onload = function() {
+			alert(_ifa.contentWindow.document);
+			adjustIframe(_ifa);
+		}
+	}
+});
+
+function adjustIframe(ifa){
+	var _iframe = document.getElementById("iframe");
+	_iframe.height = ifa.contentWindow.document.body.offsetHeight
+}
+function changePage(){
+	
+	var _iframe = document.getElementById("iframe");
+	_iframe.src = "2.html";
+	}
+</script>
+</head>
+
+<body>
+<a href="#" onclick="changePage();">changePage</a>
+<iframe src="children.html" id="iframe" width="100%" height="20"></iframe>
+</body>
+</html>

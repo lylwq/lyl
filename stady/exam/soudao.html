@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+题目如下(凭记忆还原的,可能有的地方不是很到位了,但是大致是这个样子...):
+1、左边一个图片，右边<p>文字.....</p>.如何做到以下几点:
+    HTML语义化
+    宽度自适应
+    考虑图片放大,缩小,没有的情况
+    p里面的连续英文需要换行
+   
+2、a：img的alt与title有何异同？
+   b：strong与em的异同？
+
+3、清除浮动的方法，各有什么特点？
+
+4、写出下面JS的运行结果：
+    a:关于javascript的this，具体代码没记住...因为我对this实在是不了解...
+    b:
+    var a = 10,b = 20,c = 10;
+    alert(a=b);alert(a==b);alert(a==c);   
+
+5、a：javascript如何深度克隆一个对象？
+   b：javascript如何消除一个数组里面重复的元素？
+   
+6、你玩微博吗?现有这样的字符串: @小甜甜(xiaotiantian) 或者 @小王的后宫(hougong123) ..这样的字符串如何在计算字数的时候，省略括号里面的内容？比如 @小甜甜(xiaotiantian) 他的长度应该是省略 (xiaotiantian) 这个字符串后的长度，就是3. 你有多少种方法来实现，请写下代码。
+
+
+其实当时坐了那么久的公交,人早有点晕了...胃很不舒服,但是在别人的公司里面,也不好说什么,只想快点搞完,去个通风的地方吹吹,缓解下.于是提笔就做了:
+我的答案(里面有相关的说明):
+1、
+html：
+<div class="content">
+<img src="" alt="" title="" />
+<p>文字.....</p>
+</div>
+css:
+.content{text-align:left;}
+.content:before, .content:after{content:"",display:table;}
+.content:after{clear:both;}
+.content{zoom:1;}
+.content img, .content p{float:left;}
+.content p{word-wrap:break-word;word-break:break-all;}
+
+2、
+alt(alt text):为不能显示图像、窗体或applets的用户代理（UA），alt属性用来指定替换文字。替换文字的语言由lang属性指定。(在IE浏览器下会在没有title时把alt当成 tool tip显示)
+title(tool tip):该属性为设置该属性的元素提供建议性的信息。
+strong:粗体强调标签
+em:斜体强调标签
+相同点:都起强调作用
+不同点:a:em,2个字母;strong,6个字母.
+       b:em,强调;strong,更强烈的强调
+       c:em,表示内容的强调点;strong,表示内容的重要性
+这个题目我当时只答了alt与title那个(是2选1的),strong与em那个,说实话,真的只知道都是表示强调,一个粗体,一个斜体,其他的不知道,后面这些是我从网上找的,补上的...
+
+3、
+a：overflow:hidden
+b：clear:both
+c：clearfix:after{} 伪类
+.cf:before, .cf:after {
+    content:"";
+    display:table;
+}
+.cf:after {
+    clear:both;
+}
+.cf {
+    zoom:1;
+}
+
+4、
+a：这个确实是不会...this指得我头都大了,而且对JS的这个this还是不怎么理解.
+b：杯具的是 alert(a=b); 我居然答 true...后面后悔死了...应该是20,后面是true 和false
+
+5、
+a：JS克隆对象，我也没答上来。。。原生JS太菜啊
+网上搜索了一下，找到一个这样的函数：
+function Object.prototype.cloneObj()
+{
+　　function NEWOBJECT(){};
+　　NEWOBJECT. prototype = this;
+　　var anObj = new NEWOBJECT();
+　　for ( var ele in anObj )
+　　{
+　　　　 if ( typeof anObj[ele] == “object” ) return anObj[ele]. cloneObj();
+　　}
+　　return anObj;
+}
+（没有看懂。。。）
+b：这个消除数组里面重复的元素，我想到的就是双循环+判断来做的，当时的答案如下：
+function getNewArr(oldArr){
+if(typeof oldArr != "object") return oldArr;
+var newArr = [];
+var oldArrLen = oldArr.length-1, newArrLen = -1, flag = false;
+for(var i=oldArrLen; i>=0; i--){
+  flag = false;
+  for(var j=newArrLen; j>=0; j--){
+   if(oldArr === newArr[j]){
+    flag = true;
+    break;
+   }
+  }
+  if(!flag) newArrLen = newArr.push(oldArr)-1;
+}
+return newArr;
+}
+这是我能想到的办法。。。其他的没想到。
+
+6、
+微博字数这个，我是这么答的。。
+玩，qq与网易微博。
+我想到的方法如下：
+a：使用正则替换掉 （XXX），然后使用 string.length 返回长度，代码：
+function getStrLen(str){return (str.replace(/[\(\w\)]/g, "")).lenght;}
+b：使用indexOf查找"("与")"，记录相关位置，然后使用str.subString()函数截取，得到新串，再.length得到长度
+后面这个实现当时没有给出具体的代码，因为当时快中午了，他们要下班了。。。所以我也就没写了，怕影响他们下班，主要还是自己菜，不能三下五除二的搞定。。
+回来以后稍微写了下，代码如下：
+function getStrLen(str){
+return (str.substring(0, str.indexOf("("))+str.substring(str.indexOf(")")+1)).length;
+}
+应该还是有其他的方法的，肯定也会比我这个好...我这是抛砖引玉,有兴趣的朋友可以拿来参考,给出更好的解决方案.
+
+
+题目做完了以后,感觉自己蛮菜的,JS很多都是似懂非懂的样子,只能提供思路,给不出更好的解决方案,JS太菜了.这个后面会说到.
+完了以后,前台MM就拿给前端技术部(我猜的)的人去了,过了一会,就叫我过去了,说聊聊...
+说是聊聊,还真的是聊聊..一来就说,看你的题目,css什么的还一般了,就是原生JS好像不怎么熟悉啊.当时我的脸就红了(我感觉应该是红了吧...),说,这个JS这一块一直是我的软肋,现在已经在补习基础了,正在看基础的书籍.然后他就笑了下,没说什么.继续问,平时项目是使用JQ框架吧.我说,是的,用得最多的是JQ框架...然后他随便出了个题目,就是有个列表<ul><li></li></li><li id="test"></li>...</ul>，如何根据id是test的li找到这个ul，我就说用JQ的ID选择器找到test，然后parent("ul")方法就OK了。。。然后他又问还有其他方法吗？我当时还真的想的了一下，就给出了查找页面所有ul，然后后判断子元素是否包含id为test的li元素这样个蠢方法...他就看着我笑...我也就傻笑了...然后他和我说,还有一个JQ的方法可以找到元素的父亲元素,就开始在纸上写,悲催的是,他也没写出来,说,我的外语也不好,记忆力不行...然后就从电脑上打开了JQ手册...找了一会,找到一个closest()....回家了,我查了JQ手册,确实是可以找到的...
+
+后面他又问了一些我的计划什么的,我也就如实回答了,还有一些平时项目的情况等等,大概聊了又半个多小时吧...快12点多了,貌似他们要下班了,而我的手机也响了...他就说聊到这吧.我说好的.
+
+后面我问了他一个问题,我说了一下自己这次来这边面试的过程与一些心理的想法,没有负担,他就笑了,说,你就是过来玩的啊...我说没有了,也很重视这次面试的...也过来看看搜道是什么样子,还有最重要的是来看看愚人码头前辈....我说这个的时候他就笑了,说,是我,我就是码头...我当时有些激动了,说,哇,你就是码头啊,得见高人啊...他就笑,不是什么高人,菜鸟,都是菜鸟....
+
+在我看来,这是一块愉快的面试经历,抛开我的菜鸟技术不说,确实是比较愉快的...面试官平易近人,很不错,我也没有紧张什么的...不过我感觉成功的几率是很小的,感觉他们需要的是JS方面的熟手,而我就不符合他们的要求.不过没关系,等我闭关一阵子,以后再去,哇哈哈...让我更加确认了自身的不足,是好事.
+
+把这个经历写出来,也是给大家做一个参考,面试的时候不要紧张,平常心对待就好.说话自信一些,毕竟真正的牛人他不会嘲笑我们这些菜鸟,因为他们自身也是从菜鸟过来的,嘲笑我们有何益?所以放开一些,会就是会,不会就是不会,没什么大不了的,大家说,对吧.
+上面的那些面试题,大家有兴趣的可以做一做,还比较简单的,也没怎么复杂,从实际出发,题目出得很好...好了,说到这里了,有什么想法和问题,大家可以在后面回帖,我会尽量回复!
+</body>
+</html>
