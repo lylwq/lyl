@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Silk</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style type="text/css">
+	html,body{margin: 0;padding: 0;height: 100%;}
+	.container{overflow: hidden;}
+	.img1,.img2,.img3,.img4{-webkit-background-size: auto 100%;background-size: auto 100%;background-position: center;background-repeat: no-repeat;}
+	.img1{background-image: url(images/1.jpg);}
+	.img2{background-image: url(images/2.jpg);}
+	.img3{background-image: url(images/3.jpg);}
+	.img4{background-image: url(images/4.jpg);}
+</style>
+</head>
+<body>
+    
+<div class="container" id="container">
+	<div class="wrapper">
+		<div class="page img1"></div>
+		<div class="page img2"></div>
+		<div class="page img3"></div>
+		<div class="page img4"></div>
+	</div>
+</div>
+
+</body>
+<script type="text/javascript">
+
+var $ = function( selector , scope ){
+	return (scope || document.body).querySelectorAll(selector);
+}
+var Silk = function(options){
+	var con = $(options.conid)[0];
+	if(!con){return};
+	var wrap = $('.wrapper',con)[0],
+		pages = $('.page',wrap),
+		rect = {width:document.body.clientWidth,height:document.body.clientHeight};
+
+	var curPage = 0 , startY , curY = 0;
+
+	//设置单页尺寸
+	initRect([con] , rect);
+	initRect(pages , rect);
+
+	wrap.addEventListener("touchstart" , function(e){
+		
+		startY = e.touches[0].clientY;
+	} , true);
+	wrap.addEventListener("touchmove" , function(e){
+		var _curY = e.touches[0].clientY - startY + curY;
+		this.style.transform = "translateY("+_curY+"px)";
+
+	} , true);
+	wrap.addEventListener("touchend" , function(e){
+		var _curY = e.changedTouches[0].clientY - startY , rh = rect.height;
+		if( Math.abs(_curY) > rh/2 ){//拖动的距离少于一半
+			curPage = curPage + (_curY>0?1:-1);
+		}
+		curY = curPage*rh;
+		this.style.transform = "translateY("+(curY)+"px)";
+		
+	} , true);
+
+
+	function initRect(elements , rect){
+		var _style , _px = 'px';
+		for(var i = 0 , len = elements.length ; i < len ; i++ ){
+			_style = elements[i].style;
+			_style.width = rect.width + _px;
+			_style.height = rect.height + _px;
+		}
+	}
+}
+
+
+Silk({
+	conid : '#container'
+});
+
+</script>
+</html>
