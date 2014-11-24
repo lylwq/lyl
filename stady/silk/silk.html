@@ -3,12 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <title>Silk</title>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <style type="text/css">
 	html,body{margin: 0;padding: 0;height: 100%;}
 	.container{overflow: hidden;}
+	.wrapper{-webkit-transition-property: transform;-o-transition-property: transform;transition-property: transform;}
 	.img1,.img2,.img3,.img4{-webkit-background-size: auto 100%;background-size: auto 100%;background-position: center;background-repeat: no-repeat;}
 	.img1{background-image: url(images/1.jpg);}
 	.img2{background-image: url(images/2.jpg);}
@@ -36,7 +38,10 @@ var $ = function( selector , scope ){
 var Silk = function(options){
 	var con = $(options.conid)[0];
 	if(!con){return};
-	var wrap = $('.wrapper',con)[0],
+	var touchstartCallback = options.touchstartCallback,
+		touchmoveCallback = options.touchmoveCallback,
+		touchendCallback = options.touchendCallback,
+		wrap = $('.wrapper',con)[0],
 		pages = $('.page',wrap),
 		rect = {width:document.body.clientWidth,height:document.body.clientHeight};
 
@@ -47,21 +52,27 @@ var Silk = function(options){
 	initRect(pages , rect);
 
 	wrap.addEventListener("touchstart" , function(e){
-		
+		this.style.transitionDuration = "0";
 		startY = e.touches[0].clientY;
+		touchstartCallback&&touchstartCallback(pages[Math.abs(curPage)],Math.abs(curPage));
 	} , true);
 	wrap.addEventListener("touchmove" , function(e){
+		e.preventDefault();
 		var _curY = e.touches[0].clientY - startY + curY;
-		this.style.transform = "translateY("+_curY+"px)";
+		this.style.WebkitTransform = "translateY("+_curY+"px)";
 
+		touchmoveCallback&&touchmoveCallback(pages[Math.abs(curPage)],Math.abs(curPage),_curY);
 	} , true);
 	wrap.addEventListener("touchend" , function(e){
+		touchendCallback&&touchendCallback(pages[Math.abs(curPage)],Math.abs(curPage));
 		var _curY = e.changedTouches[0].clientY - startY , rh = rect.height;
 		if( Math.abs(_curY) > rh/2 ){//拖动的距离少于一半
 			curPage = curPage + (_curY>0?1:-1);
+			curPage = curPage > 0 ? 0 : (curPage < -pages.length+1 ? -pages.length+1 : curPage);
 		}
 		curY = curPage*rh;
-		this.style.transform = "translateY("+(curY)+"px)";
+		this.style.transitionDuration = ".3s";
+		this.style.WebkitTransform = "translateY("+(curY)+"px)";
 		
 	} , true);
 
@@ -78,7 +89,19 @@ var Silk = function(options){
 
 
 Silk({
-	conid : '#container'
+	conid : '#container',
+	/*每页的动画可以在相印回调中做,建议使用css3相关属性*/
+	touchstartCallback:function(pageElement,page){},
+	touchmoveCallback:function(pageElement,page,curY){
+		/*
+		var ch = document.body.clientHeight,
+			scale = (ch-Math.abs(curY)%ch) / ch;
+
+		(page > 0 && page < 3)&& (pageElement.style.WebkitTransform = "scale("+scale+")");*/
+	},
+	touchendCallback:function(pageElement,page){
+		pageElement.style.WebkitTransform = "scale(1)";
+	}
 });
 
 </script>
