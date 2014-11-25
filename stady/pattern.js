@@ -289,12 +289,12 @@ var XhrManager = {
 
 //视图显示对象
 var DisplayModule = new Interface('DisplayModule' , ['append' , 'remove' , 'clear']);
-var listDisplay = function( id , parent){
+var LisDisplay = function( id , parent){
 	this.list = document.createElement('ul');
 	this.list.id = id;
 	parent.appendChild(this.list);
 };
-listDisplay.prototype = {
+LisDisplay.prototype = {
 	append : function(text){
 		var newEl = document.createElement('li');
 		this.list.appendChild(newEl);
@@ -369,3 +369,14 @@ var FeedManager = {
 		return new FeedReader(displayModule , xhrHandler , conf);
 	}
 }
+
+
+/*
+8.桥接模式
+保持每个功能方法的单一职责,保持功能的纯洁,将调用时的业务处理抽离出来
+*/
+
+
+/*
+9.组合模式
+*/
