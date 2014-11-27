@@ -102,6 +102,9 @@ var uploadObj = iteratorUploadObj(getActiveUploadObj, getFlashUploadObj, getForm
 
 /*
 8.发布-订阅模式
+发布-订阅模式的优点非常明显，一为时间上的解耦，二为对象之间的解耦
+
+另外发布-订阅模式虽然可以弱化对象之间的联系，但如果过度使用的话，会导致程序难以跟踪维护和理解。要跟踪一个bug不是件轻松的事情。
 */
 var Event = (function() {
 
@@ -239,3 +242,184 @@ var Event = (function() {
 	return Event;
 
 })();
+
+/*
+9.命令模式
+用一种松耦合的方式来设计程序，使得请求发送者和请求接收者能够消除彼此之间的耦合关系。
+把对象的行为进行封装,通过命令对象进行统一调用,形式上类似于策略模式,只是意图上的不同,命令模式还可方便的记录对象的行为,可以做回放或撤销的功能.
+*/
+var Ryu = {
+	attack: function() {
+		console.log('攻击');
+	},
+	defense: function() {
+		console.log('防御');
+	},
+	jump: function() {
+		console.log('跳跃');
+	},
+	crouch: function() {
+		console.log('蹲下');
+	}
+};　　
+var makeCommand = function(receiver, state) { // 创建命令
+	return function() {
+		receiver[state]();
+	}
+};　　
+var commands = {
+	"119": "jump", // W
+	"115": "crouch", // S
+	"97": "defense", // A
+	"100": "attack" // D
+};
+
+var commandStack = []; //保存命令的堆栈
+
+document.onkeypress = function(ev) {
+	var keyCode = ev.keyCode,
+		command = makeCommand(Ryu, commands[keyCode]);
+
+	if (command) {
+		command(); // 执行命令
+		commandStack.push(command); // 将刚刚执行过的命令保存进堆栈
+	}
+};　　
+document.getElementById('replay').onclick = function() { // 点击播放录像
+	var command;
+	while (command = commandStack.shift()) { // 从堆栈里依次取出命令并执行
+		command();
+	}
+};
+
+/*
+10.组合模式
+组合模式可以方便地构造一棵树来表示对象的部分-整体结构。特别我们在开发期间不确定这棵树到底存在多少层次的时候。
+组合模式使得客户可以忽略组合对象和叶对象的区别,各自做自己正确的事情，这是组合模式最重要的能力。
+*/
+var Folder = function( name ){
+    this.name = name;
+    this.parent = null;    //增加this.parent属性
+    this.files = [];
+};
+
+Folder.prototype.add = function( file ){
+    file.parent = this;    //设置父对象
+    this.files.push( file );
+};
+
+Folder.prototype.scan = function(){
+    console.log( '开始扫描文件夹: ' + this.name );
+    for ( var i = 0, file, files = this.files; file = files[ i++ ]; ){
+        file.scan();
+    }
+};
+
+Folder.prototype.remove = function(){
+    if ( !this.parent ){    //根节点或者树外的游离节点
+        return;
+    }
+    for ( var files = this.parent.files, l = files.length - 1; l >=0; l-- ){
+        var file = files[ l ];
+        if ( file === this ){
+            files.splice( l, 1 );
+        }
+    }
+};
+var File = function( name ){
+    this.name = name;
+    this.parent = null;
+};
+
+File.prototype.add = function(){
+    throw new Error( '不能添加在文件下面' );
+};
+
+File.prototype.scan = function(){
+    console.log( '开始扫描文件: ' + this.name );
+};
+
+File.prototype.remove = function(){
+    if ( !this.parent ){    //根节点或者树外的游离节点
+        return;
+    }
+    for ( var files = this.parent.files, l = files.length - 1; l >=0; l-- ){
+        var file = files[ l ];
+        if ( file === this ){
+            files.splice( l, 1 );
+        }
+    }
+};
+
+var folder = new Folder( '学习资料' );
+var folder1 = new Folder( 'JavaScript' );
+var file1 = new Folder ( '深入浅出Node.js' );
+
+folder1.add( new File( 'JavaScript设计模式与开发实践' ) );
+folder.add( folder1 );
+folder.add( file1 );
+
+folder1.remove();    //移除文件夹
+folder.scan();
+
+/*
+11.模版方法模式
+主要的思想是"好莱坞原则",即"别调用我，我们会调用你".
+模版会设计好算法调用的规则,而实现模版的具体算法交给实例化的"子类"去重写.
+类似于定义好接口和完成对接口的调用,具体实现交给"子类/实例类".
+把具体的流程顺序抽象出来,把变化的方法实现交给实例类.
+*/
+var Beverage = function(){};
+
+Beverage.prototype.boilWater = function(){
+    console.log( '把水煮沸' );
+};
+
+Beverage.prototype.brew = function(){
+    throw new Error( '子类必须重写brew方法' );
+};
+
+Beverage.prototype.pourInCup = function(){
+    throw new Error( '子类必须重写pourInCup方法' );
+};
+
+Beverage.prototype.addCondiments = function(){
+    throw new Error( '子类必须重写addCondiments方法' );
+};
+
+Beverage.prototype.customerWantsCondiments = function(){
+    return true;    //默认需要调料
+};
+
+Beverage.prototype.init = function(){
+    this.boilWater();
+    this.brew();
+    this.pourInCup();
+    if ( this.customerWantsCondiments() ){    //如果挂钩返回true，则需要调料
+        this.addCondiments();
+    }
+};
+
+
+var CoffeeWithHook = function(){};
+
+CoffeeWithHook.prototype = new Beverage();
+
+CoffeeWithHook.prototype.brew = function(){
+    console.log( '用沸水冲泡咖啡' );
+};
+
+CoffeeWithHook.prototype.pourInCup = function(){
+    console.log( '把咖啡倒进杯子' );
+};
+
+CoffeeWithHook.prototype.addCondiments = function(){
+    console.log( '加糖和牛奶' );
+};
+
+CoffeeWithHook.prototype.customerWantsCondiments = function(){
+    return window.confirm( '请问需要调料吗？' );
+};
+
+var coffeeWithHook = new CoffeeWithHook();
+coffeeWithHook.init();
