@@ -423,3 +423,192 @@ CoffeeWithHook.prototype.customerWantsCondiments = function(){
 
 var coffeeWithHook = new CoffeeWithHook();
 coffeeWithHook.init();
+
+
+/*
+12.享元模式
+实现享元模式的关键是把内部状态和外部状态分离开来,并把外部状态保存在其它地方，在合适的时刻再把外部状态组装进共享对象。
+*/
+var Upload = function( uploadType){
+    this.uploadType = uploadType;
+};
+Upload.prototype.delFile = function( id ){
+    uploadManager.setExternalState( id, this );  // (1)
+
+    if ( this.fileSize < 3000 ){
+        return this.dom.parentNode.removeChild( this.dom );
+    }
+
+    if ( window.confirm( '确定要删除该文件吗? ' + this.fileName ) ){
+        return this.dom.parentNode.removeChild( this.dom );
+    }
+};
+var UploadFactory = (function(){
+    var createdFlyWeightObjs = {};
+
+    return {
+        create: function( uploadType){
+            if ( createdFlyWeightObjs [ uploadType] ){
+                return createdFlyWeightObjs [ uploadType];
+            }
+
+            return createdFlyWeightObjs [ uploadType] = new Upload( uploadType);
+        }
+    }
+})();
+
+var uploadManager = (function(){
+    var uploadDatabase = {};
+
+    return {
+        add: function( id, uploadType, fileName, fileSize ){
+            var flyWeightObj = UploadFactory.create( uploadType );
+
+            var dom = document.createElement( 'div' );
+            dom.innerHTML = 
+                    '<span>文件名称:'+ fileName +', 文件大小: '+ fileSize +'</span>' +
+                    '<button class="delFile">删除</button>';
+
+            dom.querySelector( '.delFile' ).onclick = function(){
+                flyWeightObj.delFile( id );
+            }
+
+            document.body.appendChild( dom );
+
+            uploadDatabase[ id ] = {
+                fileName: fileName,
+                fileSize: fileSize,
+                dom: dom        
+            };
+
+            return flyWeightObj ;
+        },
+        setExternalState: function( id, flyWeightObj ){
+            var uploadData = uploadDatabase[ id ];
+            for ( var i in uploadData ){
+                flyWeightObj[ i ] = uploadData[ i ];
+            }
+        }
+    }
+})();
+
+var id = 0;
+
+window.startUpload = function( uploadType, files ){
+   for ( var i = 0, file; file = files[ i++ ]; ){
+      var uploadObj = uploadManager.add( ++id, uploadType, file.fileName, file.fileSize );
+   }
+};
+startUpload( 'plugin', [
+    {
+        fileName: '1.txt',
+        fileSize: 1000
+    },
+    {
+        fileName: '2.html',
+        fileSize: 3000
+    },
+    {
+        fileName: '3.txt',
+        fileSize: 5000
+    }
+]);
+
+startUpload( 'flash', [
+    {
+        fileName: '4.txt',
+        fileSize: 1000
+    },
+    {
+        fileName: '5.html',
+        fileSize: 3000
+    },
+    {
+        fileName: '6.txt',
+        fileSize: 5000
+    }
+]);
+
+/*
+12.7 通用对象池
+*/
+var objectPoolFactory = function( createObjFn ){
+    var objectPool = [];
+
+    return {
+        create: function(){
+            var obj = objectPool.length === 0 ? 
+                createObjFn.apply( this, arguments ) : objectPool.shift();
+
+            return obj;
+        },
+        recover: function( obj ){
+            objectPool.push( obj );
+        }
+    }
+};
+
+/*
+13.职责链模式
+职责链模式可以很好的帮助我们管理代码，降低发起请求的对象和处理请求的对象之间的耦合性。职责链中的节点数量和顺序是可以自由变化的，我们可以在运行时刻决定链中包含哪些节点。
+例如:作用域链、原型链、或是dom节点中的事件冒泡
+*/
+
+var order500yuan = function( orderType, pay, stock ){
+    if ( orderType === 1 && pay === true ){
+        console.log( '500元定金预购, 得到100优惠券' );
+    }else{
+        return 'nextSuccessor';    //我不知道下一个节点是谁，反正把请求往后面传递
+    }
+};
+
+var order200yuan = function( orderType, pay, stock ){
+    if ( orderType === 2 && pay === true ){
+        console.log( '200元定金预购, 得到50优惠券' );
+    }else{
+        return 'nextSuccessor';    //我不知道下一个节点是谁，反正把请求往后面传递
+    }
+};
+
+var orderNormal = function( orderType, pay, stock ){
+    if ( stock > 0 ){
+        console.log( '普通购买, 无优惠券' );
+    }else{
+        console.log( '手机库存不足' );
+    }
+};
+
+var Chain = function( fn ){
+    this.fn = fn;
+    this.successor = null;
+};
+
+Chain.prototype.setNextSuccessor = function( successor ){
+    return this.successor = successor;
+};
+
+Chain.prototype.passRequest = function(){
+    var ret = this.fn.apply( this, arguments );
+
+    if ( ret === 'nextSuccessor' ){
+        return this.successor && this.successor.passRequest.apply( this.successor, arguments );
+    }
+
+    return ret;
+};
+//如果某个任务需要异步返回结果才能决定后面的调用,就不需返回'nextSuccessor',而是直接调用next;
+Chain.prototype.next= function(){
+    return this.successor && this.successor.passRequest.apply( this.successor, arguments );
+};
+
+order500yuan = new Chain( order500yuan );
+order200yuan = new Chain( order200yuan );
+orderNormal = new Chain( orderNormal );
+
+order500yuan.setNextSuccessor( order200yuan );
+order200yuan.setNextSuccessor( orderNormal );
+
+order500yuan.passRequest( 1, true, 500 );        // 输出： 500元定金预购, 得到100优惠券
+order500yuan.passRequest( 2, true, 500 );     // 输出：200元定金预购, 得到50优惠券
+order500yuan.passRequest( 3, true, 500 );     // 输出：普通购买, 无优惠券
+order500yuan.passRequest( 1, false, 0 );      // 输出： 手机库存不足
