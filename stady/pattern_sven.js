@@ -612,3 +612,183 @@ order500yuan.passRequest( 1, true, 500 );        // 输出： 500元定金预购
 order500yuan.passRequest( 2, true, 500 );     // 输出：200元定金预购, 得到50优惠券
 order500yuan.passRequest( 3, true, 500 );     // 输出：普通购买, 无优惠券
 order500yuan.passRequest( 1, false, 0 );      // 输出： 手机库存不足
+
+/*
+14.中介者模式
+中介者模式是将多个对象间的相互影响封装到中介者中,对象只需要加入到中介者,当对象的状态发生改变影响到其他对象时,只需要给中介者发送消息,由中介者处理后面的事情.
+而中介者对象经常是巨大的。中介者对象自身往往就是一个难以维护的对象
+*/
+
+function Player( name, teamColor ){
+    this.name = name;  //角色名字
+    this.teamColor = teamColor;  //队伍颜色 
+    this.state = 'alive';    //玩家生存状态
+};
+
+Player.prototype.win = function(){
+    console.log( this.name + ' won ' );
+};
+
+Player.prototype.lose = function(){
+    console.log( this.name +' lost' );
+};
+
+/*******************玩家死亡*****************/
+
+Player.prototype.die = function(){
+    this.state = 'dead';
+    playerDirector.reciveMessage( 'playerDead', this );    //给中介者发送消息，玩家死亡
+};
+
+/*******************移除玩家*****************/
+
+Player.prototype.remove = function(){
+    playerDirector.reciveMessage( 'removePlayer', this );     //给中介者发送消息，移除一个玩家
+};
+
+/*******************玩家换队*****************/
+
+Player.prototype.changeTeam = function( color ){
+    playerDirector.reciveMessage( 'changeTeam', this, color );    //给中介者发送消息，玩家换队
+};
+
+var playerDirector= ( function(){
+    var players = {},    //保存所有玩家
+       operations = {}; //中介者可以执行的操作
+
+    /****************新增一个玩家***************************/
+    operations.addPlayer = function( player ){    
+        var teamColor = player.teamColor;    //玩家的队伍颜色
+        players[ teamColor ] = players[ teamColor ] || [];    //如果该颜色的玩家还没有成立队伍，则新成立一个队伍
+        players[ teamColor ].push( player );    //添加玩家进队伍。
+    };
+
+    /****************移除一个玩家***************************/
+    operations.removePlayer = function( player ){
+        var teamColor = player.teamColor,    //玩家的队伍颜色
+            teamPlayers = players[ teamColor ] || [];    //该队伍所有成员
+        for ( var i = teamPlayers.length - 1; i >= 0; i-- ){    //遍历删除
+            if ( teamPlayers[ i ] === player ){
+                teamPlayers.splice( i, 1 );
+            }
+        }
+    };
+
+    /****************玩家换队***************************/
+    operations.changeTeam = function( player, newTeamColor ){    //玩家换队
+        operations.removePlayer( player );    //从原队伍中删除
+        player.teamColor = newTeamColor;    //改变队伍颜色
+        operations.addPlayer( player );        //增加到新队伍中
+    };
+
+    operations.playerDead = function( player ){      //玩家死亡
+        var teamColor = player.teamColor,
+            teamPlayers = players[ teamColor ];    //玩家所在队伍
+
+        var all_dead = true;
+
+        for ( var i = 0, player; player = teamPlayers[ i++ ]; ){
+            if ( player.state !== 'dead' ){
+                all_dead = false;
+                break;
+            }
+        }
+
+        if ( all_dead === true ){    //全部死亡
+
+            for ( var i = 0, player; player = teamPlayers[ i++ ]; ){
+                player.lose();    //本队所有玩家lose
+            }
+
+            for ( var color in players ){
+                if ( color !== teamColor ){
+                    var teamPlayers = players[ color ];    //其他队伍的玩家
+                    for ( var i = 0, player; player = teamPlayers[ i++ ]; ){
+                        player.win();    //其他队伍所有玩家win
+                    }
+                }
+            }
+        }
+    };
+
+    var reciveMessage = function(){
+        var message = Array.prototype.shift.call( arguments );    //arguments的第一个参数为消息名称.
+        operations[ message ].apply( this, arguments );
+    };
+
+    return {
+        reciveMessage: reciveMessage
+    }
+
+})();
+
+var playerFactory = function( name, teamColor ){
+    var newPlayer = new Player( name, teamColor );     //创造一个新的玩家对象
+    playerDirector.reciveMessage( 'addPlayer', newPlayer );    //给中介者发送消息，新增玩家
+
+    return newPlayer;
+};
+
+/*
+15.装饰者模式
+可以给函数动态的添加另外相对的职能,增加各职能的重用性,减少各职能间的耦合.
+除了给函数动态添加职能,更可以给对象动态添加只能.
+before/after方法实际上是返回一个新的方法,所以原方法上的一些属性会被丢失.而且这种装饰方式其实也叠加了函数的作用域，如果装饰的链条过长，性能上也会受到一些影响。
+*/
+//Function.prototype.after
+Function.prototype.before = function( beforefn ){
+    var __self = this;  
+    return function(){
+    	//可以根据前方函数的返回值来决定后面的函数是否执行
+    	/*if ( beforefn.apply( this, arguments ) === false ){    
+            //beforefn返回false的情况直接return，不再执行后面的原函数。
+            return;
+        }*/
+        beforefn.apply( this, arguments );        //  (1)
+
+        return __self.apply( this, arguments );    //  (2)
+    }
+}
+
+
+var ajax= function( type, url, param ){
+    console.log(param);     // 发送ajax请求的代码略..
+};
+
+
+var getToken = function(){
+    return 'Token';
+}
+
+ajax = ajax.before(function( type, url, param ){
+    param.Token = getToken();
+});
+
+ajax( 'get', 'http://xxx.com/userinfo', { name: 'sven' } );
+
+
+/*********************************/
+//给appendDom函数装饰上计算执行时间的功能
+var appendDom = function(){
+    for ( var i = 0; i < 1000; i++ ){
+        document.body.appendChild( document.createElement( 'div' ) );
+    }
+};
+var funcExecTime = function( fn ){
+
+    return (function(){
+        var startTime;
+
+        return fn.before(function(){
+            startTime = +new Date;
+        }).after(function(){
+            var endTime = +new Date
+            console.log( '消耗的时间: ' + endTime - startTime );            
+        });
+
+    })();
+};
+
+
+appendDom = funcExecTime ( appendDom ); 
+appendDom();
