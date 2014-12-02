@@ -4,10 +4,10 @@
 */
 //惰性单例
 var getSingle = function(fn) {
-	var result;
-	return function() {
-		return result || (result = fn.apply(this, arguments));
-	}
+    var result;
+    return function() {
+        return result || (result = fn.apply(this, arguments));
+    }
 };
 
 /*
@@ -15,19 +15,19 @@ var getSingle = function(fn) {
 定义一系列的算法，把它们一个个封装起来。并且使它们可以相互替换。
 */
 var strategies = {
-	"S": function(salary) {
-		return salary * 4;
-	},
-	"A": function(salary) {
-		return salary * 3;
-	},
-	"B": function(salary) {
-		return salary * 2;
-	}
+    "S": function(salary) {
+        return salary * 4;
+    },
+    "A": function(salary) {
+        return salary * 3;
+    },
+    "B": function(salary) {
+        return salary * 2;
+    }
 };
 
 var calculateBonus = function(level, salary) {
-	return strategies[level](salary);
+    return strategies[level](salary);
 };
 
 console.log(calculateBonus('S', 20000)); // 输出： 80000
@@ -40,27 +40,27 @@ console.log(calculateBonus('A', 10000)); // 输出： 30000
 代理的种类有很多:虚拟代理,缓存代理...
 */
 var myImage = (function() {
-	var imgNode = document.createElement('img');
-	document.body.appendChild(imgNode);
+    var imgNode = document.createElement('img');
+    document.body.appendChild(imgNode);
 
-	return {
-		setSrc: function(src) {
-			imgNode.src = src;
-		}
-	}
+    return {
+        setSrc: function(src) {
+            imgNode.src = src;
+        }
+    }
 })();
 
 var proxyImage = (function() {
-	var img = new Image;
-	img.onload = function() {
-		myImage.setSrc(this.src);
-	}
-	return {
-		setSrc: function(src) {
-			myImage.setSrc('file:///C:/Users/svenzeng/Desktop/loading.gif');
-			img.src = src;
-		}
-	}
+    var img = new Image;
+    img.onload = function() {
+        myImage.setSrc(this.src);
+    }
+    return {
+        setSrc: function(src) {
+            myImage.setSrc('file:///C:/Users/svenzeng/Desktop/loading.gif');
+            img.src = src;
+        }
+    }
 })();
 
 proxyImage.setSrc('http://imgcache.qq.com/music/photo//k/000GGDys0yA0Nk.jpg');
@@ -70,32 +70,32 @@ proxyImage.setSrc('http://imgcache.qq.com/music/photo//k/000GGDys0yA0Nk.jpg');
 迭代器模式的作用是，提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。迭代器模式把迭代的过程从业务逻辑中分离出来
 */
 var getActiveUploadObj = function() {
-	try {
-		return new ActiveXObject("TXFTNActiveX.FTNUpload"); //IE上传控件
-	} catch (e) {
-		return false;
-	}
+    try {
+        return new ActiveXObject("TXFTNActiveX.FTNUpload"); //IE上传控件
+    } catch (e) {
+        return false;
+    }
 };
 
 var getFlashUploadObj = function() {
-	if (supportFlash()) { // supportFlash函数未提供
-		var str = '<object type="application/x-shockwave-flash"></object>';
-		return $(str).appendTo($('body'));
-	}
-	return false;
+    if (supportFlash()) { // supportFlash函数未提供
+        var str = '<object type="application/x-shockwave-flash"></object>';
+        return $(str).appendTo($('body'));
+    }
+    return false;
 };
 
 var getFormUpladObj = function() {
-	var str = '<input name="file" type="file" class="ui-file"/>'; //表单上传
-	return $(str).appendTo($('body'));
+    var str = '<input name="file" type="file" class="ui-file"/>'; //表单上传
+    return $(str).appendTo($('body'));
 };
 var iteratorUploadObj = function() {
-	for (var i = 0, fn; fn = arguments[i++];) {
-		var uploadObj = fn();
-		if (uploadObj !== false) {
-			return uploadObj;
-		}
-	}
+    for (var i = 0, fn; fn = arguments[i++];) {
+        var uploadObj = fn();
+        if (uploadObj !== false) {
+            return uploadObj;
+        }
+    }
 };
 //这样无论以后有再多情况也可以轻松往迭代器里面添加
 var uploadObj = iteratorUploadObj(getActiveUploadObj, getFlashUploadObj, getFormUpladObj);
@@ -108,138 +108,138 @@ var uploadObj = iteratorUploadObj(getActiveUploadObj, getFlashUploadObj, getForm
 */
 var Event = (function() {
 
-	var global = this,
-		Event,
-		_default = 'default';
+    var global = this,
+        Event,
+        _default = 'default';
 
-	Event = function() {
-		var _listen,
-			_trigger,
-			_remove,
-			_slice = Array.prototype.slice,
-			_shift = Array.prototype.shift,
-			_unshift = Array.prototype.unshift,
-			namespaceCache = {},
-			_create,
-			find,
-			each = function(ary, fn) {
-				var ret;
-				for (var i = 0, l = ary.length; i < l; i++) {
-					var n = ary[i];
-					ret = fn.call(n, i, n);
-				}
-				return ret;
-			};
+    Event = function() {
+        var _listen,
+            _trigger,
+            _remove,
+            _slice = Array.prototype.slice,
+            _shift = Array.prototype.shift,
+            _unshift = Array.prototype.unshift,
+            namespaceCache = {},
+            _create,
+            find,
+            each = function(ary, fn) {
+                var ret;
+                for (var i = 0, l = ary.length; i < l; i++) {
+                    var n = ary[i];
+                    ret = fn.call(n, i, n);
+                }
+                return ret;
+            };
 
-		_listen = function(key, fn, cache) {
-			if (!cache[key]) {
-				cache[key] = [];
-			}
-			cache[key].push(fn);
-		};
+        _listen = function(key, fn, cache) {
+            if (!cache[key]) {
+                cache[key] = [];
+            }
+            cache[key].push(fn);
+        };
 
-		_remove = function(key, cache, fn) {
-			if (cache[key]) {
-				if (fn) {
-					for (var i = cache[key].length; i >= 0; i--) {
-						if (cache[key] === fn) {
-							cache[key].splice(i, 1);
-						}
-					}
-				} else {
-					cache[key] = [];
-				}
-			}
-		};
+        _remove = function(key, cache, fn) {
+            if (cache[key]) {
+                if (fn) {
+                    for (var i = cache[key].length; i >= 0; i--) {
+                        if (cache[key] === fn) {
+                            cache[key].splice(i, 1);
+                        }
+                    }
+                } else {
+                    cache[key] = [];
+                }
+            }
+        };
 
-		_trigger = function() {
-			var cache = _shift.call(arguments),
-				key = _shift.call(arguments),
-				args = arguments,
-				_self = this,
-				ret,
-				stack = cache[key];
+        _trigger = function() {
+            var cache = _shift.call(arguments),
+                key = _shift.call(arguments),
+                args = arguments,
+                _self = this,
+                ret,
+                stack = cache[key];
 
-			if (!stack || !stack.length) {
-				return;
-			}
+            if (!stack || !stack.length) {
+                return;
+            }
 
-			return each(stack, function() {
-				return this.apply(_self, args);
-			});
-		};
+            return each(stack, function() {
+                return this.apply(_self, args);
+            });
+        };
 
-		_create = function(namespace) {
-			var namespace = namespace || _default;
-			var cache = {},
-				offlineStack = [], //离线事件 
-				ret = {
-					listen: function(key, fn, last) {
-						_listen(key, fn, cache);
-						if (offlineStack === null) {
-							return;
-						}
-						if (last === 'last') {
-							offlineStack.length && offlineStack.pop()();
-						} else {
-							each(offlineStack, function() {
-								this();
-							});
-						}
+        _create = function(namespace) {
+            var namespace = namespace || _default;
+            var cache = {},
+                offlineStack = [], //离线事件 
+                ret = {
+                    listen: function(key, fn, last) {
+                        _listen(key, fn, cache);
+                        if (offlineStack === null) {
+                            return;
+                        }
+                        if (last === 'last') {
+                            offlineStack.length && offlineStack.pop()();
+                        } else {
+                            each(offlineStack, function() {
+                                this();
+                            });
+                        }
 
-						offlineStack = null;
-					},
-					one: function(key, fn, last) {
-						_remove(key, cache);
-						this.listen(key, fn, last);
-					},
-					remove: function(key, fn) {
-						_remove(key, cache, fn);
-					},
-					trigger: function() {
-						var fn,
-							args,
-							_self = this;
+                        offlineStack = null;
+                    },
+                    one: function(key, fn, last) {
+                        _remove(key, cache);
+                        this.listen(key, fn, last);
+                    },
+                    remove: function(key, fn) {
+                        _remove(key, cache, fn);
+                    },
+                    trigger: function() {
+                        var fn,
+                            args,
+                            _self = this;
 
-						_unshift.call(arguments, cache);
-						args = arguments;
-						fn = function() {
-							return _trigger.apply(_self, args);
-						};
+                        _unshift.call(arguments, cache);
+                        args = arguments;
+                        fn = function() {
+                            return _trigger.apply(_self, args);
+                        };
 
-						if (offlineStack) {
-							return offlineStack.push(fn);
-						}
-						return fn();
-					}
-				};
+                        if (offlineStack) {
+                            return offlineStack.push(fn);
+                        }
+                        return fn();
+                    }
+                };
 
-			return namespace ?
-				(namespaceCache[namespace] ? namespaceCache[namespace] : namespaceCache[namespace] = ret) : ret;
-		};
+            return namespace ?
+                (namespaceCache[namespace] ? namespaceCache[namespace] : namespaceCache[namespace] = ret) : ret;
+        };
 
-		return {
-			create: _create,
-			one: function(key, fn, last) {
-				var event = this.create();
-				event.one(key, fn, last);
-			},
-			remove: function(key, fn) {
-				var event = this.create();
-				event.remove(key, fn);
-			},
-			listen: function(key, fn, last) {
-				var event = this.create();
-				event.listen(key, fn, last);
-			},
-			trigger: function() {
-				var event = this.create();
-				event.trigger.apply(this, arguments);
-			}
-		};
-	}();
+        return {
+            create: _create,
+            one: function(key, fn, last) {
+                var event = this.create();
+                event.one(key, fn, last);
+            },
+            remove: function(key, fn) {
+                var event = this.create();
+                event.remove(key, fn);
+            },
+            listen: function(key, fn, last) {
+                var event = this.create();
+                event.listen(key, fn, last);
+            },
+            trigger: function() {
+                var event = this.create();
+                event.trigger.apply(this, arguments);
+            }
+        };
+    }();
 
-	return Event;
+    return Event;
 
 })();
 
@@ -249,47 +249,47 @@ var Event = (function() {
 把对象的行为进行封装,通过命令对象进行统一调用,形式上类似于策略模式,只是意图上的不同,命令模式还可方便的记录对象的行为,可以做回放或撤销的功能.
 */
 var Ryu = {
-	attack: function() {
-		console.log('攻击');
-	},
-	defense: function() {
-		console.log('防御');
-	},
-	jump: function() {
-		console.log('跳跃');
-	},
-	crouch: function() {
-		console.log('蹲下');
-	}
+    attack: function() {
+        console.log('攻击');
+    },
+    defense: function() {
+        console.log('防御');
+    },
+    jump: function() {
+        console.log('跳跃');
+    },
+    crouch: function() {
+        console.log('蹲下');
+    }
 };　　
 var makeCommand = function(receiver, state) { // 创建命令
-	return function() {
-		receiver[state]();
-	}
+    return function() {
+        receiver[state]();
+    }
 };　　
 var commands = {
-	"119": "jump", // W
-	"115": "crouch", // S
-	"97": "defense", // A
-	"100": "attack" // D
+    "119": "jump", // W
+    "115": "crouch", // S
+    "97": "defense", // A
+    "100": "attack" // D
 };
 
 var commandStack = []; //保存命令的堆栈
 
 document.onkeypress = function(ev) {
-	var keyCode = ev.keyCode,
-		command = makeCommand(Ryu, commands[keyCode]);
+    var keyCode = ev.keyCode,
+        command = makeCommand(Ryu, commands[keyCode]);
 
-	if (command) {
-		command(); // 执行命令
-		commandStack.push(command); // 将刚刚执行过的命令保存进堆栈
-	}
+    if (command) {
+        command(); // 执行命令
+        commandStack.push(command); // 将刚刚执行过的命令保存进堆栈
+    }
 };　　
 document.getElementById('replay').onclick = function() { // 点击播放录像
-	var command;
-	while (command = commandStack.shift()) { // 从堆栈里依次取出命令并执行
-		command();
-	}
+    var command;
+    while (command = commandStack.shift()) { // 从堆栈里依次取出命令并执行
+        command();
+    }
 };
 
 /*
@@ -297,69 +297,69 @@ document.getElementById('replay').onclick = function() { // 点击播放录像
 组合模式可以方便地构造一棵树来表示对象的部分-整体结构。特别我们在开发期间不确定这棵树到底存在多少层次的时候。
 组合模式使得客户可以忽略组合对象和叶对象的区别,各自做自己正确的事情，这是组合模式最重要的能力。
 */
-var Folder = function( name ){
+var Folder = function(name) {
     this.name = name;
-    this.parent = null;    //增加this.parent属性
+    this.parent = null; //增加this.parent属性
     this.files = [];
 };
 
-Folder.prototype.add = function( file ){
-    file.parent = this;    //设置父对象
-    this.files.push( file );
+Folder.prototype.add = function(file) {
+    file.parent = this; //设置父对象
+    this.files.push(file);
 };
 
-Folder.prototype.scan = function(){
-    console.log( '开始扫描文件夹: ' + this.name );
-    for ( var i = 0, file, files = this.files; file = files[ i++ ]; ){
+Folder.prototype.scan = function() {
+    console.log('开始扫描文件夹: ' + this.name);
+    for (var i = 0, file, files = this.files; file = files[i++];) {
         file.scan();
     }
 };
 
-Folder.prototype.remove = function(){
-    if ( !this.parent ){    //根节点或者树外的游离节点
+Folder.prototype.remove = function() {
+    if (!this.parent) { //根节点或者树外的游离节点
         return;
     }
-    for ( var files = this.parent.files, l = files.length - 1; l >=0; l-- ){
-        var file = files[ l ];
-        if ( file === this ){
-            files.splice( l, 1 );
+    for (var files = this.parent.files, l = files.length - 1; l >= 0; l--) {
+        var file = files[l];
+        if (file === this) {
+            files.splice(l, 1);
         }
     }
 };
-var File = function( name ){
+var File = function(name) {
     this.name = name;
     this.parent = null;
 };
 
-File.prototype.add = function(){
-    throw new Error( '不能添加在文件下面' );
+File.prototype.add = function() {
+    throw new Error('不能添加在文件下面');
 };
 
-File.prototype.scan = function(){
-    console.log( '开始扫描文件: ' + this.name );
+File.prototype.scan = function() {
+    console.log('开始扫描文件: ' + this.name);
 };
 
-File.prototype.remove = function(){
-    if ( !this.parent ){    //根节点或者树外的游离节点
+File.prototype.remove = function() {
+    if (!this.parent) { //根节点或者树外的游离节点
         return;
     }
-    for ( var files = this.parent.files, l = files.length - 1; l >=0; l-- ){
-        var file = files[ l ];
-        if ( file === this ){
-            files.splice( l, 1 );
+    for (var files = this.parent.files, l = files.length - 1; l >= 0; l--) {
+        var file = files[l];
+        if (file === this) {
+            files.splice(l, 1);
         }
     }
 };
 
-var folder = new Folder( '学习资料' );
-var folder1 = new Folder( 'JavaScript' );
-var file1 = new Folder ( '深入浅出Node.js' );
+var folder = new Folder('学习资料');
+var folder1 = new Folder('JavaScript');
+var file1 = new Folder('深入浅出Node.js');
 
-folder1.add( new File( 'JavaScript设计模式与开发实践' ) );
-folder.add( folder1 );
-folder.add( file1 );
+folder1.add(new File('JavaScript设计模式与开发实践'));
+folder.add(folder1);
+folder.add(file1);
 
-folder1.remove();    //移除文件夹
+folder1.remove(); //移除文件夹
 folder.scan();
 
 /*
@@ -369,56 +369,56 @@ folder.scan();
 类似于定义好接口和完成对接口的调用,具体实现交给"子类/实例类".
 把具体的流程顺序抽象出来,把变化的方法实现交给实例类.
 */
-var Beverage = function(){};
+var Beverage = function() {};
 
-Beverage.prototype.boilWater = function(){
-    console.log( '把水煮沸' );
+Beverage.prototype.boilWater = function() {
+    console.log('把水煮沸');
 };
 
-Beverage.prototype.brew = function(){
-    throw new Error( '子类必须重写brew方法' );
+Beverage.prototype.brew = function() {
+    throw new Error('子类必须重写brew方法');
 };
 
-Beverage.prototype.pourInCup = function(){
-    throw new Error( '子类必须重写pourInCup方法' );
+Beverage.prototype.pourInCup = function() {
+    throw new Error('子类必须重写pourInCup方法');
 };
 
-Beverage.prototype.addCondiments = function(){
-    throw new Error( '子类必须重写addCondiments方法' );
+Beverage.prototype.addCondiments = function() {
+    throw new Error('子类必须重写addCondiments方法');
 };
 
-Beverage.prototype.customerWantsCondiments = function(){
-    return true;    //默认需要调料
+Beverage.prototype.customerWantsCondiments = function() {
+    return true; //默认需要调料
 };
 
-Beverage.prototype.init = function(){
+Beverage.prototype.init = function() {
     this.boilWater();
     this.brew();
     this.pourInCup();
-    if ( this.customerWantsCondiments() ){    //如果挂钩返回true，则需要调料
+    if (this.customerWantsCondiments()) { //如果挂钩返回true，则需要调料
         this.addCondiments();
     }
 };
 
 
-var CoffeeWithHook = function(){};
+var CoffeeWithHook = function() {};
 
 CoffeeWithHook.prototype = new Beverage();
 
-CoffeeWithHook.prototype.brew = function(){
-    console.log( '用沸水冲泡咖啡' );
+CoffeeWithHook.prototype.brew = function() {
+    console.log('用沸水冲泡咖啡');
 };
 
-CoffeeWithHook.prototype.pourInCup = function(){
-    console.log( '把咖啡倒进杯子' );
+CoffeeWithHook.prototype.pourInCup = function() {
+    console.log('把咖啡倒进杯子');
 };
 
-CoffeeWithHook.prototype.addCondiments = function(){
-    console.log( '加糖和牛奶' );
+CoffeeWithHook.prototype.addCondiments = function() {
+    console.log('加糖和牛奶');
 };
 
-CoffeeWithHook.prototype.customerWantsCondiments = function(){
-    return window.confirm( '请问需要调料吗？' );
+CoffeeWithHook.prototype.customerWantsCondiments = function() {
+    return window.confirm('请问需要调料吗？');
 };
 
 var coffeeWithHook = new CoffeeWithHook();
@@ -429,64 +429,64 @@ coffeeWithHook.init();
 12.享元模式
 实现享元模式的关键是把内部状态和外部状态分离开来,并把外部状态保存在其它地方，在合适的时刻再把外部状态组装进共享对象。
 */
-var Upload = function( uploadType){
+var Upload = function(uploadType) {
     this.uploadType = uploadType;
 };
-Upload.prototype.delFile = function( id ){
-    uploadManager.setExternalState( id, this );  // (1)
+Upload.prototype.delFile = function(id) {
+    uploadManager.setExternalState(id, this); // (1)
 
-    if ( this.fileSize < 3000 ){
-        return this.dom.parentNode.removeChild( this.dom );
+    if (this.fileSize < 3000) {
+        return this.dom.parentNode.removeChild(this.dom);
     }
 
-    if ( window.confirm( '确定要删除该文件吗? ' + this.fileName ) ){
-        return this.dom.parentNode.removeChild( this.dom );
+    if (window.confirm('确定要删除该文件吗? ' + this.fileName)) {
+        return this.dom.parentNode.removeChild(this.dom);
     }
 };
-var UploadFactory = (function(){
+var UploadFactory = (function() {
     var createdFlyWeightObjs = {};
 
     return {
-        create: function( uploadType){
-            if ( createdFlyWeightObjs [ uploadType] ){
-                return createdFlyWeightObjs [ uploadType];
+        create: function(uploadType) {
+            if (createdFlyWeightObjs[uploadType]) {
+                return createdFlyWeightObjs[uploadType];
             }
 
-            return createdFlyWeightObjs [ uploadType] = new Upload( uploadType);
+            return createdFlyWeightObjs[uploadType] = new Upload(uploadType);
         }
     }
 })();
 
-var uploadManager = (function(){
+var uploadManager = (function() {
     var uploadDatabase = {};
 
     return {
-        add: function( id, uploadType, fileName, fileSize ){
-            var flyWeightObj = UploadFactory.create( uploadType );
+        add: function(id, uploadType, fileName, fileSize) {
+            var flyWeightObj = UploadFactory.create(uploadType);
 
-            var dom = document.createElement( 'div' );
-            dom.innerHTML = 
-                    '<span>文件名称:'+ fileName +', 文件大小: '+ fileSize +'</span>' +
-                    '<button class="delFile">删除</button>';
+            var dom = document.createElement('div');
+            dom.innerHTML =
+                '<span>文件名称:' + fileName + ', 文件大小: ' + fileSize + '</span>' +
+                '<button class="delFile">删除</button>';
 
-            dom.querySelector( '.delFile' ).onclick = function(){
-                flyWeightObj.delFile( id );
+            dom.querySelector('.delFile').onclick = function() {
+                flyWeightObj.delFile(id);
             }
 
-            document.body.appendChild( dom );
+            document.body.appendChild(dom);
 
-            uploadDatabase[ id ] = {
+            uploadDatabase[id] = {
                 fileName: fileName,
                 fileSize: fileSize,
-                dom: dom        
+                dom: dom
             };
 
-            return flyWeightObj ;
+            return flyWeightObj;
         },
-        setExternalState: function( id, flyWeightObj ){
-            var uploadData = uploadDatabase[ id ];
-            for ( var i in uploadData ){
-                flyWeightObj[ i ] = uploadData[ i ];
+        setExternalState: function(id, flyWeightObj) {
+            var uploadData = uploadDatabase[id];
+            for (var i in uploadData) {
+                flyWeightObj[i] = uploadData[i];
             }
         }
     }
@@ -494,56 +494,48 @@ var uploadManager = (function(){
 
 var id = 0;
 
-window.startUpload = function( uploadType, files ){
-   for ( var i = 0, file; file = files[ i++ ]; ){
-      var uploadObj = uploadManager.add( ++id, uploadType, file.fileName, file.fileSize );
-   }
+window.startUpload = function(uploadType, files) {
+    for (var i = 0, file; file = files[i++];) {
+        var uploadObj = uploadManager.add(++id, uploadType, file.fileName, file.fileSize);
+    }
 };
-startUpload( 'plugin', [
-    {
-        fileName: '1.txt',
-        fileSize: 1000
-    },
-    {
-        fileName: '2.html',
-        fileSize: 3000
-    },
-    {
-        fileName: '3.txt',
-        fileSize: 5000
-    }
-]);
+startUpload('plugin', [{
+    fileName: '1.txt',
+    fileSize: 1000
+}, {
+    fileName: '2.html',
+    fileSize: 3000
+}, {
+    fileName: '3.txt',
+    fileSize: 5000
+}]);
 
-startUpload( 'flash', [
-    {
-        fileName: '4.txt',
-        fileSize: 1000
-    },
-    {
-        fileName: '5.html',
-        fileSize: 3000
-    },
-    {
-        fileName: '6.txt',
-        fileSize: 5000
-    }
-]);
+startUpload('flash', [{
+    fileName: '4.txt',
+    fileSize: 1000
+}, {
+    fileName: '5.html',
+    fileSize: 3000
+}, {
+    fileName: '6.txt',
+    fileSize: 5000
+}]);
 
 /*
 12.7 通用对象池
 */
-var objectPoolFactory = function( createObjFn ){
+var objectPoolFactory = function(createObjFn) {
     var objectPool = [];
 
     return {
-        create: function(){
-            var obj = objectPool.length === 0 ? 
-                createObjFn.apply( this, arguments ) : objectPool.shift();
+        create: function() {
+            var obj = objectPool.length === 0 ?
+                createObjFn.apply(this, arguments) : objectPool.shift();
 
             return obj;
         },
-        recover: function( obj ){
-            objectPool.push( obj );
+        recover: function(obj) {
+            objectPool.push(obj);
         }
     }
 };
@@ -554,64 +546,64 @@ var objectPoolFactory = function( createObjFn ){
 例如:作用域链、原型链、或是dom节点中的事件冒泡
 */
 
-var order500yuan = function( orderType, pay, stock ){
-    if ( orderType === 1 && pay === true ){
-        console.log( '500元定金预购, 得到100优惠券' );
-    }else{
-        return 'nextSuccessor';    //我不知道下一个节点是谁，反正把请求往后面传递
+var order500yuan = function(orderType, pay, stock) {
+    if (orderType === 1 && pay === true) {
+        console.log('500元定金预购, 得到100优惠券');
+    } else {
+        return 'nextSuccessor'; //我不知道下一个节点是谁，反正把请求往后面传递
     }
 };
 
-var order200yuan = function( orderType, pay, stock ){
-    if ( orderType === 2 && pay === true ){
-        console.log( '200元定金预购, 得到50优惠券' );
-    }else{
-        return 'nextSuccessor';    //我不知道下一个节点是谁，反正把请求往后面传递
+var order200yuan = function(orderType, pay, stock) {
+    if (orderType === 2 && pay === true) {
+        console.log('200元定金预购, 得到50优惠券');
+    } else {
+        return 'nextSuccessor'; //我不知道下一个节点是谁，反正把请求往后面传递
     }
 };
 
-var orderNormal = function( orderType, pay, stock ){
-    if ( stock > 0 ){
-        console.log( '普通购买, 无优惠券' );
-    }else{
-        console.log( '手机库存不足' );
+var orderNormal = function(orderType, pay, stock) {
+    if (stock > 0) {
+        console.log('普通购买, 无优惠券');
+    } else {
+        console.log('手机库存不足');
     }
 };
 
-var Chain = function( fn ){
+var Chain = function(fn) {
     this.fn = fn;
     this.successor = null;
 };
 
-Chain.prototype.setNextSuccessor = function( successor ){
+Chain.prototype.setNextSuccessor = function(successor) {
     return this.successor = successor;
 };
 
-Chain.prototype.passRequest = function(){
-    var ret = this.fn.apply( this, arguments );
+Chain.prototype.passRequest = function() {
+    var ret = this.fn.apply(this, arguments);
 
-    if ( ret === 'nextSuccessor' ){
-        return this.successor && this.successor.passRequest.apply( this.successor, arguments );
+    if (ret === 'nextSuccessor') {
+        return this.successor && this.successor.passRequest.apply(this.successor, arguments);
     }
 
     return ret;
 };
 //如果某个任务需要异步返回结果才能决定后面的调用,就不需返回'nextSuccessor',而是直接调用next;
-Chain.prototype.next= function(){
-    return this.successor && this.successor.passRequest.apply( this.successor, arguments );
+Chain.prototype.next = function() {
+    return this.successor && this.successor.passRequest.apply(this.successor, arguments);
 };
 
-order500yuan = new Chain( order500yuan );
-order200yuan = new Chain( order200yuan );
-orderNormal = new Chain( orderNormal );
+order500yuan = new Chain(order500yuan);
+order200yuan = new Chain(order200yuan);
+orderNormal = new Chain(orderNormal);
 
-order500yuan.setNextSuccessor( order200yuan );
-order200yuan.setNextSuccessor( orderNormal );
+order500yuan.setNextSuccessor(order200yuan);
+order200yuan.setNextSuccessor(orderNormal);
 
-order500yuan.passRequest( 1, true, 500 );        // 输出： 500元定金预购, 得到100优惠券
-order500yuan.passRequest( 2, true, 500 );     // 输出：200元定金预购, 得到50优惠券
-order500yuan.passRequest( 3, true, 500 );     // 输出：普通购买, 无优惠券
-order500yuan.passRequest( 1, false, 0 );      // 输出： 手机库存不足
+order500yuan.passRequest(1, true, 500); // 输出： 500元定金预购, 得到100优惠券
+order500yuan.passRequest(2, true, 500); // 输出：200元定金预购, 得到50优惠券
+order500yuan.passRequest(3, true, 500); // 输出：普通购买, 无优惠券
+order500yuan.passRequest(1, false, 0); // 输出： 手机库存不足
 
 /*
 14.中介者模式
@@ -619,101 +611,101 @@ order500yuan.passRequest( 1, false, 0 );      // 输出： 手机库存不足
 而中介者对象经常是巨大的。中介者对象自身往往就是一个难以维护的对象
 */
 
-function Player( name, teamColor ){
-    this.name = name;  //角色名字
-    this.teamColor = teamColor;  //队伍颜色 
-    this.state = 'alive';    //玩家生存状态
+function Player(name, teamColor) {
+    this.name = name; //角色名字
+    this.teamColor = teamColor; //队伍颜色 
+    this.state = 'alive'; //玩家生存状态
 };
 
-Player.prototype.win = function(){
-    console.log( this.name + ' won ' );
+Player.prototype.win = function() {
+    console.log(this.name + ' won ');
 };
 
-Player.prototype.lose = function(){
-    console.log( this.name +' lost' );
+Player.prototype.lose = function() {
+    console.log(this.name + ' lost');
 };
 
 /*******************玩家死亡*****************/
 
-Player.prototype.die = function(){
+Player.prototype.die = function() {
     this.state = 'dead';
-    playerDirector.reciveMessage( 'playerDead', this );    //给中介者发送消息，玩家死亡
+    playerDirector.reciveMessage('playerDead', this); //给中介者发送消息，玩家死亡
 };
 
 /*******************移除玩家*****************/
 
-Player.prototype.remove = function(){
-    playerDirector.reciveMessage( 'removePlayer', this );     //给中介者发送消息，移除一个玩家
+Player.prototype.remove = function() {
+    playerDirector.reciveMessage('removePlayer', this); //给中介者发送消息，移除一个玩家
 };
 
 /*******************玩家换队*****************/
 
-Player.prototype.changeTeam = function( color ){
-    playerDirector.reciveMessage( 'changeTeam', this, color );    //给中介者发送消息，玩家换队
+Player.prototype.changeTeam = function(color) {
+    playerDirector.reciveMessage('changeTeam', this, color); //给中介者发送消息，玩家换队
 };
 
-var playerDirector= ( function(){
-    var players = {},    //保存所有玩家
-       operations = {}; //中介者可以执行的操作
+var playerDirector = (function() {
+    var players = {}, //保存所有玩家
+        operations = {}; //中介者可以执行的操作
 
     /****************新增一个玩家***************************/
-    operations.addPlayer = function( player ){    
-        var teamColor = player.teamColor;    //玩家的队伍颜色
-        players[ teamColor ] = players[ teamColor ] || [];    //如果该颜色的玩家还没有成立队伍，则新成立一个队伍
-        players[ teamColor ].push( player );    //添加玩家进队伍。
+    operations.addPlayer = function(player) {
+        var teamColor = player.teamColor; //玩家的队伍颜色
+        players[teamColor] = players[teamColor] || []; //如果该颜色的玩家还没有成立队伍，则新成立一个队伍
+        players[teamColor].push(player); //添加玩家进队伍。
     };
 
     /****************移除一个玩家***************************/
-    operations.removePlayer = function( player ){
-        var teamColor = player.teamColor,    //玩家的队伍颜色
-            teamPlayers = players[ teamColor ] || [];    //该队伍所有成员
-        for ( var i = teamPlayers.length - 1; i >= 0; i-- ){    //遍历删除
-            if ( teamPlayers[ i ] === player ){
-                teamPlayers.splice( i, 1 );
+    operations.removePlayer = function(player) {
+        var teamColor = player.teamColor, //玩家的队伍颜色
+            teamPlayers = players[teamColor] || []; //该队伍所有成员
+        for (var i = teamPlayers.length - 1; i >= 0; i--) { //遍历删除
+            if (teamPlayers[i] === player) {
+                teamPlayers.splice(i, 1);
             }
         }
     };
 
     /****************玩家换队***************************/
-    operations.changeTeam = function( player, newTeamColor ){    //玩家换队
-        operations.removePlayer( player );    //从原队伍中删除
-        player.teamColor = newTeamColor;    //改变队伍颜色
-        operations.addPlayer( player );        //增加到新队伍中
+    operations.changeTeam = function(player, newTeamColor) { //玩家换队
+        operations.removePlayer(player); //从原队伍中删除
+        player.teamColor = newTeamColor; //改变队伍颜色
+        operations.addPlayer(player); //增加到新队伍中
     };
 
-    operations.playerDead = function( player ){      //玩家死亡
+    operations.playerDead = function(player) { //玩家死亡
         var teamColor = player.teamColor,
-            teamPlayers = players[ teamColor ];    //玩家所在队伍
+            teamPlayers = players[teamColor]; //玩家所在队伍
 
         var all_dead = true;
 
-        for ( var i = 0, player; player = teamPlayers[ i++ ]; ){
-            if ( player.state !== 'dead' ){
+        for (var i = 0, player; player = teamPlayers[i++];) {
+            if (player.state !== 'dead') {
                 all_dead = false;
                 break;
             }
         }
 
-        if ( all_dead === true ){    //全部死亡
+        if (all_dead === true) { //全部死亡
 
-            for ( var i = 0, player; player = teamPlayers[ i++ ]; ){
-                player.lose();    //本队所有玩家lose
+            for (var i = 0, player; player = teamPlayers[i++];) {
+                player.lose(); //本队所有玩家lose
             }
 
-            for ( var color in players ){
-                if ( color !== teamColor ){
-                    var teamPlayers = players[ color ];    //其他队伍的玩家
-                    for ( var i = 0, player; player = teamPlayers[ i++ ]; ){
-                        player.win();    //其他队伍所有玩家win
+            for (var color in players) {
+                if (color !== teamColor) {
+                    var teamPlayers = players[color]; //其他队伍的玩家
+                    for (var i = 0, player; player = teamPlayers[i++];) {
+                        player.win(); //其他队伍所有玩家win
                     }
                 }
             }
         }
     };
 
-    var reciveMessage = function(){
-        var message = Array.prototype.shift.call( arguments );    //arguments的第一个参数为消息名称.
-        operations[ message ].apply( this, arguments );
+    var reciveMessage = function() {
+        var message = Array.prototype.shift.call(arguments); //arguments的第一个参数为消息名称.
+        operations[message].apply(this, arguments);
     };
 
     return {
@@ -722,9 +714,9 @@ var playerDirector= ( function(){
 
 })();
 
-var playerFactory = function( name, teamColor ){
-    var newPlayer = new Player( name, teamColor );     //创造一个新的玩家对象
-    playerDirector.reciveMessage( 'addPlayer', newPlayer );    //给中介者发送消息，新增玩家
+var playerFactory = function(name, teamColor) {
+    var newPlayer = new Player(name, teamColor); //创造一个新的玩家对象
+    playerDirector.reciveMessage('addPlayer', newPlayer); //给中介者发送消息，新增玩家
 
     return newPlayer;
 };
@@ -736,196 +728,198 @@ var playerFactory = function( name, teamColor ){
 before/after方法实际上是返回一个新的方法,所以原方法上的一些属性会被丢失.而且这种装饰方式其实也叠加了函数的作用域，如果装饰的链条过长，性能上也会受到一些影响。
 */
 //Function.prototype.after
-Function.prototype.before = function( beforefn ){
-    var __self = this;  
-    return function(){
-    	//可以根据前方函数的返回值来决定后面的函数是否执行
-    	/*if ( beforefn.apply( this, arguments ) === false ){    
-            //beforefn返回false的情况直接return，不再执行后面的原函数。
-            return;
-        }*/
-        beforefn.apply( this, arguments );        //  (1)
+Function.prototype.before = function(beforefn) {
+    var __self = this;
+    return function() {
+        //可以根据前方函数的返回值来决定后面的函数是否执行
+        /*if ( beforefn.apply( this, arguments ) === false ){    
+               //beforefn返回false的情况直接return，不再执行后面的原函数。
+               return;
+           }*/
+        beforefn.apply(this, arguments); //  (1)
 
-        return __self.apply( this, arguments );    //  (2)
+        return __self.apply(this, arguments); //  (2)
     }
 }
 
 
-var ajax= function( type, url, param ){
-    console.log(param);     // 发送ajax请求的代码略..
+var ajax = function(type, url, param) {
+    console.log(param); // 发送ajax请求的代码略..
 };
 
 
-var getToken = function(){
+var getToken = function() {
     return 'Token';
 }
 
-ajax = ajax.before(function( type, url, param ){
+ajax = ajax.before(function(type, url, param) {
     param.Token = getToken();
 });
 
-ajax( 'get', 'http://xxx.com/userinfo', { name: 'sven' } );
+ajax('get', 'http://xxx.com/userinfo', {
+    name: 'sven'
+});
 
 
 /*********************************/
 //给appendDom函数装饰上计算执行时间的功能
-var appendDom = function(){
-    for ( var i = 0; i < 1000; i++ ){
-        document.body.appendChild( document.createElement( 'div' ) );
+var appendDom = function() {
+    for (var i = 0; i < 1000; i++) {
+        document.body.appendChild(document.createElement('div'));
     }
 };
-var funcExecTime = function( fn ){
+var funcExecTime = function(fn) {
 
-    return (function(){
+    return (function() {
         var startTime;
 
-        return fn.before(function(){
+        return fn.before(function() {
             startTime = +new Date;
-        }).after(function(){
+        }).after(function() {
             var endTime = +new Date
-            console.log( '消耗的时间: ' + endTime - startTime );            
+            console.log('消耗的时间: ' + endTime - startTime);
         });
 
     })();
 };
 
 
-appendDom = funcExecTime ( appendDom ); 
+appendDom = funcExecTime(appendDom);
 appendDom();
 
 /*
 16.状态模式
 将状态封装成独立的类， 并将请求委托给当前的状态对象，当对象的内部状态改变时，会带来不同的行为变化
 */
-window.external.upload = function( state ){
-    console.log( state );     // 可能为sign、uploading、done、error
+window.external.upload = function(state) {
+    console.log(state); // 可能为sign、uploading、done、error
 };
 
 
-var plugin = (function(){
-    var plugin = document.createElement( 'embed' );
+var plugin = (function() {
+    var plugin = document.createElement('embed');
     plugin.style.display = 'none';
 
     plugin.type = 'application/txftn-webkit';
 
-    plugin.sign = function(){
-        console.log( '开始文件扫描' );
+    plugin.sign = function() {
+        console.log('开始文件扫描');
     }
 
-    plugin.pause = function(){
-        console.log( '暂停文件上传' );
+    plugin.pause = function() {
+        console.log('暂停文件上传');
     };
 
-    plugin.uploading = function(){
-        console.log( '开始文件上传' );
+    plugin.uploading = function() {
+        console.log('开始文件上传');
     };
-    plugin.del = function(){
-        console.log( '删除文件上传' );
+    plugin.del = function() {
+        console.log('删除文件上传');
     }
 
-    plugin.done = function(){
-        console.log( '文件上传完成' );
+    plugin.done = function() {
+        console.log('文件上传完成');
     }
 
-    document.body.appendChild( plugin );
+    document.body.appendChild(plugin);
 
     return plugin;
 })();
 
-var Upload = function( fileName ){
-    this.plugin = plugin;    
+var Upload = function(fileName) {
+    this.plugin = plugin;
     this.fileName = fileName;
     this.button1 = null;
     this.button2 = null;
-    this.signState = new SignState( this );    //设置初始状态为waiting
-    this.uploadingState = new UploadingState( this );
-    this.pauseState = new PauseState( this );
-    this.doneState = new DoneState( this );
-    this.errorState = new ErrorState( this );
-    this.currState = this.signState;    //设置当前状态
+    this.signState = new SignState(this); //设置初始状态为waiting
+    this.uploadingState = new UploadingState(this);
+    this.pauseState = new PauseState(this);
+    this.doneState = new DoneState(this);
+    this.errorState = new ErrorState(this);
+    this.currState = this.signState; //设置当前状态
 };
 
-Upload.prototype.init = function(){
+Upload.prototype.init = function() {
     var that = this;
 
-    this.dom = document.createElement( 'div' );
-    this.dom.innerHTML = 
-        '<span>文件名称:'+ this.fileName +'</span>\
+    this.dom = document.createElement('div');
+    this.dom.innerHTML =
+        '<span>文件名称:' + this.fileName + '</span>\
         <button data-action="button1">扫描中</button>\
         <button data-action="button2">删除</button>';
 
-    document.body.appendChild( this.dom );
+    document.body.appendChild(this.dom);
 
-    this.button1 = this.dom.querySelector( '[data-action="button1"]' );
-    this.button2 = this.dom.querySelector( '[data-action="button2"]' );
+    this.button1 = this.dom.querySelector('[data-action="button1"]');
+    this.button2 = this.dom.querySelector('[data-action="button2"]');
 
     this.bindEvent();
 };
 
-Upload.prototype.bindEvent = function(){
+Upload.prototype.bindEvent = function() {
     var self = this;
-    this.button1.onclick = function(){
+    this.button1.onclick = function() {
         self.currState.clickHandler1();
     }
-    this.button2.onclick = function(){
+    this.button2.onclick = function() {
         self.currState.clickHandler2();
     }
 };
-Upload.prototype.sign = function(){
+Upload.prototype.sign = function() {
     this.plugin.sign();
     this.currState = this.signState;
 };
 
-Upload.prototype.uploading = function(){
+Upload.prototype.uploading = function() {
     this.button1.innerHTML = '正在上传，点击暂停';
     this.plugin.uploading();
     this.currState = this.uploadingState;
 };
 
-Upload.prototype.pause = function(){
+Upload.prototype.pause = function() {
     this.button1.innerHTML = '已暂停，点击继续上传';
     this.plugin.pause();
     this.currState = this.pauseState;
 };
 
-Upload.prototype.done = function(){
+Upload.prototype.done = function() {
     this.button1.innerHTML = '上传完成';
     this.plugin.done();
     this.currState = this.doneState;
 };
 
-Upload.prototype.error = function(){
+Upload.prototype.error = function() {
     this.button1.innerHTML = '上传失败';
     this.currState = this.errorState;
 };
 
-Upload.prototype.del = function(){
+Upload.prototype.del = function() {
     this.plugin.del();
-    this.dom.parentNode.removeChild( this.dom );
+    this.dom.parentNode.removeChild(this.dom);
 };
 
-var StateFactory = (function(){
+var StateFactory = (function() {
 
-    var State = function(){};
+    var State = function() {};
 
-    State.prototype.clickHandler1 = function(){
-        throw new Error( '子类必须重写父类的clickHandler1方法' );
+    State.prototype.clickHandler1 = function() {
+        throw new Error('子类必须重写父类的clickHandler1方法');
     }
 
-    State.prototype.clickHandler2 = function(){
-        throw new Error( '子类必须重写父类的clickHandler2方法' );
+    State.prototype.clickHandler2 = function() {
+        throw new Error('子类必须重写父类的clickHandler2方法');
     }
 
-    return function( param ){
+    return function(param) {
 
-        var F = function( uploadObj ){
+        var F = function(uploadObj) {
             this.uploadObj = uploadObj;
         };
 
         F.prototype = new State();
 
-        for ( var i in param ){
-            F.prototype[ i ] = param[ i ];
+        for (var i in param) {
+            F.prototype[i] = param[i];
         }
 
         return F;
@@ -934,63 +928,131 @@ var StateFactory = (function(){
 })();
 
 var SignState = StateFactory({
-    clickHandler1: function(){
-        console.log( '扫描中，点击无效...' );
-},
-    clickHandler2: function(){
-        console.log( '文件正在上传中，不能删除' );        
+    clickHandler1: function() {
+        console.log('扫描中，点击无效...');
+    },
+    clickHandler2: function() {
+        console.log('文件正在上传中，不能删除');
     }
 });
 
 var UploadingState = StateFactory({
-    clickHandler1: function(){
+    clickHandler1: function() {
         this.uploadObj.pause();
     },
-    clickHandler2: function(){
-        console.log( '文件正在上传中，不能删除' );    
+    clickHandler2: function() {
+        console.log('文件正在上传中，不能删除');
     }
 });
 
 var PauseState = StateFactory({
-    clickHandler1: function(){
+    clickHandler1: function() {
         this.uploadObj.uploading();
     },
-    clickHandler2: function(){
+    clickHandler2: function() {
         this.uploadObj.del();
     }
 });
 
 var DoneState = StateFactory({
-    clickHandler1: function(){
-        console.log( '文件已完成上传, 点击无效' );
+    clickHandler1: function() {
+        console.log('文件已完成上传, 点击无效');
     },
-    clickHandler2: function(){
+    clickHandler2: function() {
         this.uploadObj.del();
     }
 });
 
 var ErrorState = StateFactory({
-    clickHandler1: function(){
-        console.log( '文件上传失败, 点击无效' );
+    clickHandler1: function() {
+        console.log('文件上传失败, 点击无效');
     },
-    clickHandler2: function(){
+    clickHandler2: function() {
         this.uploadObj.del();
     }
 });
 
-var uploadObj = new Upload( 'JavaScript设计模式与开发实践' );
+var uploadObj = new Upload('JavaScript设计模式与开发实践');
 uploadObj.init();
 
-window.external.upload = function( state ){
-    uploadObj[ state ]();
+window.external.upload = function(state) {
+    uploadObj[state]();
 };
 
-window.external.upload( 'sign' );
+window.external.upload('sign');
 
-setTimeout(function(){
-    window.external.upload( 'uploading' );        //1秒后开始上传
-}, 1000 );
+setTimeout(function() {
+    window.external.upload('uploading'); //1秒后开始上传
+}, 1000);
 
-setTimeout(function(){
-    window.external.upload( 'done' );        //5秒后上传完成
-}, 5000 );
+setTimeout(function() {
+    window.external.upload('done'); //5秒后上传完成
+}, 5000);
+
+
+
+/*
+节流函数,控制函数执行的频率
+*/
+var throttle = function(fn, interval) {
+
+    var __self = fn, //保存需要被延迟执行的函数引用
+        timer, //定时器
+        firstTime = true; //是否是第一次调用
+
+    return function() {
+        var args = arguments,
+            __me = this;
+
+        if (firstTime) { //如果是第一次调用，不需延迟执行
+            __self.apply(__me, args);
+            return firstTime = false;
+        }
+
+        if (timer) { //如果定时器还在，说明前一次延迟执行还没有完成
+            return false;
+        }
+
+        timer = setTimeout(function() { //延迟一段时间执行
+            clearTimeout(timer);
+            timer = null;
+            __self.apply(__me, args);
+
+        }, interval || 500);
+
+    };
+
+};
+
+window.onresize = throttle(function() {
+    console.log(1);
+}, 500);
+
+/*
+控制单位时间内函数执行的次数
+*/
+var timeChunk = function(ary, fn, count) {
+
+    var obj,
+        t;
+
+    var len = ary.length;
+
+    var start = function() {
+        for (var i = 0; i < Math.min(count || 1, ary.length); i++) {
+            var obj = ary.shift();
+            fn(obj);
+        }
+    };
+
+    return function() {
+        t = setInterval(function() {
+            if (ary.length === 0) { //如果全部节点都已经被创建好
+                return clearInterval(t);
+            }
+            start();
+        }, 200); //分批执行的时间间隔，也可以用参数的形式传入
+
+    };
+
+};
