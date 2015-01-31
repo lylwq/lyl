@@ -1,0 +1,25 @@
+{
+  "name": "Test",
+  "title": "test",
+  "description": "testtset",
+  "version": "0.1.0",
+  "homepage": "https://github.com/gionee/grunt",
+  "author": {
+    "name": "lyl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gionee/grunt.git"
+  },
+  "bugs": "https://github.com/gionee/grunt/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/gionee/grunt/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "keywords": []
+}
